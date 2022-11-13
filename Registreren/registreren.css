@@ -1,8 +1,8 @@
 .logo {
   position: absolute;
-  width: 310px;
-  height: 150px;
-  left: 0px;
+  width: 350px;
+  height: 250px;
+  left: 75px;
   top: 0px;
 }
 .sidebar {
@@ -19,7 +19,7 @@
 .registreren {
   position: absolute;
   height: 84px;
-  left: 650px;
+  left: 1000px;
   top: 150px;
   text-align: center;
 }
