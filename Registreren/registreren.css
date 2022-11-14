@@ -69,25 +69,36 @@ h1 {
   color: #fff
 }
 .inputnaam{
-    width: 229px;
+    width: 200px;
     height: 40px;
-    background: rgba(111, 114, 157, 0.15);
+    background: rgba(100, 103, 143, 0.15);
     border-radius: 4px;  
-    margin-right: 20px;
     outline: none;
     border:none;
+    text-align: center;
+}
+.inputnaam2{
+  width: 100px;
+  height: 40px;
+  background: rgba(100, 103, 143, 0.15);
+  border-radius: 4px;  
+  margin-right: 20px;
+  margin-left: 20px;
+  outline: none;
+  border:none;
+  text-align: center;
 }
 .inputgegevens{
   margin-top: 30px;
   width: 100%;
   height: 40px;
-  background: rgba(111, 114, 157, 0.15);
+  background: rgba(100, 103, 143, 0.15);
   border-radius: 4px;  
   outline: none;
   border:none;
+  text-align: center;
 }
 
 .btn-group{
-  margin-left: 25%;
+  margin-left: 31%;
 }
-
