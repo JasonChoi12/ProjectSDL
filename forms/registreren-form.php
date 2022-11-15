@@ -60,20 +60,20 @@ if (isset($_POST['submit'])) {
         $error[] = "Email mag niet leeg.";
     }
 
-    // wachtwoord validatie
-    // if (!empty($wachtwoord)) {
-    //     $uppercase = preg_match('@[A-Z]@', $wachtwoord);
-    //     $lowercase = preg_match('@[a-z]@', $wachtwoord);
-    //     $number    = preg_match('@[0-9]@', $wachtwoord);
-    //     $specialChars = preg_match('@[^\w]@', $wachtwoord);
-    // } else {
-    //     // mag niet leeg zijn
-    //     $error[] = "Wachtwoord mag niet leeg.";
-    // }
+    wachtwoord validatie
+    if (!empty($wachtwoord)) {
+        $uppercase = preg_match('@[A-Z]@', $wachtwoord);
+        $lowercase = preg_match('@[a-z]@', $wachtwoord);
+        $number    = preg_match('@[0-9]@', $wachtwoord);
+        $specialChars = preg_match('@[^\w]@', $wachtwoord);
+    } else {
+        // mag niet leeg zijn
+        $error[] = "Wachtwoord mag niet leeg.";
+    }
 
-    // if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($wachtwoord) < 8) {
-    //     $error[] = 'Wachtwoord moet ten minste 8 tekens lang zijn en moet ten minste één hoofdletter, één cijfer en één speciaal teken bevatten.';
-    // }
+    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($wachtwoord) < 8) {
+        $error[] = 'Wachtwoord moet ten minste 8 tekens lang zijn en moet ten minste één hoofdletter, één cijfer en één speciaal teken bevatten.';
+    }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../registreren/registreren.php');
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
-        // $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
+        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
         header('Location:../registreren/Qr.php');
     }
 }
