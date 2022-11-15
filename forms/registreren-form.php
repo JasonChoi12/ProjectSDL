@@ -17,6 +17,8 @@ $tussenvoegsel = $_POST['tussenvoegsel'];
 $achternaam = $_POST['achternaam'];
 $email = $_POST['email'];
 $wachtwoord = $_POST['wachtwoord'];
+//filter emails naar lowerstring
+$email = strtolower($email);
 //check invoervelden of hij goed is ingevuld
 // echo $voornaam. " ". $tussenvoegsel. " ". $achternaam. " ". $email. " ". $wachtwoord;
 if (isset($_POST['submit'])) {
@@ -93,7 +95,7 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
-        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
+        // $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
         header('Location:../registreren/registreren.php');
     }
 }

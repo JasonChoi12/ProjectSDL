@@ -1,5 +1,10 @@
 <?php
 
+use PragmaRX\Google2FA\Google2FA;
+
+require_once(__DIR__ . '../../forms/vendor/autoload.php');
+
+
 class DB
 {
 
@@ -47,7 +52,7 @@ class Gebruikers extends DB
     public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key){
         //Hash wachtwoord
         $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
-        $hash2 = password_hash($secret_key, PASSWORD_DEFAULT);
+        // $hash2 = password_hash($secret_key, PASSWORD_DEFAULT);
         $usertype = 0;
         try {
             // maak een connectie met de database
@@ -63,7 +68,7 @@ class Gebruikers extends DB
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":wachtwoord", $hash);
             $stmt->bindParam(":usertype", $usertype);
-            $stmt->bindParam(":secretkey", $hash2);
+            $stmt->bindParam(":secretkey", $secret_key);
 
             //SQL query daadwerkelijk uitvoeren
             $stmt->execute();
@@ -75,7 +80,7 @@ class Gebruikers extends DB
         }
     }
 
-    public function login($email, $password)
+    public function login($email, $wachtwoord, $code)
     {
         try {
             // maak een connectie met de database
@@ -93,13 +98,24 @@ class Gebruikers extends DB
 
             $this->conn = NULL;
             // controleren of het ingetypte wachtwoord overeenkomt met die in de database
-            if (password_verify($password, $data['wachtwoord'])) {
+            if (password_verify($wachtwoord, $data['wachtwoord'])) {
+                // zet de secret key van database in variable secret key
+                $secret_key = $data['secretkey'];
+                # Create the 2FA class
+                $google2fa = new PragmaRX\Google2FA\Google2FA();
+                // controleren of het ingetypte code overeenkomt met die in de database
+                if($google2fa->verifyKey($secret_key, $code)){
                 // class variabelen invullen
                 $this->id = $data['id_gebruiker'];
                 $this->voornaam = $data['voornaam'];
-                $this->tussenvoegsel = $data['tussenvoegsels'];
+                $this->tussenvoegsel = $data['tussenvoegsel'];
                 $this->achternaam = $data['achternaam'];
                 $this->email = $data['email'];
+                }
+                else{
+                
+                    return "Code is Incorrect let op code veranderd elke 15 seconden";
+                }
                 // status terugsturen
                 return true;
             }
@@ -126,12 +142,12 @@ class Gebruikers extends DB
         return true;
     }
 
-    public function update($voornaam, $tussenvoegsel, $achternaam, $email, $oldpassword, $password)
+    public function update($voornaam, $tussenvoegsel, $achternaam, $email, $oudewachtwoord, $wachtwoord)
     {
-        if (empty($password)) {
+        if (empty($wachtwoord)) {
         } else {
             //Hash wachtwoord
-            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         }
         try {
             //Pak sessie data uit
@@ -171,7 +187,7 @@ class Gebruikers extends DB
             // data ophalen
             $data = $stmt2->fetch();
 
-            if (password_verify($oldpassword, $data['wachtwoord'])) {
+            if (password_verify($oudewachtwoord, $data['wachtwoord'])) {
                 //sql uitvoeren
                 $stmt->execute();
                 return true;
@@ -187,7 +203,7 @@ class Gebruikers extends DB
         }
     }
 
-    public function delete($user_id, $email, $password)
+    public function delete($user_id, $email, $wachtwoord)
     {
         // maak een connectie met de database
         $this->conn();
@@ -202,7 +218,7 @@ class Gebruikers extends DB
         $data = $stmt2->fetch();
 
         // controleren of het ingetypte wachtwoord overeenkomt met die in de database
-        if (password_verify($password, $data['wachtwoord'])) {
+        if (password_verify($wachtwoord, $data['wachtwoord'])) {
             // class variabelen invullen
             $this->id = $data['id_gebruiker'];
             $this->voornaam = $data['voornaam'];

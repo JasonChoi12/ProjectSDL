@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="login.css" />
+    <!-- <link rel="stylesheet" href="login.css" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
@@ -19,6 +19,8 @@
             <br />
             <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
+            <input class="inputgegevens" type="password" id="wachtwoord" name="code" placeholder="Code" />
+            
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>

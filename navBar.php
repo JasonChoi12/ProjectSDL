@@ -1,3 +1,11 @@
+<?php
+
+require_once("src/sessie.php");
+session_start();
+
+require_once("src/class.php");
+$user = unserialize($_SESSION['gebruiker_data']);
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -55,10 +63,10 @@
          <div class="profile-details">
            <img src="profile.jpg">
            <div class="name_job">
-             <div class="name">"Naam Gebruiker"</div>
+             <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>
              <div class="name">Uitloggen</div>
          </div>
-         <i class='bx bx-log-out' id="log_out" ></i>
+         <a href="src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out" ></i></a>
      </li>
     </ul>
   </div>

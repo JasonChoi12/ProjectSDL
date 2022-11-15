@@ -39,7 +39,8 @@
 
         elseif (isset($_SESSION['succes']) && isset($_SESSION['QR'])) {
           echo $_SESSION['succes'];
-          unset($_SESSION['succes']);
+          unset($_SESSION['succes']);?><br>
+          <?php
           echo $_SESSION['QR'];
           unset($_SESSION['QR']);
         }
