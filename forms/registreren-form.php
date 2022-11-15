@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
         $error[] = "Email mag niet leeg.";
     }
 
-    wachtwoord validatie
+    // wachtwoord validatie
     if (!empty($wachtwoord)) {
         $uppercase = preg_match('@[A-Z]@', $wachtwoord);
         $lowercase = preg_match('@[a-z]@', $wachtwoord);
