@@ -15,22 +15,21 @@
     <div class="login">
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
-            
-            <br />
-            <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
-            <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
-            <div class="btn-group">
-                <button name="submit" class="submit">login</button>
-            </div>
-            <div class="text-center center input">
-                <?php
-                session_start();
-                // laat error code Zien
-                if (isset($_SESSION['ERRORS'])) {
-                    echo $_SESSION['ERRORS'];
-                    unset($_SESSION['ERRORS']);
-                }
-                ?></div>
+            <div class="input">
+                <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
+                <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
+                <div class="btn-group">
+                    <button name="submit" class="submit">login</button>
+                </div>
+                <div class="text-center center input">
+                    <?php
+                    session_start();
+                    // laat error code Zien
+                    if (isset($_SESSION['ERRORS'])) {
+                        echo $_SESSION['ERRORS'];
+                        unset($_SESSION['ERRORS']);
+                    }
+                    ?></div>
         </form>
     </div>
 </body>

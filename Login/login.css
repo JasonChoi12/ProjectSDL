@@ -4,8 +4,8 @@
     height: 250px;
     left: 75px;
     top: 0px;
-  }
-  .sidebar {
+}
+.sidebar {
     position: fixed;
     left: 0;
     top: 0;
@@ -15,25 +15,28 @@
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
-  }
-  .login {
+}
+    	
+.login {
     position: absolute;
-    height: 50%;
+    height: 84px;
     left: 65%;
-    top: 0%;
-    text-align: center;
-  }
-  h1 {
+    top: 20%;
+}
+
+h1 {
+    position: absolute;
+    margin-top: -50%;
+    left: 39%;
     font-family: "verdana";
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
     line-height: 84px;
-    /* identical to box height */
     color: #42447d;
-  }
-  .submit {
-    width: 105%;
+}
+.submit {
+    width: 150%;
     height: 100%;
     margin-top: 25%;
     position: center;
@@ -51,41 +54,29 @@
     font-size: 14px;
     color: #fff;
     text-align: center;
-  }
-  
-  .inputnaam {
-    width: 100%;
-    height: 50%;
-    position: center;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    text-align: center;
-  }
-  .inputnaam2 {
-    width: 100%;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    margin-right: 20px;
-    margin-left: 20px;
-    outline: none;
-    border: none;
-    text-align: center;
-  }
-  .inputgegevens {
+}
+/* .input {
     margin-top: 30px;
-    width: 100%;
+    width: 150%;
     height: 40px;
     background: rgba(100, 103, 143, 0.15);
     border-radius: 4px;
     outline: none;
     border: none;
     text-align: center;
-  }
+} */
+.inputgegevens {
+    margin-top: 30px;
+    width: 150%;
+    height: 40px;
+    background: rgba(100, 103, 143, 0.15);
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
   
-  .btn-group {
+.btn-group {
     left:10%;
     height: 30px;
-  }
+}
