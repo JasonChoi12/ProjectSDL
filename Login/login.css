@@ -4,29 +4,29 @@
     height: 250px;
     left: 75px;
     top: 0px;
-}
-.sidebar {
+  }
+  .sidebar {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
-    width: 40%;
+    width: 500px;
     background: #42447d;
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
-}
+  }
     	
 .login {
     position: absolute;
-    height: 84px;
-    left: 65%;
-    top: 20%;
+    height: 10%;
+    left: 62%;
+    top: 27%;
 }
 
 h1 {
     position: absolute;
-    margin-top: -50%;
+    margin-top: -46%;
     left: 39%;
     font-family: "verdana";
     font-style: normal;
@@ -55,16 +55,7 @@ h1 {
     color: #fff;
     text-align: center;
 }
-/* .input {
-    margin-top: 30px;
-    width: 150%;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    text-align: center;
-} */
+
 .inputgegevens {
     margin-top: 30px;
     width: 150%;
