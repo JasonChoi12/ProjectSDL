@@ -1,7 +1,6 @@
 <?php
 
 require_once("src/sessie.php");
-session_start();
 
 require_once("src/class.php");
 $user = unserialize($_SESSION['gebruiker_data']);

@@ -3,16 +3,17 @@
 
 <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="stylesheet" href="login.css" /> -->
+    <link rel="stylesheet" href="login.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
     <!--Zijkant-->
-    <div class="sidebar">
+    <div class="left">
         <img class="logo" src="../Logo DEVP.png" />
     </div>
-    <div class="login">
+    <div class="right">
+        <div class="centered">
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
             
@@ -34,6 +35,7 @@
                 }
                 ?></div>
         </form>
+    </div>
     </div>
 </body>
 

@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../login.php');
+        header('Location../Login/login.php');
     } else {
         $loggedin = $user->login($email, $wachtwoord, $code);
         if (is_bool($loggedin)) {
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             header('Location: ../navbar.php');
         } elseif (is_string($loggedin)) {
             $_SESSION['ERRORS'] = $loggedin;
-            header('Location: ../login.php');
+            header('Location../Login/login.php');
         }
     }
 }
