@@ -50,7 +50,8 @@ class Gebruikers extends DB
     public $email;
     public $img;
 
-    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key){
+    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key)
+    {
         //Hash wachtwoord
         $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         // $hash2 = password_hash($secret_key, PASSWORD_DEFAULT);
@@ -105,24 +106,23 @@ class Gebruikers extends DB
                 # Create the 2FA class
                 $google2fa = new PragmaRX\Google2FA\Google2FA();
                 // controleren of het ingetypte code overeenkomt met die in de database
-                if($google2fa->verifyKey($secret_key, $code)){
-                // class variabelen invullen
-                $this->id = $data['id_gebruiker'];
-                $this->voornaam = $data['voornaam'];
-                $this->tussenvoegsel = $data['tussenvoegsel'];
-                $this->achternaam = $data['achternaam'];
-                $this->email = $data['email'];
-                $this->img = $data['image'];
-                }
-                else{
-                
+                if ($google2fa->verifyKey($secret_key, $code)) {
+                    // class variabelen invullen
+                    $this->id = $data['id_gebruiker'];
+                    $this->voornaam = $data['voornaam'];
+                    $this->tussenvoegsel = $data['tussenvoegsel'];
+                    $this->achternaam = $data['achternaam'];
+                    $this->email = $data['email'];
+                    $this->img = $data['image'];
+                    // status terugsturen
+                return true;
+                } else {
+
                     return "Code is Incorrect let op code veranderd elke 15 seconden";
                 }
                 // status terugsturen
                 return true;
-            }
-            else{
-                
+            } else {
                 return "Email of wachtwoord is fout";
             }
         } catch (PDOException $e) {
@@ -193,9 +193,8 @@ class Gebruikers extends DB
                 //sql uitvoeren
                 $stmt->execute();
                 return true;
-            }
-            else{
-               
+            } else {
+
                 return "wachtwoord onjuist";
             }
         } catch (PDOException $e) {

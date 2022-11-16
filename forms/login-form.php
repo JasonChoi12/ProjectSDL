@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
             header('Location: ../UrenRegistratie/urenregistratie.php');
         } elseif (is_string($loggedin)) {
             $_SESSION['ERRORS'] = $loggedin;
-            header('Location../Login/login.php');
+            header('Location: ../Login/login.php');
         }
     }
 }
