@@ -25,27 +25,38 @@ h1 {
     margin-top: 10%;
   }
   .straat-input {
-    width: 600px;
+    width: 307px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
   }
-  .datum {
-    margin-left: 128%;
-    margin-top: -14%;
+  .telefoon {
+    margin-left: 100%;
+    margin-top: -23%;
   }
-  .datum-input {
+  .telefoon-input {
     width: 300px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
   }
-  .tijd {
+  .woonplaats {
+    margin-left: 200%;
+    margin-top: -23%;
+  }
+  .woonplaats-input {
+    width: 300px;
+    height: 60px;
+    background: rgba(106, 112, 126, 0.0001);
+    border: 1px solid #dddfe1;
+    border-radius: 13px;
+  }
+  .adres {
     margin-top: 10%;
   }
-  .tijd-input {
+  .adres-input {
     width: 200px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
@@ -55,14 +66,9 @@ h1 {
     text-align: center;
   }
   
-  .toteindtijd {
-    margin-left: 85%;
-    margin-top: -14%;
-    white-space: nowrap ;
-  }
-  .eindtijd {
-    margin-left: 40%;
-    margin-top: -14%;
+  .postcode {
+    margin-left: 70%;
+    margin-top: -22%;
   }
   .submit {
     position: relative;
@@ -78,7 +84,7 @@ h1 {
     font-style: normal;
     font-size: 14px;
     color: #fff;
-    margin-left: 135%;
-    margin-top: -9%;
+    margin-left: 200%;
+    margin-top: -15%;
   }
   

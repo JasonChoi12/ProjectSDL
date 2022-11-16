@@ -14,7 +14,7 @@
 
     <script>
       $(function () {
-        $("#nav-placeholder").load("../navBar.html");
+        $("#nav-placeholder").load("../navBar.php");
       });
     </script>
     <div class="title">
@@ -39,32 +39,36 @@
             />
           </label>
         </div>
-        <div class="datum">
+        <div class="telefoon">
           <label>
-            Datum<br />
+            Telefoon<br />
             <input
-              class="datum-input"
-              name="datum"
-              placeholder="Dag-Maand-Jaar"
+              class="telefoon-input"
+              name="telefoon"
+              placeholder="06-123456789 (optioneel)"
+            />
+          </label>
+        </div>
+        <div class="woonplaats">
+          <label>
+            Woonplaats<br />
+            <input
+              class="woonplaats-input"
+              name="woonplaats"
+              placeholder="Stad,Provincie"
             />
           </label>
         </div>
 
-        <div class="tijd">
+        <div class="adres">
           <label
-            >Begonnen om
-            <input class="tijd-input" name="tijd" placeholder="00:00"
+            >Huisnummer
+            <input class="adres-input" name="huisnummer" placeholder="391"
           /></label>
-          <div class="eindtijd">
+          <div class="postcode">
           <label
-            >Beïndigd om
-            <input class="tijd-input" name="tijd" placeholder="00:00"
-          /></label>
-          </div>
-          <div class="toteindtijd">
-          <label
-            >Totale gewerkte tijd
-            <input class="tijd-input" name="tijd" placeholder="00:00"
+            >Postcode
+            <input class="adres-input" name="postcode" placeholder="1234AB"
           /></label>
           </div>
           <button class="submit">Toevoegen</button>
