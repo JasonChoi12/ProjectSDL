@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="klant.css" />
+    <link rel="stylesheet" href="../style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+  <body>
+    <!--Navbar Import -->
+    <div id="nav-placeholder"></div>
+
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("../navBar.html");
+      });
+    </script>
+    <div class="title">
+      <h1>Klant aanmaken</h1>
+      <form>
+        <div>
+          <label>Klant</label><br />
+          <input
+          class="klantnaam-input"
+          name="klantnaam"
+          placeholder="Klantnaam"
+        />
+        </div>
+        <br />
+        <div class="straat">
+          <label
+            >Straat<br />
+            <input
+              class="straat-input"
+              name="straatnaam"
+              placeholder="Straatnaam"
+            />
+          </label>
+        </div>
+        <div class="datum">
+          <label>
+            Datum<br />
+            <input
+              class="datum-input"
+              name="datum"
+              placeholder="Dag-Maand-Jaar"
+            />
+          </label>
+        </div>
+
+        <div class="tijd">
+          <label
+            >Begonnen om
+            <input class="tijd-input" name="tijd" placeholder="00:00"
+          /></label>
+          <div class="eindtijd">
+          <label
+            >Beïndigd om
+            <input class="tijd-input" name="tijd" placeholder="00:00"
+          /></label>
+          </div>
+          <div class="toteindtijd">
+          <label
+            >Totale gewerkte tijd
+            <input class="tijd-input" name="tijd" placeholder="00:00"
+          /></label>
+          </div>
+          <button class="submit">Toevoegen</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
