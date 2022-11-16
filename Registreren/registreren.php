@@ -1,3 +1,11 @@
+<?php
+
+
+
+require_once("../src/sessie.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -25,11 +33,10 @@
       <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
       <div class="btn-group">
         <button name="submit" class="submit">Registreren</button>
-        <button class="cancel">Annuleren</button>
+        <button name="cancel" class="cancel">Annuleren</button>
       </div>
       <div class="text-center center input">
         <?php
-        session_start();
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];
@@ -39,8 +46,8 @@
 
         elseif (isset($_SESSION['succes']) && isset($_SESSION['QR'])) {
           echo $_SESSION['succes'];
-          unset($_SESSION['succes']);?><br>
-          <?php
+          unset($_SESSION['succes']); ?><br>
+        <?php
           echo $_SESSION['QR'];
           unset($_SESSION['QR']);
         }

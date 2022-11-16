@@ -32,43 +32,47 @@ $user = unserialize($_SESSION['gebruiker_data']);
         <span class="tooltip">Klant aanmaken</span>
       </li>
       <li>
-       <a href="#">
-         <i class='bx bx-user' ></i>
-         <span class="links_name">Klant aanmaken</span>
-       </a>
-       <span class="tooltip">Klant aanmaken</span>
-     </li>
-     <li>
-       <a href="#">
-        <i class='bx bx-spreadsheet'></i>
-         <span class="links_name">Klant overzicht</span>
-       </a>
-       <span class="tooltip">Klant overzicht</span>
-     </li>
-     <li>
-       <a href="#">
-        <i class='bx bx-time'></i>
-         <span class="links_name">Uren registratie</span>
-       </a>
-       <span class="tooltip">Uren registratie</span>
-     </li>
-     <li>
-       <a href="#">
-         <i class='bx bx-cog' ></i>
-         <span class="links_name">Setting</span>
-       </a>
-       <span class="tooltip">Setting</span>
-     </li>
-     <li class="profile">
-         <div class="profile-details">
+        <a href="#">
+          <i class='bx bx-spreadsheet'></i>
+          <span class="links_name">Klant overzicht</span>
+        </a>
+        <span class="tooltip">Klant overzicht</span>
+      </li>
+      <li>
+        <a href="../UrenRegistratie/urenRegistratie.php">
+          <i class='bx bx-time'></i>
+          <span class="links_name">Uren registratie</span>
+        </a>
+        <span class="tooltip">Uren registratie</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Setting</span>
+        </a>
+        <span class="tooltip">Setting</span>
+      </li>
+      <li>
+        <a href="../Registreren/registreren.php">
+          <i class='bx bx-user-plus'></i>
+          <span class="links_name">Nieuwe medewerker</span>
+        </a>
+        <span class="tooltip">Nieuwe medewerker</span>
+      </li>
+      <li class="profile">
+        <div class="profile-details">
           <!-- hier komt er een profielfoto als de profielfoto niet in database staat komt er een standaar image -->
-           <img src="<?php if (!empty($user->img)){echo 'img/'.$user->img;} else{echo 'img/profiles.jpg';}?>">
-           <div class="name_job">
-             <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>
-             <div class="name">Uitloggen</div>
-         </div>
-         <a href="src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out" ></i></a>
-     </li>
+          <img src="<?php if (!empty($user->img)) {
+                      echo '../img/' . $user->img;
+                    } else {
+                      echo '../img/profile.jpg';
+                    } ?>">
+          <div class="name_job">
+            <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>
+            <div class="name">Uitloggen</div>
+          </div>
+          <a href="src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out"></i></a>
+      </li>
     </ul>
   </div>
   <script>

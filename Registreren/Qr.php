@@ -31,6 +31,11 @@
             unset($_SESSION['QR']);
         }
         ?>
+        <div class="btn-group">
+            <a href="../UrenRegistratie/urenRegistratie.php">
+                <button class="submit">Terug</button>
+            </a>
+        </div>
     </div>
     </form>
     </div>
