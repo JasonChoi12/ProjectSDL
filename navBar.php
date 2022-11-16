@@ -61,6 +61,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
      </li>
      <li class="profile">
          <div class="profile-details">
+          <!-- hier komt er een profielfoto als de profielfoto niet in database staat komt er een standaar image -->
            <img src="<?php if (!empty($user->img)){echo 'img/'.$user->img;} else{echo 'img/profiles.jpg';}?>">
            <div class="name_job">
              <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>

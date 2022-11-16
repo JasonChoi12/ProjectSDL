@@ -249,4 +249,31 @@ class Gebruikers extends DB
         $this->conn = NULL;
     }
 }
-// ik wil pushe
+class Klanten extends DB
+{
+    public function KlantCreate($klantnaam, $straatnaam, $huisnummer, $postcode, $telefoonnummer)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "INSERT INTO klanten (klantnaam, straatnaam, huisnummer, postcode, telefoonnummer) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :telefoonnummer)";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":klantnaam", $klantnaam);
+            $stmt->bindParam(":tussenvoegsel", $straatnaam);
+            $stmt->bindParam(":achternaam", $huisnummer);
+            $stmt->bindParam(":email", $postcode);
+            $stmt->bindParam(":usertype", $telefoonnummer);
+
+            //SQL query daadwerkelijk uitvoeren
+            $stmt->execute();
+            //Zet verbinding op NULL
+            $this->conn = NULL;
+        } catch (PDOException $e) {
+
+            return $e;
+        }
+    }
+}
