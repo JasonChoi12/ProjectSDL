@@ -19,7 +19,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
     <!-- Nav bar -->
   <div class="sidebar">
     <div class="logo-details">
-      <div class="logo_name"><img src="Logo DEVP.png" position="absolute" width="210px" height="140px"></div>
+      <div class="logo_name"><img src="../Logo DEVP.png" position="absolute" width="210px" height="140px"></div>
         <i class='bx bx-menu' id="btn" ></i>
     </div>
     <ul class="nav-list">
@@ -69,9 +69,6 @@ $user = unserialize($_SESSION['gebruiker_data']);
      </li>
     </ul>
   </div>
-  <section class="home-section">
-      <div class="text">Dashboard</div>
-  </section>
   <script>
   let sidebar = document.querySelector(".sidebar");
   let closeBtn = document.querySelector("#btn");

@@ -15,7 +15,7 @@
   <div class="registreren">
     <h1>Registreren</h1>
     <form method="post" action="../forms/registreren-form.php">
-      <div class="input">
+      <div>
         <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam" />
         <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
         <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam" />
