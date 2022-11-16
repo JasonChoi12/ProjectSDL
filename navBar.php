@@ -71,7 +71,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
             <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>
             <div class="name">Uitloggen</div>
           </div>
-          <a href="src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out"></i></a>
+          <a href="../src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out"></i></a>
       </li>
     </ul>
   </div>
