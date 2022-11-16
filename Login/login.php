@@ -16,12 +16,12 @@
         <div class="centered">
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
-            
+
             <br />
             <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
             <input class="inputgegevens" type="password" id="wachtwoord" name="code" placeholder="Code" />
-            
+
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>
