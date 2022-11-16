@@ -26,13 +26,6 @@ $user = unserialize($_SESSION['gebruiker_data']);
     <ul class="nav-list">
       <li>
         <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-        <span class="tooltip">Dashboard</span>
-      </li>
-      <li>
-        <a href="#">
           <i class='bx bx-user'></i>
           <span class="links_name">Klant aanmaken</span>
         </a>
@@ -46,7 +39,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
         <span class="tooltip">Klant overzicht</span>
       </li>
       <li>
-        <a href="./UrenRegistratie/urenRegistratie.php">
+        <a href="../UrenRegistratie/urenRegistratie.php">
           <i class='bx bx-time'></i>
           <span class="links_name">Uren registratie</span>
         </a>
@@ -58,6 +51,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
           <span class="links_name">Setting</span>
         </a>
         <span class="tooltip">Setting</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user-plus'></i>
+          <span class="links_name">Nieuwe medewerker</span>
+        </a>
+        <span class="tooltip">Nieuwe medewerker</span>
       </li>
       <li class="profile">
         <div class="profile-details">
