@@ -95,6 +95,8 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
+        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
+        header('Location:../registreren/Qr.php');
         // $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
         header('Location:../registreren/registreren.php');
     }
