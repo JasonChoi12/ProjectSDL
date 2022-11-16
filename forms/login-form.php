@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
         if (is_bool($loggedin)) {
             //Zet user values in sessie
             $_SESSION['gebruiker_data'] = serialize($user);
-            header('Location: ../navbar.php');
+            header('Location: ../UrenRegistratie/urenregistratie.php');
         } elseif (is_string($loggedin)) {
             $_SESSION['ERRORS'] = $loggedin;
             header('Location../Login/login.php');
