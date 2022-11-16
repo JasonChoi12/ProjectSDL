@@ -26,10 +26,10 @@ $user = unserialize($_SESSION['gebruiker_data']);
     <ul class="nav-list">
       <li>
         <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
+          <i class='bx bx-user'></i>
+          <span class="links_name">Klant aanmaken</span>
         </a>
-        <span class="tooltip">Dashboard</span>
+        <span class="tooltip">Klant aanmaken</span>
       </li>
       <li>
        <a href="#">
