@@ -11,9 +11,10 @@ $wachtwoord = $_POST['wachtwoord'];
 $code = $_POST['code'];
 
 
+
 //filter emails naar lowerstring
 $email = strtolower($email);
-echo $code. " ". $email. " ". $wachtwoord;
+// echo $code. " ". $email. " ". $wachtwoord;
 
 // validatie checker
 if (isset($_POST['submit'])) {

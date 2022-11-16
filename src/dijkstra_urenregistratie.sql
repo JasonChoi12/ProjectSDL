@@ -43,7 +43,7 @@ CREATE TABLE `gebruikers` (
 --
 
 INSERT INTO `gebruikers` (`GebruikerId`, `voornaam`, `tussenvoegsel`, `achternaam`, `email`, `wachtwoord`, `usertype`, `secretkey`) VALUES
-(1, 'Dev', 'elo', 'per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 0, '$2y$10$C1a/JBka8ykokTev9VHBJOcKF1SvTUitz8PKjJrbz9ceATQyFNk66');
+(1, 'Dev', 'elo', 'per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 0, 'LOF4TVGGlKF7GK3U');
 
 --
 -- Indexen voor geëxporteerde tabellen
