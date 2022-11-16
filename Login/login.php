@@ -24,6 +24,7 @@
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>
+            <br>
             <div class="text-center center input">
                 <?php
                 session_start();

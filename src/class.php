@@ -48,6 +48,7 @@ class Gebruikers extends DB
     public $tussenvoegsel;
     public $achternaam;
     public $email;
+    public $img;
 
     public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key){
         //Hash wachtwoord
@@ -111,6 +112,7 @@ class Gebruikers extends DB
                 $this->tussenvoegsel = $data['tussenvoegsel'];
                 $this->achternaam = $data['achternaam'];
                 $this->email = $data['email'];
+                $this->img = $data['image'];
                 }
                 else{
                 
