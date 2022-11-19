@@ -19,7 +19,7 @@
             <br />
             <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
-            <input class="inputgegevens" type="password" id="wachtwoord" name="code" placeholder="Code" />
+            <input class="inputgegevens" type="text" id="code" name="code" placeholder="Code" />
             
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>

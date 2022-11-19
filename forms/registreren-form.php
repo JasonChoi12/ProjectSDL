@@ -37,8 +37,8 @@ if (isset($_POST['submit'])) {
             $error[] = "Voornaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
     } else {
-        // mag niet leeg zijn
-        $error[] = "Voornaam mag niet leeg.";
+        // mag niet leeg zijn 
+        $error[] = "Voornaam mag niet leeg zijn.";
     }
 
     //check achternaam
@@ -50,8 +50,8 @@ if (isset($_POST['submit'])) {
             $error[] = "Achternaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
     } else {
-        // mag niet leeg zijn
-        $error[] = "Achternaam mag niet leeg.";
+        // mag niet leeg zijn 
+        $error[] = "Achternaam mag niet leeg zijn.";
     }
 
     //check email
@@ -63,8 +63,8 @@ if (isset($_POST['submit'])) {
             $error[] = "Email moet een @ bevatten dus: example@ex.com";
         }
     } else {
-        // mag niet leeg zijn
-        $error[] = "Email mag niet leeg.";
+        // mag niet leeg zijn zijn
+        $error[] = "Email mag niet leeg zijn.";
     }
 
     // wachtwoord validatie
@@ -74,8 +74,8 @@ if (isset($_POST['submit'])) {
         $number    = preg_match('@[0-9]@', $wachtwoord);
         $specialChars = preg_match('@[^\w]@', $wachtwoord);
     } else {
-        // mag niet leeg zijn
-        $error[] = "Wachtwoord mag niet leeg.";
+        // mag niet leeg zijn 
+        $error[] = "Wachtwoord mag niet leeg zijn.";
     }
 
     if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($wachtwoord) < 8) {

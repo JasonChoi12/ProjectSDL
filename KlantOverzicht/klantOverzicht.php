@@ -1,3 +1,6 @@
+<?php
+require_once('../src/class.php');
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -56,7 +59,7 @@
           <th >Datum</th>
           <th id="table-right-border"></th>
         </tr>
-        <tr>
+        <!-- <tr>
           <td class="checkbox">
             <input type="checkbox">
           </td>
@@ -71,15 +74,24 @@
           <td>Lorem Ipsum</td>
           <td>01-05-2022/15-05-2022</td>
           <td><button class="table-bewerk">Bekijk</button></td>
-        </tr>
+        </tr> -->
+        <?php
+        // foreach klant om door alle rijen een loop te doen
+        $klanten = new Klanten();
+        $klanten_data = $klanten->KlantZien();
+        foreach($klanten_data as $klant_data){
+
+        
+
+        ?>
         <tr>
           <td class="checkbox">
             <input type="checkbox">
           </td>
-          <td>John Doe</td>
-          <td>Amsterdam</td>
-          <td>Remiaplein 12</td>
-          <td>1234AB</td>
+          <td><?php echo $klant_data['klantnaam'];?></td>
+          <td><?php echo $klant_data['woonplaats'];?></td>
+          <td><?php echo $klant_data['straatnaam']. " " .$klant_data['huisnummer']; ?></td>
+          <td><?php echo $klant_data['postcode'];?></td>
           <td>W&S</td>
           <td>Johny Vos & Rob van Puffellen</td>
           <td>6</td>
@@ -88,6 +100,7 @@
           <td >01-05-2022/15-05-2022</td>
           <td><button class="table-bewerk">Bekijk</button></td>
         </tr>
+        <?php }?>
       </table>
     </div>
   </body>

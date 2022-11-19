@@ -48,6 +48,7 @@ class Gebruikers extends DB
     public $tussenvoegsel;
     public $achternaam;
     public $email;
+    public $usertype;
     public $img;
 
     public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key)
@@ -82,17 +83,18 @@ class Gebruikers extends DB
         }
     }
 
-    public function login($email, $wachtwoord, $code)
+    public function login($email, $wachtwoord, $code, $usertype)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "SELECT * FROM gebruikers WHERE email = :email";
+            $sql = "SELECT * FROM gebruikers WHERE email = :email AND usertype = :usertype";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":usertype", $usertype);
             // sql query daadwerkelijk uitvoeren
             $stmt->execute();
             // data ophalen
@@ -113,6 +115,7 @@ class Gebruikers extends DB
                     $this->tussenvoegsel = $data['tussenvoegsel'];
                     $this->achternaam = $data['achternaam'];
                     $this->email = $data['email'];
+                    $this->usertype = $data['usertype'];
                     $this->img = $data['image'];
                     // status terugsturen
                 return true;
@@ -141,6 +144,7 @@ class Gebruikers extends DB
     {
         session_destroy();
         unset($_SESSION['gebruiker_data']);
+        unset($_SESSION['admin_data']);
         return true;
     }
 
@@ -250,21 +254,23 @@ class Gebruikers extends DB
 }
 class Klanten extends DB
 {
-    public function KlantCreate($klantnaam, $straatnaam, $huisnummer, $postcode, $telefoonnummer)
+    public function KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO klanten (klantnaam, straatnaam, huisnummer, postcode, telefoonnummer) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :telefoonnummer)";
+            $sql = "INSERT INTO klanten (klantnaam, straatnaam, huisnummer, postcode, woonplaats, telefoonnummer) VALUES (:klantnaam, :straatnaam, :huisnummer, :postcode, :woonplaats, :telefoonnummer)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":klantnaam", $klantnaam);
-            $stmt->bindParam(":tussenvoegsel", $straatnaam);
-            $stmt->bindParam(":achternaam", $huisnummer);
-            $stmt->bindParam(":email", $postcode);
-            $stmt->bindParam(":usertype", $telefoonnummer);
+            $stmt->bindParam(":straatnaam", $straatnaam);
+            $stmt->bindParam(":huisnummer", $huisnummer);
+            $stmt->bindParam(":postcode", $postcode);
+            $stmt->bindParam(":telefoonnummer", $telefoon);
+            $stmt->bindParam(":woonplaats", $woonplaats);
+
 
             //SQL query daadwerkelijk uitvoeren
             $stmt->execute();
@@ -273,6 +279,33 @@ class Klanten extends DB
         } catch (PDOException $e) {
 
             return $e;
+        }
+    }
+    public function KlantZien(){
+        {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM klanten";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+    
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+    
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
         }
     }
 }

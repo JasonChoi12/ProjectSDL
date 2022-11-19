@@ -52,13 +52,17 @@ $user = unserialize($_SESSION['gebruiker_data']);
         </a>
         <span class="tooltip">Setting</span>
       </li>
-      <li>
+      <?php if ($user->usertype === "admin") {
+        echo '<li>
         <a href="../Registreren/registreren.php">
-          <i class='bx bx-user-plus'></i>
+          <i class="bx bx-user-plus"></i>
           <span class="links_name">Nieuwe medewerker</span>
         </a>
         <span class="tooltip">Nieuwe medewerker</span>
-      </li>
+      </li>';
+      }
+      ?>
+
       <li class="profile">
         <div class="profile-details">
           <!-- hier komt er een profielfoto als de profielfoto niet in database staat komt er een standaar image -->

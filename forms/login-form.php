@@ -3,7 +3,7 @@ require_once('../src/class.php');
 
 //start sessie
 session_start();
-//Maak nieuw Dagboek
+//Maak nieuw gebruikers
 $user = new Gebruikers();
 //passed post variables
 $email = $_POST['email'];
@@ -54,14 +54,22 @@ if (isset($_POST['submit'])) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location: ../Login/login.php');
     } else {
-        $loggedin = $user->login($email, $wachtwoord, $code);
+        $usertype = "medewerker";
+        $loggedin = $user->login($email, $wachtwoord, $code, $usertype);
         if (is_bool($loggedin)) {
             //Zet user values in sessie
             $_SESSION['gebruiker_data'] = serialize($user);
             header('Location: ../UrenRegistratie/urenregistratie.php');
         } elseif (is_string($loggedin)) {
+            $usertype = "admin";
+            $adminloggedin = $user->login($email, $wachtwoord, $code, $usertype);
+            if(is_bool($adminloggedin)){
+                //Zet user values in sessie
+            $_SESSION['gebruiker_data'] = serialize($user);
+            header('Location: ../UrenRegistratie/urenregistratie.php');
+            }elseif(is_string($adminloggedin)){
             $_SESSION['ERRORS'] = $loggedin;
             header('Location: ../Login/login.php');
-        }
+        }}
     }
 }
