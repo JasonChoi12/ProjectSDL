@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location../Login/login.php');
+        header('Location: ../Login/login.php');
     } else {
         $loggedin = $user->login($email, $wachtwoord, $code);
         if (is_bool($loggedin)) {
