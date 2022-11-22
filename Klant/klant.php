@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+require_once("../src/sessie.php");
+?><!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -56,7 +58,6 @@
         
       </div><br><div>
       <?php
-                session_start();
                 // laat error code Zien
                 if (isset($_SESSION['ERRORS'])) {
                     echo $_SESSION['ERRORS'];

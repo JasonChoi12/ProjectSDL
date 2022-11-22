@@ -1,3 +1,6 @@
+<?php
+require_once("../src/sessie.php");
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 

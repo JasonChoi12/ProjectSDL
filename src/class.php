@@ -309,3 +309,29 @@ class Klanten extends DB
         }
     }
 }
+class projecten extends Klanten{
+    public function ProjectAanmaken($id_klant, $projectnaam, $begindatum)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "INSERT INTO projecten (id_klant, projectnaam, begindatum) VALUES (:id_klant, :projectnaam, :begindatum)";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_klant", $id_klant);
+            $stmt->bindParam(":projectnaam", $projectnaam);
+            $stmt->bindParam(":begindatum", $begindatum);
+
+
+            //SQL query daadwerkelijk uitvoeren
+            $stmt->execute();
+            //Zet verbinding op NULL
+            $this->conn = NULL;
+        } catch (PDOException $e) {
+
+            return $e;
+        }
+    }
+}

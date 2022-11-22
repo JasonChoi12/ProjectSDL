@@ -9,5 +9,5 @@ $session = new Gebruikers();
 
 if (!$session->is_loggedin()) {
 	// als er geen sessie aan is dan redirect naar login.php 
-	header('Location: login/login.php');
+	header('Location: ../login/login.php');
 }
