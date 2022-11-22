@@ -1,0 +1,168 @@
+h1 {
+    font-family: "verdana";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 84px;
+    border-bottom: 1px solid #ddd;
+  }
+  .title {
+    position: absolute;
+    height: 100%;
+    left: 17%;
+    top: 0%;
+    width: 80%;
+  }
+  .searchbar {
+    box-sizing: border-box;
+    position: absolute;
+    width: 310px;
+    height: 40px;
+    margin-top: 3%;
+    background: rgba(106, 112, 126, 0.01);
+    border: 2px solid #dddfe1;
+    border-radius: 13px;
+  }
+  .searchbar-input {
+    position: inherit;
+    margin-top: 1%;
+    margin-left: 5%;
+    background: rgba(106, 112, 126, 0.01);
+    width: 270px;
+    outline: none;
+    border: none;
+  }
+  .fa-solid {
+    margin-top: 2%;
+    margin-left: 3%;
+  }
+  .overzicht{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 8px;
+    
+    width: 170px;
+    height: 40px;
+    background: #f39200;
+    border-radius: 5px;
+    border: none;
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+    
+    margin-top: 10%;
+  }
+  .exporteer { 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 8px;
+   
+    width: 94px;
+    height: 40px;
+    background: #1e8034;
+    border-radius: 5px;
+    border: none;
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .toevoegen {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 8px;
+   
+    width: 108px;
+    height: 40px;
+    background: #f39200;
+    border-radius: 5px;
+    border: none;
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+    
+  }
+  
+  .bewerk {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 8px;
+  
+    width: 83px;
+    height: 40px;
+    background: #f39200;
+    border-radius: 5px;
+    border: none;
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+   
+  }
+  
+  .verwijderen {
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 8px;
+    
+    width: 118px;
+    height: 40px;
+    background: #f39200;
+    border-radius: 5px;
+    border: none;
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .btn-group {
+    display: inline-block;
+    margin-left: 50%;
+    margin-top: -6%
+  }
+  
+  table {
+    margin-top: 3%;
+    border-collapse: collapse;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    width: 94%;
+    
+  }
+  #table-left-border{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  #table-right-border{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  td, th{
+    padding-left: 20px;
+    text-align: center;
+  }
+  th{
+    height: 40px;
+    background: #b5b5cf;
+  }
+  td{
+    padding-top: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }  
