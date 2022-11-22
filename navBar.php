@@ -25,14 +25,14 @@ $user = unserialize($_SESSION['gebruiker_data']);
     </div>
     <ul class="nav-list">
       <li>
-        <a href="#">
+        <a href="../Klant/klant.php">
           <i class='bx bx-user'></i>
           <span class="links_name">Klant aanmaken</span>
         </a>
         <span class="tooltip">Klant aanmaken</span>
       </li>
       <li>
-        <a href="#">
+        <a href="../KlantOverzicht/klantOverzicht.php">
           <i class='bx bx-spreadsheet'></i>
           <span class="links_name">Klant overzicht</span>
         </a>
