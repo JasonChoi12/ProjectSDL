@@ -23,7 +23,7 @@ require_once("../src/sessie.php");
   </script>
   <div class="title">
     <h1>Klant aanmaken</h1>
-    <form method="post" action="../forms/klantaanmaken-form.php">
+    <form class="klant" method="post" action="../forms/klantaanmaken-form.php">
       <div>
         <label>Klant</label><br />
         <input class="klantnaam-input" name="klantnaam" placeholder="Klantnaam" />

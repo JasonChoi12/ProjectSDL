@@ -12,7 +12,9 @@ h1 {
     left: 20%;
     top: 0%;
   }
-  
+  .project{
+    margin-top: 5%;
+  }
   .klant-input {
     width: 307px;
     height: 60px;
@@ -21,10 +23,10 @@ h1 {
     border-radius: 13px;
     text-align: center;
   }
-  .project {
+  .projectnaam {
     margin-top: 5%;
   }
-  .project-input {
+  .projectnaam-input {
     width: 307px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
@@ -58,8 +60,8 @@ h1 {
     font-style: normal;
     font-size: 14px;
     color: #fff;
-    margin-left: 92%;
-    margin-top: 10%;
+    margin-left: 150%;
+    margin-top: -13%;
     
   }
   
