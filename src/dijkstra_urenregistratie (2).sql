@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 16 nov 2022 om 14:58
+-- Gegenereerd op: 22 nov 2022 om 14:24
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 8.1.6
 
@@ -34,7 +34,7 @@ CREATE TABLE `gebruikers` (
   `achternaam` varchar(20) NOT NULL,
   `email` varchar(40) NOT NULL,
   `wachtwoord` varchar(255) NOT NULL,
-  `usertype` int(1) NOT NULL,
+  `usertype` varchar(10) NOT NULL,
   `secretkey` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -44,7 +44,9 @@ CREATE TABLE `gebruikers` (
 --
 
 INSERT INTO `gebruikers` (`id_gebruiker`, `voornaam`, `tussenvoegsel`, `achternaam`, `email`, `wachtwoord`, `usertype`, `secretkey`, `image`) VALUES
-(1, 'Dev', 'elo', 'per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 0, 'LOF4TVGGlKF7GK3U', 'profile.jpg');
+(1, 'Dev', 'elo', 'per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 'admin', 'LOF4TVGGlKF7GK3U', 'profile.jpg'),
+(2, 'Eric', 'de', 'Tester', 'tester@test.nl', '$2y$10$Oyz.HIjZhPgdftqDWZ0UTOsxoxbfvTN88pSihDcbPrwxbCXee1MB2', 'medewerker', '36KW2Q5SWEHL4MUW', ''),
+(3, 'Petra', 'van der', 'meer', 'petra@dijkstraenvanpuffelen.nl', '$2y$10$ZzMULihCbhlLkzkyW/r0oeGDEFzjxfQTZO7ZZ7Owh3/deluLhlBKe', '0', 'NIKLMJCGP5HFPRML', '');
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,29 @@ CREATE TABLE `klanten` (
   `straatnaam` varchar(255) NOT NULL,
   `huisnummer` varchar(7) NOT NULL,
   `postcode` varchar(6) NOT NULL,
+  `woonplaats` varchar(50) NOT NULL,
   `telefoonnummer` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `klanten`
+--
+
+INSERT INTO `klanten` (`id_klant`, `klantnaam`, `straatnaam`, `huisnummer`, `postcode`, `woonplaats`, `telefoonnummer`) VALUES
+(1, 'test', 'test', '124', '1234an', 'test', '');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `projecten`
+--
+
+CREATE TABLE `projecten` (
+  `id_project` int(11) NOT NULL,
+  `id_klant` int(11) NOT NULL,
+  `projectnaam` varchar(20) NOT NULL,
+  `begindatum` date NOT NULL,
+  `einddatum` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -78,6 +102,13 @@ ALTER TABLE `klanten`
   ADD PRIMARY KEY (`id_klant`);
 
 --
+-- Indexen voor tabel `projecten`
+--
+ALTER TABLE `projecten`
+  ADD PRIMARY KEY (`id_project`),
+  ADD KEY `klant project link` (`id_klant`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -85,13 +116,29 @@ ALTER TABLE `klanten`
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `id_gebruiker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_gebruiker` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `klanten`
 --
 ALTER TABLE `klanten`
-  MODIFY `id_klant` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_klant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT voor een tabel `projecten`
+--
+ALTER TABLE `projecten`
+  MODIFY `id_project` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Beperkingen voor geëxporteerde tabellen
+--
+
+--
+-- Beperkingen voor tabel `projecten`
+--
+ALTER TABLE `projecten`
+  ADD CONSTRAINT `klant project link` FOREIGN KEY (`id_klant`) REFERENCES `klanten` (`id_klant`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
