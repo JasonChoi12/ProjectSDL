@@ -11,6 +11,7 @@ h1 {
   height: 100%;
   left: 17%;
   top: 0%;
+  width: 80%;
 }
 .searchbar {
   box-sizing: border-box;
@@ -36,13 +37,13 @@ h1 {
   margin-left: 3%;
 }
 .exporteer {
-  display: flex;
+  
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 12px;
   gap: 8px;
-  position: absolute;
+ 
   width: 94px;
   height: 40px;
   background: #1e8034;
@@ -55,13 +56,12 @@ h1 {
 }
 
 .toevoegen {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 12px;
   gap: 8px;
-  position: absolute;
+ 
   width: 108px;
   height: 40px;
   background: #f39200;
@@ -71,17 +71,16 @@ h1 {
   font-style: normal;
   font-size: 14px;
   color: #fff;
-  margin-left: 9%;
+  
 }
 
 .bewerk {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 12px;
   gap: 8px;
-  position: absolute;
+
   width: 83px;
   height: 40px;
   background: #f39200;
@@ -91,7 +90,7 @@ h1 {
   font-style: normal;
   font-size: 14px;
   color: #fff;
-  margin-left: 19%;
+ 
 }
 .table-bewerk {
   width: 83px;
@@ -107,13 +106,13 @@ h1 {
 }
 
 .verwijderen {
-  display: flex;
+  
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 12px;
   gap: 8px;
-  position: absolute;
+  
   width: 118px;
   height: 40px;
   background: #f39200;
@@ -123,12 +122,13 @@ h1 {
   font-style: normal;
   font-size: 14px;
   color: #fff;
-  margin-left: 27%;
 }
 
 .btn-group {
+  display: inline-block;
   margin-left: 60%;
   margin-top: 4%;
+  
 }
 
 table {
