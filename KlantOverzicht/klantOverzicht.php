@@ -59,7 +59,7 @@ require_once('../src/class.php');
           <th >Datum</th>
           <th id="table-right-border"></th>
         </tr>
-        <!-- <tr>
+        <tr>
           <td class="checkbox">
             <input type="checkbox">
           </td>
@@ -74,7 +74,7 @@ require_once('../src/class.php');
           <td>Lorem Ipsum</td>
           <td>01-05-2022/15-05-2022</td>
           <td><button class="table-bewerk">Bekijk</button></td>
-        </tr> -->
+        </tr>
         <?php
         // foreach klant om door alle rijen een loop te doen
         $klanten = new Klanten();
