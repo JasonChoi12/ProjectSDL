@@ -118,7 +118,7 @@ class Gebruikers extends DB
                     $this->usertype = $data['usertype'];
                     $this->img = $data['image'];
                     // status terugsturen
-                return true;
+                    return true;
                 } else {
 
                     return "Code is Incorrect let op code veranderd elke 15 seconden";
@@ -281,8 +281,8 @@ class Klanten extends DB
             return $e;
         }
     }
-    public function KlantZien(){
-        {
+    public function KlantenZien()
+    { {
             try {
                 // maak een connectie met de database
                 $this->conn();
@@ -290,14 +290,42 @@ class Klanten extends DB
                 $sql = "SELECT * FROM klanten";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
-    
+
                 //Voer SQL uit
                 $stmt->execute();
                 // data ophalen
                 $data = $stmt->fetchAll();
                 // database connectie sluiten
                 $this->conn = NULL;
-    
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+    }
+    public function KlantZien($id_klant)
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM klanten where id_klant = :id_klant";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_klant", $id_klant);
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
                 // opgehaalde rijen terugsturen
                 return $data;
             } catch (PDOException $e) {
@@ -309,7 +337,8 @@ class Klanten extends DB
         }
     }
 }
-class projecten extends Klanten{
+class projecten extends Klanten
+{
     public function ProjectAanmaken($id_klant, $projectnaam, $begindatum)
     {
         try {
@@ -332,6 +361,33 @@ class projecten extends Klanten{
         } catch (PDOException $e) {
 
             return $e;
+        }
+    }
+    public function Projectzien($id_klant)
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM projecten ";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
         }
     }
 }

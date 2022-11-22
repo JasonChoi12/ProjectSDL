@@ -8,12 +8,25 @@ session_start();
 $project = new projecten();
 // Pakt post van de form en zet ze in variable
 $id_klant = $_POST['id_klant'];
+$klantnaam = $_POST['klant'];
 $projectnaam = $_POST['projectnaam'];
 $begindatum = $_POST['begindatum'];
 
 
-echo $projectnaam. " ". $begindatum. " ". $einddatum;
+echo $projectnaam. " ". $begindatum. " ". $id_klant. " ". $klantnaam ;
 if(isset($_POST['submit'])){
+     //check projectnaam
+     if (!empty($klantnaam)) {
+        $klantnaam_subject = $klantnaam;
+        $klantnaam_pattern = '/^[a-zA-Z ]*$/';
+        $klantnaam_match = preg_match($klantnaam_pattern, $klantnaam_subject);
+        if ($klantnaam_match !== 1) {
+            $error[] = "Klant mag alleen alfabetisch, steepjes en spaties bevatten";
+        }
+    } else {
+        // mag niet leeg zijn
+        $error[] = "Klant mag niet leeg zijn.";
+    }
     //check projectnaam
     if (!empty($projectnaam)) {
         $projectnaam_subject = $projectnaam;
@@ -40,10 +53,9 @@ if(isset($_POST['submit'])){
     }
     if(isset($error)){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        // header('Location:../klant/klant.php');
+        header('Location:../ProjectAanmaak/ProjectAanmaak.php');
     }else{
-    // $klant->KlantCreate($projectnaam, $begindatum, $einddatum, $woonplaats, $huisnummer, $postcode);
-    // header('Location:../KlantOverzicht/klantOverzicht.php');
-    echo "het erkt";
+    $project->ProjectAanmaken($id_klant, $projectnaam, $begindatum);
+    header('Location:../KlantOverzicht/klantOverzicht.php');
 } 
 }

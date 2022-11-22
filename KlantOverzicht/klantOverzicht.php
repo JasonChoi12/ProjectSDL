@@ -63,7 +63,7 @@ require_once("../src/sessie.php");
         <?php
         // foreach klant om door alle rijen een loop te doen
         $klanten = new Klanten();
-        $klanten_data = $klanten->KlantZien();
+        $klanten_data = $klanten->KlantenZien();
         foreach($klanten_data as $klant_data){
 
         
