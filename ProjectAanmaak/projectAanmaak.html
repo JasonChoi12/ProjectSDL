@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="projectAanmaak.css" />
+  <link rel="stylesheet" href="../style.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  <!--Navbar Import -->
+  <div id="nav-placeholder"></div>
+
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("../navBar.php");
+    });
+  </script>
+  <div class="title">
+    <h1>Project aanmaken</h1>
+    <form class="project">
+        <div class="klant">
+            <label>Klant</label><br />
+            <input class="klant-input" list="klanten" name="klanten" placeholder="Klantnaam" />
+            <datalist id="klanten">
+              <option value="Klant1"></option>
+              <option value="Klant2"></option>
+              <option value="Klant3"></option>
+            </datalist>
+          </div>
+      <br />
+      <div class="projectnaam">
+        <label>Projectnaam<br />
+          <input class="projectnaam-input" name="straatnaam" placeholder="Projectnaam" />
+        </label>
+      </div>
+      <div class="begindatum">
+        <label>
+          Begindatum<br />
+          <input class="begindatum-input" name="begindatum" placeholder="01-01-01" />
+        </label>
+      </div>
+        <button name="submit" class="submit">Toevoegen</button>
+        
+      </div>
+    </form>
+  </div>
+  
+</body>
+
+</html>

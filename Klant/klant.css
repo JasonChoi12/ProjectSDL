@@ -12,6 +12,9 @@ h1 {
     left: 20%;
     top: 0%;
   }
+  .klant{
+    margin-top: 5%;
+  }
   
   .klantnaam-input {
     width: 307px;
@@ -19,7 +22,7 @@ h1 {
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
-    text-align: center;
+    padding: 10px 10px;
   }
   .straat {
     margin-top: 10%;
@@ -30,6 +33,7 @@ h1 {
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
+    padding: 10px 10px;
   }
   .telefoon {
     margin-left: 100%;
@@ -41,6 +45,7 @@ h1 {
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
+    padding: 10px 10px;
   }
   .woonplaats {
     margin-left: 200%;
@@ -52,6 +57,7 @@ h1 {
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
+    padding: 10px 10px;
   }
   .adres {
     margin-top: 10%;
@@ -63,7 +69,7 @@ h1 {
     border: 1px solid #dddfe1;
     border-radius: 13px;
     display: block;
-    text-align: center;
+    padding: 10px 10px;
   }
   
   .postcode {

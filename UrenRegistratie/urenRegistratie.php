@@ -24,44 +24,57 @@ require_once("../src/sessie.php");
   </script>
   <div class="title">
     <h1>Uren Registreren</h1>
+
     <form>
-      <div>
-        <label>Project</label><br />
-        <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
-        <datalist id="projecten">
-          <option value="Project1"></option>
-          <option value="Project2"></option>
-          <option value="Project3"></option>
+      <div class="klant">
+        <label>Klant</label><br />
+        <input class="klant-input" list="klanten" name="klanten" placeholder="Klantnaam" />
+        <datalist id="klanten">
+          <option value="Klant1"></option>
+          <option value="Klant2"></option>
+          <option value="Klant3"></option>
         </datalist>
       </div>
       <br />
 
-      <div class="activiteit">
-        <label>Activiteit<br />
-          <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
-        </label>
-      </div>
-      <div class="datum">
-        <label>
-          Datum<br />
-          <input class="datum-input" name="datum" placeholder="Dag-Maand-Jaar" />
-        </label>
-      </div>
+      <form>
+        <div>
+          <label>Project</label><br />
+          <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
+          <datalist id="projecten">
+            <option value="Project1"></option>
+            <option value="Project2"></option>
+            <option value="Project3"></option>
+          </datalist>
+        </div>
+        <br />
 
-      <div class="tijd">
-        <label>Begonnen om
-          <input class="tijd-input" name="tijd" placeholder="00:00" /></label>
-        <div class="eindtijd">
-          <label>Beïndigd om
-            <input class="tijd-input" name="tijd" placeholder="00:00" /></label>
+        <div class="activiteit">
+          <label>Activiteit<br />
+            <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
+          </label>
         </div>
-        <div class="toteindtijd">
-          <label>Totale gewerkte tijd
-            <input class="tijd-input" name="tijd" placeholder="00:00" /></label>
+        <div class="datum">
+          <label>Datum
+            <br />
+            <input type="date" class="datum-input" name="datum" placeholder="Dag-Maand-Jaar" />
+          </label>
         </div>
-        <button class="submit">Toevoegen</button>
-      </div>
-    </form>
+
+        <div class="tijd">
+          <label>Begonnen om
+            <input type="time" class="tijd-input" name="tijd" placeholder="00:00" /></label>
+          <div class="eindtijd">
+            <label>Beïndigd om
+              <input type="time" class="tijd-input" name="tijd" placeholder="00:00" /></label>
+          </div>
+          <div class="toteindtijd">
+            <label>Totale gewerkte tijd
+              <input class="tijd-input" name="tijd" placeholder="00:00" /></label>
+          </div>
+          <button class="submit">Toevoegen</button>
+        </div>
+      </form>
   </div>
 </body>
 

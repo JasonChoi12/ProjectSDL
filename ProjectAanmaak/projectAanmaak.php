@@ -27,8 +27,8 @@ require_once("../src/sessie.php");
   <div class="title">
     <h1>Project aanmaken</h1>
 
-    <form method="post" action="../forms/projectaanmaken-form.php">
-      <div>
+    <form class="project" method="post" action="../forms/projectaanmaken-form.php">
+      <div class="klant">
         <label>Klant</label><br /> <?php
                                     $klanten = new Klanten;
                                     $klanten_data = $klanten->KlantenZien();
@@ -61,9 +61,9 @@ require_once("../src/sessie.php");
 
       </div>
       <br />
-      <div class="project">
+      <div class="projectnaam">
         <label>Projectnaam<br />
-          <input class="project-input" name="projectnaam" placeholder="Projectnaam" />
+          <input class="projectnaam-input" name="projectnaam" placeholder="Projectnaam" />
         </label>
       </div>
       <div class="begindatum">
