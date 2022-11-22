@@ -42,7 +42,8 @@ if(isset($_POST['submit'])){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         // header('Location:../klant/klant.php');
     }else{
-    $klant->KlantCreate($projectnaam, $begindatum, $einddatum, $woonplaats, $huisnummer, $postcode);
+    // $klant->KlantCreate($projectnaam, $begindatum, $einddatum, $woonplaats, $huisnummer, $postcode);
     // header('Location:../KlantOverzicht/klantOverzicht.php');
+    echo "het erkt";
 } 
 }
