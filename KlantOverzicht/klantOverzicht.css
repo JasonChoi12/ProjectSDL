@@ -137,6 +137,7 @@ table {
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
+  width: 94%;
   
 }
 #table-left-border{
@@ -153,13 +154,13 @@ td, th{
 }
 th{
   height: 40px;
+  background: #b5b5cf;
 }
 td{
   padding-top: 10px;
-  padding-bottom: 50px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
 }
-th {
-  background: #b5b5cf;
-}
+
+
 

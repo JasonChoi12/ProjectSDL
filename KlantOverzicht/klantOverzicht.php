@@ -54,9 +54,8 @@ require_once("../src/sessie.php");
           <th>Woonplaats</th>
           <th>Adres</th>
           <th>Postcode</th>
+          <th>Telefoon </th>
           <th>Projecten</th>
-          <th>Datum</th>
-          <th>Opmerking</th>
           <th id="table-right-border"></th>
         </tr>
 
@@ -65,9 +64,6 @@ require_once("../src/sessie.php");
         $klanten = new Klanten();
         $klanten_data = $klanten->KlantZien();
         foreach($klanten_data as $klant_data){
-
-        
-
         ?>
         <tr>
           <td class="checkbox">
@@ -77,9 +73,8 @@ require_once("../src/sessie.php");
           <td><?php echo $klant_data['woonplaats'];?></td>
           <td><?php echo $klant_data['straatnaam']. " " .$klant_data['huisnummer']; ?></td>
           <td><?php echo $klant_data['postcode'];?></td>
+          <td><?php echo $klant_data['telefoonnummer'];?></td>
           <td>3</td>
-          <td >01-05-2022/15-05-2022</td>
-          <td>Lorem Ipsum</td>
           <td><button class="table-bewerk">Bekijk</button></td>
         </tr>
         <?php }?>
