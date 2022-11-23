@@ -369,10 +369,11 @@ class projecten extends Klanten
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM projecten ";
+                $sql = "SELECT * FROM projecten where id_klant = :id_klant";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
-
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_klant", $id_klant);
                 //Voer SQL uit
                 $stmt->execute();
                 // data ophalen
