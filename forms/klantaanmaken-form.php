@@ -48,7 +48,10 @@ if(isset($_POST['submit'])){
         if ($telefoon_match !== 1) {
             $error[] = "Telefoon nummer mag alleen nummers bevatten";
         }
-    } 
+    } else {
+        // mag niet leeg zijn
+        $error[] = "Telefoon nummer mag niet leeg zijn.";
+    }
     //check woonplaats
     if (!empty($woonplaats)) {
         $woonplaats_subject = $woonplaats;

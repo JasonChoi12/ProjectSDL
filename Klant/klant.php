@@ -37,7 +37,7 @@ require_once("../src/sessie.php");
       <div class="telefoon">
         <label>
           Telefoon<br />
-          <input class="telefoon-input" name="telefoon" placeholder="06-123456789 (optioneel)" />
+          <input class="telefoon-input" name="telefoon" placeholder="06-123456789" />
         </label>
       </div>
       <div class="woonplaats">
