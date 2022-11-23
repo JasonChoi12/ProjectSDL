@@ -11,6 +11,7 @@ require_once("../src/sessie.php");
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <title>Uren Registratie</title>
 </head>
 
 <body>
@@ -36,8 +37,6 @@ require_once("../src/sessie.php");
         </datalist>
       </div>
       <br />
-
-      <form>
         <div>
           <label>Project</label><br />
           <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
@@ -57,20 +56,20 @@ require_once("../src/sessie.php");
         <div class="datum">
           <label>Datum
             <br />
-            <input type="date" class="datum-input" name="datum" placeholder="Dag-Maand-Jaar" />
+            <input type="date" class="datum-input" name="datum"/>
           </label>
         </div>
 
         <div class="tijd">
           <label>Begonnen om
-            <input type="time" class="tijd-input" name="tijd" placeholder="00:00" /></label>
+            <input type="time" class="tijd-input" name="tijd"/></label>
           <div class="eindtijd">
             <label>Beïndigd om
-              <input type="time" class="tijd-input" name="tijd" placeholder="00:00" /></label>
+              <input type="time" class="tijd-input" name="tijd"/></label>
           </div>
           <div class="toteindtijd">
             <label>Totale gewerkte tijd
-              <input class="tijd-input" name="tijd" placeholder="00:00" /></label>
+              <input class="tijd-input" name="tijd"/></label>
           </div>
           <button class="submit">Toevoegen</button>
         </div>

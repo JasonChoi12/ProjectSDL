@@ -13,12 +13,13 @@ require_once("../src/sessie.php");
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="registreren.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registreren</title>
 </head>
 
 <body>
   <!--Zijkant-->
   <div class="sidebar">
-    <img class="logo" src="../Logo DEVP.png" />
+    <img class="logo" alt="logo" src="../Logo-DEVP.png" />
   </div>
   <div class="registreren">
     <h1>Registreren</h1>

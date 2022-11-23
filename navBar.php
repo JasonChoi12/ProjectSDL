@@ -20,7 +20,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
   <!-- Nav bar -->
   <div class="sidebar">
     <div class="logo-details">
-      <div class="logo_name"><img src="../Logo DEVP.png" position="absolute" width="210px" height="140px"></div>
+      <div class="logo_name"><img src="../Logo-DEVP.png" position="absolute" width="210px" height="140px"></div>
       <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">
@@ -30,6 +30,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
           <span class="links_name">Klant aanmaken</span>
         </a>
         <span class="tooltip">Klant aanmaken</span>
+      </li>
+      <li>
+        <a href="../ProjectAanmaak/Projectaanmaak.php">
+          <i class='bx bxs-folder-plus'></i>
+          <span class="links_name">Project aanmaken</span>
+        </a>
+        <span class="tooltip">Project aanmaken</span>
       </li>
       <li>
         <a href="../KlantOverzicht/klantOverzicht.php">

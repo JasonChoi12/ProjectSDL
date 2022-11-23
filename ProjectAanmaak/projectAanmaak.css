@@ -12,31 +12,38 @@ h1 {
     left: 20%;
     top: 0%;
   }
+  
   .project{
     margin-top: 5%;
   }
+
   .klant-input {
     width: 307px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
-    text-align: center;
+    padding: 10px 10px;
   }
+
   .projectnaam {
     margin-top: 5%;
   }
+
   .projectnaam-input {
     width: 307px;
     height: 60px;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
     border-radius: 13px;
+    padding: 10px 10px;
   }
+
   .begindatum {
     margin-left: 100%;
     margin-top: -21%;
   }
+
   .begindatum-input {
     width: 150px;
     height: 60px;
