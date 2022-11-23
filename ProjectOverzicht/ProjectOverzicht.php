@@ -56,11 +56,11 @@ if(empty($id_klant)){
         <tr>
           <th id="table-left-border"></th>
           <th>Projectnaam</th>
-          <th>begindatum</th>
-          <th>einddatum</th>
-          <th>Postcode</th>
-          <th>Telefoon </th>
-          <th>Projecten</th>
+          <th>Totale uren</th>
+          <th>Declarabele uren</th>
+          <th>Actief?</th>
+          <th>Laatst geupdate </th>
+          <th>Begindatum</th>
           <th id="table-right-border"></th>
         </tr>
 
@@ -75,11 +75,11 @@ if(empty($id_klant)){
             <input type="checkbox">
           </td>
           <td><?php echo $project_data['projectnaam'];?></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><?php echo $project_data['laatst_gewerkt']; ?></td>
           <td><?php echo $project_data['begindatum'];?></td>
-          <td><?php echo $project_data['einddatum']; ?></td>
-          <td></td>
-          <td></td>
-          <td>3</td>
           <td><button class="table-bewerk">Bekijk</button></td>
         </tr>
         <?php }?>
