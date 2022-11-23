@@ -32,6 +32,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
         <span class="tooltip">Klant aanmaken</span>
       </li>
       <li>
+        <a href="../ProjectAanmaak/Projectaanmaak.php">
+          <i class='bx bxs-folder-plus'></i>
+          <span class="links_name">Project aanmaken</span>
+        </a>
+        <span class="tooltip">Project aanmaken</span>
+      </li>
+      <li>
         <a href="../KlantOverzicht/klantOverzicht.php">
           <i class='bx bx-spreadsheet'></i>
           <span class="links_name">Klant overzicht</span>
