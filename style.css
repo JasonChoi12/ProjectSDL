@@ -1,6 +1,8 @@
 /* Google Font Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+*
+/* Navbar (left hamburger) */
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -244,4 +246,17 @@
   .sidebar li .tooltip{
     display: none;
   }
+}
+
+/* Button hover */
+
+button:hover{
+  background-color: #fdaf3b;
+  cursor:pointer ;
+}
+.verwijderen:hover{
+  background: #ff2b2b;
+}
+.exporteer:hover{
+  background-color: #0dd639;
 }
