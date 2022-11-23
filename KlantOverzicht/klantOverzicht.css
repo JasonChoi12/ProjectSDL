@@ -115,7 +115,7 @@ h1 {
   
   width: 118px;
   height: 40px;
-  background: #f39200;
+  background-color: #be3131;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
@@ -161,6 +161,3 @@ td{
   padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
 }
-
-
-
