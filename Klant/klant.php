@@ -10,6 +10,7 @@ require_once("../src/sessie.php");
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <title>Klant aanmaken</title>
 </head>
 
 <body>

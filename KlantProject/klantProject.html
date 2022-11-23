@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="urenOverzicht.css" />
+    <link rel="stylesheet" href="klantProject.css" />
     <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
@@ -10,7 +10,6 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <title>Uren Overzicht</title>
   </head>
   <body>
     <!--Navbar Import -->
@@ -21,9 +20,9 @@
         $("#nav-placeholder").load("../navBar.php");
       });
     </script>
-    `
+    
     <div class="title">
-      <h1>Uren Overzicht Persoonlijk</h1>
+      <h1>Klant Overzicht</h1>
       <form id="form">
         <div class="searchbar">
           <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,7 +35,6 @@
           />
         </div>
       </form>
-      <button class="overzicht">Terug naar overzicht</button>
       <div class="btn-group">
         <button class="exporteer">Exporteer</button>
         <button class="toevoegen">Toevoegen</button>
@@ -46,26 +44,27 @@
       <table>
         <tr>
           <th id="table-left-border"></th>
-          <th>Medewerker</th>
-          <th>Activiteit</th>
-          <th>Decl.</th>
-          <th>Uren</th>
-          <th>Begonnen om</th>
-          <th>Beïndigd om</th>
-          <th id="table-right-border">Datum</th>
+          <th>Klant</th>
+          <th>Woonplaats</th>
+          <th>Adres</th>
+          <th>Postcode</th>
+          <th>Telefoon </th>
+          <th>Projecten</th>
+          <th id="table-right-border"></th>
         </tr>
         <tr>
           <td class="checkbox">
             <input type="checkbox">
           </td>
-          <td>Rob van Puffellen</td>
-          <td>W&5 acts:ml afstmmn mrktng/socials, kandi"s mln aanvlnd info, afwzn, soll, ovrzcht bijwrkn</td>
-          <td>ja</td>
-          <td>1</td>
-          <td>13:20</td>
-          <td>14:20</td>
-          <td>08-05-2022</td>
+          <td><?php echo $klant_data['klantnaam'];?></td>
+          <td><?php echo $klant_data['woonplaats'];?></td>
+          <td><?php echo $klant_data['straatnaam']. " " .$klant_data['huisnummer']; ?></td>
+          <td><?php echo $klant_data['postcode'];?></td>
+          <td><?php echo $klant_data['telefoonnummer'];?></td>
+          <td>3</td>
+          <td><button class="table-bewerk">Bekijk</button></td>
         </tr>
+        <?php }?>
       </table>
     </div>
   </body>

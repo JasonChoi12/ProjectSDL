@@ -20,7 +20,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
   <!-- Nav bar -->
   <div class="sidebar">
     <div class="logo-details">
-      <div class="logo_name"><img src="../Logo DEVP.png" position="absolute" width="210px" height="140px"></div>
+      <div class="logo_name"><img src="../Logo-DEVP.png" position="absolute" width="210px" height="140px"></div>
       <i class='bx bx-menu' id="btn"></i>
     </div>
     <ul class="nav-list">

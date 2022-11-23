@@ -16,6 +16,7 @@ require_once("../src/sessie.php");
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <title>Klant Overzicht</title>
   </head>
   <body>
     <!--Navbar Import -->
@@ -26,7 +27,7 @@ require_once("../src/sessie.php");
         $("#nav-placeholder").load("../navBar.php");
       });
     </script>
-    `
+    
     <div class="title">
       <h1>Klant Overzicht</h1>
       <form id="form">
