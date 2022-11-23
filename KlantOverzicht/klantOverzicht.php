@@ -43,7 +43,7 @@ require_once("../src/sessie.php");
       </form>
       <div class="btn-group">
         <button class="exporteer">Exporteer</button>
-        <button class="toevoegen">Toevoegen</button>
+        <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
         <button class="bewerk">Bewerk</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
