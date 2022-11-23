@@ -31,7 +31,7 @@ require_once("../src/sessie.php");
     <form id="form">
       <div class="searchbar">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input class="searchbar-input" type="search" id="query" name="q" placeholder="Search..." />
+        <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
       </div>
       <?php
       // laat error code Zien
@@ -42,9 +42,9 @@ require_once("../src/sessie.php");
       ?>
     </form>
     <div class="btn-group">
-      <button class="exporteer">Exporteer</button>
+      <button class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
-      <button class="bewerk">Bewerk</button>
+      <button class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
     </div>
     <table>
@@ -81,7 +81,7 @@ require_once("../src/sessie.php");
           <td>
             <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
               <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
-              <button class="table-bewerk">Bekijk</button>
+              <button class="table-bewerk">Bekijken</button>
             </form>
           </td>
         </tr>
