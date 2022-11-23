@@ -1,5 +1,7 @@
 <?php
 require_once("../src/sessie.php");
+if(!empty($_SESSION["id_klant"])){
+ $id_klant= $_SESSION["id_klant"];}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -32,7 +34,7 @@ require_once("../src/sessie.php");
         <label>Klant</label><br /> <?php
                                     $klanten = new Klanten;
                                     $klanten_data = $klanten->KlantenZien();
-                                    // print_r($klanten_data);
+                                    unset($_SESSION["id_klant"]);
                                     if (empty($id_klant)) {
 
                                       echo '<input class="klant-input" list="klanten" id="input" name="klant" placeholder="Klantnaam" />
@@ -53,9 +55,11 @@ require_once("../src/sessie.php");
           </script><?php
                                     } else {
                                       $klanten = new Klanten;
-                                      $id_klant = $_GET['id_klant'];
+                                      // $id_klant = $_GET['id_klant'];
                                       $klant_data = $klanten->KlantZien($id_klant);
-                                      echo '<input name="id_klant" value="' . $id_klant . '" placeholder="' . $$klant_data["klantnaam"] . '" disabled> />';
+                                      echo '<input  class="klant-input" value="'.$klant_data[0]["klantnaam"].'" disabled />
+                                      <input name="klant" value="'.$klant_data[0]["klantnaam"].'" type="hidden" id="id_klant" />
+                                      <input name="id_klant" value="'.$id_klant.'" type="hidden" id="id_klant" />';
                                     }
                     ?>
 
@@ -76,6 +80,7 @@ require_once("../src/sessie.php");
       <br>
       <div>
         <?php
+        
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];

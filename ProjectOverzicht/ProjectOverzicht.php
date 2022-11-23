@@ -3,6 +3,8 @@ require_once('../src/class.php');
 
 require_once("../src/sessie.php");
 $id_klant = $_GET["id_klant"];
+$_SESSION["id_klant"]= $id_klant;
+// unset($_SESSION["id_klant"]);
 if(empty($id_klant)){
   $error[] = "Kies eerst een klant.";
   $_SESSION['ERRORS'] = implode('<br> ', $error);
@@ -48,7 +50,7 @@ if(empty($id_klant)){
       </form>
       <div class="btn-group">
         <button class="exporteer">Exporteer</button>
-        <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
+        <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
         <button class="bewerk">Bewerk</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
