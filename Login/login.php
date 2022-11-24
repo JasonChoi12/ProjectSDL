@@ -21,10 +21,10 @@
             <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
             <input class="inputgegevens" type="text" id="code" name="code" placeholder="Code" />
-            
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>
+            <a class="password-forgot" href="#"> Wachtwoord vergeten</a>
             <br>
             <div class="text-center center input">
                 <?php

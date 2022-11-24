@@ -37,11 +37,10 @@ h1 {
   margin-left: 3%;
 }
 .exporteer {
-  
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  text-align: center;
   gap: 8px;
  
   width: 94px;
@@ -59,7 +58,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  text-align: center;
   gap: 8px;
  
   width: 108px;
@@ -78,7 +77,7 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  text-align: center;
   gap: 8px;
 
   width: 83px;
@@ -106,16 +105,15 @@ h1 {
 }
 
 .verwijderen {
-  
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
+  text-align: center;
   gap: 8px;
   
   width: 118px;
   height: 40px;
-  background: #f39200;
+  background-color: #be3131;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
