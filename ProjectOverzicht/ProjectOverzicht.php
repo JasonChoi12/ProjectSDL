@@ -82,7 +82,7 @@ if(empty($id_klant)){
           <td></td>
           <td><?php echo $project_data['laatst_gewerkt']; ?></td>
           <td><?php echo $project_data['begindatum'];?></td>
-          <td><button class="table-bewerk">Bekijk</button></td>
+          <td><button class="table-bewerk">Bekijken</button></td>
         </tr>
         <?php }?>
       </table>
