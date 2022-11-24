@@ -17,15 +17,15 @@ h1 {
   box-sizing: border-box;
   position: absolute;
   width: 310px;
-  height: 40px;
-  margin-top: 3%;
+  height: 35px;
+  margin-top: 4%;
   background: rgba(106, 112, 126, 0.01);
   border: 2px solid #dddfe1;
   border-radius: 13px;
 }
 .searchbar-input {
   position: inherit;
-  margin-top: 1%;
+  margin-top: 2%;
   margin-left: 5%;
   background: rgba(106, 112, 126, 0.01);
   width: 270px;

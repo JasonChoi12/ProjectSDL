@@ -44,14 +44,14 @@ if(empty($id_klant)){
             type="search"
             id="query"
             name="q"
-            placeholder="Search..."
+            placeholder="Zoeken..."
           />
         </div>
       </form>
       <div class="btn-group">
-        <button class="exporteer">Exporteer</button>
+        <button class="exporteer">Exporteren</button>
         <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
-        <button class="bewerk">Bewerk</button>
+        <button class="bewerk">Bewerken</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
       <table>
