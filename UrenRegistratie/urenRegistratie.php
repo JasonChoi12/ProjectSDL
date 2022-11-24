@@ -11,7 +11,7 @@ require_once("../src/sessie.php");
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <title>Uren Registratie</title>
+  <title>Uren registratie</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@ require_once("../src/sessie.php");
     });
   </script>
   <div class="title">
-    <h1>Uren Registreren</h1>
+    <h1>Uren registreren</h1>
 
     <form>
       <div class="klant">
