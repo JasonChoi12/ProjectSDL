@@ -53,7 +53,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
         <span class="tooltip">Uren registratie</span>
       </li>
       <li>
-        <a href="#">
+        <a href="../AccountSettings/accountSettings.php">
           <i class='bx bx-cog'></i>
           <span class="links_name">Setting</span>
         </a>

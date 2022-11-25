@@ -1,3 +1,9 @@
+<?php
+
+require_once("../src/sessie.php");
+
+$user = unserialize($_SESSION['gebruiker_data']);
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -19,7 +25,7 @@
     </script>
     <div class="registreren">
       <h1>Account aanpassen</h1>
-      <form>
+      <form method="post" action="../forms/accountSettings-forms.php">
         <div>
           <input
             class="inputnaam"
@@ -55,10 +61,17 @@
           class="inputgegevens"
           type="password"
           id="wachtwoord"
-          name="wachtwoord"
+          name="wachtwoordcheck"
           placeholder="Wachtwoord"
         />
-        <div class="usertype">
+        <input
+          class="inputgegevens"
+          type="password"
+          id="wachtwoord"
+          name="wachtwoord"
+          placeholder="Nieuw Wachtwoord"
+        />
+        <!-- <div class="usertype">
           <select
             required
             class="usertype-dropdown"
@@ -72,8 +85,8 @@
             <option value="medewerker">Medewerker</option>
             <option value="non-actief">Non-actief</option>
           </select>
-        </div>
-        <div class="profielfoto">
+        </div> --><br>
+        <div class="">
           <label>Profielfoto</label><br />
           <input
             type="file"
@@ -85,6 +98,16 @@
         <div class="btn-group">
           <button name="submit" class="submit">Aanpassen</button>
         </div>
+        <div class="text-center center input">
+        <?php
+        // laat error code Zien
+        if (isset($_SESSION['ERRORS'])) {
+          echo $_SESSION['ERRORS'];
+          unset($_SESSION['ERRORS']);
+        }
+       if (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']); }?></div>
       </form>
     </div>
   </body>

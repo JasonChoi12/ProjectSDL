@@ -148,7 +148,7 @@ class Gebruikers extends DB
         return true;
     }
 
-    public function update($voornaam, $tussenvoegsel, $achternaam, $email, $oudewachtwoord, $wachtwoord)
+    public function update($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $wachtwoordcheck)
     {
         if (empty($wachtwoord)) {
         } else {
@@ -166,20 +166,20 @@ class Gebruikers extends DB
             $sql = "UPDATE `gebruikers` 
                     SET 
 			voornaam=COALESCE(NULLIF(:voornaam, ''),voornaam),
-			tussenvoegsels=COALESCE(NULLIF(:tussenvoegsels, ''),tussenvoegsels),
+			tussenvoegsel=COALESCE(NULLIF(:tussenvoegsel, ''),tussenvoegsel),
 			achternaam=COALESCE(NULLIF(:achternaam, ''),achternaam),
 			email=COALESCE(NULLIF(:email, ''),email),
-			wachtwoord=COALESCE(NULLIF(:nww1, ''),wachtwoord)			
+			wachtwoord=COALESCE(NULLIF(:wachtwoord, ''),wachtwoord)			
                     WHERE id_gebruiker = :userid";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders	
             $stmt->bindParam(':userid', $user_id);
             $stmt->bindParam(':voornaam', $voornaam);
-            $stmt->bindParam(':tussenvoegsels', $tussenvoegsel);
+            $stmt->bindParam(':tussenvoegsel', $tussenvoegsel);
             $stmt->bindParam(':achternaam', $achternaam);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':nww1', $hash);
+            $stmt->bindParam(':wachtwoord', $hash);
 
             //Tweede SQL defineren voor oude wachtwoord fetchen
             $sql2 = "SELECT wachtwoord FROM gebruikers WHERE id_gebruiker = :id";
@@ -193,7 +193,7 @@ class Gebruikers extends DB
             // data ophalen
             $data = $stmt2->fetch();
 
-            if (password_verify($oudewachtwoord, $data['wachtwoord'])) {
+            if (password_verify($wachtwoordcheck, $data['wachtwoord'])) {
                 //sql uitvoeren
                 $stmt->execute();
                 return true;

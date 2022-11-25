@@ -24,6 +24,7 @@
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>
+            <br>
             <a class="password-forgot" href="#"> Wachtwoord vergeten</a>
             <br>
             <div class="text-center center input">
@@ -34,7 +35,8 @@
                     echo $_SESSION['ERRORS'];
                     unset($_SESSION['ERRORS']);
                 }
-                ?></div>
+                ?>
+                </div>
         </form>
     </div>
 </body>
