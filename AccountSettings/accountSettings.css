@@ -37,6 +37,7 @@ h1 {
 .inputnaam {
   width: 200px;
   height: 40px;
+  margin-top: 5%;
   background: rgba(100, 103, 143, 0.15);
   border-radius: 4px;
   outline: none;
