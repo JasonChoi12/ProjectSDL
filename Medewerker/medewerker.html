@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="medewerker.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  <!--Navbar Import -->
+  <div id="nav-placeholder"></div>
+
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("../navBar.php");
+    });
+  </script>
+  `
+  <div class="title">
+    <h1>Medewerker Overzicht</h1>
+    <form id="form">
+      <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
+      </div>
+    </form>
+    <div class="btn-group">
+      <button class="exporteer">Exporteren</button>
+     <button class="toevoegen">Toevoegen</button>
+      <button class="bewerk">Bewerken</button>
+      <button class="verwijderen">Verwijderen</button>
+    </div>
+    <table>
+      <tr>
+        <th id="table-left-border"></th>
+        <th>Medewerker</th>
+        <th>Email</th>
+        <th>Type Medewerker</th>
+        <th id="table-right-border"></th>
+      </tr>
+        <tr>
+          <td class="checkbox">
+            <input type="checkbox">
+          </td>
+          <td>Rob van Puffelen</td>
+          <td>robvanpuffellen@dijkstraenvanpuffellen.nl</td>
+          <td>Admin</td>
+          <td>
+            <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+              <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
+              <button class="table-bewerk">Bekijken</button>
+            </form>
+          </td>
+        </tr>
+    </table>
+  </div>
+</body>
+
+</html>
