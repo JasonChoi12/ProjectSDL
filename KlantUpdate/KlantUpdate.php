@@ -27,17 +27,12 @@ if(empty($id_klant)){
   <?php
                                     $klant = new Klanten;
                                     $klant_data = $klant->KlantZien($id_klant);
-                                    // print_r($klant_data);
-                                    echo $klant_data[0]["klantnaam"]?>
+                                    // echo $klant_data[0]["klantnaam"]?>
   <script>
     $(function () {
       $("#nav-placeholder").load("../navBar.php");
     });
-  </script><?php
-                                    $klant = new Klanten;
-                                    $klant_data = $klant->KlantZien($id_klant);
-                                    // print_r($klant_data);
-                                    // echo $klant_data[0]["klantnaam"]?>
+  </script>
   <div class="title">
     <h1>Klant bewerken</h1>
     
