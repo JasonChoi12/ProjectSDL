@@ -20,22 +20,33 @@
       $(function () {
         $("#nav-placeholder").load("../navBar.php");
       });
+      function searchBar() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("query");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("urenoverzicht");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
     </script>
-    `
+    
     <div class="title">
       <h1>Uren Overzicht Persoonlijk</h1>
-      <form id="form">
-        <div class="searchbar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            class="searchbar-input"
-            type="search"
-            id="query"
-            name="q"
-            placeholder="Search..."
-          />
-        </div>
-      </form>
+      <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
+      </div>
+    
       <button class="overzicht">Terug naar overzicht</button>
       <div class="btn-group">
         <button class="exporteer">Exporteer</button>
@@ -43,7 +54,7 @@
         <button class="bewerk">Bewerk</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
-      <table>
+      <table id="urenoverzicht">
         <tr>
           <th id="table-left-border"></th>
           <th>Medewerker</th>
@@ -56,10 +67,13 @@
         </tr>
         <tr>
           <td class="checkbox">
-            <input type="checkbox">
+            <input type="checkbox" />
           </td>
           <td>Rob van Puffellen</td>
-          <td>W&5 acts:ml afstmmn mrktng/socials, kandi"s mln aanvlnd info, afwzn, soll, ovrzcht bijwrkn</td>
+          <td>
+            W&5 acts:ml afstmmn mrktng/socials, kandi"s mln aanvlnd info, afwzn,
+            soll, ovrzcht bijwrkn
+          </td>
           <td>ja</td>
           <td>1</td>
           <td>13:20</td>

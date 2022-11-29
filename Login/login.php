@@ -16,7 +16,6 @@
     <div class="login">
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
-            
             <br />
             <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
@@ -25,7 +24,7 @@
                 <button name="submit" class="submit">login</button>
             </div>
             <br>
-            <a class="password-forgot" href="#"> Wachtwoord vergeten</a>
+            <a class="password-forgot" href="../WachtwoordVergeten/wachtwoordVergeten.html"> Wachtwoord vergeten</a>
             <br>
             <div class="text-center center input">
                 <?php

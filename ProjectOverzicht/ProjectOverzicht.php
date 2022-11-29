@@ -32,29 +32,40 @@ if(empty($id_klant)){
       $(function () {
         $("#nav-placeholder").load("../navBar.php");
       });
+      function searchBar() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("query");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("projectoverzicht");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
     </script>
-    `
+    
     <div class="title">
       <h1>Project Overzicht</h1>
-      <form id="form">
-        <div class="searchbar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input
-            class="searchbar-input"
-            type="search"
-            id="query"
-            name="q"
-            placeholder="Zoeken..."
-          />
-        </div>
-      </form>
+      <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
+      </div>
+
       <div class="btn-group">
         <button class="exporteer">Exporteren</button>
         <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
         <button class="bewerk">Bewerken</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
-      <table>
+      <table id="projectoverzicht>
         <tr>
           <th id="table-left-border"></th>
           <th>Projectnaam</th>
