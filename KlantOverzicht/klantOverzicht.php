@@ -24,30 +24,47 @@ require_once("../src/sessie.php");
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
+
+    function searchBar() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("query");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("klantoverzicht");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
   </script>
-  `
+  
   <div class="title">
     <h1>Klant Overzicht</h1>
-    <form id="form">
-      <div class="searchbar">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
-      </div>
-      <?php
-      // laat error code Zien
-      if (isset($_SESSION['ERRORS'])) {
-        echo $_SESSION['ERRORS'];
-        unset($_SESSION['ERRORS']);
-      }
-      ?>
-    </form>
+    <div class="searchbar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
+    </div>
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['ERRORS'])) {
+      echo $_SESSION['ERRORS'];
+      unset($_SESSION['ERRORS']);
+    }
+    ?>
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
     </div>
-    <table>
+    <table id="klantoverzicht">
       <tr>
         <th id="table-left-border"></th>
         <th>Klant</th>
@@ -77,7 +94,7 @@ require_once("../src/sessie.php");
           <td><?php echo $klant_data['postcode']; ?></td>
           <td><?php echo $klant_data['telefoonnummer']; ?></td>
           <td><?php $projecten_data = $projecten->Projectzien($id_klant);
-            echo count($projecten_data);?></td>
+              echo count($projecten_data); ?></td>
           <td>
             <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
               <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">

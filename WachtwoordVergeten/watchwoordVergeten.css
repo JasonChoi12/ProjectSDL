@@ -1,0 +1,69 @@
+.logo {
+    position: absolute;
+    width: 350px;
+    height: 250px;
+    left: 75px;
+    top: 0px;
+  }
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 500px;
+    background: #42447d;
+    padding: 6px 14px;
+    z-index: 99;
+    transition: all 0.5s ease;
+  }
+  .title {
+    position: absolute;
+    height: 84px;
+    left: 50%;
+    top: 0%;
+    text-align: center;
+  }
+  h1 {
+    font-family: "verdana";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 84px;
+    /* identical to box height */
+    color: #42447d;
+  }
+  .submit {
+    position: relative;
+    width: 229px;
+    height: 46px;
+    margin-top: 50px;
+    background: #f39200;
+    box-shadow: 0px 0px 30px rgba(99, 122, 48, 0.4);
+    border-radius: 4px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: block;
+    outline: none;
+    border: none;
+  
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .inputgegevens {
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    background: rgba(100, 103, 143, 0.15);
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    text-align: center;
+  }
+  
+  .btn-group {
+    margin-left: 31%;
+    text-decoration: none;
+  }
