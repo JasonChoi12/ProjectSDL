@@ -7,6 +7,7 @@ session_start();
 // maak nieuwe klant aan
 $klant = new Klanten();
 // Pakt post van de form en zet ze in variable
+$id_klant = $_POST['id_klant'];
 $klantnaam = $_POST['klantnaam'];
 $straatnaam = $_POST['straatnaam'];
 $telefoonnummer = $_POST['telefoon'];
@@ -14,7 +15,7 @@ $woonplaats = $_POST['woonplaats'];
 $huisnummer = $_POST['huisnummer'];
 $postcode = $_POST['postcode'];
 
-echo $klantnaam. " ". $straatnaam. " ". $telefoon. " ". $woonplaats. " ".$huisnummer. " ". $postcode;
+echo $klantnaam. " ". $straatnaam. " ". $telefoonnummer. " ". $woonplaats. " ".$huisnummer. " ". $postcode. " ". $id_klant;
 if(isset($_POST['submit'])){
     //check klantnaam
     if (!empty($klantnaam)) {
@@ -24,10 +25,7 @@ if(isset($_POST['submit'])){
         if ($klantnaam_match !== 1) {
             $error[] = "Klantnaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "klantnaam mag niet leeg zijn.";
-    }
+    } 
     //check straatnaam
     if (!empty($straatnaam)) {
         $straatnaam_subject = $straatnaam;
@@ -36,10 +34,7 @@ if(isset($_POST['submit'])){
         if ($straatnaam_match !== 1) {
             $error[] = "Straatnaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Straatnaam mag niet leeg zijn.";
-    }
+    } 
     //check telefoon
     if (!empty($telefoonnummer)) {
         $telefoonnummer_subject = $telefoonnummer;
@@ -48,10 +43,7 @@ if(isset($_POST['submit'])){
         if ($telefoonnummer_match !== 1) {
             $error[] = "Telefoon nummer mag alleen nummers bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Telefoon nummer mag niet leeg zijn.";
-    }
+    } 
     //check woonplaats
     if (!empty($woonplaats)) {
         $woonplaats_subject = $woonplaats;
@@ -60,10 +52,7 @@ if(isset($_POST['submit'])){
         if ($woonplaats_match !== 1) {
             $error[] = "Woonplaats mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Woonplaats mag niet leeg zijn.";
-    }
+    } 
     //check huisnummer
     if (!empty($huisnummer)) {
         $huisnummer_subject = $huisnummer;
@@ -72,10 +61,7 @@ if(isset($_POST['submit'])){
         if ($huisnummer_match !== 1) {
             $error[] = "huisnummer mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn 
-        $error[] = "huisnummer mag niet leeg zijn.";
-    }
+    } 
     //check postcode
     if (!empty($postcode)) {
         $postcode_subject = $postcode;
@@ -84,15 +70,12 @@ if(isset($_POST['submit'])){
         if ($postcode_match !== 1) {
             $error[] = "Postcode mag alleen alfabetische letters en nummers bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Postcode mag niet leeg zijn.";
-    }
+    } 
     if(isset($error)){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../klant/klant.php');
+        header('Location:../KlantUpdate/KlantUpdate.php');
     }else{
-    $klant->KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode);
+    $klant->KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
     header('Location:../KlantOverzicht/klantOverzicht.php');
 } 
 }

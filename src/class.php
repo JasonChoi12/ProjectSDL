@@ -150,8 +150,7 @@ class Gebruikers extends DB
 
     public function update($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $wachtwoordcheck)
     {
-        if (empty($wachtwoord)) {
-        } else {
+        if (!empty($wachtwoord)) {
             //Hash wachtwoord
             $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         }
@@ -281,16 +280,53 @@ class Klanten extends DB
             return $e;
         }
     }
-    public function KlantenZien()
+    public function KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `klanten` 
+                    SET 
+			klantnaam=COALESCE(NULLIF(:klantnaam, ''),klantnaam),
+			straatnaam=COALESCE(NULLIF(:straatnaam, ''),straatnaam),
+			huisnummer=COALESCE(NULLIF(:huisnummer, ''),huisnummer),
+			postcode=COALESCE(NULLIF(:postcode, ''),postcode),
+			woonplaats=COALESCE(NULLIF(:woonplaats, ''),woonplaats),	
+			telefoonnummer=COALESCE(NULLIF(:telefoonnummer, ''),telefoonnummer)			
+
+                    WHERE id_klant = :id_klant";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_klant', $id_klant);
+            $stmt->bindParam(':klantnaam', $klantnaam);
+            $stmt->bindParam(':straatnaam', $straatnaam);
+            $stmt->bindParam(':huisnummer', $huisnummer);
+            $stmt->bindParam(':postcode', $postcode);
+            $stmt->bindParam(':woonplaats', $woonplaats);
+            $stmt->bindParam(':telefoonnummer', $telefoonnummer);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
+
+    public function KlantZien($id_klant)
     { {
             try {
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM klanten";
+                $sql = "SELECT * FROM klanten where id_klant = :id_klant";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
-
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_klant", $id_klant);
                 //Voer SQL uit
                 $stmt->execute();
                 // data ophalen
@@ -308,17 +344,16 @@ class Klanten extends DB
             }
         }
     }
-    public function KlantZien($id_klant)
+    public function KlantenZien()
     { {
             try {
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM klanten where id_klant = :id_klant";
+                $sql = "SELECT * FROM klanten";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
-                // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_klant", $id_klant);
+
                 //Voer SQL uit
                 $stmt->execute();
                 // data ophalen

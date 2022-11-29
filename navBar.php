@@ -69,6 +69,16 @@ $user = unserialize($_SESSION['gebruiker_data']);
       </li>';
       }
       ?>
+      <?php if ($user->usertype === "admin") {
+        echo '<li>
+        <a href="../medewerkerOverzicht/medewerkerOverzicht.php">
+          <i class="bx bx-user-plus"></i>
+          <span class="links_name">Medewerker Overzicht</span>
+        </a>
+        <span class="tooltip">Medewerker Overzicht</span>
+      </li>';
+      }
+      ?>
 
       <li class="profile">
         <div class="profile-details">
