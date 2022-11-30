@@ -426,4 +426,32 @@ class projecten extends Klanten
             }
         }
     }
+    public function ProjectUpdate($id_klant, $projectnaam, $begindatum, $id_project)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `projecten` 
+                    SET 
+                    projectnaam=COALESCE(NULLIF(:projectnaam, ''),projectnaam),
+                    begindatum=COALESCE(NULLIF(:begindatum, ''),begindatum)		
+
+                    WHERE id_klant = :id_klant and id_project = :id_project" ;
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_klant', $id_klant);
+            $stmt->bindParam(':id_project', $id_project);
+            $stmt->bindParam(':projectnaam', $projectnaam);
+            $stmt->bindParam(':begindatum', $begindatum);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
 }

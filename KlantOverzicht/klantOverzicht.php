@@ -112,8 +112,8 @@ require_once("../src/sessie.php");
     <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
     <input value="" type="hidden" id="update-input" name="id_klant" />
   </form>
-    <p id="sh"></p>
-    <p id="sh1"></p>
+    <!-- <p id="sh"></p>
+    <p id="sh1"></p> -->
 
   </div>
 </body>
@@ -132,7 +132,7 @@ require_once("../src/sessie.php");
         // console.log(d);
         if(d && d.length > 1){
           $('#delete').val(d);
-           document.getElementById("sh").innerHTML = d;
+          //  document.getElementById("sh").innerHTML = d;
         }else{
           console.log(d)
           a = d[0]; 

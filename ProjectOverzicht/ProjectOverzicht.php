@@ -51,7 +51,7 @@ if(empty($id_klant)){
       <div class="btn-group">
         <button class="exporteer">Exporteren</button>
         <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
-        <button class="bewerk">Bewerken</button>
+        <button type="submit" form="update" class="bewerk">Bewerken</button>
         <button class="verwijderen">Verwijderen</button>
       </div>
       <table>
@@ -73,8 +73,8 @@ if(empty($id_klant)){
         foreach($projecten_data as $project_data){
         ?>
         <tr>
-          <td class="checkbox">
-            <input type="checkbox">
+        <td class="checkbox">
+            <input  type="checkbox" onchange="chkbox(this)" value="<?php echo $project_data['id_project'];?>">
           </td>
           <td><?php echo $project_data['projectnaam'];?></td>
           <td></td>
@@ -86,6 +86,39 @@ if(empty($id_klant)){
         </tr>
         <?php }?>
       </table>
+      <form id="update" method="get" action="../projectUpdate/projectUpdate.php">
+    <input value="" type="hidden" id="update-input" name="id_project" />
+    <input value="<?php echo $id_klant; ?>" type="hidden"  name="id_klant" />
+  </form>
+   <p id="sh"></p>
+    <p id="sh1"></p>
     </div>
   </body>
+  <script type="text/javascript">
+    var d = new Array();
+    function chkbox(this1) {
+        var s = this1.value;
+        if (this1.checked) {
+            d.push(s);
+        } else {
+            var index = d.indexOf(s);
+            if (index > -1) {
+                d.splice(index, 1);
+            }
+        }
+        // console.log(d);
+        if(d && d.length > 1){
+          $('sh').val(d);
+           document.getElementById("sh").innerHTML = d;
+        }else{
+          console.log(d)
+          a = d[0]; 
+          $('update-input').val(a);
+        
+        document.getElementById("update-input").value = a;
+
+        }
+        
+    }
+    </script>
 </html>

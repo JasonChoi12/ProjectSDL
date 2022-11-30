@@ -1,0 +1,74 @@
+h1 {
+    font-family: "verdana";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 84px;
+    /* identical to box height */
+  }
+  .title {
+    position: absolute;
+    height: 100%;
+    left: 20%;
+    top: 0%;
+  }
+  
+  .project{
+    margin-top: 5%;
+  }
+
+  .klant-input {
+    width: 307px;
+    height: 60px;
+    background: rgba(106, 112, 126, 0.0001);
+    border: 1px solid #dddfe1;
+    border-radius: 13px;
+    padding: 10px 10px;
+  }
+
+  .projectnaam {
+    margin-top: 5%;
+  }
+
+  .projectnaam-input {
+    width: 307px;
+    height: 60px;
+    background: rgba(106, 112, 126, 0.0001);
+    border: 1px solid #dddfe1;
+    border-radius: 13px;
+    padding: 10px 10px;
+  }
+
+  .begindatum {
+    margin-left: 100%;
+    margin-top: -21%;
+  }
+
+  .begindatum-input {
+    width: 150px;
+    height: 60px;
+    background: rgba(106, 112, 126, 0.0001);
+    border: 1px solid #dddfe1;
+    border-radius: 13px;
+    text-align: center;
+  }
+  
+  .submit {
+    position: relative;
+    width: 229px;
+    height: 46px;
+    background: #f39200;
+    display: block;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+  
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 14px;
+    color: #fff;
+    margin-left: 150%;
+    margin-top: -13%;
+    
+  }
+  
