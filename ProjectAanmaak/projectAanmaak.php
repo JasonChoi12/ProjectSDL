@@ -1,7 +1,8 @@
 <?php
 require_once("../src/sessie.php");
-if(!empty($_SESSION["id_klant"])){
- $id_klant= $_SESSION["id_klant"];}
+if (!empty($_SESSION["id_klant"])) {
+  $id_klant = $_SESSION["id_klant"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -57,9 +58,9 @@ if(!empty($_SESSION["id_klant"])){
                                       $klanten = new Klanten;
                                       // $id_klant = $_GET['id_klant'];
                                       $klant_data = $klanten->KlantZien($id_klant);
-                                      echo '<input  class="klant-input" value="'.$klant_data[0]["klantnaam"].'" disabled />
-                                      <input name="klant" value="'.$klant_data[0]["klantnaam"].'" type="hidden" id="id_klant" />
-                                      <input name="id_klant" value="'.$id_klant.'" type="hidden" id="id_klant" />';
+                                      echo '<input  class="klant-input" value="' . $klant_data[0]["klantnaam"] . '" disabled />
+                                      <input name="klant" value="' . $klant_data[0]["klantnaam"] . '" type="hidden" id="id_klant" />
+                                      <input name="id_klant" value="' . $id_klant . '" type="hidden" id="id_klant" />';
                                     }
                     ?>
 
@@ -78,9 +79,8 @@ if(!empty($_SESSION["id_klant"])){
       </div>
       <button name="submit" class="submit">Toevoegen</button>
       <br>
-      <div>
+      <div class="error">
         <?php
-        
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];

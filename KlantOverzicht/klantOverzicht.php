@@ -45,7 +45,7 @@ require_once("../src/sessie.php");
       }
     }
   </script>
-  
+
   <div class="title">
     <h1>Klant Overzicht</h1>
     <div class="searchbar">
@@ -76,72 +76,69 @@ require_once("../src/sessie.php");
         <th>Projecten</th>
         <th id="table-right-border"></th>
       </tr>
-
-      <?php
-      // foreach klant om door alle rijen een loop te doen
-      $klanten = new Klanten();
-      $klanten_data = $klanten->KlantenZien();
-      $projecten = new projecten();
-      foreach ($klanten_data as $klant_data) {
-        $id_klant = $klant_data['id_klant'];
-      ?>
-        <tr>
-          <td class="checkbox">
-            
-
-
-            <input  type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant'];?>">
-
-          </td>
-          <td><?php echo $klant_data['klantnaam']; ?></td>
-          <td><?php echo $klant_data['woonplaats']; ?></td>
-          <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
-          <td><?php echo $klant_data['postcode']; ?></td>
-          <td><?php echo $klant_data['telefoonnummer']; ?></td>
-          <td><?php $projecten_data = $projecten->Projectzien($id_klant);
-              echo count($projecten_data); ?></td>
-          <td>
-            <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
-              <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
-              <button class="table-bewerk">Bekijken</button>
-            </form>
-          </td>
-        </tr>
-      <?php } ?>
+        <?php
+        // foreach klant om door alle rijen een loop te doen
+        $klanten = new Klanten();
+        $klanten_data = $klanten->KlantenZien();
+        $projecten = new projecten();
+        foreach ($klanten_data as $klant_data) {
+          $id_klant = $klant_data['id_klant'];
+        ?>
+      <tr>
+        <td class="checkbox">
+          <input type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
+        </td>
+        <td><?php echo $klant_data['klantnaam']; ?></td>
+        <td><?php echo $klant_data['woonplaats']; ?></td>
+        <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
+        <td><?php echo $klant_data['postcode']; ?></td>
+        <td><?php echo $klant_data['telefoonnummer']; ?></td>
+        <td><?php $projecten_data = $projecten->Projectzien($id_klant);
+            echo count($projecten_data); ?></td>
+        <td>
+          <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+            <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
+            <button class="table-bewerk">Bekijken</button>
+          </form>
+        </td>
+      </tr>
+    <?php } ?>
     </table>
     <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
-    <input value="" type="hidden" id="update-input" name="id_klant" />
-  </form>
+      <input value="" type="hidden" id="update-input" name="id_klant" />
+    </form>
     <!-- <p id="sh"></p>
     <p id="sh1"></p> -->
 
   </div>
 </body>
 <script type="text/javascript">
-    var d = new Array();
-    function chkbox(this1) {
-        var s = this1.value;
-        if (this1.checked) {
-            d.push(s);
-        } else {
-            var index = d.indexOf(s);
-            if (index > -1) {
-                d.splice(index, 1);
-            }
-        }
-        // console.log(d);
-        if(d && d.length > 1){
-          $('#delete').val(d);
-          //  document.getElementById("sh").innerHTML = d;
-        }else{
-          console.log(d)
-          a = d[0]; 
-          $('#update-input').val(a);
-        
-        document.getElementById("update-input").value = a;
+  var d = new Array();
 
-        }
-        
+  function chkbox(this1) {
+    var s = this1.value;
+    if (this1.checked) {
+      d.push(s);
+    } else {
+      var index = d.indexOf(s);
+      if (index > -1) {
+        d.splice(index, 1);
+      }
     }
+    // console.log(d);
+    if (d && d.length > 1) {
+      $('#delete').val(d);
+      //  document.getElementById("sh").innerHTML = d;
+    } else {
+      console.log(d)
+      a = d[0];
+      $('#update-input').val(a);
+
+      document.getElementById("update-input").value = a;
+
+    }
+
+  }
 </script>
+
 </html>

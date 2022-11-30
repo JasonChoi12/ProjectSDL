@@ -57,7 +57,7 @@ require_once("../src/sessie.php");
         </div>
         <button name="submit" class="submit">Toevoegen</button>
         
-      </div><br><div>
+      </div><br><div class="error">
       <?php
                 // laat error code Zien
                 if (isset($_SESSION['ERRORS'])) {
