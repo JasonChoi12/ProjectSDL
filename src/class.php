@@ -206,6 +206,86 @@ class Gebruikers extends DB
             return $e;
         }
     }
+    public function UserTypeUpdate($usertype, $id_gebruiker)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `gebruikers` 
+                    SET 	
+                    usertype=COALESCE(NULLIF(:usertype, ''),usertype)
+					
+                    WHERE id_gebruiker = :userid";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':userid', $id_gebruiker);
+            $stmt->bindParam(':usertype', $usertype);
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
+    public function GebruikersZien()
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM gebruikers";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+    }
+    public function GebruikerZien($id_gebruiker)
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM gebruikers WHERE id_gebruiker = :id_gebruiker";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders	
+                $stmt->bindParam(':id_gebruiker', $id_gebruiker);
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+    }
 
     public function delete($user_id, $email, $wachtwoord)
     {
@@ -309,6 +389,7 @@ class Klanten extends DB
             $stmt->bindParam(':telefoonnummer', $telefoonnummer);
 
             $stmt->execute();
+            return true;
         } catch (PDOException $e) {
             $this->conn = NULL;
             // status terugsturen
@@ -345,30 +426,29 @@ class Klanten extends DB
         }
     }
     public function KlantenZien()
-    { {
-            try {
-                // maak een connectie met de database
-                $this->conn();
-                // sql query defineren
-                $sql = "SELECT * FROM klanten";
-                // sql voorbereiden
-                $stmt = $this->conn->prepare($sql);
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT * FROM klanten";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
 
-                //Voer SQL uit
-                $stmt->execute();
-                // data ophalen
-                $data = $stmt->fetchAll();
-                // database connectie sluiten
-                $this->conn = NULL;
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
 
-                // opgehaalde rijen terugsturen
-                return $data;
-            } catch (PDOException $e) {
-                // database connectie sluiten
-                $this->conn = NULL;
-                //stuur variable terug
-                return $e;
-            }
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
         }
     }
 }
@@ -438,7 +518,7 @@ class projecten extends Klanten
                     projectnaam=COALESCE(NULLIF(:projectnaam, ''),projectnaam),
                     begindatum=COALESCE(NULLIF(:begindatum, ''),begindatum)		
 
-                    WHERE id_klant = :id_klant and id_project = :id_project" ;
+                    WHERE id_klant = :id_klant and id_project = :id_project";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders	
@@ -448,6 +528,7 @@ class projecten extends Klanten
             $stmt->bindParam(':begindatum', $begindatum);
 
             $stmt->execute();
+            return true;
         } catch (PDOException $e) {
             $this->conn = NULL;
             // status terugsturen

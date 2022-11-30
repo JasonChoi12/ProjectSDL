@@ -2,12 +2,12 @@
 require_once("../src/sessie.php");
 $id_klant = $_GET['id_klant'];
 $id_project = $_GET['id_project'];
-
-if(empty($id_klant) && empty($id_project)){
-  $error[] = "Kies eerst een klant.";
+if (empty($id_project)) {
+  $error[] = "Kies eerst een project.";
   $_SESSION['ERRORS'] = implode('<br> ', $error);
-  header('Location: ../KlantOverzicht/klantOverzicht.php');
+  header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,7 +44,7 @@ if(empty($id_klant) && empty($id_project)){
       <div class="klant">
         <label>Klant</label><br />
         <input type="hidden" value="<?php echo $project_data[0]["id_project"]; ?>" name="id_project">
-        <input type="hidden" value="<?php echo$id_klant;?>" name="id_klant">
+        <input type="hidden" value="<?php echo $id_klant; ?>" name="id_klant">
         <input class="klant-input" placeholder="<?php echo $klant_data[0]["klantnaam"]; ?>" disabled />
       </div>
       <br />

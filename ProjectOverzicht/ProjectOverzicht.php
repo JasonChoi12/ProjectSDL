@@ -3,7 +3,7 @@ require_once('../src/class.php');
 
 require_once("../src/sessie.php");
 $id_klant = $_GET["id_klant"];
-$_SESSION["id_klant"]= $id_klant;
+$_SESSION["id_klant"] = $id_klant;
 // unset($_SESSION["id_klant"]);
 if(empty($id_klant)){
   $error[] = "Kies eerst een klant.";
@@ -47,6 +47,7 @@ if(empty($id_klant)){
             placeholder="Zoeken..."
           />
         </div>
+        
       </form>
       <div class="btn-group">
         <button class="exporteer">Exporteren</button>

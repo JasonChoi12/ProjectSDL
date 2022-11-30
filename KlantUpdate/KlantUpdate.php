@@ -8,7 +8,8 @@ if(empty($id_klant)){
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location: ../KlantOverzicht/klantOverzicht.php');
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>

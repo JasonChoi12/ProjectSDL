@@ -103,7 +103,7 @@ if (empty($wachtwoord)) {
 
             }
              // succes messasge
-            //  $accountaangemaakt[] = 'Account is succesvol aangemaakt';
+             $accountaangemaakt[] = 'Account is succesvol bijgewerk';
              $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
             //Voer ook uit als geen nieuw wachtwoord of email zijn ingevoerd
             //Volgende locatie
