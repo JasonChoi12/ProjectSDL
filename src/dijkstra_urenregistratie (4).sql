@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 30 nov 2022 om 02:55
+-- Gegenereerd op: 30 nov 2022 om 14:03
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 8.1.6
 
@@ -44,9 +44,9 @@ CREATE TABLE `gebruikers` (
 --
 
 INSERT INTO `gebruikers` (`id_gebruiker`, `voornaam`, `tussenvoegsel`, `achternaam`, `email`, `wachtwoord`, `usertype`, `secretkey`, `image`) VALUES
-(1, 'Dev', 'elo', 'per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 'admin', 'LOF4TVGGlKF7GK3U', 'profile.jpg'),
+(1, 'Dev', 'Elo', 'Per', 'Developer@dev.nl', '$2y$10$AFkUWwv7PfbpbvMQhuan8ek23rdYSb5jqNJSVejSa0R1K4CHTUOVO', 'admin', 'LOF4TVGGlKF7GK3U', 'profile.jpg'),
 (2, 'Tester', 'de', 'Eric', 'test@test.nl', '$2y$10$oA3p6XFPdRrcI6pfMhpa5uoTKBEz./XgfWW/wiPrkNPbXK.OslgR.', 'medewerker', '36KW2Q5SWEHL4MUW', ''),
-(3, 'Petra', 'van der', 'meer', 'petra@dijkstraenvanpuffelen.nl', '$2y$10$ZzMULihCbhlLkzkyW/r0oeGDEFzjxfQTZO7ZZ7Owh3/deluLhlBKe', '0', 'NIKLMJCGP5HFPRML', '');
+(3, 'Petra', 'van der', 'meer', 'petra@dijkstraenvanpuffelen.nl', '$2y$10$ZzMULihCbhlLkzkyW/r0oeGDEFzjxfQTZO7ZZ7Owh3/deluLhlBKe', 'non-actief', 'NIKLMJCGP5HFPRML', '');
 
 -- --------------------------------------------------------
 
@@ -69,9 +69,9 @@ CREATE TABLE `klanten` (
 --
 
 INSERT INTO `klanten` (`id_klant`, `klantnaam`, `straatnaam`, `huisnummer`, `postcode`, `woonplaats`, `telefoonnummer`) VALUES
-(1, 'test', 'test', '124', '1234an', 'test', ''),
-(2, 'klanten', 'klantenstraat', '123', '1234sa', 'klanterije', '0612345678'),
-(3, 'pro', 'pro', '234', '3422ds', 'prososoo', '');
+(1, 'test', 'test', '124', '1234an', 'test', '0687654321'),
+(2, 'klanten', 'klantenstraat', '123', '1234sa', 'klanterije', '0683231385'),
+(3, 'pro', 'pro', '234', '3422ds', 'prososoo', '0612346576');
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ CREATE TABLE `projecten` (
 --
 
 INSERT INTO `projecten` (`id_project`, `id_klant`, `projectnaam`, `begindatum`, `laatst_gewerkt`) VALUES
-(1, 2, 'treadsd', '2022-11-16', '0000-00-00');
+(1, 2, 'abc', '2022-11-16', '0000-00-00');
 
 --
 -- Indexen voor geëxporteerde tabellen
