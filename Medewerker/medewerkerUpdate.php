@@ -12,7 +12,7 @@ if(empty($id_gebruiker)){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../AccountSettings/accountSettings.css" />
+    <link rel="stylesheet" href="update.css" />
     <link rel="stylesheet" href="../style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -69,7 +69,7 @@ if(empty($id_gebruiker)){
           name="email"
           placeholder="<?php echo $gebruikers_data[0]["email"]?>"
           disabled
-        /><br />
+        />
         <div>
         <div class="usertype">
           <select
@@ -86,7 +86,7 @@ if(empty($id_gebruiker)){
             <option value="non-actief">Non-actief</option>
           </select>
         </div>
-        </<br>
+      
         <br>
         <div class="btn-group">
           <button type="submit" name="submit" class="submit">Aanpassen</button>
