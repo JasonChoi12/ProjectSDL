@@ -24,7 +24,7 @@ if(empty($id_gebruiker)){
     <?php
                                     $gebruikers = new Gebruikers;
                                     $gebruikers_data = $gebruikers->GebruikerZien($id_gebruiker);
-                                    print_r($gebruikers_data);
+                                 
                               ?>
     <script>
       $(function () {

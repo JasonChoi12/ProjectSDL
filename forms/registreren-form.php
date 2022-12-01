@@ -94,13 +94,13 @@ if (isset($_POST['submit'])) {
         );
 
         $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' . $text;
-        $qr[] = '<img src="' . $image_url . '" />';
+        $qr[] = '<img class="qrcode" src="' . $image_url . '" />';
         $qr[] = 'Kan je de qr niet scannen hier is jouw instelsleutel: ' . $secret_key;
 
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
-        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
+        // $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
         header('Location:../registreren/Qr.php');
     }
 }

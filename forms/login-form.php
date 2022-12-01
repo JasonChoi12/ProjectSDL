@@ -63,13 +63,23 @@ if (isset($_POST['submit'])) {
         } elseif (is_string($loggedin)) {
             $usertype = "admin";
             $adminloggedin = $user->login($email, $wachtwoord, $code, $usertype);
-            if(is_bool($adminloggedin)){
+            if (is_bool($adminloggedin)) {
                 //Zet user values in sessie
-            $_SESSION['gebruiker_data'] = serialize($user);
-            header('Location: ../UrenRegistratie/urenregistratie.php');
-            }elseif(is_string($adminloggedin)){
-            $_SESSION['ERRORS'] = $loggedin;
-            header('Location: ../Login/login.php');
-        }}
+                $_SESSION['gebruiker_data'] = serialize($user);
+                header('Location: ../UrenRegistratie/urenregistratie.php');
+            } elseif (is_string($adminloggedin)) {
+                $usertype = "non-actief";
+                $nonlogin = $user->login($email, $wachtwoord, $code, $usertype);
+                if (is_bool($nonlogin)) {
+                    //Zet user values in sessie
+                    $nietActief = "Jouw account is gedactiveerd neem contact op met de beheerder.";
+                    $_SESSION['ERRORS'] = $nietActief;
+                    header('Location: ../Login/login.php');
+                } elseif (is_string($nonlogin)) {
+                    $_SESSION['ERRORS'] = $nonlogin;
+                    header('Location: ../Login/login.php');
+                }
+            }
+        }
     }
 }

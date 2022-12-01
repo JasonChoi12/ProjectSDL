@@ -15,6 +15,7 @@
     </div>
     <div class="registreren">
         <h1>QR code aanmaken account</h1>
+        <div>
         <?php
         session_start();
 
@@ -25,13 +26,15 @@
             echo $_SESSION['succes'];
 
             unset($_SESSION['succes']); ?><br>
+        
         <?php
 
-            echo $_SESSION['QR'];
+            echo "<div class='qrcode'>" . $_SESSION['QR']. "</div>";
 
             unset($_SESSION['QR']);
         }
         ?>
+        </div>
         <div class="btn-group">
             <a href="../UrenRegistratie/urenRegistratie.php">
                 <button class="submit">Terug</button>

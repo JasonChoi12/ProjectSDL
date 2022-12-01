@@ -103,6 +103,13 @@ h1 {
 }
 
 .btn-group {
+  margin-top: 1000px;
   margin-left: 31%;
   text-decoration: none;
+}
+
+.qrcode{
+  height: 300px;
+  width: 300px;
+
 }
