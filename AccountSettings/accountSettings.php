@@ -26,7 +26,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
     <div class="registreren">
       <h1>Account aanpassen</h1>
       <form method="post" action="../forms/accountSettings-forms.php">
-        <div>
+        
           <input
             class="inputnaam"
             type="text"
@@ -48,15 +48,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
             name="achternaam"
             placeholder="Achternaam"
           />
-        </div>
-        <br />
         <input
           class="inputgegevens"
           type="text"
           id="email"
           name="email"
           placeholder="Email"
-        /><br />
+        />
         <input
           class="inputgegevens"
           type="password"
@@ -70,7 +68,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
           id="wachtwoord"
           name="wachtwoord"
           placeholder="Nieuw Wachtwoord"
-        />
+        /><br>
         <!-- <div class="usertype">
           <select
             required
@@ -85,8 +83,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
             <option value="medewerker">Medewerker</option>
             <option value="non-actief">Non-actief</option>
           </select>
-        </div> --><br>
-        <div class="">
+        </div> -->
           <label>Profielfoto</label><br />
           <input
             type="file"
@@ -94,11 +91,10 @@ $user = unserialize($_SESSION['gebruiker_data']);
             name="myfile"
             accept="image/png, image/jpeg"
           />
-        </div>
         <div class="btn-group">
           <button name="submit" class="submit">Aanpassen</button>
         </div>
-        <div class="text-center center input">
+        <div class="error">
         <?php
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {

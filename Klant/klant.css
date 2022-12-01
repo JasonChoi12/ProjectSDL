@@ -14,6 +14,7 @@ h1 {
   }
   .klant{
     margin-top: 5%;
+    max-width: 100%;
   }
   
   .klantnaam-input {
@@ -93,4 +94,9 @@ h1 {
     margin-left: 200%;
     margin-top: -15%;
   }
-  
+  .error{
+    text-align: center;
+    width: 100%;
+    margin-left: 75%;
+    margin-top: 5%;
+   }

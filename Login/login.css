@@ -22,8 +22,6 @@
 
 .login {
   position: absolute;
-  height: 84px;
-  top: 20%;
   height: 10%;
   left: 62%;
   top: 27%;
@@ -79,4 +77,8 @@ h1 {
 .btn-group {
   left:10%;
   height: 30px;
+}
+
+.error{
+  text-align: center;
 }
