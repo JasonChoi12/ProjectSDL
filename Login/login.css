@@ -1,9 +1,10 @@
 .logo {
   position: absolute;
-  width: 65%;
-  height: 30%;
+  width: 85%;
+  height: 20%;
   left: 5%;
-  top: 0px;
+  top: 10%;
+  background-color: #fff;
 }
 
 .sidebar {

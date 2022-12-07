@@ -85,11 +85,13 @@ h1 {
 }
 .logo {
   position: absolute;
-  width: 65%;
-  height: 15vw;
+  width: 85%;
+  height: 12vw;
   left: 5%;
-  top: 0px;
+  top: 10%;
+  background-color: #fff;
 }
+
 .sidebar {
   position: fixed;
   left: 0;
