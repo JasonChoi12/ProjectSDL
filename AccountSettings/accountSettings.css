@@ -1,23 +1,23 @@
+
 .registreren {
   position: absolute;
-  height: 84px;
   margin-left: 25%;
+  top: 0%;
   text-align: center;
 }
 h1 {
   font-family: "verdana";
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 2.6vw;
   line-height: 84px;
   /* identical to box height */
   color: #42447d;
-  margin-right: 15%;
 }
 .submit {
   position: relative;
-  width: 229px;
-  height: 46px;
+  width: 43%;
+  height: 3vw;
   margin-top: 50px;
   background: #f39200;
   box-shadow: 0px 0px 30px rgba(99, 122, 48, 0.4);
@@ -30,71 +30,51 @@ h1 {
 
   font-family: "verdana";
   font-style: normal;
-  font-size: 14px;
+  font-size: 1vw;
   color: #fff;
 }
 
 .inputnaam {
-  width: 200px;
-  height: 40px;
+  width: 26%;
+  height: 2.7vw;
   background: rgba(100, 103, 143, 0.15);
   border-radius: 4px;
   outline: none;
   border: none;
+  font-size: 0.9vw;
+  padding: 0px;
   text-align: center;
 }
-.inputnaam2 {
-  width: 100px;
-  height: 40px;
-  background: rgba(100, 103, 143, 0.15);
-  border-radius: 4px;
-  margin-right: 20px;
-  margin-left: 20px;
-  outline: none;
-  border: none;
-  text-align: center;
-}
+
 .inputgegevens {
   margin-top: 30px;
-  width: 615px;
-  height: 40px;
+  width: 80%;
+  height: 2.7vw;
   background: rgba(100, 103, 143, 0.15);
   border-radius: 4px;
   outline: none;
   border: none;
+  font-size: 0.9vw;
+  padding: 0px;
   text-align: center;
 }
 
 .btn-group {
-  margin-left: 38%;
+  margin-left: 35%;
   text-decoration: none;
 }
-.usertype{
-    margin-right: 45%;
-    margin-top: 5%;
-}
-.usertype-dropdown{
-    width: 200px;
-  height: 40px;
-  background: rgba(100, 103, 143, 0.15);
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  text-align: center;
-}
-select:invalid {
-    color:gray;
+label{
+  font-style: normal;
+  font-size: 1.05vw;
 }
 .profielfoto{
- margin-left: 55%;
- margin-top: -8%;
+  font-style: normal;
+  font-size: 0.9vw;
 }
-.error {
-  text-align: center;
-  margin-top: 2%;
-  max-width: 40%;
-  margin-left: 28%;
-}
-form{
-  max-width: 80%;
+.error{
+  font-style: normal;
+  font-size: 1.05vw;
+  margin-top: 5%;
+  max-width: 50%;
+  margin-left: 24%;
 }

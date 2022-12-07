@@ -2,9 +2,9 @@ h1 {
   font-family: "verdana";
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 2.6vw;
   line-height: 84px;
-  /* identical to box height */
+
 }
 .title {
   position: absolute;
@@ -18,81 +18,99 @@ h1 {
 }
 
 .klant-input {
-  width: 307px;
-  height: 60px;
+  width: 20vw;
+  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
-  border-radius: 13px;
+  border-radius: 0.95vw;
   padding: 10px 10px;
+  font-size: 0.9vw;
 }
 
 .project-input {
-  width: 307px;
-  height: 60px;
+  width: 20vw;
+  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
-  border-radius: 13px;
+  border-radius: 0.95vw;
   padding: 10px 10px;
-}
-.activiteit {
-  margin-top: 5%;
+  font-size: 0.9vw;
 }
 .activiteit-input {
-  width: 600px;
-  height: 60px;
+  width: 39vw;
+  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
-  border-radius: 13px;
+  border-radius: 0.95vw;
   padding: 10px 10px;
+  font-size: 0.9vw;
 }
 .datum {
-  margin-left: 128%;
-  margin-top: -14%;
+ padding-left: 10%;
 }
 .datum-input {
-  width: 300px;
-  height: 60px;
+  width: 19vw;
+  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
-  border-radius: 13px;
+  border-radius: 0.95vw;
   padding: 10px 10px;
+  font-size: 0.9vw;
 }
-.tijd {
-  margin-top: 10%;
-}
+
 .tijd-input {
-  width: 200px;
-  height: 60px;
+  width: 13vw;
+  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
-  border-radius: 13px;
-  display: block;
+  border-radius: 0.95vw;
+  
+  font-size: 0.9vw;
+  padding: 10px;
   text-align: center;
 }
 
 .toteindtijd {
-  margin-left: 85%;
-  margin-top: -14%;
+  padding-left: 5%;
   white-space: nowrap;
 }
 .eindtijd {
-  margin-left: 40%;
-  margin-top: -14%;
+ padding-left: 5%;
 }
 .submit {
   position: relative;
-  width: 229px;
-  height: 46px;
-  background: #f39200;
-  display: block;
-  outline: none;
-  border: none;
-  border-radius: 4px;
-
-  font-family: "verdana";
-  font-style: normal;
-  font-size: 14px;
-  color: #fff;
-  margin-left: 135%;
-  margin-top: -9%;
+    width: 16vw;
+    height: 3vw;
+    background: #f39200;
+    display: block;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    
+  
+    font-family: "verdana";
+    font-style: normal;
+    font-size: 0.95vw;
+    color: #fff;
 }
+
+.btn{
+  padding-left: 5%;
+  margin-top: auto;
+  justify-content: center;
+}
+
+label{
+  font-style: normal;
+  font-size: 1.05vw;
+ }
+
+ .middle-line{
+  display: flex;
+  margin-top: 5%;
+ }
+ .tijd-line{
+  display: flex;
+  margin-top: 5%;
+ }
+

@@ -37,17 +37,16 @@ require_once("../src/sessie.php");
         </datalist>
       </div>
       <br />
-        <div>
-          <label>Project</label><br />
-          <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
-          <datalist id="projecten">
-            <option value="Project1"></option>
-            <option value="Project2"></option>
-            <option value="Project3"></option>
-          </datalist>
-        </div>
-        <br />
-
+      <div>
+        <label>Project</label><br />
+        <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
+        <datalist id="projecten">
+          <option value="Project1"></option>
+          <option value="Project2"></option>
+          <option value="Project3"></option>
+        </datalist>
+      </div>
+      <div class="middle-line">
         <div class="activiteit">
           <label>Activiteit<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
@@ -56,38 +55,47 @@ require_once("../src/sessie.php");
         <div class="datum">
           <label>Datum
             <br />
-            <input type="date" class="datum-input" name="datum"/>
+            <input type="date" class="datum-input" name="datum" />
           </label>
         </div>
-
+      </div>
+      <div class="tijd-line">
         <div class="tijd">
-          <label>Begonnen om
-            <input id="start" type="time" class="tijd-input" name="tijd"/></label>
-          <div class="eindtijd">
-            <label>Beïndigd om
-              <input id="end" type="time" class="tijd-input" name="tijd"/></label>
-          </div>
-          <div class="toteindtijd">
-            <label>Totale gewerkte tijd
-              <input id="diff" class="tijd-input" name="tijd"/></label>
-          </div>
+          <label>Begonnen om<br />
+            <input id="start" type="time" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="eindtijd">
+          <label>Beïndigd om<br />
+            <input id="end" type="time" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="toteindtijd">
+          <label>Totale gewerkte tijd<br />
+            <input id="diff" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="btn">
           <button class="submit">Toevoegen</button>
         </div>
-      </form>
+      </div>
+  </div>
+  </form>
   </div>
 </body>
 <script>
-var start = document.getElementById("start").value;
-var end = document.getElementById("end").value;
+  var start = document.getElementById("start").value;
+  var end = document.getElementById("end").value;
 
-document.getElementById("start").onchange = function() {diff(start,end)};
-document.getElementById("end").onchange = function() {diff(start,end)};
+  document.getElementById("start").onchange = function() {
+    diff(start, end)
+  };
+  document.getElementById("end").onchange = function() {
+    diff(start, end)
+  };
 
 
-function diff(start, end) {
+  function diff(start, end) {
     start = document.getElementById("start").value; //to update time value in each input bar
     end = document.getElementById("end").value; //to update time value in each input bar
-    
+
     start = start.split(":");
     end = end.split(":");
     var startDate = new Date(0, 0, 0, start[0], start[1], 0);
@@ -98,9 +106,11 @@ function diff(start, end) {
     var minutes = Math.floor(diff / 1000 / 60);
 
     return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
-}
+  }
 
-setInterval(function(){document.getElementById("diff").value = diff(start, end);}, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
+  setInterval(function() {
+    document.getElementById("diff").value = diff(start, end);
+  }, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
 </script>
 
 </html>

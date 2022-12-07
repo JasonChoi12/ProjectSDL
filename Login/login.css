@@ -1,8 +1,8 @@
 .logo {
   position: absolute;
-  width: 350px;
-  height: 250px;
-  left: 75px;
+  width: 65%;
+  height: 30%;
+  left: 5%;
   top: 0px;
 }
 
@@ -11,8 +11,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 40%;
-  width: 500px;
+  width: 32%;
   background: #42447d;
   padding: 6px 14px;
   z-index: 99;
@@ -23,20 +22,17 @@
 .login {
   position: absolute;
   height: 10%;
-  left: 62%;
-  top: 27%;
+  margin-left: 50%;
+  text-align: center;
 }
 
 h1 {
-  position: absolute;
-  margin-top: -50%;
-  margin-top: -46%;
-  left: 30%;
   font-family: "verdana";
   font-style: normal;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 2.6vw;
   line-height: 84px;
+  /* identical to box height */
   color: #42447d;
 }
 
@@ -71,9 +67,7 @@ h1 {
   border: none;
   text-align: center;
 }
-.password-forgot{
-  margin-left: 30%;
-}
+
 .btn-group {
   left:10%;
   height: 30px;

@@ -29,7 +29,7 @@ require_once("../src/sessie.php");
         <label>Klant</label><br />
         <input class="klantnaam-input" name="klantnaam" placeholder="Klantnaam" />
       </div>
-      <br />
+      <div class="middle-line">
       <div class="straat">
         <label>Straat<br />
           <input class="straat-input" name="straatnaam" placeholder="Straatnaam" />
@@ -47,14 +47,17 @@ require_once("../src/sessie.php");
           <input class="woonplaats-input" name="woonplaats" placeholder="Stad,Provincie" />
         </label>
       </div>
-
+      </div>
+      <div class="bottom-line">
       <div class="adres">
         <label>Huisnummer
           <input class="adres-input" name="huisnummer" placeholder="391" /></label>
+      </div>
         <div class="postcode">
           <label>Postcode
             <input class="adres-input" name="postcode" placeholder="1234AB" /></label>
         </div>
+      </div>
         <button name="submit" class="submit">Toevoegen</button>
         
       </div><br><div class="error">

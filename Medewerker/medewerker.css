@@ -1,162 +1,172 @@
+html, body { height: 100%; width: 100%; margin: 0; }
 h1 {
-    font-family: "verdana";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 84px;
-    border-bottom: 1px solid #ddd;
-  }
-  .title {
-    position: absolute;
-    height: 100%;
-    left: 17%;
-    top: 0%;
-    width: 80%;
-  }
-  .searchbar {
-    box-sizing: border-box;
-    position: absolute;
-    width: 310px;
-    height: 35px;
-    margin-top: 4%;
-    background: rgba(106, 112, 126, 0.01);
-    border: 2px solid #dddfe1;
-    border-radius: 13px;
-  }
-  .searchbar-input {
-    position: inherit;
-    margin-top: 2%;
-    margin-left: 5%;
-    background: rgba(106, 112, 126, 0.01);
-    width: 270px;
-    outline: none;
-    border: none;
-  }
-  .fa-solid {
-    margin-top: 2%;
-    margin-left: 3%;
-  }
-  .exporteer {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-   
-    width: 94px;
-    height: 40px;
-    background: #1e8034;
-    border-radius: 5px;
-    border: none;
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-  }
+  font-family: "verdana";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.6vw;
+  line-height: 84px;
+  border-bottom: 1px solid #ddd;
+}
+.title {
+  position: absolute;
+  height: 100%;
+  left: 17%;
+  top: 0%;
+  width: 80%;
+}
+.searchbar {
+  box-sizing: content-box;
+  position: absolute;
+  width: 26%;
+  height: 2.25vw;
+  margin-top: 4%;
+  background: rgba(106, 112, 126, 0.01);
+  border: 2px solid #dddfe1;
+  border-radius: 13px;
+}
+.searchbar-input {
+  position: inherit;
+  margin-top: 2%;
+  margin-left: 15%;
+  background: rgba(106, 112, 126, 0.01);
+  width: 85%;
+  outline: none;
+  border: none;
+  font-style: normal;
+  font-size: 0.95vw;
+}
+.fa-solid {
+  position: inherit;
+  margin-left: 3%;  
+  margin-top: 3%;
+  font-size: 1vw;
+}
+
+.exporteer {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+ 
+  width: 19%;
+  height: 2.55vw;
+  background: #1e8034;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  font-size: 0.95vw;
+  color: #fff;
+}
+
+.toevoegen {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+ 
+  width: 22%;
+  height: 2.55vw;
+  background: #f39200;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  font-size: 0.95vw;
+  color: #fff;
   
-  .toevoegen {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-   
-    width: 108px;
-    height: 40px;
-    background: #f39200;
-    border-radius: 5px;
-    border: none;
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-    
-  }
+}
+
+.bewerk {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+ 
+  width: 17%;
+  height: 2.55vw;
+  background: #f39200;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  font-size: 0.95vw;
+  color: #fff;
+}
+.table-bewerk {
+  width: 80%;
+  height: 2.55vw;
+  text-align: center;
+  background: #f39200;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  font-size: 0.95vw;
+  color: #fff;
+  margin-top: -1.5%;
+}
+
+.verwijderen {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
   
-  .bewerk {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-   
-    width: 83px;
-    height: 40px;
-    background: #f39200;
-    border-radius: 5px;
-    border: none;
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-  }
-  .table-bewerk {
-    width: 83px;
-    height: 40px;
-    text-align: center;
-    background: #f39200;
-    border-radius: 5px;
-    border: none;
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-    margin-top: -1.5%;
-  }
+  width: 24%;
+  height: 2.55vw;
+  background-color: #be3131;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  font-size: 0.95vw;
+  color: #fff;
+}
+
+.btn-group {
+  display: block;
+  margin-left: 60%;
+  margin-top: 4%;
   
-  .verwijderen {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    
-    width: 118px;
-    height: 40px;
-    background-color: #be3131;
-    border-radius: 5px;
-    border: none;
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-  }
+}
+
+table {
+  margin-top: 3%;
+  border-collapse: collapse;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.85vw;
+  width: 94%;
   
-  .btn-group {
-    display: inline-block;
-    margin-left: 60%;
-    margin-top: 4%;
-    
-  }
-  
-  table {
-    margin-top: 3%;
-    border-collapse: collapse;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    width: 94%;
-    
-  }
-  #table-left-border{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-  #table-right-border{
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  td, th{
-    padding-left: 20px;
-    text-align: center;
-  }
-  th{
-    height: 40px;
-    background: #b5b5cf;
-  }
-  td{
-    padding-top: 10px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  
+}
+#table-left-border{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#table-right-border{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+td, th{
+  padding-left: 20px;
+}
+th{
+  height: 2.6vw;
+  background: #b5b5cf;
+  text-align: center;
+}
+td{
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+.checkbox{
+  height: 1vw;
+  width:1vw;
+}

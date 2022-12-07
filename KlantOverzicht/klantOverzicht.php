@@ -85,8 +85,8 @@ require_once("../src/sessie.php");
           $id_klant = $klant_data['id_klant'];
         ?>
       <tr>
-        <td class="checkbox">
-          <input type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
+        <td>
+          <input class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
         </td>
         <td><?php echo $klant_data['klantnaam']; ?></td>
         <td><?php echo $klant_data['woonplaats']; ?></td>

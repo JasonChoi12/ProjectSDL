@@ -51,7 +51,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
           </select>
         </div> -->
       <label>Profielfoto</label><br />
-      <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg" />
+      <input class="profielfoto" type="file" id="myfile" name="myfile" accept="image/png, image/jpeg" />
       <div class="btn-group">
         <button name="submit" class="submit">Aanpassen</button>
       </div>

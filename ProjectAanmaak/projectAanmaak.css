@@ -2,7 +2,7 @@ h1 {
     font-family: "verdana";
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 2.6vw;
     line-height: 84px;
     /* identical to box height */
   }
@@ -18,63 +18,75 @@ h1 {
   }
 
   .klant-input {
-    width: 307px;
-    height: 60px;
+    width: 20vw;
+    height: 4vw;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
-    border-radius: 13px;
+    border-radius: 0.95vw;
     padding: 10px 10px;
-  }
-
-  .projectnaam {
-    margin-top: 5%;
+    font-size: 0.9vw;
   }
 
   .projectnaam-input {
-    width: 307px;
-    height: 60px;
+    width: 20vw;
+    height: 4vw;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
-    border-radius: 13px;
+    border-radius: 0.95vw;
     padding: 10px 10px;
+    font-size: 0.9vw;
   }
-
-  .begindatum {
-    margin-left: 100%;
-    margin-top: -21%;
+  .begindatum{
+    padding-left: 5%;
   }
 
   .begindatum-input {
-    width: 150px;
-    height: 60px;
+    width: 15vw;
+    height: 4vw;
     background: rgba(106, 112, 126, 0.0001);
     border: 1px solid #dddfe1;
-    border-radius: 13px;
-    text-align: center;
+    border-radius: 0.95vw;
+    padding: 10px 10px;
+    font-size: 0.9vw;
   }
   
   .submit {
     position: relative;
-    width: 229px;
-    height: 46px;
+    width: 16vw;
+    height: 3vw;
     background: #f39200;
     display: block;
     outline: none;
     border: none;
     border-radius: 4px;
+    
   
     font-family: "verdana";
     font-style: normal;
-    font-size: 14px;
+    font-size: 0.95vw;
     color: #fff;
-    margin-left: 150%;
-    margin-top: -13%;
-    
+  }
+  .btn{
+    padding-left: 5%;
+    margin-top: auto;
+    justify-content: center;
   }
   
   .error{
     text-align: center;
     width: 100%;
-    margin-left: 50%;
+    margin-left: 44%;
+    margin-top: 5%;
+    font-style: normal;
+  font-size: 1.05vw;
+   }
+   
+   label{
+    font-style: normal;
+    font-size: 1.05vw;
+   }
+
+   .project-info{
+    display: flex;
     margin-top: 5%;
    }

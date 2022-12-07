@@ -65,19 +65,23 @@ if (!empty($_SESSION["id_klant"])) {
                     ?>
 
       </div>
-      <br />
-      <div class="projectnaam">
-        <label>Projectnaam<br />
-          <input class="projectnaam-input" name="projectnaam" placeholder="Projectnaam" />
-        </label>
-      </div>
-      <div class="begindatum">
-        <label>
-          Begindatum<br />
-          <input type="date" class="begindatum-input" name="begindatum" placeholder="01-01-01" />
-        </label>
-      </div>
+      <div class="project-info">
+        <div class="projectnaam">
+          <label>Projectnaam<br />
+            <input class="projectnaam-input" name="projectnaam" placeholder="Projectnaam" />
+          </label>
+        </div>
+        <div class="begindatum">
+          <label>
+            Begindatum<br />
+            <input type="date" class="begindatum-input" name="begindatum" placeholder="01-01-01" />
+          </label>
+        </div>
+        <div class="btn">
+          <br>
       <button name="submit" class="submit">Toevoegen</button>
+        </div>
+      </div>
       <br>
       <div class="error">
         <?php
