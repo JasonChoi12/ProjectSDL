@@ -1,92 +1,141 @@
+* {
+  max-width: 100%;
+  max-height: 100%;
+}
 h1 {
-    font-family: "verdana";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 2.6vw;
-    line-height: 84px;
-    /* identical to box height */
+  font-family: "verdana";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 84px;
+  /* identical to box height */
+}
+.title {
+  position: absolute;
+  height: 100%;
+  left: 20%;
+  top: 0%;
+}
+
+.project {
+  margin-top: 5%;
+}
+
+.klant-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+
+.projectnaam-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+.begindatum {
+  padding-left: 5%;
+}
+
+.begindatum-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+
+.submit {
+  position: relative;
+  background: #f39200;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
+}
+.btn {
+  padding-left: 5%;
+  margin-top: auto;
+  justify-content: center;
+}
+
+.error {
+  text-align: center;
+  width: 100%;
+  margin-left: 44%;
+  margin-top: 5%;
+  font-style: normal;
+  font-size: 1.05vw;
+}
+
+label {
+  font-style: normal;
+  font-size: 1.05vw;
+}
+
+.project-info {
+  display: flex;
+  margin-top: 5%;
+}
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 15px;
   }
-  .title {
-    position: absolute;
-    height: 100%;
-    left: 20%;
-    top: 0%;
+  .klant-input {
+    width: 105px;
+    height: 20px;
+    font-size: 10px;
   }
-  
-  .project{
-    margin-top: 5%;
+  .projectnaam-input {
+    width: 105px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .begindatum-input {
+    width: 100px;
+    height: 20px;
+    font-size: 10px;
   }
 
+  label {
+    font-size: 12px;
+  }
+  .submit {
+    width: 65px;
+    height: 15px;
+    font-size: 9px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
   .klant-input {
     width: 20vw;
     height: 4vw;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 0.95vw;
-    padding: 10px 10px;
-    font-size: 0.9vw;
+    font-size: 14px;
   }
-
   .projectnaam-input {
     width: 20vw;
     height: 4vw;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 0.95vw;
-    padding: 10px 10px;
-    font-size: 0.9vw;
+    font-size: 14px;
   }
-  .begindatum{
-    padding-left: 5%;
-  }
-
   .begindatum-input {
     width: 15vw;
     height: 4vw;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 0.95vw;
-    padding: 10px 10px;
-    font-size: 0.9vw;
+    font-size: 15px;
   }
-  
+
+  label {
+    font-size: 16px;
+  }
   .submit {
-    position: relative;
     width: 16vw;
     height: 3vw;
-    background: #f39200;
-    display: block;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    
-  
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 0.95vw;
-    color: #fff;
+    font-size: 15px;
   }
-  .btn{
-    padding-left: 5%;
-    margin-top: auto;
-    justify-content: center;
-  }
-  
-  .error{
-    text-align: center;
-    width: 100%;
-    margin-left: 44%;
-    margin-top: 5%;
-    font-style: normal;
-  font-size: 1.05vw;
-   }
-   
-   label{
-    font-style: normal;
-    font-size: 1.05vw;
-   }
-
-   .project-info{
-    display: flex;
-    margin-top: 5%;
-   }
+}

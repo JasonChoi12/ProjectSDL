@@ -1,10 +1,12 @@
+* {
+  max-width: 100%;
+  max-height: 100%;
+}
 h1 {
   font-family: "verdana";
   font-style: normal;
   font-weight: 600;
-  font-size: 2.6vw;
   line-height: 84px;
-
 }
 .title {
   position: absolute;
@@ -18,99 +20,164 @@ h1 {
 }
 
 .klant-input {
-  width: 20vw;
-  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
   border-radius: 0.95vw;
   padding: 10px 10px;
-  font-size: 0.9vw;
 }
 
 .project-input {
-  width: 20vw;
-  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
   border-radius: 0.95vw;
   padding: 10px 10px;
-  font-size: 0.9vw;
 }
 .activiteit-input {
-  width: 39vw;
-  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
   border-radius: 0.95vw;
   padding: 10px 10px;
-  font-size: 0.9vw;
 }
 .datum {
- padding-left: 10%;
+  padding-left: 10%;
 }
 .datum-input {
-  width: 19vw;
-  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
   border-radius: 0.95vw;
   padding: 10px 10px;
-  font-size: 0.9vw;
 }
 
 .tijd-input {
-  width: 13vw;
-  height: 4vw;
   background: rgba(106, 112, 126, 0.0001);
   border: 1px solid #dddfe1;
   border-radius: 0.95vw;
-  
-  font-size: 0.9vw;
   padding: 10px;
   text-align: center;
 }
 
 .toteindtijd {
   padding-left: 5%;
-  white-space: nowrap;
 }
 .eindtijd {
- padding-left: 5%;
+  padding-left: 5%;
 }
 .submit {
   position: relative;
-    width: 16vw;
-    height: 3vw;
-    background: #f39200;
-    display: block;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    
-  
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 0.95vw;
-    color: #fff;
+  background: #f39200;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
 }
 
-.btn{
+.btn {
   padding-left: 5%;
   margin-top: auto;
   justify-content: center;
 }
 
-label{
+label {
   font-style: normal;
-  font-size: 1.05vw;
- }
+}
 
- .middle-line{
+.middle-line {
   display: flex;
   margin-top: 5%;
- }
- .tijd-line{
+}
+.tijd-line {
   display: flex;
   margin-top: 5%;
- }
+  
+    align-items: center;
+    flex-wrap: wrap;
+}
 
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 15px;
+  }
+  .klant-input {
+    width: 100px;
+    height: 20px;
+    font-size: 10px;
+  }
+  label {
+    font-size: 12px;
+  }
+  .project-input {
+    width: 100px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .activiteit-input {
+    width: 180px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .datum-input {
+    width: 80px;
+    height: 20px;
+    font-size: 7px;
+  }
+  .tijd-input {
+    width: 60px;
+    height: 20px;
+    font-size: 7px;
+  }
+  
+  .tijd-line label {
+    font-size: 10px;
+  }
+  .submit {
+    width: 65px;
+    height: 15px;
+    font-size: 9px;
+    margin-top: 15%;
+    margin-left: 220%;
+  }
+}
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+  .klant-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  label {
+    font-size: 16px;
+  }
+  .project-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .activiteit-input {
+    width: 39vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .datum-input {
+    width: 19vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .tijd-input {
+    width: 13vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .submit {
+    width: 16vw;
+    height: 3vw;
+    font-size: 15px;
+    margin-left: 300%;
+    margin-top: -20%;
+  }
+}
