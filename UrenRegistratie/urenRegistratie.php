@@ -1,5 +1,11 @@
 <?php
 require_once("../src/sessie.php");
+
+setcookie("id_project", "", time()-3600);
+if (isset($error)) {
+  $_SESSION['ERRORS'] = implode('<br> ', $error);
+  header('Location:../registreren/registreren.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,68 +32,199 @@ require_once("../src/sessie.php");
   <div class="title">
     <h1>Uren registreren</h1>
 
-    <form>
+    <form method="POST">
       <div class="klant">
         <label>Klant</label><br />
-        <input class="klant-input" list="klanten" name="klanten" placeholder="Klantnaam" />
-        <datalist id="klanten">
-          <option value="Klant1"></option>
-          <option value="Klant2"></option>
-          <option value="Klant3"></option>
-        </datalist>
+        <?php
+        $klanten = new Klanten;
+        $klanten_data = $klanten->KlantenZien();
+        $projecten = new projecten;
+        if(!empty($_COOKIE["id_klant"])){
+          $id_klant = $_COOKIE["id_klant"];
+        
+        
+        $projecten_data = $projecten->Projectenzien($id_klant);
+        
+        }else{
+          $id_klant = "";
+        }
+        
+
+
+
+        if (empty($id_klant)) {
+
+          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="Klantnaam" />
+        <datalist id="klanten">';
+          foreach ($klanten_data as $klant_data) {
+            echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
+                >';
+            echo  '<input name="klantid" value="' . $klant_data["id_klant"] . '" type="hidden" id="klantid" />';
+          }
+          '
+        </datalist>'; ?><input name="id_klant" value="id_klant" type="" id="id_klant" />
+          <script type="text/javascript">
+            $(function() {
+              $('#input').change(function() {
+                var abc = $("#klanten option[value='" + $('#input').val() + "']").attr('data-id');
+                $('#id_klant').val(abc)
+                console.log(abc);
+                document.cookie = "id_klant=  " + abc;
+                console.log(document.cookie);
+
+              });
+            });
+          </script>
+
+        <?php
+        } else {
+          // $id_klant = $_GET['id_klant'];
+          $klant_data = $klanten->KlantZien($id_klant);
+          // print_r($klant_data);
+          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder=' . $klant_data[0]["klantnaam"] . '>
+        <datalist id="klanten">';
+          foreach ($klanten_data as $klant_data) {
+            echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
+                >';
+            echo  '<input name="klantid" value="' . $klant_data["id_klant"] . '" type="hidden" id="klantid" />';
+          }
+          '
+        </datalist>'; ?><input name="id_klant" value="id_klant" type="" id="id_klant" />
+          <script type="text/javascript">
+            $(function() {
+              $('#input').change(function() {
+                var abc = $("#klanten option[value='" + $('#input').val() + "']").attr('data-id');
+                $('#id_klant').val(abc)
+                console.log(abc);
+                document.cookie = "id_klant=  " + abc;
+                console.log(document.cookie);
+
+              });
+            });
+          </script>
+
+        <?php
+        }?>
       </div>
       <br />
-        <div>
-          <label>Project</label><br />
-          <input class="project-input" list="projecten" name="projecten" placeholder="Projectnaam" />
-          <datalist id="projecten">
-            <option value="Project1"></option>
-            <option value="Project2"></option>
-            <option value="Project3"></option>
-          </datalist>
-        </div>
+      <div>
+        <label>Project</label><br />
+        <?php
+        // print_r($_COOKIE) ;
+        if(!empty($_COOKIE["id_project"])){
+          $id_project = $_COOKIE["id_project"];
+        
+        }else{
+          $id_project = "";
+        }
+        if (empty($id_project)) {
+
+          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder="Projectnaam"/>
+<datalist id="projecten">';
+          foreach ($projecten_data as $project_data) {
+            echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
+      >';
+            echo  '<input name="projectid" value="' . $$project_data["id_project"] . '" type="hidden" id="projectid" />';
+          }
+          '
+</datalist>'; ?><input name="id_project" value="id_project" type="" id="id_project" />
+          <script type="text/javascript">
+            $(function() {
+              $('#project').change(function() {
+                var def = $("#projecten option[value='" + $('#project').val() + "']").attr('data-id');
+                $('#id_project').val(def)
+                console.log(def);
+                document.cookie = "id_project=  " + def;
+                console.log(document.cookie);
+
+              });
+            });
+          </script>
+
+        <?php
+        }  else {
+          
+          $projecten = new projecten;
+          $project_data = $projecten->Projectzien($id_klant, $id_project);
+          // print_r($project_data);
+          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $project_data[0]["projectnaam"] . ' />
+<datalist id="projecten">';
+          foreach ($projecten_data as $project_data) {
+            echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
+      >';
+            echo  '<input name="projectid" value="' . $$project_data["id_project"] . '" type="hidden" id="projectid" />';
+          }
+          '
+</datalist>'; ?><input name="id_project" value="id_project" type="" id="id_project" />
+          <script type="text/javascript">
+            $(function() {
+              $('#project').change(function() {
+                var def = $("#projecten option[value='" + $('#project').val() + "']").attr('data-id');
+                $('#id_project').val(def)
+                console.log(def);
+                document.cookie = "id_project=  " + def;
+                console.log(document.cookie);
+
+              });
+            });
+          </script>
+
+        <?php
+        } ?>
+      </div>
+      <br />
+    </form>
+    <div class="activiteit">
+      <label>Activiteit<br />
+        <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
+      </label>
+    </div>
+    <div class="datum">
+      <label>Datum
         <br />
+        <input type="date" class="datum-input" name="datum" />
+      </label>
+    </div>
 
-        <div class="activiteit">
-          <label>Activiteit<br />
-            <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
-          </label>
-        </div>
-        <div class="datum">
-          <label>Datum
-            <br />
-            <input type="date" class="datum-input" name="datum"/>
-          </label>
-        </div>
-
-        <div class="tijd">
-          <label>Begonnen om
-            <input id="start" type="time" class="tijd-input" name="tijd"/></label>
-          <div class="eindtijd">
-            <label>Beïndigd om
-              <input id="end" type="time" class="tijd-input" name="tijd"/></label>
-          </div>
-          <div class="toteindtijd">
-            <label>Totale gewerkte tijd
-              <input id="diff" class="tijd-input" name="tijd"/></label>
-          </div>
-          <button class="submit">Toevoegen</button>
-        </div>
-      </form>
+    <div class="tijd">
+      <label>Begonnen om
+        <input id="start" type="time" class="tijd-input" name="tijd" /></label>
+      <div class="eindtijd">
+        <label>Beïndigd om
+          <input id="end" type="time" class="tijd-input" name="tijd" /></label>
+      </div>
+      <div class="toteindtijd">
+        <label>Totale gewerkte tijd
+          <input id="diff" class="tijd-input" name="tijd" /></label>
+      </div>
+      <button class="submit">Toevoegen</button>
+    </div>
+    </form><br>
+      <?php  if (empty($projecten_data)){
+          echo  "Er moeten nog projecten worden aangemaakt";
+        }
+        if (empty($klanten_data)){
+          $error[] = "er moeten nog klanten worden gemaakt";
+        }
+      ?>
   </div>
 </body>
 <script>
-var start = document.getElementById("start").value;
-var end = document.getElementById("end").value;
+  var start = document.getElementById("start").value;
+  var end = document.getElementById("end").value;
 
-document.getElementById("start").onchange = function() {diff(start,end)};
-document.getElementById("end").onchange = function() {diff(start,end)};
+  document.getElementById("start").onchange = function() {
+    diff(start, end)
+  };
+  document.getElementById("end").onchange = function() {
+    diff(start, end)
+  };
 
 
-function diff(start, end) {
+  function diff(start, end) {
     start = document.getElementById("start").value; //to update time value in each input bar
     end = document.getElementById("end").value; //to update time value in each input bar
-    
+
     start = start.split(":");
     end = end.split(":");
     var startDate = new Date(0, 0, 0, start[0], start[1], 0);
@@ -98,9 +235,11 @@ function diff(start, end) {
     var minutes = Math.floor(diff / 1000 / 60);
 
     return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
-}
+  }
 
-setInterval(function(){document.getElementById("diff").value = diff(start, end);}, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
+  setInterval(function() {
+    document.getElementById("diff").value = diff(start, end);
+  }, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
 </script>
 
 </html>

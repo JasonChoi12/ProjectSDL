@@ -93,7 +93,7 @@ require_once("../src/sessie.php");
         <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
         <td><?php echo $klant_data['postcode']; ?></td>
         <td><?php echo $klant_data['telefoonnummer']; ?></td>
-        <td><?php $projecten_data = $projecten->Projectzien($id_klant);
+        <td><?php $projecten_data = $projecten->Projectenzien($id_klant);
             echo count($projecten_data); ?></td>
         <td>
           <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">

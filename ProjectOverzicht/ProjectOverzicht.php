@@ -70,7 +70,7 @@ if(empty($id_klant)){
         <?php
         // foreach klant om door alle rijen een loop te doen
         $projecten = new projecten();
-        $projecten_data = $projecten->Projectzien($id_klant);
+        $projecten_data = $projecten->Projectenzien($id_klant);
         foreach($projecten_data as $project_data){
         ?>
         <tr>

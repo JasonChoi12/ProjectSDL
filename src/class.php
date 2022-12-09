@@ -478,7 +478,38 @@ class projecten extends Klanten
             return $e;
         }
     }
-    public function Projectzien($id_klant)
+    public function Projectzien($id_klant, $id_project)
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT * FROM projecten where id_klant = :id_klant AND id_project = :id_project" ;
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_klant", $id_klant);
+                $stmt->bindParam(":id_project", $id_project);
+
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchall();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+    }
+
+    public function Projectenzien($id_klant)
     { {
             try {
                 // maak een connectie met de database
@@ -532,6 +563,39 @@ class projecten extends Klanten
         } catch (PDOException $e) {
             $this->conn = NULL;
             // status terugsturen
+            return $e;
+        }
+    }
+}
+class uren extends projecten
+{
+
+    public function UrenRegistreren($id_gebruiker, $id_project, $activiteit, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "INSERT INTO uren (id_project, id_gebruiker, activiteit, declarabel, uren, begonnen, beëindigd, datum) VALUES (:id_project, :id_gebruiker, :activiteit, :declarabel, :uren, :begonnen, :beëindigd, :datum)";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_project", $id_project);
+            $stmt->bindParam(":id_gebruiker", $id_gebruiker);
+            $stmt->bindParam(":activiteit", $activiteit);
+            $stmt->bindParam(":declarabel", $declarabel);
+            $stmt->bindParam(":uren", $uren);
+            $stmt->bindParam(":begonnen", $begonnen);
+            $stmt->bindParam(":beëindigd", $beëindigd);
+            $stmt->bindParam(":datum", $datum);
+
+
+            //SQL query daadwerkelijk uitvoeren
+            $stmt->execute();
+            //Zet verbinding op NULL
+            $this->conn = NULL;
+        } catch (PDOException $e) {
+
             return $e;
         }
     }
