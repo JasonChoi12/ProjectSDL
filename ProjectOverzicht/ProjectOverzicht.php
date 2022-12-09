@@ -36,7 +36,7 @@ if(empty($id_klant)){
     `
     <div class="title">
       <h1>Project Overzicht</h1>
-      <form id="form">
+      
         <div class="searchbar">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input
@@ -48,7 +48,7 @@ if(empty($id_klant)){
           />
         </div>
         
-      </form>
+  
       <div class="btn-group">
         <button class="exporteer">Exporteren</button>
         <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>

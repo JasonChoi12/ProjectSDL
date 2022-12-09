@@ -17,7 +17,7 @@
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
             <br />
-            <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" /><br />
+            <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" />
             <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
             <input class="inputgegevens" type="text" id="code" name="code" placeholder="Code" />
             <div class="btn-group">

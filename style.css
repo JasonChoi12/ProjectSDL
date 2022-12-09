@@ -13,14 +13,14 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 83px;
+  width: 5.4vw;
   background: #42447D;
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
 }
 .sidebar.open{
-  width: 250px;
+  width: 15vw;
 }
 .sidebar .logo-details{
   height: 60px;
@@ -38,6 +38,8 @@
   font-weight: 600;
   opacity: 0;
   transition: all 0.5s ease;
+  background: #fff;
+  border-radius: 2%;
 }
 .sidebar.open .logo-details .icon,
 .sidebar.open .logo-details .logo_name{
@@ -48,20 +50,21 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  font-size: 22px;
+  font-size: 1.6vw;
   transition: all 0.4s ease;
-  font-size: 23px;
+  
   text-align: center;
   cursor: pointer;
   transition: all 0.5s ease;
 }
 .sidebar.open .logo-details #btn{
   text-align: right;
+  color: black;
 }
 .sidebar i{
   color: #fff;
   height: 60px;
-  min-width: 50px;
+  min-width: 3.5vw;
   font-size: 28px;
   text-align: center;
   line-height: 60px;
@@ -108,7 +111,7 @@
   outline: none;
   height: 50px;
   width: 100%;
-  width: 50px;
+  
   border: none;
   border-radius: 12px;
   transition: all 0.5s ease;
@@ -150,7 +153,7 @@
 }
 .sidebar li a .links_name{
   color: #fff;
-  font-size: 15px;
+  font-size: 0.8vw;
   font-weight: 400;
   white-space: nowrap;
   opacity: 0;
@@ -169,13 +172,13 @@
 .sidebar li i{
   height: 50px;
   line-height: 50px;
-  font-size: 18px;
+  font-size: 1.2vw;
   border-radius: 12px;
 }
 .sidebar li.profile{
   position: fixed;
   height: 70px;
-  width: 83px;
+  width: 5.4vw;
   left: 0;
   bottom: -8px;
   padding: 10px 14px;
@@ -184,7 +187,7 @@
   overflow: hidden;
 }
 .sidebar.open li.profile{
-  width: 250px;
+  width: 15%;
 }
 .sidebar li .profile-details{
   display: flex;
@@ -192,14 +195,14 @@
   flex-wrap: nowrap;
 }
 .sidebar li img{
-  height: 45px;
-  width: 45px;
+  height: 3vw;
+  width: 3vw;
   object-fit: cover;
   border-radius: 6px;
   margin-right: 10px;
 }
 .sidebar li.profile .name{
-  font-size: 15px;
+  font-size: 1vw;
   font-weight: 400;
   color: #fff;
   white-space: nowrap;
@@ -242,6 +245,7 @@
   font-weight: 500;
   margin: 18px
 }
+
 @media (max-width: 420px) {
   .sidebar li .tooltip{
     display: none;

@@ -210,15 +210,11 @@ if (isset($error)) {
   </div>
 </body>
 <script>
-  var start = document.getElementById("start").value;
-  var end = document.getElementById("end").value;
+var start = document.getElementById("start").value;
+var end = document.getElementById("end").value;
 
-  document.getElementById("start").onchange = function() {
-    diff(start, end)
-  };
-  document.getElementById("end").onchange = function() {
-    diff(start, end)
-  };
+document.getElementById("start").onchange = function() {diff(start,end)};
+document.getElementById("end").onchange = function() {diff(start,end)};
 
 
   function diff(start, end) {
