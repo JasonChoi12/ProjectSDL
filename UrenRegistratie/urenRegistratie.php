@@ -174,31 +174,37 @@ if (isset($error)) {
       </div>
       <br />
     </form>
-    <div class="activiteit">
-      <label>Activiteit<br />
-        <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
-      </label>
-    </div>
-    <div class="datum">
-      <label>Datum
-        <br />
-        <input type="date" class="datum-input" name="datum" />
-      </label>
-    </div>
-
-    <div class="tijd">
-      <label>Begonnen om
-        <input id="start" type="time" class="tijd-input" name="tijd" /></label>
-      <div class="eindtijd">
-        <label>Beïndigd om
-          <input id="end" type="time" class="tijd-input" name="tijd" /></label>
+    <div class="middle-line">
+        <div class="activiteit">
+          <label>Activiteit<br />
+            <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
+          </label>
+        </div>
+        <div class="datum">
+          <label>Datum
+            <br />
+            <input type="date" class="datum-input" name="datum" />
+          </label>
+        </div>
       </div>
-      <div class="toteindtijd">
-        <label>Totale gewerkte tijd
-          <input id="diff" class="tijd-input" name="tijd" /></label>
+      <div class="tijd-line">
+        <div class="tijd">
+          <label>Begonnen om<br />
+            <input id="start" type="time" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="eindtijd">
+          <label>Beïndigd om<br />
+            <input id="end" type="time" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="toteindtijd">
+          <label>Totale gewerkte tijd<br />
+            <input id="diff" class="tijd-input" name="tijd" /></label>
+        </div>
+        <div class="btn">
+          <button class="submit">Toevoegen</button>
+        </div>
       </div>
-      <button class="submit">Toevoegen</button>
-    </div>
+  
     </form><br>
       <?php  if (empty($projecten_data)){
           echo  "Er moeten nog projecten worden aangemaakt";
