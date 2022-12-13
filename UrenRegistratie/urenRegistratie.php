@@ -170,35 +170,41 @@ if (isset($error)) {
       </div>
       <br />
     </form>
-    <form action="../forms/UrenRegistreren-form.php" method="post">
+    <div class="middle-line">
+        <form action="../forms/UrenRegistreren-form.php" method="post">
     <?php //echo $id_klant. " " . $id_project;?>
     <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
     <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
     <div class="activiteit">
-      <label>Activiteit<br />
-        <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
-      </label>
-    </div>
-    <div class="datum">
-      <label>Datum
-        <br />
-        <input type="date" class="datum-input" name="datum" />
-      </label>
-    </div>
-
-    <div class="tijd">
-      <label>Begonnen om
-        <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
-      <div class="eindtijd">
-        <label>Beïndigd om
-          <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
+          <label>Activiteit<br />
+            <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
+          </label>
+        </div>
+        <div class="datum">
+          <label>Datum
+            <br />
+            <input type="date" class="datum-input" name="datum" />
+          </label>
+        </div>
       </div>
-      <div class="toteindtijd">
-        <label>Totale gewerkte tijd
-          <input id="diff" class="tijd-input" name="uren" /></label>
+      <div class="tijd-line">
+        <div class="tijd">
+          <label>Begonnen om<br />
+            <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
+        </div>
+        <div class="eindtijd">
+          <label>Beïndigd om<br />
+            <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
+        </div>
+        <div class="toteindtijd">
+          <label>Totale gewerkte tijd<br />
+            <input id="diff" class="tijd-input" name="uren" /></label>
+        </div>
+        <div class="btn">
+          <button class="submit">Toevoegen</button>
+        </div>
       </div>
-      <button class="submit">Toevoegen</button>
-    </div>
+  
     </form><br>
       <?php  if (empty($projecten_data)){
           echo  "Er moeten nog projecten worden aangemaakt";

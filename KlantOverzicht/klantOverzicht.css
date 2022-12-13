@@ -1,9 +1,13 @@
-html, body { height: 100%; width: 100%; margin: 0; }
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
 h1 {
   font-family: "verdana";
   font-style: normal;
   font-weight: 600;
-  font-size: 2.6vw;
   line-height: 84px;
   border-bottom: 1px solid #ddd;
 }
@@ -17,8 +21,6 @@ h1 {
 .searchbar {
   box-sizing: content-box;
   position: absolute;
-  width: 26%;
-  height: 2.25vw;
   margin-top: 4%;
   background: rgba(106, 112, 126, 0.01);
   border: 2px solid #dddfe1;
@@ -29,17 +31,14 @@ h1 {
   margin-top: 2%;
   margin-left: 15%;
   background: rgba(106, 112, 126, 0.01);
-  width: 85%;
   outline: none;
   border: none;
   font-style: normal;
-  font-size: 0.95vw;
 }
 .fa-solid {
   position: inherit;
-  margin-left: 3%;  
+  margin-left: 3%;
   margin-top: 3%;
-  font-size: 1vw;
 }
 
 .exporteer {
@@ -48,15 +47,12 @@ h1 {
   align-items: center;
   text-align: center;
   gap: 8px;
- 
-  width: 19%;
-  height: 2.55vw;
+
   background: #1e8034;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
   font-style: normal;
-  font-size: 0.95vw;
   color: #fff;
 }
 
@@ -66,17 +62,13 @@ h1 {
   align-items: center;
   text-align: center;
   gap: 8px;
- 
-  width: 22%;
-  height: 2.55vw;
+
   background: #f39200;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
   font-style: normal;
-  font-size: 0.95vw;
   color: #fff;
-  
 }
 
 .bewerk {
@@ -85,27 +77,21 @@ h1 {
   align-items: center;
   text-align: center;
   gap: 8px;
- 
-  width: 17%;
-  height: 2.55vw;
+
   background: #f39200;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
   font-style: normal;
-  font-size: 0.95vw;
   color: #fff;
 }
 .table-bewerk {
-  width: 80%;
-  height: 2.55vw;
   text-align: center;
   background: #f39200;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
   font-style: normal;
-  font-size: 0.95vw;
   color: #fff;
   margin-top: -1.5%;
 }
@@ -116,15 +102,12 @@ h1 {
   align-items: center;
   text-align: center;
   gap: 8px;
-  
-  width: 24%;
-  height: 2.55vw;
+
   background-color: #be3131;
   border-radius: 5px;
   border: none;
   font-family: "verdana";
   font-style: normal;
-  font-size: 0.95vw;
   color: #fff;
 }
 
@@ -132,7 +115,6 @@ h1 {
   display: block;
   margin-left: 60%;
   margin-top: 4%;
-  
 }
 
 table {
@@ -140,33 +122,133 @@ table {
   border-collapse: collapse;
   font-style: normal;
   font-weight: 600;
-  font-size: 0.85vw;
-  width: 94%;
-  
 }
-#table-left-border{
+#table-left-border {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-#table-right-border{
+#table-right-border {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-td, th{
-  padding-left: 20px;
-}
-th{
+
+th {
   height: 2.6vw;
   background: #b5b5cf;
   text-align: center;
 }
-td{
+td {
   padding-top: 10px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
   text-align: left;
 }
-.checkbox{
-  height: 1vw;
-  width:1vw;
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 15px;
+  }
+  .searchbar {
+    width: 100px;
+    height: 15px;
+  }
+  .searchbar-input {
+    width: 85%;
+    font-size: 11px;
+    margin-top: -1%;
+  }
+  .fa-solid {
+    font-size: 10px;
+  }
+  .exporteer {
+    width: 65px;
+    height: 15px;
+    font-size: 8px;
+  }
+  .toevoegen {
+    width: 65px;
+    height: 15px;
+    font-size: 8px;
+  }
+  .bewerk {
+    width: 55px;
+    height: 15px;
+    font-size: 8px;
+  }
+  .table-bewerk {
+    width: 40px;
+    height: 15px;
+    font-size: 8px;
+  }
+  .verwijderen {
+    width: 70px;
+    height: 15px;
+    font-size: 8px;
+  }
+  table {
+    font-size: 8px;
+    width: 94%;
+  }
+  td,
+  th {
+    padding-left: 3px;
+  }
+  .checkbox {
+    height: 8px;
+    width: 8px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+  .searchbar {
+    width: 26%;
+    height: 2.25vw;
+  }
+  .searchbar-input {
+    width: 85%;
+    font-size: 14px;
+  }
+  .fa-solid {
+    font-size: 1vw;
+  }
+  .exporteer {
+    width: 19%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .toevoegen {
+    width: 22%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .bewerk {
+    width: 17%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .table-bewerk {
+    width: 80%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .verwijderen {
+    width: 24%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  table {
+    font-size: 0.85vw;
+    width: 94%;
+  }
+  td,
+  th {
+    padding-left: 20px;
+  }
+  .checkbox {
+    height: 1vw;
+    width: 1vw;
+  }
 }
