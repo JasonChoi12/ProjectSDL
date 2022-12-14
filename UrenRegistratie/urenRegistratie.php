@@ -1,7 +1,7 @@
 <?php
 require_once("../src/sessie.php");
-$user = unserialize($_SESSION['gebruiker_data']);
-setcookie("id_project", "", time() - 3600);
+
+setcookie("id_project", "", time()-3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../registreren/registreren.php');
@@ -169,12 +169,11 @@ if (isset($error)) {
       <br />
     </form>
     <div class="middle-line">
-      <form action="../forms/UrenRegistreren-form.php" method="post">
-        
-        <input name="id_gebruiker" value="<?php echo $user->id; ?>" type="hidden" id="id_gebruiker" />
-        <input name="id_klant" value="<?php echo $id_klant; ?>" type="hidden" id="id_klant" />
-        <input name="id_project" value="<?php echo $id_project; ?>" type="hidden" id="id_project" />
-        <div class="activiteit">
+        <form action="../forms/UrenRegistreren-form.php" method="post">
+    <?php //echo $id_klant. " " . $id_project;?>
+    <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
+    <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
+    <div class="activiteit">
           <label>Activiteit<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
           </label>
@@ -222,7 +221,7 @@ if (isset($error)) {
       }
       ?>
     </div>
-    </div>
+  </div>
 </body>
 <script>
   let start = document.getElementById("start").value;

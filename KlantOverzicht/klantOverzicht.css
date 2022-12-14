@@ -240,7 +240,7 @@ td {
     font-size: 0.95vw;
   }
   table {
-    font-size: 0.85vw;
+    font-size: 12px;
     width: 94%;
   }
   td,
@@ -248,7 +248,7 @@ td {
     padding-left: 20px;
   }
   .checkbox {
-    height: 1vw;
-    width: 1vw;
+    height: 12px;
+    width: 12px;
   }
 }

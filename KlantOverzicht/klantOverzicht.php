@@ -44,6 +44,13 @@ require_once("../src/sessie.php");
         }
       }
     }
+    function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
   </script>
 
   <div class="title">
@@ -67,7 +74,7 @@ require_once("../src/sessie.php");
     </div>
     <table id="klantoverzicht">
       <tr>
-        <th id="table-left-border"></th>
+        <th id="table-left-border"><input class="checkbox" type="checkbox" onClick="toggle(this)"></th>
         <th>Klant</th>
         <th>Woonplaats</th>
         <th>Adres</th>
@@ -86,7 +93,7 @@ require_once("../src/sessie.php");
         ?>
       <tr>
         <td>
-          <input class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
+          <input id="checkbox" class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
         </td>
         <td><?php echo $klant_data['klantnaam']; ?></td>
         <td><?php echo $klant_data['woonplaats']; ?></td>
