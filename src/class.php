@@ -484,7 +484,7 @@ class projecten extends Klanten
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM projecten where id_klant = :id_klant AND id_project = :id_project" ;
+                $sql = "SELECT * FROM projecten where id_klant = :id_klant AND id_project = :id_project";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
                 // waardes verbinden met de named placeholders
@@ -570,23 +570,23 @@ class projecten extends Klanten
 class uren extends projecten
 {
 
-    public function UrenRegistreren($id_gebruiker, $id_project, $activiteit, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    public function UrenRegistreren($id_gebruiker, $id_project, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO uren (id_project, id_gebruiker, activiteit, declarabel, uren, begonnen, beëindigd, datum) VALUES (:id_project, :id_gebruiker, :activiteit, :declarabel, :uren, :begonnen, :beëindigd, :datum)";
+            $sql = "INSERT INTO uren (id_project, id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum) VALUES (:id_project, :id_gebruiker, :activiteit, :declarabel, :uren, :begonnen, :beeindigd, :datum)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":id_project", $id_project);
             $stmt->bindParam(":id_gebruiker", $id_gebruiker);
-            $stmt->bindParam(":activiteit", $activiteit);
+            $stmt->bindParam(":activiteit", $activiteiten);
             $stmt->bindParam(":declarabel", $declarabel);
             $stmt->bindParam(":uren", $uren);
             $stmt->bindParam(":begonnen", $begonnen);
-            $stmt->bindParam(":beëindigd", $beëindigd);
+            $stmt->bindParam(":beeindigd", $beëindigd);
             $stmt->bindParam(":datum", $datum);
 
 
@@ -596,6 +596,48 @@ class uren extends projecten
             $this->conn = NULL;
         } catch (PDOException $e) {
 
+            return $e;
+        }
+    }
+    public function Laatst_gewerkt($id_klant, $id_project, $datum)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            // sql query defineren
+            $sql = "UPDATE `projecten` 
+                    SET 
+                    laatst_gewerkt=COALESCE(NULLIF(:laatst_gewerkt, ''),laatst_gewerkt)
+                   
+
+                    WHERE id_klant = :id_klant and id_project = :id_project";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(':id_klant', $id_klant);
+            $stmt->bindParam(':id_project', $id_project);
+            $stmt->bindParam(':laatst_gewerkt', $datum);
+            // 2de sql
+            $sql2 = "SELECT laatst_gewerkt FROM projecten WHERE id_klant = :id_klant and id_project = :id_project";
+            //SQL voorbereiden
+            $stmt2 = $this->conn->prepare($sql2);
+            //Values verbinden met named placeholders
+            $stmt2->bindParam(':id_klant', $id_klant);
+            $stmt2->bindParam(':id_project', $id_project);
+            //SQL query daadwerkelijk uitvoeren
+            $stmt2->execute();
+            // data ophalen
+            $data = $stmt2->fetch();
+
+            if ($data["laatst_gewerkt"] < $datum) {
+                $stmt->execute();
+                return true;
+            }
+
+        } catch (PDOException $e) {
+            //Zet verbinding op NULL
+            $this->conn = NULL;
             return $e;
         }
     }
