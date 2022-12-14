@@ -26,7 +26,7 @@ require_once("../src/sessie.php");
     <h1>Klant aanmaken</h1>
     <form class="klant" method="post" action="../forms/klantaanmaken-form.php">
       <div>
-        <label>Klant</label><br />
+        <label>* Klant</label><br />
         <input class="klantnaam-input" name="klantnaam" placeholder="Klantnaam" />
       </div>
       <div class="middle-line">
@@ -43,7 +43,7 @@ require_once("../src/sessie.php");
       </div>
       <div class="woonplaats">
         <label>
-          Woonplaats<br />
+         * Woonplaats<br />
           <input class="woonplaats-input" name="woonplaats" placeholder="Stad,Provincie" />
         </label>
       </div>

@@ -1,7 +1,7 @@
 <?php
 require_once("../src/sessie.php");
 
-setcookie("id_project", "", time()-3600);
+setcookie("id_project", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../registreren/registreren.php');
@@ -39,16 +39,15 @@ if (isset($error)) {
         $klanten = new Klanten;
         $klanten_data = $klanten->KlantenZien();
         $projecten = new projecten;
-        if(!empty($_COOKIE["id_klant"])){
+        if (!empty($_COOKIE["id_klant"])) {
           $id_klant = $_COOKIE["id_klant"];
-        
-        
-        $projecten_data = $projecten->Projectenzien($id_klant);
-        
-        }else{
+
+
+          $projecten_data = $projecten->Projectenzien($id_klant);
+        } else {
           $id_klant = "";
         }
-        
+
 
 
 
@@ -102,16 +101,15 @@ if (isset($error)) {
           </script>
 
         <?php
-        }?>
+        } ?>
       </div>
       <br />
       <div>
         <label>Project</label><br />
         <?php
-        if(!empty($_COOKIE["id_project"])){
+        if (!empty($_COOKIE["id_project"])) {
           $id_project = $_COOKIE["id_project"];
-        
-        }else{
+        } else {
           $id_project = "";
         }
         if (empty($id_project)) {
@@ -139,8 +137,8 @@ if (isset($error)) {
           </script>
 
         <?php
-        }  else {
-          
+        } else {
+
           $projecten = new projecten;
           $project_data = $projecten->Projectzien($id_klant, $id_project);
           echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $project_data[0]["projectnaam"] . ' />
@@ -170,57 +168,66 @@ if (isset($error)) {
       </div>
       <br />
     </form>
-    <div class="middle-line">
-        <form action="../forms/UrenRegistreren-form.php" method="post">
-    <?php //echo $id_klant. " " . $id_project;?>
-    <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
-    <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
-    <div class="activiteit">
-          <label>Activiteit<br />
-            <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
-          </label>
+    <div>
+      <form action="../forms/UrenRegistreren-form.php" method="post">
+        <?php //echo $id_klant. " " . $id_project;
+        ?>
+        <input name="id_klant" value="<?php echo $id_klant; ?>" type="hidden" id="id_klant" />
+        <input name="id_project" value="<?php echo $id_project; ?>" type="hidden" id="id_project" />
+        <div class="middle-line">
+          <div class="activiteit">
+            <label>Activiteit<br />
+              <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
+            </label>
+          </div>
+          <div class="datum">
+            <label>Datum
+              <br />
+              <input type="date" class="datum-input" name="datum" />
+            </label>
+          </div>
         </div>
-        <div class="datum">
-          <label>Datum
-            <br />
-            <input type="date" class="datum-input" name="datum" />
-          </label>
-        </div>
+    </div>
+    <div class="tijd-line">
+      <div class="tijd">
+        <label>Begonnen om<br />
+          <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
       </div>
-      <div class="tijd-line">
-        <div class="tijd">
-          <label>Begonnen om<br />
-            <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
-        </div>
-        <div class="eindtijd">
-          <label>Beïndigd om<br />
-            <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
-        </div>
-        <div class="toteindtijd">
-          <label>Totale gewerkte tijd<br />
-            <input id="diff" class="tijd-input" name="uren" /></label>
-        </div>
-        <div class="btn">
-          <button class="submit">Toevoegen</button>
-        </div>
+      <div class="eindtijd">
+        <label>Beïndigd om<br />
+          <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
       </div>
-  
+      <div class="toteindtijd">
+        <label>Totale gewerkte tijd<br />
+          <input id="diff" class="tijd-input" name="uren" /></label>
+      </div>
+      <div class="btn">
+        <button class="submit">Toevoegen</button>
+      </div>
+    </div>
+
     </form><br>
-      <?php  if (empty($projecten_data)){
-          echo  "Er moeten nog projecten worden aangemaakt";
-        }
-        if (empty($klanten_data)){
-          $error[] = "er moeten nog klanten worden gemaakt";
-        }
+    <div class="error">
+      <?php if (empty($projecten_data)) {
+        echo  "Er moeten nog projecten worden aangemaakt";
+      }
+      if (empty($klanten_data)) {
+        $error[] = "er moeten nog klanten worden gemaakt";
+      }
       ?>
+    </div>
   </div>
 </body>
 <script>
-var start = document.getElementById("start").value;
-var end = document.getElementById("end").value;
+  var start = document.getElementById("start").value;
+  var end = document.getElementById("end").value;
 
-document.getElementById("start").onchange = function() {diff(start,end)};
-document.getElementById("end").onchange = function() {diff(start,end)};
+  document.getElementById("start").onchange = function() {
+    diff(start, end)
+  };
+  document.getElementById("end").onchange = function() {
+    diff(start, end)
+  };
 
 
   function diff(start, end) {
@@ -238,11 +245,12 @@ document.getElementById("end").onchange = function() {diff(start,end)};
 
     return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
   }
- 
-  function bereken(){
-  setInterval(function() {
-    document.getElementById("diff").value = diff(start, end);
-  }, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
-  }</script>
+
+  function bereken() {
+    setInterval(function() {
+      document.getElementById("diff").value = diff(start, end);
+    }, 1000); //to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
+  }
+</script>
 
 </html>

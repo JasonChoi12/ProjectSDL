@@ -22,8 +22,15 @@ require_once("../src/sessie.php");
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
+    function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+  }
   </script>
-  `
+  
   <div class="title">
     <h1>Medewerker Overzicht</h1>
     <form id="form">
@@ -41,7 +48,7 @@ require_once("../src/sessie.php");
     </div>
     <table>
       <tr>
-        <th id="table-left-border"></th>
+      <th id="table-left-border"><input class="checkbox" type="checkbox" onClick="toggle(this)"></th>
         <th>Medewerker</th>
         <th>Email</th>
         <th>Type Medewerker</th>

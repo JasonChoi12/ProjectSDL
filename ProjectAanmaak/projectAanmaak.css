@@ -64,7 +64,6 @@ h1 {
   margin-left: 44%;
   margin-top: 5%;
   font-style: normal;
-  font-size: 1.05vw;
 }
 
 label {
@@ -104,6 +103,10 @@ label {
     height: 15px;
     font-size: 9px;
   }
+  .error{
+    font-size: 9px;
+    margin-right: 200px;
+  }
 }
 
 @media screen and (min-width: 600px) {
@@ -133,5 +136,8 @@ label {
     width: 16vw;
     height: 3vw;
     font-size: 15px;
+  }
+  .error{
+    font-size: 1.05vw;
   }
 }

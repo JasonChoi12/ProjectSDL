@@ -93,6 +93,7 @@ label {
     flex-wrap: wrap;
 }
 
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 15px;
@@ -136,6 +137,9 @@ label {
     margin-top: 15%;
     margin-left: 220%;
   }
+  .error{
+    font-size: 9px;
+  }
 }
 @media screen and (min-width: 600px) {
   h1 {
@@ -175,5 +179,8 @@ label {
     font-size: 15px;
     margin-left: 300%;
     margin-top: -20%;
+  }
+  .error{
+    font-size: 16px;
   }
 }
