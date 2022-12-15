@@ -33,7 +33,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
       <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
       <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam" />
       <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" />
-      <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoordcheck" placeholder="Wachtwoord" />
+      <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoordcheck" placeholder="Wachtwoord *" />
       <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Nieuw Wachtwoord" /><br>
       <!-- <div class="usertype">
           <select

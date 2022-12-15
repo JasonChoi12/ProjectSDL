@@ -11,15 +11,15 @@
 <body>
     <!--Zijkant-->
     <div class="sidebar">
-        <img class="logo" alt="logo" src="../Logo-DEVP.png"/>
+        <img class="logo" alt="logo" src="../Logo-DEVP.png" />
     </div>
     <div class="login">
         <h1>Login</h1>
         <form method="post" action="../forms/login-form.php">
             <br />
-            <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" />
-            <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
-            <input class="inputgegevens" type="text" id="code" name="code" placeholder="Code" />
+            <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email *" />
+            <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord *" />
+            <input class="inputgegevens" type="text" id="code" name="code" placeholder="Code *" />
             <div class="btn-group">
                 <button name="submit" class="submit">login</button>
             </div>
@@ -35,7 +35,7 @@
                     unset($_SESSION['ERRORS']);
                 }
                 ?>
-                </div>
+            </div>
         </form>
     </div>
 </body>

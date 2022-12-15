@@ -1,7 +1,7 @@
 <?php
 require_once("../src/sessie.php");
 
-setcookie("id_project", "", time()-3600);
+setcookie("id_project", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../registreren/registreren.php');
@@ -34,7 +34,7 @@ if (isset($error)) {
 
     <form method="POST">
       <div class="klant">
-        <label>Klant</label><br />
+        <label>Klant *</label><br />
         <?php
         $klanten = new Klanten;
         $klanten_data = $klanten->KlantenZien();
@@ -105,7 +105,7 @@ if (isset($error)) {
       </div>
       <br />
       <div>
-        <label>Project</label><br />
+        <label>Project *</label><br />
         <?php
         if (!empty($_COOKIE["id_project"])) {
           $id_project = $_COOKIE["id_project"];
@@ -169,17 +169,18 @@ if (isset($error)) {
       <br />
     </form>
     <div class="middle-line">
-        <form action="../forms/UrenRegistreren-form.php" method="post">
-    <?php //echo $id_klant. " " . $id_project;?>
-    <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
-    <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
-    <div class="activiteit">
+      <form action="../forms/UrenRegistreren-form.php" method="post">
+        <?php //echo $id_klant. " " . $id_project;
+        ?>
+        <input name="id_klant" value="<?php echo $id_klant; ?>" type="hidden" id="id_klant" />
+        <input name="id_project" value="<?php echo $id_project; ?>" type="hidden" id="id_project" />
+        <div class="activiteit">
           <label>Activiteit<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
           </label>
         </div>
         <div class="datum">
-          <label>Datum
+          <label>Datum *
             <br />
             <input type="date" class="datum-input" name="datum" />
           </label>
@@ -197,9 +198,9 @@ if (isset($error)) {
       <div class="toteindtijd">
         <label>Totale gewerkte tijd<br />
           <input id="diff" class="tijd-input" type="text" name="uren" placeholder="23:59" required /></label>
-          <input id="diff-hidden" class="tijd-input" type="hidden" name="Buren" placeholder="" /></label>
+        <input id="diff-hidden" class="tijd-input" type="hidden" name="Buren" placeholder="" /></label>
       </div>
-      
+
       <div class="btn">
         <button name="submit" class="submit">Toevoegen</button>
       </div>
@@ -252,7 +253,7 @@ if (isset($error)) {
   }
 
   function bereken() {
-    
+
     setInterval(function() {
       document.getElementById("diff").placeholder = diff(start, end);
       document.getElementById("diff-hidden").value = diff(start, end);

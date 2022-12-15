@@ -1,6 +1,7 @@
 <?php
 require_once("../src/sessie.php");
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -18,7 +19,7 @@ require_once("../src/sessie.php");
   <div id="nav-placeholder"></div>
 
   <script>
-    $(function () {
+    $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
   </script>
@@ -26,51 +27,52 @@ require_once("../src/sessie.php");
     <h1>Klant aanmaken</h1>
     <form class="klant" method="post" action="../forms/klantaanmaken-form.php">
       <div>
-        <label>* Klant</label><br />
+        <label>Klant *</label><br />
         <input class="klantnaam-input" name="klantnaam" placeholder="Klantnaam" />
       </div>
       <div class="middle-line">
-      <div class="straat">
-        <label>Straat<br />
-          <input class="straat-input" name="straatnaam" placeholder="Straatnaam" />
-        </label>
-      </div>
-      <div class="telefoon">
-        <label>
-          Telefoon<br />
-          <input class="telefoon-input" name="telefoon" placeholder="06-123456789" />
-        </label>
-      </div>
-      <div class="woonplaats">
-        <label>
-         * Woonplaats<br />
-          <input class="woonplaats-input" name="woonplaats" placeholder="Stad,Provincie" />
-        </label>
-      </div>
+        <div class="straat">
+          <label>Straat<br />
+            <input class="straat-input" name="straatnaam" placeholder="Straatnaam" />
+          </label>
+        </div>
+        <div class="telefoon">
+          <label>
+            Telefoon<br />
+            <input class="telefoon-input" name="telefoon" placeholder="06-123456789" />
+          </label>
+        </div>
+        <div class="woonplaats">
+          <label>
+            Woonplaats *<br />
+            <input class="woonplaats-input" name="woonplaats" placeholder="Stad,Provincie" />
+          </label>
+        </div>
       </div>
       <div class="bottom-line">
-      <div class="adres">
-        <label>Huisnummer
-          <input class="adres-input" name="huisnummer" placeholder="391" /></label>
-      </div>
+        <div class="adres">
+          <label>Huisnummer
+            <input class="adres-input" name="huisnummer" placeholder="391" /></label>
+        </div>
         <div class="postcode">
           <label>Postcode
             <input class="adres-input" name="postcode" placeholder="1234AB" /></label>
         </div>
       </div>
-        <button name="submit" class="submit">Toevoegen</button>
-        
-      </div><br><div class="error">
-      <?php
-                // laat error code Zien
-                if (isset($_SESSION['ERRORS'])) {
-                    echo $_SESSION['ERRORS'];
-                    unset($_SESSION['ERRORS']);
-                }
-                ?></div>
-    </form>
+      <button name="submit" class="submit">Toevoegen</button>
+
+  </div><br>
+  <div class="error">
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['ERRORS'])) {
+      echo $_SESSION['ERRORS'];
+      unset($_SESSION['ERRORS']);
+    }
+    ?></div>
+  </form>
   </div>
-  
+
 </body>
 
 </html>
