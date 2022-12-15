@@ -32,19 +32,19 @@ if (!empty($_SESSION["id_klant"])) {
 
     <form class="project" method="post" action="../forms/projectaanmaken-form.php">
       <div class="klant">
-        <label>Klant</label><br /> <?php
-                                    $klanten = new Klanten;
-                                    $klanten_data = $klanten->KlantenZien();
-                                    unset($_SESSION["id_klant"]);
-                                    if (empty($id_klant)) {
+        <label>Klant *</label><br /> <?php
+                                      $klanten = new Klanten;
+                                      $klanten_data = $klanten->KlantenZien();
+                                      unset($_SESSION["id_klant"]);
+                                      if (empty($id_klant)) {
 
-                                      echo '<input class="klant-input" list="klanten" id="input" name="klant" placeholder="Klantnaam" />
+                                        echo '<input class="klant-input" list="klanten" id="input" name="klant" placeholder="Klantnaam" />
         <datalist id="klanten">';
-                                      foreach ($klanten_data as $klant_data) {
-                                        echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
+                                        foreach ($klanten_data as $klant_data) {
+                                          echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
                 >';
-                                      }
-                                      '
+                                        }
+                                        '
         </datalist>'; ?><input name="id_klant" value="id_klant" type="hidden" id="id_klant" />
           <script type="text/javascript">
             $(function() {
@@ -54,32 +54,32 @@ if (!empty($_SESSION["id_klant"])) {
               });
             });
           </script><?php
-                                    } else {
-                                      $klanten = new Klanten;
-                                      // $id_klant = $_GET['id_klant'];
-                                      $klant_data = $klanten->KlantZien($id_klant);
-                                      echo '<input  class="klant-input" value="' . $klant_data[0]["klantnaam"] . '" disabled />
+                                      } else {
+                                        $klanten = new Klanten;
+                                        // $id_klant = $_GET['id_klant'];
+                                        $klant_data = $klanten->KlantZien($id_klant);
+                                        echo '<input  class="klant-input" value="' . $klant_data[0]["klantnaam"] . '" disabled />
                                       <input name="klant" value="' . $klant_data[0]["klantnaam"] . '" type="hidden" id="id_klant" />
                                       <input name="id_klant" value="' . $id_klant . '" type="hidden" id="id_klant" />';
-                                    }
+                                      }
                     ?>
 
       </div>
       <div class="project-info">
         <div class="projectnaam">
-          <label>Projectnaam<br />
+          <label>Projectnaam *<br />
             <input class="projectnaam-input" name="projectnaam" placeholder="Projectnaam" />
           </label>
         </div>
         <div class="begindatum">
           <label>
-            Begindatum<br />
+            Begindatum *<br />
             <input type="date" class="begindatum-input" name="begindatum" placeholder="01-01-01" />
           </label>
         </div>
         <div class="btn">
           <br>
-      <button name="submit" class="submit">Toevoegen</button>
+          <button name="submit" class="submit">Toevoegen</button>
         </div>
       </div>
       <br>

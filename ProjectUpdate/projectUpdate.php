@@ -42,14 +42,14 @@ if (empty($id_project)) {
 
     <form class="project" method="post" action="../forms/projectUpdate-form.php">
       <div class="klant">
-        <label>Klant</label><br />
+        <label>Klant *</label><br />
         <input type="hidden" value="<?php echo $project_data[0]["id_project"]; ?>" name="id_project">
         <input type="hidden" value="<?php echo $id_klant; ?>" name="id_klant">
         <input class="klant-input" placeholder="<?php echo $klant_data[0]["klantnaam"]; ?>" disabled />
       </div>
       <br />
       <div class="projectnaam">
-        <label>Projectnaam<br />
+        <label>Projectnaam *<br />
           <input class="projectnaam-input" name="projectnaam" placeholder="<?php echo $project_data[0]["projectnaam"]; ?>" />
         </label>
       </div>

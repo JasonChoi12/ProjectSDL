@@ -20,12 +20,12 @@ require_once("../src/sessie.php");
   <div class="registreren">
     <h1>Registreren</h1>
     <form method="post" action="../forms/registreren-form.php">
-        <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam" />
-        <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
-        <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam" />
-      
-      <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" />
-      <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord" />
+      <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam *" />
+      <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
+      <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam *" />
+
+      <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email *" />
+      <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord *" />
       <div class="btn-group">
         <button name="submit" class="submit">Registreren</button>
         <button name="cancel" class="cancel">Annuleren</button>
@@ -41,8 +41,9 @@ require_once("../src/sessie.php");
 
         elseif (isset($_SESSION['succes']) && isset($_SESSION['QR'])) {
           echo $_SESSION['succes'];
-          unset($_SESSION['succes']); }?><br>
-        </div>
+          unset($_SESSION['succes']);
+        } ?><br>
+      </div>
     </form>
   </div>
 </body>
