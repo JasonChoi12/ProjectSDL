@@ -1,6 +1,9 @@
 <?php
 require_once("../src/sessie.php");
-
+if(empty($id_gebruiker)){
+  $user = unserialize($_SESSION['gebruiker_data']);
+  $id_gebruiker = $user->id;
+}
 setcookie("id_project", "", time()-3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
@@ -173,6 +176,7 @@ if (isset($error)) {
     <?php //echo $id_klant. " " . $id_project;?>
     <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
     <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
+    <input name="id_gebruiker" value="<?php echo $id_gebruiker;?>" type="hidden" id="id_gebruiker" />
     <div class="activiteit">
           <label>Activiteit<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
