@@ -4,7 +4,7 @@ require_once('../src/class.php');
 require_once("../src/sessie.php");
 $id_klant = $_GET["id_klant"];
 $_SESSION["id_klant"] = $id_klant;
-// unset($_SESSION["id_klant"]);
+unset($_SESSION["id_klant"]);
 if (empty($id_klant)) {
   $error[] = "Kies eerst een klant.";
   $_SESSION['ERRORS'] = implode('<br> ', $error);
@@ -31,15 +31,16 @@ if (empty($id_klant)) {
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
+
     function toggle(source) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    for (var i = 0; i < checkboxes.length; i++) {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      for (var i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i] != source)
-            checkboxes[i].checked = source.checked;
+          checkboxes[i].checked = source.checked;
+      }
     }
-  }
   </script>
-  
+
   <div class="title">
     <h1>Project Overzicht</h1>
 
@@ -68,22 +69,36 @@ if (empty($id_klant)) {
       </tr>
 
       <?php
-      // foreach klant om door alle rijen een loop te doen
       $projecten = new projecten();
       $projecten_data = $projecten->Projectenzien($id_klant);
+      $uren = new uren();
       foreach ($projecten_data as $project_data) {
+        $uren_data = $uren->TotaleUrenZien($project_data['id_project']);
+
+        $totaleUren = array_sum(array_column($uren_data, 'uren'));
+        $new = array_filter($uren_data, function ($var) {
+          return ($var['declarabel'] == 'ja');
+        });
+        $declarabel = array_sum(array_column($new, 'uren'));
+
       ?>
         <tr>
           <td class="checkbox">
             <input type="checkbox" onchange="chkbox(this)" value="<?php echo $project_data['id_project']; ?>">
           </td>
           <td><?php echo $project_data['projectnaam']; ?></td>
-          <td></td>
-          <td></td>
+          <td><?php echo number_format($totaleUren / 3600, 1); ?></td>
+          <td><?php echo number_format($declarabel / 3600, 1); ?></td>
           <td></td>
           <td><?php echo $project_data['laatst_gewerkt']; ?></td>
           <td><?php echo $project_data['begindatum']; ?></td>
-          <td><button class="table-bewerk">Bekijken</button></td>
+          <td>
+            <form method="get" action="../UrenOverzicht/UrenOverzicht.php">
+              <input type="hidden" name="id_project" value="<?php echo $project_data['id_project']; ?>">
+              <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
+              <button class="table-bewerk">Bekijken</button>
+            </form>
+          </td>
         </tr>
       <?php } ?>
     </table>
