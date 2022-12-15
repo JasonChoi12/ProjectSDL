@@ -55,7 +55,7 @@ if (empty($id_project)) {
       </div>
       <div class="begindatum">
         <label>
-          Begindatum *<br />
+          Begindatum<br />
           <input type="text" class="begindatum-input" name="begindatum" placeholder="<?php echo $project_data[0]["begindatum"]; ?>" onfocus="(this.type='date')" />
         </label>
       </div>
