@@ -286,7 +286,7 @@ button:hover {
     font-size: 1.2vw;
   }
   .sidebar li.profile .name {
-    font-size: 10px;
+    font-size: 14px;
   }
   .sidebar.open {
     width: 15vw;
@@ -298,7 +298,7 @@ button:hover {
     width: 15%;
   }
   .sidebar li a .links_name {
-    font-size: 10px;
+    font-size: 14px;
   }
   .sidebar .logo-details #btn {
     font-size: 1.6vw;
@@ -306,15 +306,18 @@ button:hover {
 }
 @media screen and (min-width: 700px) and ( max-width:850px) {
   .sidebar.open {
-    width: 175px;
+    width: 240px;
   }
   .sidebar.open li.profile {
-    width: 175px;
+    width: 240px;
   }
   .sidebar li a .links_name {
-    font-size: 10px;
+    font-size: 14px;
   }
   .sidebar li.profile .name {
-    font-size: 10px;
+    font-size: 14px;
+  }
+  .sidebar li i {
+    font-size: 14px;
   }
 }
