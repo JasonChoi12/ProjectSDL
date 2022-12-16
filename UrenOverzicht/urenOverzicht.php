@@ -2,6 +2,8 @@
 require_once('../src/class.php');
 
 require_once("../src/sessie.php");
+$user = unserialize($_SESSION['gebruiker_data']);
+$id_gebruiker = $user->id;
 $id_project = $_GET["id_project"];
 $id_klant = $_GET["id_klant"];
 $_SESSION["id_klant"] = $id_klant;
@@ -62,15 +64,14 @@ if (empty($id_project)) {
       }
     }
   </script>
-
+<?php if ($user->usertype === "admin"){ echo' ?>
   <div class="title">
-    <h1>Uren Overzicht Persoonlijk</h1>
+    <h1>Uren Overzicht </h1>
     <div class="searchbar">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
 
-    <button class="overzicht">Terug naar overzicht</button>
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>
       <a href="../uren/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
@@ -90,7 +91,8 @@ if (empty($id_project)) {
         <th>Beïndigd om</th>
         <th id="table-right-border">Datum</th>
       </tr>
-      <?php
+      <?php';
+      
       // foreach klant om door alle rijen een loop te doen
       $uren = new uren();
       $uren_data = $uren->UrenZien($id_project);
@@ -112,7 +114,53 @@ if (empty($id_project)) {
           <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
           <td><?php echo $uur_data['datum'] ?></td>
         </tr>
-      <?php } ?>
+      <?php }}elseif($user->usertype === "medewerker"){ 
+        echo '<div class="title">
+        <h1>Uren Overzicht Persoonlijk</h1>
+        <div class="searchbar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
+        </div>
+    
+        <div class="btn-group">
+          <button class="exporteer">Exporteren</button>
+          <a href="../uren/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
+          <button type="submit" form="update" class="bewerk">Bewerken</button>
+          <button class="verwijderen">Verwijderen</button>
+        </div>
+        <table id="urenoverzicht">
+          <tr>
+            <th id="table-left-border">
+              <input class="checkbox" type="checkbox" onClick="toggle(this)" />
+            </th>
+            <th>Medewerker</th>
+            <th>Activiteit</th>
+            <th>Decl.</th>
+            <th>Uren</th>
+            <th>Begonnen om</th>
+            <th>Beïndigd om</th>
+            <th id="table-right-border">Datum</th>
+          </tr>';
+          $uren = new uren();
+          $uren_data = $uren->PersoonlijkeUrenZien($id_project, $id_gebruiker);
+      foreach ($uren_data as $uur_data) {
+
+      ?>
+        <tr>
+          <td class="checkbox">
+            <input type="checkbox" onchange="chkbox(this)" value="<?php echo $uur_data['id_uren']; ?>">
+          </td>
+          <td><?php echo $uur_data['voornaam'] . " " . $uur_data['tussenvoegsel'] . " " . $uur_data['achternaam']; ?></td>
+          <td>
+            <?php echo $uur_data['activiteit'] ?>
+          </td>
+          <td><?php echo $uur_data['declarabel'] ?></td>
+          <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
+          <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
+          <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
+          <td><?php echo $uur_data['datum'] ?></td>
+        </tr>
+        <?php }?>
     </table>
     <form id="update" method="get" action="../urenUpdate/urenUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />
@@ -150,5 +198,5 @@ if (empty($id_project)) {
 
   }
 </script>
-
+<?php }?>
 </html>

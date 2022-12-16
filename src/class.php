@@ -641,7 +641,7 @@ class uren extends projecten
             return $e;
         }
     }
-    public function UrenZien( $id_project)
+    public function UrenZien($id_project)
     { 
             try {
                 // maak een connectie met de database
@@ -668,6 +668,35 @@ class uren extends projecten
                 return $e;
             }
         }
+        public function PersoonlijkeUrenZien($id_project, $id_gebruiker)
+        { 
+                try {
+                    // maak een connectie met de database
+                    $this->conn();
+                    // sql query defineren
+                    $sql = "SELECT id_uren, id_project, uren.id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE id_project = :id_project AND gebruikers.id_gebruiker = :id_gebruiker";
+                    // sql voorbereiden
+                    $stmt = $this->conn->prepare($sql);
+                    // waardes verbinden met de named placeholders
+                    $stmt->bindParam(":id_project", $id_project);
+                    $stmt->bindParam(":id_gebruiker", $id_gebruiker);
+
+                    //Voer SQL uit
+                    $stmt->execute();
+                    // data ophalen
+                    $data = $stmt->fetchAll();
+                    // database connectie sluiten
+                    $this->conn = NULL;
+    
+                    // opgehaalde rijen terugsturen
+                    return $data;
+                } catch (PDOException $e) {
+                    // database connectie sluiten
+                    $this->conn = NULL;
+                    //stuur variable terug
+                    return $e;
+                }
+            }
         public function TotaleUrenZien( $id_project)
     { 
             try {

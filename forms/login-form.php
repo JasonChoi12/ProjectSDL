@@ -77,6 +77,8 @@ if (isset($_POST['submit'])) {
                     header('Location: ../Login/login.php');
                 } elseif (is_string($nonlogin)) {
                     $_SESSION['ERRORS'] = $nonlogin;
+                    $_SESSION['ERRORS'] = $loggedin;
+                    $_SESSION['ERRORS'] = $adminloggedin;
                     header('Location: ../Login/login.php');
                 }
             }
