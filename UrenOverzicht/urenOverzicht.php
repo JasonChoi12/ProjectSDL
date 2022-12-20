@@ -69,7 +69,7 @@ setcookie("id_project", "", time() - 3600);
   </script>
 
   <div class="title">
-    <h1>Uren Overzicht Persoonlijk</h1>
+    <h1>Uren Overzicht</h1>
     <div class="searchbar">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
@@ -85,7 +85,7 @@ setcookie("id_project", "", time() - 3600);
     ?>
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>
-      <a href="../uren/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
+      <a href="../UrenRegistratie/urenRegistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
     </div>
