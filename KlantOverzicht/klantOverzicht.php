@@ -69,7 +69,7 @@ setcookie("id_klant", "", time() - 3600);
     // print_r($_COOKIE);
     ?>
     <div class="btn-group">
-      <button class="exporteer">Exporteren</button>
+      <button type="submit" form="export"class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
@@ -116,8 +116,11 @@ setcookie("id_klant", "", time() - 3600);
     <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_klant" />
     </form>
-    <!-- <p id="sh"></p>
-    <p id="sh1"></p> -->
+    <form id="export" method="post" action="../forms/ProjectExport-form.php">
+      <input value="" type="hidden" id="export-input" name="id_klant" />
+    </form>
+    <p id="sh"></p>
+    <p id="sh1"></p>
 
   </div>
 </body>
@@ -137,13 +140,16 @@ setcookie("id_klant", "", time() - 3600);
     // console.log(d);
     if (d && d.length > 1) {
       $('#delete').val(d);
-      //  document.getElementById("sh").innerHTML = d;
+       document.getElementById("sh").innerHTML = d;
     } else {
       console.log(d)
       a = d[0];
       $('#update-input').val(a);
 
       document.getElementById("update-input").value = a;
+      $('#export-input').val(a);
+
+      document.getElementById("export-input").value = a;
 
     }
 

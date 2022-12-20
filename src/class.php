@@ -518,7 +518,35 @@ class projecten extends Klanten
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM projecten where id_klant = :id_klant";
+                $sql = "SELECT id_project, projectnaam, begindatum, laatst_gewerkt FROM projecten where id_klant = :id_klant";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_klant", $id_klant);
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+    }
+    public function Projectenzienbydate($id_klant)
+    { {
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT id_project, projectnaam, begindatum, laatst_gewerkt FROM projecten where id_klant = :id_klant ORDER BY laatst_gewerkt Desc";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
                 // waardes verbinden met de named placeholders
