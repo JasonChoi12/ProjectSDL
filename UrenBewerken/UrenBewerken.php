@@ -49,39 +49,35 @@ $uren_data = $uren->uurzien($id_uren);
     <h1>Uren Bewerken: </h1>
     <h2><?php echo $uren_data[0]["voornaam"] . " " . $uren_data[0]["tussenvoegsel"] . " " . $uren_data[0]["achternaam"] ?></h2>
     <form action="../forms/UrenBewerken-form.php" method="post">
-    
-      <div class="klant">
-        <label>Klant *<p class="righter"><?php echo "Begonnen om: " . gmdate("H:i", $uren_data[0]["begonnen"]); ?></p>
+      <p class="righter"><?php echo "Begonnen om: " . gmdate("H:i", $uren_data[0]["begonnen"]); ?></p>
       <p class="righter"><?php echo "Beeindigd om: " . gmdate("H:i", $uren_data[0]["beeindigd"]); ?></p>
       <p class="righter"><?php echo "Totale tijd: " . gmdate("H:i", $uren_data[0]["uren"]); ?></p>
-      </label><br />
-        <div >
-      </div>
- 
+
+      <div class="klant">
+        <label>Klant *</label><br>
         <input class="klant-input" id="input" name="klant" placeholder="<?php echo $uren_data[0]["klantnaam"]; ?>" disabled />
 
-        <br />
-        <div>
-          <label>Project *</label><br />
-
+        <div class="project-declarabel">
+      
+          <label>Project *<br />
           <input class="klant-input" list="projecten" id="project" name="project" placeholder="<?php echo $uren_data[0]["projectnaam"]; ?>" />
-
-
-          <br />
-        </div>
+          </label>
+          <div class="declarabel">
         <?php if ($user->usertype === "admin") { ?>
-          <label>declarabel </label><br />
+          <label>Declarabel <br />
 
           <select place class="klant-input" name="declarabel" id="declarabel">
-          <option value="" disabled selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"];?></option>
-          <option value="ja">Ja</option>
+            <option value="" disabled selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"]; ?></option>
+            <option value="ja">Ja</option>
             <option value="nee">Nee</option>
           </select>
         <?php } ?>
+          </label>
+          </div>
       </div>
       <div class="middle-line">
-    <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"];?>" type="hidden" id="id_uren" />
-    <input name="id_klant" value="<?php echo $uren_data[0]["id_klant"];?>" type="hidden" id="id_klant" />
+        <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"]; ?>" type="hidden" id="id_uren" />
+        <input name="id_klant" value="<?php echo $uren_data[0]["id_klant"]; ?>" type="hidden" id="id_klant" />
         <input name="id_project" value="<?php echo $uren_data[0]["id_project"]; ?>" type="hidden" id="id_project" />
         <input name="id_gebruiker" value="<?php echo $uren_data[0]["id_gebruiker"]; ?>" type="hidden" id="id_gebruiker" />
         <div class="activiteit">
@@ -94,7 +90,7 @@ $uren_data = $uren->uurzien($id_uren);
             <br>
             Ingevuld: <?php echo $uren_data[0]["datum"]; ?>
             <br />
-            <input type="date" class="datum-input" name="datum" required/>
+            <input type="date" class="datum-input" name="datum" required />
           </label>
         </div>
       </div>
@@ -109,7 +105,7 @@ $uren_data = $uren->uurzien($id_uren);
         </div>
         <div class="toteindtijd">
           <label>Totale gewerkte tijd<br />
-            <input id="diff" class="tijd-input" type="text" name="uren" placeholder="23:59"  /></label>
+            <input id="diff" class="tijd-input" type="text" name="uren" placeholder="23:59" /></label>
           <input id="diff-hidden" class="tijd-input" type="hidden" name="Buren" placeholder="" /></label>
         </div>
 
