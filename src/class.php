@@ -724,4 +724,71 @@ class uren extends projecten
                 return $e;
             }
         }
+        public function uurzien($id_uren)
+    { 
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT id_uren, uren.id_project, uren.id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, projecten.id_klant FROM `uren`
+                INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker 
+                INNER JOIN `projecten` ON uren.id_project = projecten.id_project
+                INNER JOIN `klanten` ON projecten.id_klant = klanten.id_klant
+                WHERE  uren.id_uren = :id_uren";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_uren", $id_uren);
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
+        public function UrenBewerken($id_uren, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `uren` 
+            SET
+            activiteit=COALESCE(NULLIF(:activiteit, ''),activiteit),
+            declarabel=COALESCE(NULLIF(:declarabel, ''),declarabel),
+            uren=COALESCE(NULLIF(:uren, ''),uren),
+            begonnen=COALESCE(NULLIF(:begonnen, ''),begonnen),
+            beeindigd=COALESCE(NULLIF(:beeindigd, ''),beeindigd),
+            datum=COALESCE(NULLIF(:datum, ''),datum)
+                 WHERE id_uren = :id_uren";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_uren", $id_uren);
+            $stmt->bindParam(":activiteit", $activiteiten);
+            $stmt->bindParam(":declarabel", $declarabel);
+            $stmt->bindParam(":uren", $uren);
+            $stmt->bindParam(":begonnen", $begonnen);
+            $stmt->bindParam(":beeindigd", $beëindigd);
+            $stmt->bindParam(":datum", $datum);
+
+
+            //SQL query daadwerkelijk uitvoeren
+            $stmt->execute();
+            //Zet verbinding op NULL
+            $this->conn = NULL;
+        } catch (PDOException $e) {
+
+            return $e;
+        }
+    }
 }

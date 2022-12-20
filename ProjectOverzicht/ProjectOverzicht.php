@@ -2,14 +2,20 @@
 require_once('../src/class.php');
 
 require_once("../src/sessie.php");
-$id_klant = $_GET["id_klant"];
-$_SESSION["id_klant"] = $id_klant;
-unset($_SESSION["id_klant"]);
-if (empty($id_klant)) {
+if (!empty($_GET["id_klant"])) {
+  $id_klant = $_GET["id_klant"];
+setcookie("id_klant", $id_klant);
+} elseif(!empty($_COOKIE["id_klant"])) {
+  $id_klant = $_COOKIE["id_klant"];
+setcookie("id_klant", "", time() - 3600);
+}elseif(empty($id_klant)){
   $error[] = "Kies eerst een klant.";
-  $_SESSION['ERRORS'] = implode('<br> ', $error);
+  if(isset($error)){
+    $_SESSION['errors'] = implode('<br> ', $error);
   header('Location: ../KlantOverzicht/klantOverzicht.php');
+  }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -48,7 +54,15 @@ if (empty($id_klant)) {
       <i class="fa-solid fa-magnifying-glass"></i>
       <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
     </div>
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+ 
 
+    ?>
 
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>
@@ -69,6 +83,7 @@ if (empty($id_klant)) {
       </tr>
 
       <?php
+      // print_r($_COOKIE);
       $projecten = new projecten();
       $projecten_data = $projecten->Projectenzien($id_klant);
       $uren = new uren();

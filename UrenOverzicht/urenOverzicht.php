@@ -2,18 +2,21 @@
 require_once('../src/class.php');
 
 require_once("../src/sessie.php");
-$user = unserialize($_SESSION['gebruiker_data']);
-$id_gebruiker = $user->id;
-$id_project = $_GET["id_project"];
-$id_klant = $_GET["id_klant"];
-$_SESSION["id_klant"] = $id_klant;
-$_SESSION["id_project"] = $id_project;
-unset($_SESSION["id_project"]);
-unset($_SESSION["id_klant"]);
-if (empty($id_project)) {
+if (!empty($_GET["id_project"])) {
+  $id_project = $_GET["id_project"];
+  $id_klant = $_GET["id_klant"];
+setcookie("id_project", $id_project);
+} elseif(!empty($_COOKIE["id_project"])) {
+  $id_project = $_COOKIE["id_project"];
+setcookie("id_project", "", time() - 3600);
+
+}elseif(empty($id_project)){
+  
   $error[] = "Kies eerst een project.";
-  $_SESSION['ERRORS'] = implode('<br> ', $error);
+  if(isset($error)){
+    $_SESSION['errors'] = implode('<br> ', $error);
   header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -64,14 +67,22 @@ if (empty($id_project)) {
       }
     }
   </script>
-<?php if ($user->usertype === "admin"){ echo' ?>
+
   <div class="title">
-    <h1>Uren Overzicht </h1>
+    <h1>Uren Overzicht Persoonlijk</h1>
     <div class="searchbar">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+ 
 
+    ?>
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>
       <a href="../uren/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
@@ -91,8 +102,8 @@ if (empty($id_project)) {
         <th>Beïndigd om</th>
         <th id="table-right-border">Datum</th>
       </tr>
-      <?php';
-      
+      <?php
+      // print_r($_SESSION);
       // foreach klant om door alle rijen een loop te doen
       $uren = new uren();
       $uren_data = $uren->UrenZien($id_project);
@@ -114,57 +125,11 @@ if (empty($id_project)) {
           <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
           <td><?php echo $uur_data['datum'] ?></td>
         </tr>
-      <?php }}elseif($user->usertype === "medewerker"){ 
-        echo '<div class="title">
-        <h1>Uren Overzicht Persoonlijk</h1>
-        <div class="searchbar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
-        </div>
-    
-        <div class="btn-group">
-          <button class="exporteer">Exporteren</button>
-          <a href="../uren/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
-          <button type="submit" form="update" class="bewerk">Bewerken</button>
-          <button class="verwijderen">Verwijderen</button>
-        </div>
-        <table id="urenoverzicht">
-          <tr>
-            <th id="table-left-border">
-              <input class="checkbox" type="checkbox" onClick="toggle(this)" />
-            </th>
-            <th>Medewerker</th>
-            <th>Activiteit</th>
-            <th>Decl.</th>
-            <th>Uren</th>
-            <th>Begonnen om</th>
-            <th>Beïndigd om</th>
-            <th id="table-right-border">Datum</th>
-          </tr>';
-          $uren = new uren();
-          $uren_data = $uren->PersoonlijkeUrenZien($id_project, $id_gebruiker);
-      foreach ($uren_data as $uur_data) {
-
-      ?>
-        <tr>
-          <td class="checkbox">
-            <input type="checkbox" onchange="chkbox(this)" value="<?php echo $uur_data['id_uren']; ?>">
-          </td>
-          <td><?php echo $uur_data['voornaam'] . " " . $uur_data['tussenvoegsel'] . " " . $uur_data['achternaam']; ?></td>
-          <td>
-            <?php echo $uur_data['activiteit'] ?>
-          </td>
-          <td><?php echo $uur_data['declarabel'] ?></td>
-          <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
-          <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
-          <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
-          <td><?php echo $uur_data['datum'] ?></td>
-        </tr>
-        <?php }?>
+      <?php } ?>
     </table>
-    <form id="update" method="get" action="../urenUpdate/urenUpdate.php">
+    <form id="update" method="get" action="../UrenBewerken/UrenBewerken.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />
-      <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
+      <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
     </form>
     <p id="sh"></p>
     <p id="sh1"></p>
@@ -188,7 +153,7 @@ if (empty($id_project)) {
       $('sh').val(d);
       document.getElementById("sh").innerHTML = d;
     } else {
-      console.log(d)
+      // console.log(d)
       a = d[0];
       $('update-input').val(a);
 
@@ -198,5 +163,5 @@ if (empty($id_project)) {
 
   }
 </script>
-<?php }?>
+
 </html>

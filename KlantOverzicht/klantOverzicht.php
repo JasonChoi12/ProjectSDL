@@ -2,6 +2,7 @@
 require_once('../src/class.php');
 
 require_once("../src/sessie.php");
+setcookie("id_klant", "", time() - 3600);
 
 ?>
 <!DOCTYPE html>
@@ -61,10 +62,11 @@ require_once("../src/sessie.php");
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['ERRORS'])) {
-      echo $_SESSION['ERRORS'];
-      unset($_SESSION['ERRORS']);
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
     }
+    // print_r($_COOKIE);
     ?>
     <div class="btn-group">
       <button class="exporteer">Exporteren</button>

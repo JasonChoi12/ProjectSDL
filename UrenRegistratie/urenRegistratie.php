@@ -5,7 +5,7 @@ $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
-  header('Location:../registreren/registreren.php');
+  header('Location:../UrenRegistratie/urenRegistratie.php');
 }
 ?>
 <!DOCTYPE html>

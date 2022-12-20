@@ -1,12 +1,28 @@
 <?php
 require_once("../src/sessie.php");
-$id_klant = $_GET["id_klant"];
-$_SESSION["id_klant"] = $id_klant;
-$id_klant = $_SESSION["id_klant"];
-if (empty($id_klant)) {
+// $id_klant = $_GET["id_klant"];
+// $_SESSION["id_klant"] = $id_klant;
+// $id_klant = $_SESSION["id_klant"];
+// if (empty($id_klant)) {
+//   $error[] = "Kies eerst een klant.";
+//   $_SESSION['errors'] = implode('<br> ', $error);
+//   header('Location: ../KlantOverzicht/klantOverzicht.php');
+// }
+// print_r($_COOKIE);
+if (!empty($_GET["id_klant"])) {
+  $id_klant = $_GET["id_klant"];
+setcookie("id_klant", $id_klant);
+} elseif(!empty($_COOKIE["id_klant"])) {
+  $id_klant = $_COOKIE["id_klant"];
+setcookie("id_klant", "", time() - 3600);
+}elseif(empty($id_klant)){
+  if (!isset($_SESSION['ERRORS'])) {
   $error[] = "Kies eerst een klant.";
-  $_SESSION['ERRORS'] = implode('<br> ', $error);
+  if(isset($error)){
+    $_SESSION['errors'] = implode('<br> ', $error);
   header('Location: ../KlantOverzicht/klantOverzicht.php');
+  }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -26,6 +42,7 @@ if (empty($id_klant)) {
   <!--Navbar Import -->
   <div id="nav-placeholder"></div>
   <?php
+
   $klant = new Klanten;
   $klant_data = $klant->KlantZien($id_klant);
   // echo $klant_data[0]["klantnaam"]
@@ -75,6 +92,7 @@ if (empty($id_klant)) {
       </div><br>
       <div>
         <?php
+        
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];

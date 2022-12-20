@@ -15,8 +15,8 @@ $woonplaats = $_POST['woonplaats'];
 $huisnummer = $_POST['huisnummer'];
 $postcode = $_POST['postcode'];
 
-echo $klantnaam. " ". $straatnaam. " ". $telefoonnummer. " ". $woonplaats. " ".$huisnummer. " ". $postcode. " ". $id_klant;
-if(isset($_POST['submit'])){
+echo $klantnaam . " " . $straatnaam . " " . $telefoonnummer . " " . $woonplaats . " " . $huisnummer . " " . $postcode . " " . $id_klant;
+if (isset($_POST['submit'])) {
     //check klantnaam
     if (!empty($klantnaam)) {
         $klantnaam_subject = $klantnaam;
@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
         if ($klantnaam_match !== 1) {
             $error[] = "Klantnaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } 
+    }
     //check straatnaam
     if (!empty($straatnaam)) {
         $straatnaam_subject = $straatnaam;
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
         if ($straatnaam_match !== 1) {
             $error[] = "Straatnaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } 
+    }
     //check telefoon
     if (!empty($telefoonnummer)) {
         $telefoonnummer_subject = $telefoonnummer;
@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
         if ($telefoonnummer_match !== 1) {
             $error[] = "Telefoon nummer mag alleen nummers bevatten";
         }
-    } 
+    }
     //check woonplaats
     if (!empty($woonplaats)) {
         $woonplaats_subject = $woonplaats;
@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
         if ($woonplaats_match !== 1) {
             $error[] = "Woonplaats mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } 
+    }
     //check huisnummer
     if (!empty($huisnummer)) {
         $huisnummer_subject = $huisnummer;
@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
         if ($huisnummer_match !== 1) {
             $error[] = "huisnummer mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } 
+    }
     //check postcode
     if (!empty($postcode)) {
         $postcode_subject = $postcode;
@@ -70,12 +70,15 @@ if(isset($_POST['submit'])){
         if ($postcode_match !== 1) {
             $error[] = "Postcode mag alleen alfabetische letters en nummers bevatten";
         }
-    } 
-    if(isset($error)){
+    }
+    if (isset($error)) {
+        setcookie("id_klant", $id_klant);
+        print_r($_COOKIE);
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../KlantUpdate/KlantUpdate.php');
-    }else{
-    $klant->KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
-    header('Location:../KlantOverzicht/klantOverzicht.php');
-} 
+        
+    } else {
+        $klant->KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
+        header('Location:../KlantOverzicht/klantOverzicht.php');
+    }
 }

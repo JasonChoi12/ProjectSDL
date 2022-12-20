@@ -3,9 +3,12 @@ require_once("../src/sessie.php");
 $id_klant = $_GET['id_klant'];
 $id_project = $_GET['id_project'];
 if (empty($id_project)) {
+
   $error[] = "Kies eerst een project.";
-  $_SESSION['ERRORS'] = implode('<br> ', $error);
+  if(isset($error)){
+  $_SESSION['errors'] = implode('<br> ', $error);
   header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
+  }
 }
 
 ?>
@@ -30,8 +33,7 @@ if (empty($id_project)) {
   $project = new projecten;
   $project_data = $project->Projectzien($id_klant, $id_project);
   $klant = new projecten;
-  $klant_data = $klant->KlantZien($id_klant);
-  echo $klant_data[0]["klantnaam"] ?>
+  $klant_data = $klant->KlantZien($id_klant);?>
   <script>
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
@@ -64,7 +66,6 @@ if (empty($id_project)) {
       <br>
       <div>
         <?php
-
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];
