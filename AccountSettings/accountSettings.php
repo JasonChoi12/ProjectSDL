@@ -1,8 +1,33 @@
 <?php
 
 require_once("../src/sessie.php");
+require_once('../forms/vendor/autoload.php');
+
+
+# Create the 2FA class
+$google2fa = new PragmaRX\Google2FA\Google2FA();
 
 $user = unserialize($_SESSION['gebruiker_data']);
+$email = $user->email;
+$voornaam = $user->voornaam;
+$secret_key = $user->secret_key;
+$text = $google2fa->getQRCodeUrl(
+  $email,
+  $voornaam,
+  $secret_key
+);
+$image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=' . $text;
+$qr[] = '<img class="qrcode" src="' . $image_url . '" />';
+$qr[] = 'Kan je de qr niet scannen hier is jouw instelsleutel: ' . $secret_key;
+
+$_SESSION['QR'] = implode('<br> ', $qr);
+
+// if (isset($_SESSION['QR'])) {
+
+//   echo $_SESSION['QR'];
+
+//   unset($_SESSION['QR']);
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -65,6 +90,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
         if (isset($_SESSION['succes'])) {
           echo $_SESSION['succes'];
           unset($_SESSION['succes']);
+        }
+
+        if (isset($_SESSION['QR'])) {
+
+          echo $_SESSION['QR'];
+
+          unset($_SESSION['QR']);
         } ?></div>
     </form>
   </div>

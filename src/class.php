@@ -50,6 +50,8 @@ class Gebruikers extends DB
     public $email;
     public $usertype;
     public $img;
+    public $secret_key;
+
 
     public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key)
     {
@@ -117,6 +119,7 @@ class Gebruikers extends DB
                     $this->email = $data['email'];
                     $this->usertype = $data['usertype'];
                     $this->img = $data['image'];
+                    $this->secret_key = $data['secretkey'];
                     // status terugsturen
                     return true;
                 } else {
