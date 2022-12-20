@@ -169,12 +169,13 @@ if (isset($error)) {
       </div>
       <br />
     </form>
-    <div class="middle-line">
+    <div>
         <form action="../forms/UrenRegistreren-form.php" method="post">
     <?php //echo $id_klant. " " . $id_project;?>
     <input name="id_klant" value="<?php echo $id_klant;?>" type="hidden" id="id_klant" />
     <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
     <input name="id_gebruiker" value="<?php echo $id_gebruiker;?>" type="hidden" id="id_gebruiker" />
+    <div class="middle-line">
     <div class="activiteit">
           <label>Activiteit *<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
@@ -186,6 +187,7 @@ if (isset($error)) {
             <input type="date" class="datum-input" name="datum" />
           </label>
         </div>
+    </div>
     </div>
     <div class="tijd-line">
       <div class="tijd">

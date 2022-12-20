@@ -45,13 +45,6 @@ setcookie("id_klant", "", time() - 3600);
         }
       }
     }
-    function toggle(source) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i] != source)
-            checkboxes[i].checked = source.checked;
-    }
-}
   </script>
 
   <div class="title">
@@ -76,7 +69,7 @@ setcookie("id_klant", "", time() - 3600);
     </div>
     <table id="klantoverzicht">
       <tr>
-        <th id="table-left-border"><input class="checkbox" type="checkbox" onClick="toggle(this)"></th>
+        <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
         <th>Klant</th>
         <th>Woonplaats</th>
         <th>Adres</th>
@@ -85,33 +78,33 @@ setcookie("id_klant", "", time() - 3600);
         <th>Projecten</th>
         <th id="table-right-border"></th>
       </tr>
-        <?php
-        // foreach klant om door alle rijen een loop te doen
-        $klanten = new Klanten();
-        $klanten_data = $klanten->KlantenZien();
-        $projecten = new projecten();
-        foreach ($klanten_data as $klant_data) {
-          $id_klant = $klant_data['id_klant'];
-        ?>
-      <tr>
-        <td>
-          <input id="checkbox" class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
-        </td>
-        <td><?php echo $klant_data['klantnaam']; ?></td>
-        <td><?php echo $klant_data['woonplaats']; ?></td>
-        <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
-        <td><?php echo $klant_data['postcode']; ?></td>
-        <td><?php echo $klant_data['telefoonnummer']; ?></td>
-        <td><?php $projecten_data = $projecten->Projectenzien($id_klant);
-            echo count($projecten_data); ?></td>
-        <td>
-          <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
-            <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
-            <button class="table-bewerk">Bekijken</button>
-          </form>
-        </td>
-      </tr>
-    <?php } ?>
+      <?php
+      // foreach klant om door alle rijen een loop te doen
+      $klanten = new Klanten();
+      $klanten_data = $klanten->KlantenZien();
+      $projecten = new projecten();
+      foreach ($klanten_data as $klant_data) {
+        $id_klant = $klant_data['id_klant'];
+      ?>
+        <tr>
+          <td>
+            <input id="checkbox" name="checkbox" class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $klant_data['id_klant']; ?>">
+          </td>
+          <td><?php echo $klant_data['klantnaam']; ?></td>
+          <td><?php echo $klant_data['woonplaats']; ?></td>
+          <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
+          <td><?php echo $klant_data['postcode']; ?></td>
+          <td><?php echo $klant_data['telefoonnummer']; ?></td>
+          <td><?php $projecten_data = $projecten->Projectenzien($id_klant);
+              echo count($projecten_data); ?></td>
+          <td>
+            <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+              <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
+              <button class="table-bewerk">Bekijken</button>
+            </form>
+          </td>
+        </tr>
+      <?php } ?>
     </table>
     <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_klant" />
@@ -125,6 +118,21 @@ setcookie("id_klant", "", time() - 3600);
   </div>
 </body>
 <script type="text/javascript">
+  document.getElementById('selectAll').onclick = function() {
+    var box = document.getElementsByName('checkbox')
+    for (var i = 0; i < box.length; i++) {
+      box[i].checked = !box[i].checked;
+
+      if ("createEvent" in document) {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("change", false, true);
+        box[i].dispatchEvent(evt);
+      } else {
+        box[i].fireEvent("onchange");
+      }
+    }
+  };
+
   var d = new Array();
 
   function chkbox(this1) {
