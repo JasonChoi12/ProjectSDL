@@ -176,7 +176,7 @@ if (isset($error)) {
     <input name="id_project" value="<?php echo $id_project;?>" type="hidden" id="id_project" />
     <input name="id_gebruiker" value="<?php echo $id_gebruiker;?>" type="hidden" id="id_gebruiker" />
     <div class="activiteit">
-          <label>Activiteit<br />
+          <label>Activiteit *<br />
             <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />
           </label>
         </div>
