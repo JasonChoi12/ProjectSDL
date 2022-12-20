@@ -22,13 +22,7 @@ require_once("../src/sessie.php");
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
-    function toggle(source) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i] != source)
-            checkboxes[i].checked = source.checked;
-    }
-  }
+  
   </script>
   
   <div class="title">
@@ -48,7 +42,7 @@ require_once("../src/sessie.php");
     </div>
     <table>
       <tr>
-      <th id="table-left-border"><input class="checkbox" type="checkbox" onClick="toggle(this)"></th>
+      <th id="table-left-border"><input name="selectAll" class="checkbox" type="checkbox"></th>
         <th>Medewerker</th>
         <th>Email</th>
         <th>Type Medewerker</th>
@@ -62,7 +56,7 @@ require_once("../src/sessie.php");
       ?>
         <tr>
           <td class="checkbox">
-            <input type="checkbox" onchange="chkbox(this)" value="<?php echo $gebruiker_data['id_gebruiker']; ?>">
+            <input name="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $gebruiker_data['id_gebruiker']; ?>">
 
           </td>
           <td><?php echo $gebruiker_data['voornaam'] . " " . $gebruiker_data['tussenvoegsel'] . " " . $gebruiker_data['achternaam']; ?></td>
@@ -89,6 +83,20 @@ require_once("../src/sessie.php");
   </div>
 </body>
 <script type="text/javascript">
+  document.getElementById('selectAll').onclick = function() {
+    var box = document.getElementsByName('checkbox')
+    for (var i = 0; i < box.length; i++) {
+      box[i].checked = !box[i].checked;
+
+      if ("createEvent" in document) {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("change", false, true);
+        box[i].dispatchEvent(evt);
+      } else {
+        box[i].fireEvent("onchange");
+      }
+    }
+  };
   var d = new Array();
 
   function chkbox(this1) {

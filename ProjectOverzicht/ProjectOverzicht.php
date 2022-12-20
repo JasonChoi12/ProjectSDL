@@ -38,13 +38,6 @@ setcookie("id_klant", "", time() - 3600);
       $("#nav-placeholder").load("../navBar.php");
     });
 
-    function toggle(source) {
-      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      for (var i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i] != source)
-          checkboxes[i].checked = source.checked;
-      }
-    }
   </script>
 
   <div class="title">
@@ -72,7 +65,7 @@ setcookie("id_klant", "", time() - 3600);
     </div>
     <table>
       <tr>
-        <th id="table-left-border"><input class="checkbox" type="checkbox" onClick="toggle(this)"></th>
+        <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
         <th>Projectnaam</th>
         <th>Totale uren</th>
         <th>Declarabele uren</th>
@@ -99,7 +92,7 @@ setcookie("id_klant", "", time() - 3600);
       ?>
         <tr>
           <td class="checkbox">
-            <input type="checkbox" onchange="chkbox(this)" value="<?php echo $project_data['id_project']; ?>">
+            <input name="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $project_data['id_project']; ?>">
           </td>
           <td><?php echo $project_data['projectnaam']; ?></td>
           <td><?php echo number_format($totaleUren / 3600, 1); ?></td>
@@ -121,11 +114,25 @@ setcookie("id_klant", "", time() - 3600);
       <input value="" type="hidden" id="update-input" name="id_project" />
       <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
     </form>
-    <p id="sh"></p>
-    <p id="sh1"></p>
+    <p id="sh" hidden></p>
+    <p id="sh1" hidden></p>
   </div>
 </body>
 <script type="text/javascript">
+  document.getElementById('selectAll').onclick = function() {
+    var box = document.getElementsByName('checkbox')
+    for (var i = 0; i < box.length; i++) {
+      box[i].checked = !box[i].checked;
+
+      if ("createEvent" in document) {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("change", false, true);
+        box[i].dispatchEvent(evt);
+      } else {
+        box[i].fireEvent("onchange");
+      }
+    }
+  };
   var d = new Array();
 
   function chkbox(this1) {
