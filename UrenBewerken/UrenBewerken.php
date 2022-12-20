@@ -21,7 +21,7 @@ setcookie("id_project", "", time() - 3600);
 // }
 $uren = new uren;
 $uren_data = $uren->uurzien($id_uren);
-print_r($uren_data);
+// print_r($uren_data);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
