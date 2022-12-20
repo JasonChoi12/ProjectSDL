@@ -786,6 +786,37 @@ class uren extends projecten
                 return $e;
             }
         }
+        public function Exportuurzien($id_project)
+    { 
+            try {
+                // maak een connectie met de database
+                $this->conn();
+                // sql query defineren
+                $sql = "SELECT id_uren, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, laatst_gewerkt FROM `uren`
+                INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker 
+                INNER JOIN `projecten` ON uren.id_project = projecten.id_project
+                INNER JOIN `klanten` ON projecten.id_klant = klanten.id_klant
+                WHERE  uren.id_project = :id_project";
+                // sql voorbereiden
+                $stmt = $this->conn->prepare($sql);
+                // waardes verbinden met de named placeholders
+                $stmt->bindParam(":id_project", $id_project);
+                //Voer SQL uit
+                $stmt->execute();
+                // data ophalen
+                $data = $stmt->fetchAll();
+                // database connectie sluiten
+                $this->conn = NULL;
+
+                // opgehaalde rijen terugsturen
+                return $data;
+            } catch (PDOException $e) {
+                // database connectie sluiten
+                $this->conn = NULL;
+                //stuur variable terug
+                return $e;
+            }
+        }
         public function UrenBewerken($id_uren, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
     {
         try {

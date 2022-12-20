@@ -112,8 +112,8 @@ setcookie("id_klant", "", time() - 3600);
     <form id="export" method="post" action="../forms/ProjectExport-form.php">
       <input value="" type="hidden" id="export-input" name="id_klant" />
     </form>
-    <p id="sh"></p>
-    <p id="sh1"></p>
+    <!-- <p id="sh"></p>
+    <p id="sh1"></p> -->
 
   </div>
 </body>

@@ -58,7 +58,7 @@ setcookie("id_klant", "", time() - 3600);
     ?>
 
     <div class="btn-group">
-      <button class="exporteer">Exporteren</button>
+    <button type="submit" form="export"class="exporteer">Exporteren</button>
       <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
@@ -114,8 +114,12 @@ setcookie("id_klant", "", time() - 3600);
       <input value="" type="hidden" id="update-input" name="id_project" />
       <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
     </form>
-    <p id="sh" hidden></p>
-    <p id="sh1" hidden></p>
+    <form id="export" method="post" action="../forms/UrenExport-form.php">
+    <input value="" type="hidden" id="export-input" name="id_project" />
+      <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
+    </form>
+    <!-- <p id="sh" hidden></p>
+    <p id="sh1" hidden></p> -->
   </div>
 </body>
 <script type="text/javascript">
@@ -155,6 +159,9 @@ setcookie("id_klant", "", time() - 3600);
       $('update-input').val(a);
 
       document.getElementById("update-input").value = a;
+      $('#export-input').val(a);
+
+      document.getElementById("export-input").value = a;
 
     }
 

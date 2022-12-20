@@ -78,7 +78,7 @@ setcookie("id_project", "", time() - 3600);
 
     ?>
     <div class="btn-group">
-      <button class="exporteer">Exporteren</button>
+      <!-- <button class="exporteer">Exporteren</button> -->
       <a href="../UrenRegistratie/urenRegistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
