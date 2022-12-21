@@ -9,7 +9,7 @@ $klant = new Klanten();
 // Pakt post van de form en zet ze in variable
 $klantnaam = $_POST['klantnaam'];
 $straatnaam = $_POST['straatnaam'];
-$telefoonnummer = $_POST['telefoon'];
+$telefoon = $_POST['telefoon'];
 $woonplaats = $_POST['woonplaats'];
 $huisnummer = $_POST['huisnummer'];
 $postcode = $_POST['postcode'];
@@ -41,11 +41,11 @@ if(isset($_POST['submit'])){
         $error[] = "Straatnaam mag niet leeg zijn.";
     }
     //check telefoon
-    if (!empty($telefoonnummer)) {
-        $telefoonnummer_subject = $telefoonnummer;
-        $telefoonnummer_pattern = '/^[0-9]*$/';
-        $telefoonnummer_match = preg_match($telefoonnummer_pattern, $telefoonnummer_subject);
-        if ($telefoonnummer_match !== 1) {
+    if (!empty($telefoon)) {
+        $telefoon_subject = $telefoon;
+        $telefoon_pattern = '/^[0-9]*$/';
+        $telefoon_match = preg_match($telefoon_pattern, $telefoon_subject);
+        if ($telefoon_match !== 1) {
             $error[] = "Telefoon nummer mag alleen nummers bevatten";
         }
     } else {
@@ -94,5 +94,6 @@ if(isset($_POST['submit'])){
     }else{
     $klant->KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode);
     header('Location:../KlantOverzicht/klantOverzicht.php');
+    
 } 
 }
