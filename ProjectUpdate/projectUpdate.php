@@ -50,20 +50,25 @@ if (empty($id_project)) {
         <input class="klant-input" placeholder="<?php echo $klant_data[0]["klantnaam"]; ?>" disabled />
       </div>
       <br />
-      <div class="projectnaam">
-        <label>Projectnaam *<br />
+      <div class="project-info">
+        <div class="projectnaam">
+          <label>Projectnaam *<br />
           <input class="projectnaam-input" name="projectnaam" placeholder="<?php echo $project_data[0]["projectnaam"]; ?>" />
-        </label>
+          </label>
+        </div>
+        <div class="begindatum">
+          <label>
+            Begindatum *<br />
+            <input type="text" class="begindatum-input" name="begindatum" placeholder="<?php echo $project_data[0]["begindatum"]; ?>" onfocus="(this.type='date')" />
+          </label>
+        </div>
+        <div class="btn">
+          <br>
+          <button name="submit" class="submit">Bewerken</button>
+        </div>
       </div>
-      <div class="begindatum">
-        <label>
-          Begindatum<br />
-          <input type="text" class="begindatum-input" name="begindatum" placeholder="<?php echo $project_data[0]["begindatum"]; ?>" onfocus="(this.type='date')" />
-        </label>
-      </div>
-      <button name="submit" class="submit">Bewerken</button>
       <br>
-      <br>
+    
       <div>
         <?php
         // laat error code Zien

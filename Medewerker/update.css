@@ -1,103 +1,156 @@
 .registreren {
+  margin-left: 25%;
+  text-align: center;
+}
+h1 {
+  font-family: "verdana";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 84px;
+  /* identical to box height */
+  color: #42447d;
+  margin-right: 15%;
+  margin-bottom: 10px;
+}
+.submit {
+  position: relative;
+  margin-top: 50px;
+  background: #f39200;
+  box-shadow: 0px 0px 30px rgba(99, 122, 48, 0.4);
+  border-radius: 4px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: block;
+  outline: none;
+  border: none;
 
-    margin-left: 25%;
-    text-align: center;
-  }
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
+}
+
+.inputnaam {
+  background: rgba(100, 103, 143, 0.15);
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+.inputnaam2 {
+  background: rgba(100, 103, 143, 0.15);
+  border-radius: 4px;
+  margin-right: 20px;
+  margin-left: 20px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+.inputgegevens {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  background: rgba(100, 103, 143, 0.15);
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.btn-group {
+  margin-left: 38%;
+  text-decoration: none;
+}
+.usertype {
+  margin: auto;
+}
+.usertype-dropdown {
+  background: rgba(100, 103, 143, 0.15);
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  text-align: center;
+  margin-bottom: 30px;
+}
+select:invalid {
+  color: gray;
+}
+.profielfoto {
+  margin-left: 55%;
+  margin-top: -8%;
+}
+.error {
+  text-align: center;
+  margin-top: 2%;
+  max-width: 40%;
+  margin-left: 28%;
+}
+form {
+  max-width: 80%;
+}
+
+@media screen and (max-width: 600px) {
   h1 {
-    font-family: "verdana";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 84px;
-    /* identical to box height */
-    color: #42447d;
-    margin-right: 15%;
-    margin-bottom: 10px;
+    font-size: 15px;
   }
-  .submit {
-    position: relative;
-    width: 229px;
-    height: 46px;
-    margin-top: 50px;
-    background: #f39200;
-    box-shadow: 0px 0px 30px rgba(99, 122, 48, 0.4);
-    border-radius: 4px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    display: block;
-    outline: none;
-    border: none;
-  
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-  }
-  
   .inputnaam {
-    width: 200px;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    text-align: center;
-  }
-  .inputnaam2 {
-    width: 100px;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    margin-right: 20px;
-    margin-left: 20px;
-    outline: none;
-    border: none;
-    text-align: center;
+    font-size: 10px;
+    height: 20px;
+    width: 65px;
   }
   .inputgegevens {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    width: 615px;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    text-align: center;
-  }
-  
-  .btn-group {
-    margin-left: 38%;
-    text-decoration: none;
-  }
-  .usertype{
-    
-      margin: auto;
-      
+    width: 200px;
+    height: 20px;
+    font-size: 10px;
   }
   .usertype-dropdown{
-      width: 200px;
-    height: 40px;
-    background: rgba(100, 103, 143, 0.15);
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    text-align: center;
-    margin-bottom: 30px;
+    width: 100px;
+    height: 20px;
+    font-size: 10px;
   }
-  select:invalid {
-      color:gray;
+  .submit {
+    width: 65px;
+    height: 15px;
+    font-size: 9px;
   }
-  .profielfoto{
-   margin-left: 55%;
-   margin-top: -8%;
+  .cancel {
+    width: 65px;
+    height: 15px;
+    font-size: 9px;
   }
   .error {
-    text-align: center;
-    margin-top: 2%;
-    max-width: 40%;
-    margin-left: 28%;
+    font-size: 9px;
   }
-  form{
-    max-width: 80%;
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
   }
+  .inputnaam {
+    font-size: 15px;
+    width: 26%;
+    height: 2.7vw;
+  }
+  .inputgegevens {
+    width: 80%;
+    height: 2.7vw;
+    font-size: 15px;
+  }
+  .usertype-dropdown{
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+  }
+  .submit {
+    width: 43%;
+    height: 3vw;
+    font-size: 14px;
+  }
+  .cancel {
+    width: 43%;
+    height: 3vw;
+    font-size: 14px;
+  }
+  .error {
+    font-size: 16px;
+  }
+}
