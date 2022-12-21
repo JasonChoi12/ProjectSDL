@@ -42,7 +42,7 @@ require_once("../src/sessie.php");
     </div>
     <table>
       <tr>
-      <th id="table-left-border"><input name="selectAll" class="checkbox" type="checkbox"></th>
+      <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
         <th>Medewerker</th>
         <th>Email</th>
         <th>Type Medewerker</th>
