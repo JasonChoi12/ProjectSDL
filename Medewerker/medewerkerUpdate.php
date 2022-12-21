@@ -1,11 +1,20 @@
 <?php
 
 require_once("../src/sessie.php");
-$id_gebruiker = $_GET["id_gebruiker"];
-if(empty($id_gebruiker)){
-    $error[] = "Kies eerst een gebruiker.";
-    $_SESSION['ERRORS'] = implode('<br> ', $error);
-    header('Location: ../Medewerker/Medewerker.php');
+  if (!empty($_GET["id_gebruiker"])) {
+    $id_gebruiker = $_GET["id_gebruiker"];
+  setcookie("id_gebruiker", $id_gebruiker);
+  } elseif(!empty($_COOKIE["id_gebruiker"])) {
+    $id_gebruiker = $_COOKIE["id_gebruiker"];
+  setcookie("id_gebruiker", "", time() - 3600);
+  }elseif(empty($id_gebruiker)){
+    if (!isset($_SESSION['ERRORS'])) {
+    $error[] = "Kies eerst een medewerker.";
+    if(isset($error)){
+      $_SESSION['errors'] = implode('<br> ', $error);
+      header('Location: ../Medewerker/Medewerker.php');
+    }
+    }
   }
 ?>
 <!DOCTYPE html>

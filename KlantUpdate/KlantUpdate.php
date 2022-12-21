@@ -16,7 +16,7 @@ setcookie("id_klant", $id_klant);
   $id_klant = $_COOKIE["id_klant"];
 setcookie("id_klant", "", time() - 3600);
 }elseif(empty($id_klant)){
-  if (!isset($_SESSION['ERRORS'])) {
+  if (!isset($_SESSION['errors'])) {
   $error[] = "Kies eerst een klant.";
   if(isset($error)){
     $_SESSION['errors'] = implode('<br> ', $error);

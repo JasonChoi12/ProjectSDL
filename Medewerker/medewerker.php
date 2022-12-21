@@ -34,12 +34,20 @@ require_once("../src/sessie.php");
       </div>
       
     </form>
+    
     <div class="btn-group">
-      <button class="exporteer">Verborgen</button>
       <a href="../Registreren/registreren.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button  type="submit" form="delete" class="verwijderen">Verwijderen</button>
     </div>
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+    // print_r($_COOKIE);
+    ?>
     <table>
       <tr>
       <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
@@ -62,13 +70,7 @@ require_once("../src/sessie.php");
           <td><?php echo $gebruiker_data['voornaam'] . " " . $gebruiker_data['tussenvoegsel'] . " " . $gebruiker_data['achternaam']; ?></td>
           <td><?php echo $gebruiker_data['email'] ?></td>
           <td><?php echo $gebruiker_data['usertype'] ?></td>
-          <td>
-            <form method="get" action="">
-              <input type="hidden" name="id_gebruiker" value="<?php echo $gebruiker_data['id_gebruiker'] ?>">
-              <button class="table-bewerk">Bekijken</button>
-            </form>
-
-          </td>
+         
         </tr>
       <?php } ?>
     </table>
