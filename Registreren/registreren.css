@@ -32,6 +32,9 @@ h1 {
   font-style: normal;
   color: #fff;
 }
+a{
+  text-decoration: none;
+}
 .cancel {
   position: relative;
   background: #ff0000;
