@@ -29,7 +29,10 @@ h1 {
     padding: 10px 10px;
   }
   .declarabel{
-    margin-left: 10%;
+    padding-left: 3.5%;
+  }
+  .bonus{
+    padding-left: 3.5%;
   }
   
   .activiteit-input {

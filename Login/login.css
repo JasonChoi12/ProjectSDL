@@ -27,7 +27,7 @@
 .login {
   position: absolute;
   height: 10%;
-  margin-left: 50%;
+  margin-left: 55%;
   text-align: center;
 }
 
@@ -79,8 +79,10 @@ input{
   text-align: center;
 }
 .password-forgot{
+  font-family: "verdana";
   text-align: center;
   align-items: center;
+  text-decoration: none;
 }
 @media screen and (max-width: 600px) {
   h1 {
@@ -104,6 +106,9 @@ input{
     max-width: 30vw;
     text-align: center;
   }
+  .password-forgot{
+    font-size: 11px;
+  }
 }
 @media screen and (min-width: 600px) {
   h1{
@@ -117,5 +122,8 @@ input{
     font-size: 14px;
     width: 302px;
     height: 5vw;
+  }
+  .password-forgot{
+    font-size: 14px;
   }
 }

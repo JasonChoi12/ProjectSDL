@@ -91,6 +91,7 @@ setcookie("id_project", "", time() - 3600);
         <th>Medewerker</th>
         <th>Activiteit</th>
         <th>Decl.</th>
+        <th>Bonus mdw</th>
         <th>Uren</th>
         <th>Begonnen om</th>
         <th>Beïndigd om</th>
@@ -114,6 +115,7 @@ setcookie("id_project", "", time() - 3600);
             <?php echo $uur_data['activiteit'] ?>
           </td>
           <td><?php echo $uur_data['declarabel'] ?></td>
+          <td></td>
           <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
           <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
           <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>

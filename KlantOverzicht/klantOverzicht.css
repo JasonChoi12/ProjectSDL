@@ -141,7 +141,7 @@ td {
   padding-top: 10px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
-  text-align: left;
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {

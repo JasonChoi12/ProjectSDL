@@ -74,6 +74,11 @@ $uren_data = $uren->uurzien($id_uren);
               <?php } ?>
               </label>
           </div>
+          <div class="bonus">
+            <label>Bonus mdw <br />
+              <input class="klant-input" id="bonus" name="bonus" placeholder="12.50" />
+            </label>
+          </div>
         </div>
         <div class="middle-line">
           <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"]; ?>" type="hidden" id="id_uren" />

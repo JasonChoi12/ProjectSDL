@@ -135,12 +135,15 @@ table {
 th {
   height: 2.6vw;
   background: #b5b5cf;
-  text-align: center;
+  text-align: left;
 }
 td {
   padding-top: 10px;
   padding-bottom: 2vw;
   border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+#table-left-border{
   text-align: left;
 }
 
