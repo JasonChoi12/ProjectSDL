@@ -36,10 +36,7 @@ if(isset($_POST['submit'])){
         if ($straatnaam_match !== 1) {
             $error[] = "Straatnaam mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Straatnaam mag niet leeg zijn.";
-    }
+    } 
     //check telefoon
     if (!empty($telefoon)) {
         $telefoon_subject = $telefoon;
@@ -48,10 +45,7 @@ if(isset($_POST['submit'])){
         if ($telefoon_match !== 1) {
             $error[] = "Telefoon nummer mag alleen nummers bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Telefoon nummer mag niet leeg zijn.";
-    }
+    } 
     //check woonplaats
     if (!empty($woonplaats)) {
         $woonplaats_subject = $woonplaats;
@@ -72,10 +66,7 @@ if(isset($_POST['submit'])){
         if ($huisnummer_match !== 1) {
             $error[] = "huisnummer mag alleen alfabetisch, steepjes en spaties bevatten";
         }
-    } else {
-        // mag niet leeg zijn 
-        $error[] = "huisnummer mag niet leeg zijn.";
-    }
+    } 
     //check postcode
     if (!empty($postcode)) {
         $postcode_subject = $postcode;
@@ -84,10 +75,7 @@ if(isset($_POST['submit'])){
         if ($postcode_match !== 1) {
             $error[] = "Postcode mag alleen alfabetische letters en nummers bevatten";
         }
-    } else {
-        // mag niet leeg zijn
-        $error[] = "Postcode mag niet leeg zijn.";
-    }
+    } 
     if(isset($error)){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../klant/klant.php');
