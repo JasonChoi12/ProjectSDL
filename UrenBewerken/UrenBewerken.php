@@ -58,61 +58,61 @@ $uren_data = $uren->uurzien($id_uren);
         <input class="klant-input" id="input" name="klant" placeholder="<?php echo $uren_data[0]["klantnaam"]; ?>" disabled />
 
         <div class="project-declarabel">
-      
+
           <label>Project *<br />
-          <input class="klant-input" list="projecten" id="project" name="project" placeholder="<?php echo $uren_data[0]["projectnaam"]; ?>" />
+            <input class="klant-input" list="projecten" id="project" name="project" placeholder="<?php echo $uren_data[0]["projectnaam"]; ?>" />
           </label>
           <div class="declarabel">
-        <?php if ($user->usertype === "admin") { ?>
-          <label>Declarabel <br />
+            <?php if ($user->usertype === "admin") { ?>
+              <label>Declarabel <br />
 
-          <select place class="klant-input" name="declarabel" id="declarabel">
-            <option value="" disabled selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"]; ?></option>
-            <option value="ja">Ja</option>
-            <option value="nee">Nee</option>
-          </select>
-        <?php } ?>
-          </label>
+                <select place class="klant-input" name="declarabel" id="declarabel">
+                  <option value="" disabled selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"]; ?></option>
+                  <option value="ja">Ja</option>
+                  <option value="nee">Nee</option>
+                </select>
+              <?php } ?>
+              </label>
           </div>
-      </div>
-      <div class="middle-line">
-        <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"]; ?>" type="hidden" id="id_uren" />
-        <input name="id_klant" value="<?php echo $uren_data[0]["id_klant"]; ?>" type="hidden" id="id_klant" />
-        <input name="id_project" value="<?php echo $uren_data[0]["id_project"]; ?>" type="hidden" id="id_project" />
-        <input name="id_gebruiker" value="<?php echo $uren_data[0]["id_gebruiker"]; ?>" type="hidden" id="id_gebruiker" />
-        <div class="activiteit">
-          <label>Activiteit<br />
-            <input class="activiteit-input" name="activiteiten" placeholder="<?php echo $uren_data[0]["activiteit"]; ?>" />
-          </label>
         </div>
-        <div class="datum">
-          <label>Datum *
-            <br>
-            Ingevuld: <?php echo $uren_data[0]["datum"]; ?>
-            <br />
-            <input type="date" class="datum-input" name="datum" required />
-          </label>
+        <div class="middle-line">
+          <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"]; ?>" type="hidden" id="id_uren" />
+          <input name="id_klant" value="<?php echo $uren_data[0]["id_klant"]; ?>" type="hidden" id="id_klant" />
+          <input name="id_project" value="<?php echo $uren_data[0]["id_project"]; ?>" type="hidden" id="id_project" />
+          <input name="id_gebruiker" value="<?php echo $uren_data[0]["id_gebruiker"]; ?>" type="hidden" id="id_gebruiker" />
+          <div class="activiteit">
+            <label>Activiteit<br />
+              <input class="activiteit-input" name="activiteiten" placeholder="<?php echo $uren_data[0]["activiteit"]; ?>" />
+            </label>
+          </div>
+          <div class="datum">
+            <label>Datum *
+              <br>
+              Ingevuld: <?php echo $uren_data[0]["datum"]; ?>
+              <br />
+              <input type="date" class="datum-input" name="datum" required />
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="tijd-line">
-        <div class="tijd">
-          <label>Begonnen om<br />
-            <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
-        </div>
-        <div class="eindtijd">
-          <label>Beïndigd om<br />
-            <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
-        </div>
-        <div class="toteindtijd">
-          <label>Totale gewerkte tijd<br />
-            <input id="diff" class="tijd-input" type="text" name="uren" placeholder="23:59" /></label>
-          <input id="diff-hidden" class="tijd-input" type="hidden" name="Buren" placeholder="" /></label>
-        </div>
+        <div class="tijd-line">
+          <div class="tijd">
+            <label>Begonnen om<br />
+              <input id="start" type="time" class="tijd-input" name="begonnen" /></label>
+          </div>
+          <div class="eindtijd">
+            <label>Beïndigd om<br />
+              <input oninput="bereken()" id="end" type="time" class="tijd-input" name="beëindigd" /></label>
+          </div>
+          <div class="toteindtijd">
+            <label>Totale gewerkte tijd *<br />
+              <input id="diff" class="tijd-input" type="text" name="uren" placeholder="23:59" /></label>
+            <input id="diff-hidden" class="tijd-input" type="hidden" name="Buren" placeholder="" /></label>
+          </div>
 
-        <div class="btn">
-          <button name="submit" class="submit">Toevoegen</button>
+          <div class="btn">
+            <button name="submit" class="submit">Toevoegen</button>
+          </div>
         </div>
-      </div>
     </form><br>
     <div class="error">
       <?php
