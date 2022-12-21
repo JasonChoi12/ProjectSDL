@@ -63,8 +63,8 @@ require_once("../src/sessie.php");
       foreach ($gebruikers_data as $gebruiker_data) {
       ?>
         <tr>
-          <td class="checkbox">
-            <input name="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $gebruiker_data['id_gebruiker']; ?>">
+          <td>
+            <input name="checkbox" class="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $gebruiker_data['id_gebruiker']; ?>">
 
           </td>
           <td><?php echo $gebruiker_data['voornaam'] . " " . $gebruiker_data['tussenvoegsel'] . " " . $gebruiker_data['achternaam']; ?></td>

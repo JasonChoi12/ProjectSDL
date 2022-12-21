@@ -1,96 +1,179 @@
 h1 {
-    font-family: "verdana";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 84px;
-    /* identical to box height */
+  font-family: "verdana";
+  font-style: normal;
+  font-weight: 600;
+  line-height: 84px;
+  /* identical to box height */
+}
+.title {
+  position: absolute;
+  height: 100%;
+  left: 20%;
+  top: 0%;
+}
+.klant {
+  margin-top: 5%;
+}
+
+.klantnaam-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+
+.straat-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+.telefoon {
+  padding-left: 2%;
+}
+.telefoon-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+.woonplaats {
+  padding-left: 2%;
+}
+.woonplaats-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+}
+.adres-input {
+  background: rgba(106, 112, 126, 0.0001);
+  border: 1px solid #dddfe1;
+  border-radius: 0.95vw;
+  padding: 10px 10px;
+  display: block;
+  font-size: 0.9vw;
+}
+
+.postcode {
+  padding-left: 5%;
+}
+.submit {
+  position: relative;
+  background: #f39200;
+  display: block;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
+  margin-left: 72%;
+  margin-top: -5%;
+}
+
+label {
+  font-style: normal;
+  font-size: 1.05vw;
+}
+.middle-line {
+  display: flex;
+  margin-top: 5%;
+}
+.bottom-line {
+  display: flex;
+  margin-top: 5%;
+}
+.error{
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 15px;
   }
-  .title {
-    position: absolute;
-    height: 100%;
-    left: 20%;
-    top: 0%;
-  }
-  .klant{
-    margin-top: 5%;
-  }
-  
   .klantnaam-input {
-    width: 307px;
-    height: 60px;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 13px;
-    padding: 10px 10px;
-  }
-  .straat {
-    margin-top: 10%;
+    width: 92px;
+    height: 20px;
+    font-size: 10px;
   }
   .straat-input {
-    width: 307px;
-    height: 60px;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 13px;
-    padding: 10px 10px;
-  }
-  .telefoon {
-    margin-left: 100%;
-    margin-top: -23%;
+    width: 92px;
+    height: 20px;
+    font-size: 10px;
   }
   .telefoon-input {
-    width: 300px;
-    height: 60px;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 13px;
-    padding: 10px 10px;
-  }
-  .woonplaats {
-    margin-left: 200%;
-    margin-top: -23%;
+    width: 92px;
+    height: 20px;
+    font-size: 10px;
   }
   .woonplaats-input {
-    width: 300px;
-    height: 60px;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 13px;
-    padding: 10px 10px;
-  }
-  .adres {
-    margin-top: 10%;
+    width: 92px;
+    height: 20px;
+    font-size: 10px;
   }
   .adres-input {
-    width: 200px;
-    height: 60px;
-    background: rgba(106, 112, 126, 0.0001);
-    border: 1px solid #dddfe1;
-    border-radius: 13px;
-    display: block;
-    padding: 10px 10px;
+    width: 55px;
+    height: 20px;
+    font-size: 10px;
   }
-  
-  .postcode {
-    margin-left: 70%;
-    margin-top: -22%;
+  label {
+    font-size: 12px;
   }
   .submit {
-    position: relative;
-    width: 229px;
-    height: 46px;
-    background: #f39200;
-    display: block;
-    outline: none;
-    border: none;
-    border-radius: 4px;
-  
-    font-family: "verdana";
-    font-style: normal;
-    font-size: 14px;
-    color: #fff;
-    margin-left: 200%;
-    margin-top: -15%;
+    width: 65px;
+    height: 15px;
+    font-size: 9px;
+  }
+  .error{
+    padding-top: 70px;
+    font-size: 9px;
+    margin-top: 52%;
   }
   
+}
+
+@media screen and (min-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+  .klantnaam-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .straat-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .telefoon-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .woonplaats-input {
+    width: 20vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  .adres-input {
+    width: 13vw;
+    height: 4vw;
+    font-size: 14px;
+  }
+  label {
+    font-size: 16px;
+  }
+  .submit {
+    width: 16vw;
+    height: 3vw;
+    font-size: 15px;
+  }
+  .error{
+    padding-top: 60px;
+    font-size: 15px;
+    margin-top: 32%;
+  }
+}

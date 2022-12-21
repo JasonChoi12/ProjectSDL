@@ -61,7 +61,7 @@ setcookie("id_klant", "", time() - 3600);
         <label>Klant *</label><br />
         <input class="klantnaam-input" name="klantnaam" placeholder="<?php echo $klant_data[0]["klantnaam"] ?>" />
       </div>
-      <br />
+      <div class="middle-line">
       <div class="straat">
         <label>Straat<br />
           <input class="straat-input" name="straatnaam" placeholder="<?php echo $klant_data[0]["straatnaam"] ?>" />
@@ -79,17 +79,20 @@ setcookie("id_klant", "", time() - 3600);
           <input class="woonplaats-input" name="woonplaats" placeholder="<?php echo $klant_data[0]["woonplaats"] ?>" />
         </label>
       </div>
-
-      <div class="adres">
-        <label>Huisnummer
+      </div>
+      <div class="bottom-line">
+        <div class="adres">
+          <label>Huisnummer
           <input class="adres-input" name="huisnummer" placeholder="<?php echo $klant_data[0]["huisnummer"] ?>" /></label>
+        </div>
         <div class="postcode">
           <label>Postcode
-            <input class="adres-input" name="postcode" placeholder="<?php echo $klant_data[0]["postcode"] ?>" /></label>
+          <input class="adres-input" name="postcode" placeholder="<?php echo $klant_data[0]["postcode"] ?>" /></label>
         </div>
-        <button name="submit" class="submit">Bewerken</button>
+      </div>
+      <button name="submit" class="submit">Bewerken</button>
 
-      </div><br>
+  </div><br><br>
       <div>
         <?php
         
