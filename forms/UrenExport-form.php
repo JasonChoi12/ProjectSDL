@@ -1,9 +1,20 @@
 <?php
+session_start();
 require_once('../src/class.php');
 $uren = new uren();
 //filter the excel data
 $id_project = $_POST['id_project'];
 $id_klant = $_POST['id_klant'];
+if (isset($_POST['submit'])) {
+  // check id_klant
+  if (empty($id_project)) {
+      $error[] = "Kies een project.";
+  }
+  if (isset($error)) {
+          
+      $_SESSION['errors'] = implode('<br> ', $error);
+      header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+  } else {
 $uren_data = $uren->Exportuurzien($id_project);
 
 // print_r($uren_data);
@@ -70,4 +81,5 @@ header("Content-Type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=\"$fileName\""); 
 
 echo $excelData;
-// exit;
+exit;
+  }}

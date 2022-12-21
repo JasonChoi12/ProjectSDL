@@ -58,7 +58,7 @@ setcookie("id_klant", "", time() - 3600);
     ?>
 
     <div class="btn-group">
-    <button type="submit" form="export"class="exporteer">Exporteren</button>
+    <button name="submit" type="submit" form="export"class="exporteer">Exporteren</button>
       <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>

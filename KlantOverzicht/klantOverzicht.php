@@ -59,10 +59,11 @@ setcookie("id_klant", "", time() - 3600);
       echo $_SESSION['errors'];
       unset($_SESSION['errors']);
     }
+    
     // print_r($_COOKIE);
     ?>
     <div class="btn-group">
-      <button type="submit" form="export"class="exporteer">Exporteren</button>
+      <button name="submit" type="submit" form="export"class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button class="verwijderen">Verwijderen</button>
