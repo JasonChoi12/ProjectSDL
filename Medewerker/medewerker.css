@@ -139,7 +139,7 @@ th {
 }
 td {
   padding-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 2vw;
   border-bottom: 1px solid #ddd;
   text-align: left;
 }
