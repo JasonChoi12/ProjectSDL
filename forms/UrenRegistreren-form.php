@@ -16,18 +16,21 @@ $begonnen = $_POST['begonnen'];
 $beëindigd = $_POST['beëindigd'];
 $uren = $_POST['uren'];
 $buren = $_POST['Buren'];
+$bonusmdw = $_POST['id_bonusmdw'];
+
 
 
 $declarabel = "ja";
-// echo "id_gebruiker" . $id_gebruiker . "<br>";
-// echo "id_klant: " . $id_klant . "<br>";
-// echo "id_project: " . $id_project . "<br>";
-// echo "activiteit: " . $activiteiten . "<br>";
-// echo "datum: " . $datum . "<br>";
-// echo "begonnen: " . $begonnen . "<br>";
-// echo "beëindigd: " . $beëindigd . "<br>";
-// echo "uren: " . $uren . "<br>";
-// echo "buren: " . $buren . "<br>";
+echo "id_gebruiker" . $id_gebruiker . "<br>";
+echo "id_klant: " . $id_klant . "<br>";
+echo "id_project: " . $id_project . "<br>";
+echo "activiteit: " . $activiteiten . "<br>";
+echo "datum: " . $datum . "<br>";
+echo "begonnen: " . $begonnen . "<br>";
+echo "beëindigd: " . $beëindigd . "<br>";
+echo "uren: " . $uren . "<br>";
+echo "buren: " . $buren . "<br>";
+echo "bonus medewerker: " . $bonusmdw . "<br>";
 
 // $s = (strtotime("00:00"));
 // $begonnen = strtotime($begonnen);
@@ -60,7 +63,7 @@ $declarabel = "ja";
 // echo "doper: " . gmdate("H:i", $doper) . "<br>";
 
 
-
+$s = (strtotime("00:00"));
 
 if (isset($_POST['submit'])) {
     // check id_klant
@@ -79,6 +82,22 @@ if (isset($_POST['submit'])) {
     if (empty($datum)) {
         $error[] = "Vul de datum van invullen in.";
     }
+    // check bonusmdw
+    if ($bonusmdw === "id_bonusmdw") {
+        $bonusmdw = null;
+    }
+    if(!empty($begonnen)){
+        $begonnen = strtotime($begonnen);
+        $begonnen = $begonnen - $s;
+    }else{
+        $begonnen = 0;
+    }
+    if(!empty($beëindigd)){
+        $beëindigd = strtotime($beëindigd);
+        $beëindigd = $beëindigd - $s;
+    }else{
+        $beëindigd = 0;
+    }
     //check uren
     if (!empty($uren)) {
         $uren_subject = $uren;
@@ -93,18 +112,14 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../UrenRegistratie/UrenRegistratie.php');
+        // header('Location:../UrenRegistratie/UrenRegistratie.php');
     } else {
-        $s = (strtotime("00:00"));
-        $begonnen = strtotime($begonnen);
-        $beëindigd = strtotime($beëindigd);
+        
         $uren = strtotime($uren);
         $buren = strtotime($buren);
-        $begonnen = $begonnen - $s;
-        $beëindigd = $beëindigd - $s;
         $uren = $uren - $s;
         $buren = $buren - $s;
-        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
+        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
         $laatst_gewerkt = $UrenRegistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
         header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     }

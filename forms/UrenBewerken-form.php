@@ -18,10 +18,12 @@ $begonnen = $_POST['begonnen'];
 $beëindigd = $_POST['beëindigd'];
 $uren = $_POST['uren'];
 $buren = $_POST['Buren'];
+$bonusmdw = $_POST['id_bonusmdw'];
 
 
 echo "declarabel: " . $declarabel . "<br>";
-echo "id_gebruiker" . $id_gebruiker . "<br>";
+echo "id_uren: " . $id_uren . "<br>";
+echo "id_gebruiker: " . $id_gebruiker . "<br>";
 echo "id_klant: " . $id_klant . "<br>";
 echo "id_project: " . $id_project . "<br>";
 echo "activiteit: " . $activiteiten . "<br>";
@@ -30,6 +32,8 @@ echo "begonnen: " . $begonnen . "<br>";
 echo "beëindigd: " . $beëindigd . "<br>";
 echo "uren: " . $uren . "<br>";
 echo "buren: " . $buren . "<br>";
+echo "id_bonusmdw: " . $bonusmdw . "<br>";
+
 
 $s = (strtotime("00:00"));
 $begonnen = strtotime($begonnen);
@@ -63,12 +67,10 @@ echo "s: " . $s . "<br>";
 
 
 
-
+$s = (strtotime("00:00"));
 if (isset($_POST['submit'])) {
     if (!empty($uren)){
-        $s = (strtotime("00:00"));
-        $begonnen = strtotime($begonnen);
-        $beëindigd = strtotime($beëindigd);
+        
         $uren = strtotime($uren);
         $buren = strtotime($buren);
         $begonnen = $begonnen - $s;
@@ -81,6 +83,21 @@ if (isset($_POST['submit'])) {
     // check datum
     if (empty($datum)) {
         $error[] = "Vul de datum van invullen in.";
+    }
+    if ($bonusmdw === "id_bonusmdw") {
+        $bonusmdw = null;
+    }
+    if(!empty($begonnen)){
+        $begonnen = strtotime($begonnen);
+        $begonnen = $begonnen - $s;
+    }else{
+        $begonnen = 0;
+    }
+    if(!empty($beëindigd)){
+        $beëindigd = strtotime($beëindigd);
+        $beëindigd = $beëindigd - $s;
+    }else{
+        $beëindigd = 0;
     }
     //check uren
     if (!empty($uren)) {
@@ -96,7 +113,7 @@ if (isset($_POST['submit'])) {
         header('Location:../UrenBewerken/UrenBewerken.php');
     } else {
 
-        $UrenBewerken->UrenBewerken($id_uren, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
+        $UrenBewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
         $laatst_gewerkt = $UrenBewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
         header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     }

@@ -601,18 +601,19 @@ class projecten extends Klanten
 class uren extends projecten
 {
 
-    public function UrenRegistreren($id_gebruiker, $id_project, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    public function UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO uren (id_project, id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum) VALUES (:id_project, :id_gebruiker, :activiteit, :declarabel, :uren, :begonnen, :beeindigd, :datum)";
+            $sql = "INSERT INTO uren (id_project, id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum) VALUES (:id_project, :id_gebruiker, :id_bonusmedewerker, :activiteit, :declarabel, :uren, :begonnen, :beeindigd, :datum)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":id_project", $id_project);
             $stmt->bindParam(":id_gebruiker", $id_gebruiker);
+            $stmt->bindParam(":id_bonusmedewerker", $bonusmdw);
             $stmt->bindParam(":activiteit", $activiteiten);
             $stmt->bindParam(":declarabel", $declarabel);
             $stmt->bindParam(":uren", $uren);
@@ -665,7 +666,6 @@ class uren extends projecten
                 $stmt->execute();
                 return true;
             }
-
         } catch (PDOException $e) {
             //Zet verbinding op NULL
             $this->conn = NULL;
@@ -673,151 +673,151 @@ class uren extends projecten
         }
     }
     public function UrenZien($id_project)
-    { 
-            try {
-                // maak een connectie met de database
-                $this->conn();
-                // sql query defineren
-                $sql = "SELECT id_uren, id_project, uren.id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE  id_project = :id_project";
-                // sql voorbereiden
-                $stmt = $this->conn->prepare($sql);
-                // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_project", $id_project);
-                //Voer SQL uit
-                $stmt->execute();
-                // data ophalen
-                $data = $stmt->fetchAll();
-                // database connectie sluiten
-                $this->conn = NULL;
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT id_uren, id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE  id_project = :id_project";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_project", $id_project);
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
 
-                // opgehaalde rijen terugsturen
-                return $data;
-            } catch (PDOException $e) {
-                // database connectie sluiten
-                $this->conn = NULL;
-                //stuur variable terug
-                return $e;
-            }
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
         }
-        public function PersoonlijkeUrenZien($id_project, $id_gebruiker)
-        { 
-                try {
-                    // maak een connectie met de database
-                    $this->conn();
-                    // sql query defineren
-                    $sql = "SELECT id_uren, id_project, uren.id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE id_project = :id_project AND gebruikers.id_gebruiker = :id_gebruiker";
-                    // sql voorbereiden
-                    $stmt = $this->conn->prepare($sql);
-                    // waardes verbinden met de named placeholders
-                    $stmt->bindParam(":id_project", $id_project);
-                    $stmt->bindParam(":id_gebruiker", $id_gebruiker);
+    }
+    public function PersoonlijkeUrenZien($id_project, $id_gebruiker)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT id_uren, id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE id_project = :id_project AND gebruikers.id_gebruiker = :id_gebruiker";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_project", $id_project);
+            $stmt->bindParam(":id_gebruiker", $id_gebruiker);
 
-                    //Voer SQL uit
-                    $stmt->execute();
-                    // data ophalen
-                    $data = $stmt->fetchAll();
-                    // database connectie sluiten
-                    $this->conn = NULL;
-    
-                    // opgehaalde rijen terugsturen
-                    return $data;
-                } catch (PDOException $e) {
-                    // database connectie sluiten
-                    $this->conn = NULL;
-                    //stuur variable terug
-                    return $e;
-                }
-            }
-        public function TotaleUrenZien( $id_project)
-    { 
-            try {
-                // maak een connectie met de database
-                $this->conn();
-                // sql query defineren
-                $sql = "SELECT uren, declarabel FROM uren where  id_project = :id_project";
-                // sql voorbereiden
-                $stmt = $this->conn->prepare($sql);
-                // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_project", $id_project);
-                //Voer SQL uit
-                $stmt->execute();
-                // data ophalen
-                $data = $stmt->fetchAll();
-                // database connectie sluiten
-                $this->conn = NULL;
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
 
-                // opgehaalde rijen terugsturen
-                return $data;
-            } catch (PDOException $e) {
-                // database connectie sluiten
-                $this->conn = NULL;
-                //stuur variable terug
-                return $e;
-            }
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
         }
-        public function uurzien($id_uren)
-    { 
-            try {
-                // maak een connectie met de database
-                $this->conn();
-                // sql query defineren
-                $sql = "SELECT id_uren, uren.id_project, uren.id_gebruiker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, projecten.id_klant FROM `uren`
+    }
+    public function TotaleUrenZien($id_project)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT uren, declarabel FROM uren where  id_project = :id_project";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_project", $id_project);
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
+
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
+        }
+    }
+    public function uurzien($id_uren)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT id_uren, uren.id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, projecten.id_klant FROM `uren`
                 INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker 
                 INNER JOIN `projecten` ON uren.id_project = projecten.id_project
                 INNER JOIN `klanten` ON projecten.id_klant = klanten.id_klant
                 WHERE  uren.id_uren = :id_uren";
-                // sql voorbereiden
-                $stmt = $this->conn->prepare($sql);
-                // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_uren", $id_uren);
-                //Voer SQL uit
-                $stmt->execute();
-                // data ophalen
-                $data = $stmt->fetchAll();
-                // database connectie sluiten
-                $this->conn = NULL;
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_uren", $id_uren);
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
 
-                // opgehaalde rijen terugsturen
-                return $data;
-            } catch (PDOException $e) {
-                // database connectie sluiten
-                $this->conn = NULL;
-                //stuur variable terug
-                return $e;
-            }
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
         }
-        public function Exportuurzien($id_project)
-    { 
-            try {
-                // maak een connectie met de database
-                $this->conn();
-                // sql query defineren
-                $sql = "SELECT id_uren, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, laatst_gewerkt FROM `uren`
+    }
+    public function Exportuurzien($id_project)
+    {
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "SELECT id_uren, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, laatst_gewerkt FROM `uren`
                 INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker 
                 INNER JOIN `projecten` ON uren.id_project = projecten.id_project
                 INNER JOIN `klanten` ON projecten.id_klant = klanten.id_klant
                 WHERE  uren.id_project = :id_project";
-                // sql voorbereiden
-                $stmt = $this->conn->prepare($sql);
-                // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_project", $id_project);
-                //Voer SQL uit
-                $stmt->execute();
-                // data ophalen
-                $data = $stmt->fetchAll();
-                // database connectie sluiten
-                $this->conn = NULL;
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders
+            $stmt->bindParam(":id_project", $id_project);
+            //Voer SQL uit
+            $stmt->execute();
+            // data ophalen
+            $data = $stmt->fetchAll();
+            // database connectie sluiten
+            $this->conn = NULL;
 
-                // opgehaalde rijen terugsturen
-                return $data;
-            } catch (PDOException $e) {
-                // database connectie sluiten
-                $this->conn = NULL;
-                //stuur variable terug
-                return $e;
-            }
+            // opgehaalde rijen terugsturen
+            return $data;
+        } catch (PDOException $e) {
+            // database connectie sluiten
+            $this->conn = NULL;
+            //stuur variable terug
+            return $e;
         }
-        public function UrenBewerken($id_uren, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    }
+    public function UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
     {
         try {
             // maak een connectie met de database
@@ -826,6 +826,7 @@ class uren extends projecten
             $sql = "UPDATE `uren` 
             SET
             activiteit=COALESCE(NULLIF(:activiteit, ''),activiteit),
+            id_bonusmedewerker=COALESCE(NULLIF(:id_bonusmedewerker, ''),id_bonusmedewerker),
             declarabel=COALESCE(NULLIF(:declarabel, ''),declarabel),
             uren=COALESCE(NULLIF(:uren, ''),uren),
             begonnen=COALESCE(NULLIF(:begonnen, ''),begonnen),
@@ -836,6 +837,7 @@ class uren extends projecten
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":id_uren", $id_uren);
+            $stmt->bindParam(":id_bonusmedewerker", $bonusmdw);
             $stmt->bindParam(":activiteit", $activiteiten);
             $stmt->bindParam(":declarabel", $declarabel);
             $stmt->bindParam(":uren", $uren);
@@ -846,6 +848,15 @@ class uren extends projecten
 
             //SQL query daadwerkelijk uitvoeren
             $stmt->execute();
+            if(empty($bonusmdw)){
+                $sql2 = 'UPDATE `uren` 
+                SET id_bonusmedewerker = NULL WHERE id_uren = :id_uren';
+                 $stmt2 = $this->conn->prepare($sql2);
+                 // waardes verbinden met de named placeholders
+                 $stmt2->bindParam(":id_uren", $id_uren);
+            $stmt2->execute();
+
+            }
             //Zet verbinding op NULL
             $this->conn = NULL;
         } catch (PDOException $e) {

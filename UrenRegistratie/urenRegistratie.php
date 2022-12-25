@@ -170,6 +170,7 @@ if (isset($error)) {
       </div>
       <br />
     </form>
+    
     <div>
       <form action="../forms/UrenRegistreren-form.php" method="post">
         <?php //echo $id_klant. " " . $id_project;
@@ -177,7 +178,35 @@ if (isset($error)) {
         <input name="id_klant" value="<?php echo $id_klant; ?>" type="hidden" id="id_klant" />
         <input name="id_project" value="<?php echo $id_project; ?>" type="hidden" id="id_project" />
         <input name="id_gebruiker" value="<?php echo $id_gebruiker; ?>" type="hidden" id="id_gebruiker" />
-        <div class="middle-line">
+        <label>Bonus Medewerker</label><br />
+        <?php
+      // foreach klant om door alle rijen een loop te doen
+      $gebruikers = new Gebruikers();
+      $gebruikers_data = $gebruikers->GebruikersZien();
+      // foreach ($gebruikers_data as $gebruiker_data) {
+      ?>
+      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="Medewerkers" />
+        <datalist id="medewerkers">
+          <?php
+          
+            foreach ($gebruikers_data as $gebruiker_data) {
+              if($gebruiker_data["id_gebruiker"] !== $user->id){
+            
+              echo '<option data-id="' . "$gebruiker_data[id_gebruiker]" . '" value=' . $gebruiker_data["voornaam"] . '></option>';
+            }}
+
+          ?>
+        </datalist>
+        <input name="id_bonusmdw" value="id_bonusmdw" type="hidden" id="id_bonusmdw" />
+          <script type="text/javascript">
+            $(function() {
+              $('#input-medewerker').change(function() {
+                var id_bonusmdw = $("#medewerkers option[value='" + $('#input-medewerker').val() + "']").attr('data-id');
+                $('#id_bonusmdw').val(id_bonusmdw)
+              });
+            });
+          </script>
+      <div class="middle-line">
           <div class="activiteit">
             <label>Activiteit *<br />
               <input class="activiteit-input" name="activiteiten" placeholder="Activiteit" />

@@ -5,17 +5,16 @@ require_once("../src/sessie.php");
 if (!empty($_GET["id_project"])) {
   $id_project = $_GET["id_project"];
   $id_klant = $_GET["id_klant"];
-setcookie("id_project", $id_project);
-} elseif(!empty($_COOKIE["id_project"])) {
+  setcookie("id_project", $id_project);
+} elseif (!empty($_COOKIE["id_project"])) {
   $id_project = $_COOKIE["id_project"];
-setcookie("id_project", "", time() - 3600);
+  setcookie("id_project", "", time() - 3600);
+} elseif (empty($id_project)) {
 
-}elseif(empty($id_project)){
-  
   $error[] = "Kies eerst een project.";
-  if(isset($error)){
+  if (isset($error)) {
     $_SESSION['errors'] = implode('<br> ', $error);
-  header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
+    header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
   }
 }
 ?>
@@ -59,7 +58,6 @@ setcookie("id_project", "", time() - 3600);
         }
       }
     }
-
   </script>
 
   <div class="title">
@@ -74,7 +72,7 @@ setcookie("id_project", "", time() - 3600);
       echo $_SESSION['errors'];
       unset($_SESSION['errors']);
     }
- 
+
 
     ?>
     <div class="btn-group">
@@ -102,6 +100,7 @@ setcookie("id_project", "", time() - 3600);
       // foreach klant om door alle rijen een loop te doen
       $uren = new uren();
       $uren_data = $uren->UrenZien($id_project);
+    $medewerker = new Gebruikers;
       // print_r($uren_data);
       foreach ($uren_data as $uur_data) {
 
@@ -115,7 +114,13 @@ setcookie("id_project", "", time() - 3600);
             <?php echo $uur_data['activiteit'] ?>
           </td>
           <td><?php echo $uur_data['declarabel'] ?></td>
-          <td></td>
+          <td> <?php
+            if(!empty($uur_data['id_bonusmedewerker'])){
+                $medewerker_data = $medewerker->GebruikerZien($uur_data['id_bonusmedewerker']);
+               echo $medewerker_data[0]["voornaam"] . " " . $medewerker_data[0]["tussenvoegsel"]. " " . $medewerker_data[0]["achternaam"];
+                  }?>
+
+          </td>
           <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
           <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
           <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>

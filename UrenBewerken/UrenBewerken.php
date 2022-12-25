@@ -21,6 +21,10 @@ setcookie("id_project", "", time() - 3600);
 // }
 $uren = new uren;
 $uren_data = $uren->uurzien($id_uren);
+$medewerker = new Gebruikers;
+$medewerker_data = $medewerker->GebruikerZien($uren_data[0]["id_bonusmedewerker"]);
+
+// $medewerker_data[0]["voornaam"];
 // print_r($uren_data);
 ?>
 <!DOCTYPE html>
@@ -66,20 +70,45 @@ $uren_data = $uren->uurzien($id_uren);
             <?php if ($user->usertype === "admin") { ?>
               <label>Declarabel <br />
 
-                <select place class="klant-input" name="declarabel" id="declarabel">
-                  <option value="" disabled selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"]; ?></option>
+                <select  class="klant-input" name="declarabel" id="declarabel">
+                  <option value="<?php  echo $uren_data[0]["declarabel"] ?>" selected hidden>Declarabel staat nu op: <?php echo $uren_data[0]["declarabel"]; ?></option>
                   <option value="ja">Ja</option>
                   <option value="nee">Nee</option>
                 </select>
               <?php } ?>
               </label>
           </div>
-          <div class="bonus">
-            <label>Bonus mdw <br />
-              <input class="klant-input" id="bonus" name="bonus" placeholder="12.50" />
-            </label>
-          </div>
         </div>
+        <div class="">
+        <label>Bonus Medewerker</label><br />
+        <?php
+      // foreach klant om door alle rijen een loop te doen
+      $gebruikers = new Gebruikers();
+      $gebruikers_data = $gebruikers->GebruikersZien();
+      // foreach ($gebruikers_data as $gebruiker_data) {
+      ?>
+      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="<?php  if(!empty($uren_data[0]['id_bonusmedewerker'])){ echo $medewerker_data[0]["voornaam"];} else{ echo 'Medewerkers';}?>" />
+        <datalist id="medewerkers">
+          <option data-id="" value=" "></option>
+          <?php
+           
+            foreach ($gebruikers_data as $gebruiker_data) {
+              if($gebruiker_data["id_gebruiker"] !== $user->id){
+            
+              echo '<option data-id="' . "$gebruiker_data[id_gebruiker]" . '" value=' . $gebruiker_data["voornaam"] . '></option>';
+            }}
+
+          ?>
+        </datalist>
+        <input name="id_bonusmdw" value="id_bonusmdw" type="hidden" id="id_bonusmdw" />
+          <script type="text/javascript">
+            $(function() {
+              $('#input-medewerker').change(function() {
+                var id_bonusmdw = $("#medewerkers option[value='" + $('#input-medewerker').val() + "']").attr('data-id');
+                $('#id_bonusmdw').val(id_bonusmdw)
+              });
+            });
+          </script>
         <div class="middle-line">
           <input name="id_uren" value="<?php echo $uren_data[0]["id_uren"]; ?>" type="hidden" id="id_uren" />
           <input name="id_klant" value="<?php echo $uren_data[0]["id_klant"]; ?>" type="hidden" id="id_klant" />
