@@ -142,7 +142,7 @@ if (isset($error)) {
         } else {
 
           $projecten = new projecten;
-          $project_data = $projecten->Projectzien($id_klant, $id_project);
+          $projecten_data = $projecten->Projectzien($id_klant, $id_project);
           echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $project_data[0]["projectnaam"] . ' />
 <datalist id="projecten">';
           foreach ($projecten_data as $project_data) {
