@@ -18,16 +18,16 @@ $uren = $_POST['uren'];
 $buren = $_POST['Buren'];
 
 
-$declarabel = "nee";
-echo "id_gebruiker" . $id_gebruiker . "<br>";
-echo "id_klant: " . $id_klant . "<br>";
-echo "id_project: " . $id_project . "<br>";
-echo "activiteit: " . $activiteiten . "<br>";
-echo "datum: " . $datum . "<br>";
-echo "begonnen: " . $begonnen . "<br>";
-echo "beëindigd: " . $beëindigd . "<br>";
-echo "uren: " . $uren . "<br>";
-echo "buren: " . $buren . "<br>";
+$declarabel = "ja";
+// echo "id_gebruiker" . $id_gebruiker . "<br>";
+// echo "id_klant: " . $id_klant . "<br>";
+// echo "id_project: " . $id_project . "<br>";
+// echo "activiteit: " . $activiteiten . "<br>";
+// echo "datum: " . $datum . "<br>";
+// echo "begonnen: " . $begonnen . "<br>";
+// echo "beëindigd: " . $beëindigd . "<br>";
+// echo "uren: " . $uren . "<br>";
+// echo "buren: " . $buren . "<br>";
 
 // $s = (strtotime("00:00"));
 // $begonnen = strtotime($begonnen);
