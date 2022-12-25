@@ -7,6 +7,7 @@ if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../UrenRegistratie/urenRegistratie.php');
 }
+// test
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
