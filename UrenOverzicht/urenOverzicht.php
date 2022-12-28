@@ -103,6 +103,8 @@ if (!empty($_GET["id_project"])) {
     $medewerker = new Gebruikers;
       // print_r($uren_data);
       foreach ($uren_data as $uur_data) {
+        if($uur_data['archiveer'] === "nee"){
+
 
       ?>
         <tr>
@@ -126,7 +128,7 @@ if (!empty($_GET["id_project"])) {
           <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
           <td><?php echo $uur_data['datum'] ?></td>
         </tr>
-      <?php } ?>
+      <?php } }?>
     </table>
     <form id="update" method="get" action="../UrenBewerken/UrenBewerken.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />

@@ -53,17 +53,16 @@ class Gebruikers extends DB
     public $secret_key;
 
 
-    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key)
+    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer)
     {
         //Hash wachtwoord
         $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         // $hash2 = password_hash($secret_key, PASSWORD_DEFAULT);
-        $usertype = 0;
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO gebruikers (voornaam, tussenvoegsel, achternaam, email, wachtwoord, usertype, secretkey) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :wachtwoord, :usertype, :secretkey)";
+            $sql = "INSERT INTO gebruikers (voornaam, tussenvoegsel, achternaam, email, wachtwoord, usertype, secretkey, archiveer) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :wachtwoord, :usertype, :secretkey, :archiveer)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
@@ -74,6 +73,7 @@ class Gebruikers extends DB
             $stmt->bindParam(":wachtwoord", $hash);
             $stmt->bindParam(":usertype", $usertype);
             $stmt->bindParam(":secretkey", $secret_key);
+            $stmt->bindParam(":archiveer", $archiveer);
 
             //SQL query daadwerkelijk uitvoeren
             $stmt->execute();
@@ -336,13 +336,13 @@ class Gebruikers extends DB
 }
 class Klanten extends DB
 {
-    public function KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode)
+    public function KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode, $archiveer)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO klanten (klantnaam, straatnaam, huisnummer, postcode, woonplaats, telefoonnummer) VALUES (:klantnaam, :straatnaam, :huisnummer, :postcode, :woonplaats, :telefoonnummer)";
+            $sql = "INSERT INTO klanten (klantnaam, straatnaam, huisnummer, postcode, woonplaats, telefoonnummer, archiveer) VALUES (:klantnaam, :straatnaam, :huisnummer, :postcode, :woonplaats, :telefoonnummer, :archiveer)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
@@ -352,6 +352,8 @@ class Klanten extends DB
             $stmt->bindParam(":postcode", $postcode);
             $stmt->bindParam(":telefoonnummer", $telefoon);
             $stmt->bindParam(":woonplaats", $woonplaats);
+            $stmt->bindParam(":archiveer", $archiveer);
+
 
 
             //SQL query daadwerkelijk uitvoeren
@@ -457,19 +459,21 @@ class Klanten extends DB
 }
 class projecten extends Klanten
 {
-    public function ProjectAanmaken($id_klant, $projectnaam, $begindatum)
+    public function ProjectAanmaken($id_klant, $projectnaam, $begindatum, $archiveer)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO projecten (id_klant, projectnaam, begindatum) VALUES (:id_klant, :projectnaam, :begindatum)";
+            $sql = "INSERT INTO projecten (id_klant, projectnaam, begindatum, archiveer) VALUES (:id_klant, :projectnaam, :begindatum, :archiveer)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
             $stmt->bindParam(":id_klant", $id_klant);
             $stmt->bindParam(":projectnaam", $projectnaam);
             $stmt->bindParam(":begindatum", $begindatum);
+            $stmt->bindParam(":archiveer", $archiveer);
+
 
 
             //SQL query daadwerkelijk uitvoeren
@@ -601,13 +605,13 @@ class projecten extends Klanten
 class uren extends projecten
 {
 
-    public function UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    public function UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer)
     {
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO uren (id_project, id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum) VALUES (:id_project, :id_gebruiker, :id_bonusmedewerker, :activiteit, :declarabel, :uren, :begonnen, :beeindigd, :datum)";
+            $sql = "INSERT INTO uren (id_project, id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, archiveer) VALUES (:id_project, :id_gebruiker, :id_bonusmedewerker, :activiteit, :declarabel, :uren, :begonnen, :beeindigd, :datum, :archiveer)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
@@ -620,6 +624,8 @@ class uren extends projecten
             $stmt->bindParam(":begonnen", $begonnen);
             $stmt->bindParam(":beeindigd", $beëindigd);
             $stmt->bindParam(":datum", $datum);
+            $stmt->bindParam(":archiveer", $archiveer);
+
 
 
             //SQL query daadwerkelijk uitvoeren

@@ -85,6 +85,7 @@ setcookie("id_klant", "", time() - 3600);
       $klanten_data = $klanten->KlantenZien();
       $projecten = new projecten();
       foreach ($klanten_data as $klant_data) {
+        if($klant_data['archiveer'] === "nee"){
         $id_klant = $klant_data['id_klant'];
       ?>
         <tr>
@@ -105,7 +106,7 @@ setcookie("id_klant", "", time() - 3600);
             </form>
           </td>
         </tr>
-      <?php } ?>
+      <?php }} ?>
     </table>
     <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_klant" />
@@ -113,8 +114,8 @@ setcookie("id_klant", "", time() - 3600);
     <form id="export" method="post" action="../forms/ProjectExport-form.php">
       <input value="" type="hidden" id="export-input" name="id_klant" />
     </form>
-    <!-- <p id="sh"></p>
-    <p id="sh1"></p> -->
+    <p id="sh"></p>
+    <!-- <p id="sh1"></p> -->
 
   </div>
 </body>
@@ -148,6 +149,7 @@ setcookie("id_klant", "", time() - 3600);
     }
     // console.log(d);
     if (d && d.length > 1) {
+      console.log(d.length)
       $('#delete').val(d);
        document.getElementById("sh").innerHTML = d;
     } else {

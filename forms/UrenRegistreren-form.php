@@ -17,7 +17,7 @@ $beëindigd = $_POST['beëindigd'];
 $uren = $_POST['uren'];
 $buren = $_POST['Buren'];
 $bonusmdw = $_POST['id_bonusmdw'];
-
+$archiveer = "nee";
 
 
 $declarabel = "ja";
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
         $buren = strtotime($buren);
         $uren = $uren - $s;
         $buren = $buren - $s;
-        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
+        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
         $laatst_gewerkt = $UrenRegistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
         header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     }

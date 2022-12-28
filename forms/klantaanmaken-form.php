@@ -13,6 +13,7 @@ $telefoon = $_POST['telefoon'];
 $woonplaats = $_POST['woonplaats'];
 $huisnummer = $_POST['huisnummer'];
 $postcode = $_POST['postcode'];
+$archiveer = "nee";
 
 echo $klantnaam. " ". $straatnaam. " ". $telefoon. " ". $woonplaats. " ".$huisnummer. " ". $postcode;
 if(isset($_POST['submit'])){
@@ -80,7 +81,7 @@ if(isset($_POST['submit'])){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../klant/klant.php');
     }else{
-    $klant->KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode);
+    $klant->KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode, $archiveer);
     header('Location:../KlantOverzicht/klantOverzicht.php');
     
 } 

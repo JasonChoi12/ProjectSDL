@@ -11,7 +11,7 @@ $id_klant = $_POST['id_klant'];
 $klantnaam = $_POST['klant'];
 $projectnaam = $_POST['projectnaam'];
 $begindatum = $_POST['begindatum'];
-
+$archiveer = "nee";
 
 echo $projectnaam. " ". $begindatum. " ". $id_klant. " ". $klantnaam ;
 if(isset($_POST['submit'])){
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../ProjectAanmaak/ProjectAanmaak.php');
     }else{
-    $project->ProjectAanmaken($id_klant, $projectnaam, $begindatum);
+    $project->ProjectAanmaken($id_klant, $projectnaam, $begindatum, $archiveer);
     header('Location:../KlantOverzicht/klantOverzicht.php');
 } 
 }

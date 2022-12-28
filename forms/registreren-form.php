@@ -17,6 +17,10 @@ $tussenvoegsel = $_POST['tussenvoegsel'];
 $achternaam = $_POST['achternaam'];
 $email = $_POST['email'];
 $wachtwoord = $_POST['wachtwoord'];
+$archiveer = "nee";
+$usertype = "medewerker";
+
+
 //filter emails naar lowerstring
 $email = strtolower($email);
 //check invoervelden of hij goed is ingevuld
@@ -100,7 +104,7 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
-        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $secret_key);
+        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer);
         header('Location:../registreren/Qr.php');
     }
 }

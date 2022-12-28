@@ -81,6 +81,7 @@ setcookie("id_klant", "", time() - 3600);
       $projecten_data = $projecten->Projectenzien($id_klant);
       $uren = new uren();
       foreach ($projecten_data as $project_data) {
+        if($project_data['archiveer'] === "nee"){
         $uren_data = $uren->TotaleUrenZien($project_data['id_project']);
 
         $totaleUren = array_sum(array_column($uren_data, 'uren'));
@@ -108,7 +109,7 @@ setcookie("id_klant", "", time() - 3600);
             </form>
           </td>
         </tr>
-      <?php } ?>
+      <?php }} ?>
     </table>
     <form id="update" method="get" action="../projectUpdate/projectUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_project" />

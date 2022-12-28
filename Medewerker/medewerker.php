@@ -61,6 +61,7 @@ require_once("../src/sessie.php");
       $gebruikers = new Gebruikers();
       $gebruikers_data = $gebruikers->GebruikersZien();
       foreach ($gebruikers_data as $gebruiker_data) {
+        if($gebruiker_data['archiveer'] === "nee"){
       ?>
         <tr>
           <td class="test">
@@ -72,7 +73,7 @@ require_once("../src/sessie.php");
           <td><?php echo $gebruiker_data['usertype'] ?></td>
          
         </tr>
-      <?php } ?>
+      <?php }} ?>
     </table>
     <p id="sh"></p>
     <p id="sh1"></p>
