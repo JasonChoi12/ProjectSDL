@@ -10,7 +10,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="klantOverzicht.css" />
+  <link rel="stylesheet" href="../KlantOverzicht/klantOverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,9 +64,9 @@ setcookie("id_klant", "", time() - 3600);
     ?>
     <div class="btn-group">
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
-      <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <table id="klantoverzicht">
       <tr>
@@ -85,7 +85,7 @@ setcookie("id_klant", "", time() - 3600);
       $klanten_data = $klanten->KlantenZien();
       $projecten = new projecten();
       foreach ($klanten_data as $klant_data) {
-        if ($klant_data['archiveer'] === "nee") {
+        if ($klant_data['archiveer'] === "ja") {
           $id_klant = $klant_data['id_klant'];
       ?>
           <tr>
@@ -117,8 +117,12 @@ setcookie("id_klant", "", time() - 3600);
     </form>
     <form id="archiveer" method="post" action="../forms/klantArchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_klant" />
-    <input type="hidden" id="archiveer" name="archiveer" value="ja" />
+    <input type="hidden" id="archiveer" name="archiveer" value="nee" />
     <p id="archiveer"></p>
+    </form>
+    <form id="verwijder" method="post" action="../forms/klantVerwijder-form.php">
+    <input value="" type="hidden" id="verwijder-input" name="id_klant" />
+    <p id="verwijder"></p>
     </form>
 
     <p id="sh"></p>
@@ -158,6 +162,8 @@ setcookie("id_klant", "", time() - 3600);
     if (d && d.length > 1) {
       console.log(d.length)
       $('#archiveer-input').val(d);
+      $('#delete-input').val(d);
+
       console.log(d)
       // console.log(typeof d)
       //  document.getElementById("sh").innerHTML = d;
@@ -169,23 +175,25 @@ setcookie("id_klant", "", time() - 3600);
       function archiveer(item, index) {
         // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_klant[]'/>");
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_klant[]'/>";
-        text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
+        text += '<input type="hidden" id="archiveer" name="archiveer" value="nee" />';
       }
+      d.forEach(verwijder);
+
+      document.getElementById("verwijder").innerHTML = text;
+
+      function verwijder(item, index) {
+        text += "<input form='verwijder' id='verwijder' value= "+ item +" type='hidden' id='verwijder-input'name='id_klant[]'/>";
+      }
+      
     } else {
       console.log(d)
       a = d[0];
       $('#update-input').val(a);
       $('#archiveer-input').val(a);
-
-
-      // document.getElementById("update-input").value = a;
+      $('#verwijder-input').val(a);
       $('#export-input').val(a);
-
-      // document.getElementById("export-input").value = a;
 
     }
 
   }
 </script>
-
-</html>

@@ -1,0 +1,49 @@
+<?php
+session_start();
+require_once('../src/class.php');
+$klanten = new Klanten();
+//filter the excel data
+$id_klant = $_POST['id_klant'];
+if (isset($_POST['submit'])) {
+    // check id_klant
+    if (empty($id_klant)) {
+        $error[] = "Kies een klant.";
+    }
+    if (isset($error)) {
+
+        $_SESSION['errors'] = implode('<br> ', $error);
+        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+    } else {
+
+        if (!is_string($id_klant)) {
+            foreach ($id_klant as $id_klanten) {
+                $klanten_data = $klanten->KlantZien($id_klanten);
+                if ($klanten_data[0]['archiveer'] === 'ja') {
+                    $delete = $klanten->VerwijderKlant($id_klanten);
+                  
+                        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+                    
+             
+                       
+                    
+                }else{
+                    header('Location:../KlantOverzicht/KlantOverzicht.php');
+                }
+            }
+        } else {
+
+            $klanten_data = $klanten->KlantZien($id_klant);
+            if ($klanten_data[0]['archiveer'] === 'ja') {
+            $delete = $klanten->VerwijderKlant($id_klant);
+                
+                        // terug naar begin pagina
+                        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+
+                    
+                }else{
+                    header('Location:../KlantOverzicht/KlantOverzicht.php');
+                }
+
+        }
+    }
+}

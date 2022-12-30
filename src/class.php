@@ -401,6 +401,33 @@ class Klanten extends DB
             return $e;
         }
     }
+    public function klantArchiveer($id_klant, $archiveer)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `klanten` 
+                    SET 
+			archiveer=COALESCE(NULLIF(:archiveer, ''),archiveer)		
+                    WHERE id_klant = :id_klant";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_klant', $id_klant);
+            $stmt->bindParam(':archiveer', $archiveer);
+
+            
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
 
     public function KlantZien($id_klant)
     { {
@@ -455,6 +482,21 @@ class Klanten extends DB
             //stuur variable terug
             return $e;
         }
+    }
+    public function VerwijderKlant($id_klant)
+    {
+        // maak een connectie met de database
+        $this->conn();
+        // sql query defineren
+        $sql = "DELETE FROM `klanten` WHERE id_klant = :id_klant";
+        // sql voorbereiden
+        $stmt = $this->conn->prepare($sql);
+        // waardes verbinden met de named placeholders	
+        $stmt->bindParam(':id_klant', $id_klant);
+        // sql query daadwerkelijk uitvoeren
+        $stmt->execute();
+        //sluit verbinding
+        $this->conn = NULL;
     }
 }
 class projecten extends Klanten
@@ -522,7 +564,7 @@ class projecten extends Klanten
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT id_project, projectnaam, begindatum, laatst_gewerkt FROM projecten where id_klant = :id_klant";
+                $sql = "SELECT * FROM projecten where id_klant = :id_klant";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
                 // waardes verbinden met de named placeholders

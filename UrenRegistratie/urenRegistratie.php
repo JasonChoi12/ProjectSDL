@@ -79,8 +79,8 @@ if (isset($error)) {
 
         <?php
         } else {
-          $klant_data = $klanten->KlantZien($id_klant);
-          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder=' . $klant_data[0]["klantnaam"] . '>
+          $klanten_data = $klanten->KlantZien($id_klant);
+          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder=' . $klanten_data[0]["klantnaam"] . '>
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
@@ -141,7 +141,6 @@ if (isset($error)) {
         <?php
         } else {
           
-          $projecten = new projecten;
           $projecten_data = $projecten->Projectzien($id_klant, $id_project);
           echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $projecten_data[0]["projectnaam"] . ' />
 <datalist id="projecten">';
