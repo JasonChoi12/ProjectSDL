@@ -940,4 +940,31 @@ class uren extends projecten
             return $e;
         }
     }
+    public function urenArchiveer($id_uren, $archiveer)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `uren` 
+                    SET 
+			archiveer=COALESCE(NULLIF(:archiveer, ''),archiveer)		
+                    WHERE id_uren = :id_uren";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_uren', $id_uren);
+            $stmt->bindParam(':archiveer', $archiveer);
+
+            
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
 }

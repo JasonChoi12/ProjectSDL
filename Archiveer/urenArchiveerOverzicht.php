@@ -4,7 +4,6 @@ require_once('../src/class.php');
 require_once("../src/sessie.php");
 if (!empty($_GET["id_project"])) {
   $id_project = $_GET["id_project"];
-  // $id_klant = $_GET["id_klant"];
   setcookie("id_project", $id_project);
 } elseif (!empty($_COOKIE["id_project"])) {
   $id_project = $_COOKIE["id_project"];
@@ -23,7 +22,7 @@ if (!empty($_GET["id_project"])) {
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="urenOverzicht.css" />
+  <link rel="stylesheet" href="../UrenOverzicht/urenOverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,11 +65,11 @@ if (!empty($_GET["id_project"])) {
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
-    <form method="get" action="../Archiveer/urenArchiveerOverzicht.php">
+    <form method="get" action="../UrenOverzicht/urenOverzicht.php">
     
-              <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
-              <button class="archiveerlijst">Bekijk Archiveerde</button>
-            </form>
+    <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
+    <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
+  </form>
     <?php
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
@@ -80,12 +79,14 @@ if (!empty($_GET["id_project"])) {
 
 
     ?>
+ 
     <div class="btn-group">
       <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
-      <a href="../UrenRegistratie/urenRegistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
+
     <table id="urenoverzicht">
       <tr>
         <th id="table-left-border">
@@ -108,7 +109,7 @@ if (!empty($_GET["id_project"])) {
     $medewerker = new Gebruikers;
       // print_r($uren_data);
       foreach ($uren_data as $uur_data) {
-        if($uur_data['archiveer'] === "nee"){
+        if($uur_data['archiveer'] === "ja"){
 
 
       ?>
@@ -135,14 +136,14 @@ if (!empty($_GET["id_project"])) {
         </tr>
       <?php } }?>
     </table>
+    <form id="archiveer" method="post" action="../forms/urenArchiveer-form.php">
+    <input value="" type="hidden" id="archiveer-input" name="id_uren" />
+    <input type="hidden" id="archiveer" name="archiveer" value="nee" />
+    <p id="archiveer"></p>
+    </form>
     <form id="update" method="get" action="../UrenBewerken/UrenBewerken.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />
       <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
-    </form>
-    <form id="archiveer" method="post" action="../forms/urenArchiveer-form.php">
-    <input value="" type="hidden" id="archiveer-input" name="id_uren" />
-    <input type="hidden" id="archiveer" name="archiveer" value="ja" />
-    <p id="archiveer"></p>
     </form>
     <p id="sh" hidden></p>
     <p id="sh1" hidden></p>
@@ -185,7 +186,7 @@ if (!empty($_GET["id_project"])) {
       document.getElementById("archiveer").innerHTML = text;
       function archiveer(item, index) {
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>";
-        text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
+        text += '<input type="hidden" id="archiveer" name="archiveer" value="nee" />';
       }
     } else {
       console.log(d)
