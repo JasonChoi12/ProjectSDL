@@ -79,13 +79,21 @@ $user = unserialize($_SESSION['gebruiker_data']);
       </li>';
       }
       ?>
+     <li>
+        <a href="../Archiveer/klantOverzichtArchiveer.php">
+        <i class='bx bxs-archive-in'></i>
+          <span class="links_name">Gearchiveerde Items</span>
+        </a>
+        <span class="tooltip">Gearchiveerde Items</span>
+        
+      </li>
 
       <li class="profile">
         <div class="profile-details">
-       
+
           <div class="name_job">
             <div class="name"><?php echo $user->voornaam . " " . $user->tussenvoegsel . " " . $user->achternaam; ?></div>
-            
+
           </div>
           <a href="../src/logout.php?logout=true"><i class='bx bx-log-out' id="log_out"></i></a>
       </li>

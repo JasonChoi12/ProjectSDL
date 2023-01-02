@@ -1,3 +1,4 @@
+<?php include("../forms/app_logic.php"); ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -14,7 +15,7 @@
     </div>
     <div class="title">
       <h1>Wachtwoord Vergeten</h1>
-      <form>
+      <form action="wachtwoordVergeten.php">
         <label>Vul je email in om je wachtwoord te kunnen resetten<br>
         <input
           class="inputgegevens"
@@ -25,7 +26,7 @@
         />
       </label>
         <div class="btn-group">
-          <button name="submit" class="submit">Reset Wachtwoord</button>
+          <button name="reset-password" class="submit">Reset Wachtwoord</button>
         </div>
       </form>
     </div>
