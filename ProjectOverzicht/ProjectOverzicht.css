@@ -55,7 +55,20 @@ h1 {
   font-style: normal;
   color: #fff;
 }
+.archiveerlijst {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
 
+  background: #007BFF;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
+}
 .toevoegen {
   flex-direction: row;
   justify-content: center;
@@ -160,6 +173,12 @@ td {
   .fa-solid {
     font-size: 10px;
   }
+
+  .archiveerlijst {
+    width: 65px;
+    height: 15px;
+    font-size: 8px;
+  }
   .exporteer {
     width: 65px;
     height: 15px;
@@ -215,6 +234,11 @@ td {
     font-size: 1vw;
   }
   .exporteer {
+    width: 19%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .archiveerlijst {
     width: 19%;
     height: 2.55vw;
     font-size: 0.95vw;

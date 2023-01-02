@@ -53,6 +53,9 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
+    <form method="get" action="../KlantOverzicht/klantOverzicht.php">
+                <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
+              </form>
     <?php
     // laat error code Zien
     if (isset($_SESSION['errors'])) {

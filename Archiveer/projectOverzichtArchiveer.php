@@ -47,8 +47,13 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
     </div>
+    <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+    
+              <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
+              <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
+            </form>
     <?php
-    print_r($_COOKIE);
+    // print_r($_COOKIE);/
 
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
@@ -59,11 +64,11 @@ setcookie("id_klant", "", time() - 3600);
 
     ?>
 
-    <div class="btn-group">
-    <button name="submit" type="submit" form="export"class="exporteer">Exporteren</button>
-      <a href="../Projectaanmaak/ProjectAanmaak.php"><button class="toevoegen">Toevoegen</button></a>
+<div class="btn-group">
+      <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <table>
       <tr>
@@ -123,7 +128,7 @@ setcookie("id_klant", "", time() - 3600);
     </form>
     <form id="archiveer" method="post" action="../forms/ProjectArchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_project" />
-    <input type="hidden" id="archiveer" name="archiveer" value="ja" />
+    <input type="hidden" id="archiveer" name="archiveer" value="nee" />
     <p id="archiveer"></p>
     </form>
     <!-- <p id="sh" hidden></p>
@@ -167,7 +172,7 @@ setcookie("id_klant", "", time() - 3600);
       document.getElementById("archiveer").innerHTML = text;
       function archiveer(item, index) {
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_project[]'/>";
-        text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
+        text += '<input type="hidden" id="archiveer" name="archiveer" value="nee" />';
       }
     } else {
       console.log(d)

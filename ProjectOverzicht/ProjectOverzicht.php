@@ -47,8 +47,13 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
     </div>
+    <form method="get" action="../Archiveer/projectOverzichtArchiveer.php">
+    
+              <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
+              <button class="archiveerlijst">Bekijk Archiveerde</button>
+            </form>
     <?php
-    print_r($_COOKIE);
+    // print_r($_COOKIE);
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
       echo $_SESSION['errors'];

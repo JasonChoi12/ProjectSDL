@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
             
         $_SESSION['errors'] = implode('<br> ', $error);
-        // header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+        header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     } else {
 
 if (!is_string($id_project)) {
@@ -23,7 +23,7 @@ foreach($id_project as $id_projecten){
    echo "<br>";
    echo "archiveer: " .$archiveer;
    $projecten->projectArchiveer($id_projecten, $archiveer);
-//    header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+   header('Location:../ProjectOverzicht/ProjectOverzicht.php');
 
     }
 }else{
@@ -32,7 +32,7 @@ foreach($id_project as $id_projecten){
     echo "<br>";
     echo "archiveer: " .$archiveer;
     $projecten->projectArchiveer($id_project, $archiveer);
-//    header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+   header('Location:../ProjectOverzicht/ProjectOverzicht.php');
 
 }
     }

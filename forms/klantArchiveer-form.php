@@ -19,18 +19,18 @@ if (isset($_POST['submit'])) {
 
 if (!is_string($id_klant)) {
 foreach($id_klant as $id_klanten){
-    echo "<br>";
-   echo "id_klanten: " .$id_klanten;
-   echo "<br>";
-   echo "archiveer: " .$archiveer;
+//     echo "<br>";
+//    echo "id_klanten: " .$id_klanten;
+//    echo "<br>";
+//    echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klanten, $archiveer);
    header('Location:../KlantOverzicht/klantOverzicht.php');
     }
 }else{
     echo "<br>";
-    echo "id_klant: " .$id_klant;
-    echo "<br>";
-    echo "archiveer: " .$archiveer;
+    // echo "id_klant: " .$id_klant;
+    // echo "<br>";
+    // echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klant, $archiveer);
    header('Location:../KlantOverzicht/klantOverzicht.php');
 }
