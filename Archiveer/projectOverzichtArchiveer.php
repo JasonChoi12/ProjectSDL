@@ -12,7 +12,7 @@ setcookie("id_klant", "", time() - 3600);
   $error[] = "Kies eerst een klant.";
   if(isset($error)){
     $_SESSION['errors'] = implode('<br> ', $error);
-  header('Location: ../KlantOverzicht/klantOverzicht.php');
+//   header('Location: ../KlantOverzicht/klantOverzicht.php');
   }
 }
 
@@ -22,7 +22,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="ProjectOverzicht.css" />
+  <link rel="stylesheet" href="../ProjectOverzicht/ProjectOverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,6 +49,7 @@ setcookie("id_klant", "", time() - 3600);
     </div>
     <?php
     print_r($_COOKIE);
+
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
       echo $_SESSION['errors'];
@@ -82,7 +83,7 @@ setcookie("id_klant", "", time() - 3600);
       $projecten_data = $projecten->Projectenzien($id_klant);
       $uren = new uren();
       foreach ($projecten_data as $project_data) {
-        if($project_data['archiveer'] === "nee"){
+        if($project_data['archiveer'] === "ja"){
         $uren_data = $uren->TotaleUrenZien($project_data['id_project']);
 
         $totaleUren = array_sum(array_column($uren_data, 'uren'));

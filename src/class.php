@@ -643,7 +643,35 @@ class projecten extends Klanten
             return $e;
         }
     }
+    public function projectArchiveer($id_project, $archiveer)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `projecten` 
+                    SET 
+			archiveer=COALESCE(NULLIF(:archiveer, ''),archiveer)		
+                    WHERE id_project = :id_project";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_project', $id_project);
+            $stmt->bindParam(':archiveer', $archiveer);
+
+            
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
 }
+
 class uren extends projecten
 {
 
@@ -726,7 +754,7 @@ class uren extends projecten
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "SELECT id_uren, id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE  id_project = :id_project";
+            $sql = "SELECT id_uren, id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, uren.archiveer, datum, voornaam, tussenvoegsel, achternaam FROM `uren` INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker WHERE  id_project = :id_project";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders

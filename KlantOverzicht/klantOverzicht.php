@@ -159,15 +159,10 @@ setcookie("id_klant", "", time() - 3600);
       console.log(d.length)
       $('#archiveer-input').val(d);
       console.log(d)
-      // console.log(typeof d)
-      //  document.getElementById("sh").innerHTML = d;
       let text = "";
       d.forEach(archiveer);
-
       document.getElementById("archiveer").innerHTML = text;
-
       function archiveer(item, index) {
-        // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_klant[]'/>");
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_klant[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
       }
@@ -176,13 +171,7 @@ setcookie("id_klant", "", time() - 3600);
       a = d[0];
       $('#update-input').val(a);
       $('#archiveer-input').val(a);
-
-
-      // document.getElementById("update-input").value = a;
       $('#export-input').val(a);
-
-      // document.getElementById("export-input").value = a;
-
     }
 
   }
