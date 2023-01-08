@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        // header('Location:../UrenRegistratie/UrenRegistratie.php');
+        header('Location:../UrenRegistratie/UrenRegistratie.php');
     } else {
         
         $uren = strtotime($uren);

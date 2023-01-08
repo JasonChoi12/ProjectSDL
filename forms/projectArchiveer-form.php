@@ -8,7 +8,7 @@ $id_project = $_POST['id_project'];
 if (isset($_POST['submit'])) {
     // check id_klant
     if (empty($id_project)) {
-        $error[] = "Kies een project.";
+        $error[] = "Kies een project om te archiveren.";
     }
     if (isset($error)) {
             

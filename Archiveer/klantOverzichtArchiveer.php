@@ -56,6 +56,13 @@ setcookie("id_klant", "", time() - 3600);
     <form method="get" action="../KlantOverzicht/klantOverzicht.php">
                 <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
               </form>
+   
+    <div class="btn-group">
+      <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
+      <button type="submit" form="update" class="bewerk">Bewerken</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
+    </div>
     <?php
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
@@ -63,14 +70,8 @@ setcookie("id_klant", "", time() - 3600);
       unset($_SESSION['errors']);
     }
 
-    // print_r($_COOKIE);
+
     ?>
-    <div class="btn-group">
-      <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
-      <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
-      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
-    </div>
     <table id="klantoverzicht">
       <tr>
         <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>

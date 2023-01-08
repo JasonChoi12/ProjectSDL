@@ -70,6 +70,14 @@ if (!empty($_GET["id_project"])) {
     <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
     <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
   </form>
+    
+ 
+    <div class="btn-group">
+      <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
+      <button type="submit" form="update" class="bewerk">Bewerken</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
+    </div>
     <?php
     // laat error code Zien
     if (isset($_SESSION['errors'])) {
@@ -79,14 +87,6 @@ if (!empty($_GET["id_project"])) {
 
 
     ?>
- 
-    <div class="btn-group">
-      <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
-      <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
-      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
-    </div>
-
     <table id="urenoverzicht">
       <tr>
         <th id="table-left-border">
@@ -145,6 +145,11 @@ if (!empty($_GET["id_project"])) {
       <input value="" type="hidden" id="update-input" name="id_uren" />
       <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
     </form>
+    </form>
+    <form id="verwijder" method="post" action="../forms/urenVerwijder-form.php">
+    <input value="" type="hidden" id="verwijder-input" name="id_uren" />
+    <p id="verwijder"></p>
+    </form>
     <p id="sh" hidden></p>
     <p id="sh1" hidden></p>
   </div>
@@ -180,20 +185,37 @@ if (!empty($_GET["id_project"])) {
     if (d && d.length > 1) {
       console.log(d.length)
       $('#archiveer-input').val(d);
+      $('#delete-input').val(d);
+
       console.log(d)
+      // console.log(typeof d)
+      //  document.getElementById("sh").innerHTML = d;
       let text = "";
       d.forEach(archiveer);
+
       document.getElementById("archiveer").innerHTML = text;
+
       function archiveer(item, index) {
+        // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>");
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="nee" />';
       }
+      d.forEach(verwijder);
+
+      document.getElementById("verwijder").innerHTML = text;
+
+      function verwijder(item, index) {
+        text += "<input form='verwijder' id='verwijder' value= "+ item +" type='hidden' id='verwijder-input'name='id_uren[]'/>";
+      }
+      
     } else {
       console.log(d)
       a = d[0];
       $('#update-input').val(a);
       $('#archiveer-input').val(a);
+      $('#verwijder-input').val(a);
       $('#export-input').val(a);
+
     }
 
   }

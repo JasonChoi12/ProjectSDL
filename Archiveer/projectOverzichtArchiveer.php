@@ -52,17 +52,7 @@ setcookie("id_klant", "", time() - 3600);
               <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
               <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
             </form>
-    <?php
-    // print_r($_COOKIE);/
-
-    // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
  
-
-    ?>
 
 <div class="btn-group">
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
@@ -70,6 +60,15 @@ setcookie("id_klant", "", time() - 3600);
       <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
       <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
+    <?php
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+
+
+    ?>
     <table>
       <tr>
         <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
@@ -131,6 +130,10 @@ setcookie("id_klant", "", time() - 3600);
     <input type="hidden" id="archiveer" name="archiveer" value="nee" />
     <p id="archiveer"></p>
     </form>
+    <form id="verwijder" method="post" action="../forms/projectVerwijder-form.php">
+    <input value="" type="hidden" id="verwijder-input" name="id_project" />
+    <p id="verwijder"></p>
+    </form>
     <!-- <p id="sh" hidden></p>
     <p id="sh1" hidden></p> -->
   </div>
@@ -166,20 +169,37 @@ setcookie("id_klant", "", time() - 3600);
     if (d && d.length > 1) {
       console.log(d.length)
       $('#archiveer-input').val(d);
+      $('#delete-input').val(d);
+
       console.log(d)
+      // console.log(typeof d)
+      //  document.getElementById("sh").innerHTML = d;
       let text = "";
       d.forEach(archiveer);
+
       document.getElementById("archiveer").innerHTML = text;
+
       function archiveer(item, index) {
+        // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_project[]'/>");
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_project[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="nee" />';
       }
+      d.forEach(verwijder);
+
+      document.getElementById("verwijder").innerHTML = text;
+
+      function verwijder(item, index) {
+        text += "<input form='verwijder' id='verwijder' value= "+ item +" type='hidden' id='verwijder-input'name='id_project[]'/>";
+      }
+      
     } else {
       console.log(d)
       a = d[0];
       $('#update-input').val(a);
       $('#archiveer-input').val(a);
+      $('#verwijder-input').val(a);
       $('#export-input').val(a);
+
     }
 
 

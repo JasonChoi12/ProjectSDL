@@ -527,17 +527,16 @@ class projecten extends Klanten
             return $e;
         }
     }
-    public function Projectzien($id_klant, $id_project)
+    public function Projectzien($id_project)
     { {
             try {
                 // maak een connectie met de database
                 $this->conn();
                 // sql query defineren
-                $sql = "SELECT * FROM projecten where id_klant = :id_klant AND id_project = :id_project";
+                $sql = "SELECT * FROM projecten where id_project = :id_project";
                 // sql voorbereiden
                 $stmt = $this->conn->prepare($sql);
                 // waardes verbinden met de named placeholders
-                $stmt->bindParam(":id_klant", $id_klant);
                 $stmt->bindParam(":id_project", $id_project);
 
                 //Voer SQL uit
@@ -669,6 +668,21 @@ class projecten extends Klanten
             // status terugsturen
             return $e;
         }
+    }
+    public function VerwijderProject($id_project)
+    {
+        // maak een connectie met de database
+        $this->conn();
+        // sql query defineren
+        $sql = "DELETE FROM `projecten` WHERE id_project = :id_project";
+        // sql voorbereiden
+        $stmt = $this->conn->prepare($sql);
+        // waardes verbinden met de named placeholders	
+        $stmt->bindParam(':id_project', $id_project);
+        // sql query daadwerkelijk uitvoeren
+        $stmt->execute();
+        //sluit verbinding
+        $this->conn = NULL;
     }
 }
 
@@ -837,7 +851,7 @@ class uren extends projecten
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "SELECT id_uren, uren.id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, projecten.id_klant FROM `uren`
+            $sql = "SELECT id_uren, uren.id_project, uren.id_gebruiker, id_bonusmedewerker, activiteit, declarabel, uren, begonnen, beeindigd, datum, voornaam, tussenvoegsel, achternaam, projectnaam, klantnaam, projecten.id_klant, uren.archiveer FROM `uren`
                 INNER JOIN `gebruikers` ON uren.id_gebruiker = gebruikers.id_gebruiker 
                 INNER JOIN `projecten` ON uren.id_project = projecten.id_project
                 INNER JOIN `klanten` ON projecten.id_klant = klanten.id_klant
@@ -966,5 +980,20 @@ class uren extends projecten
             // status terugsturen
             return $e;
         }
+    }
+    public function VerwijderUren($id_uren)
+    {
+        // maak een connectie met de database
+        $this->conn();
+        // sql query defineren
+        $sql = "DELETE FROM `uren` WHERE id_uren = :id_uren";
+        // sql voorbereiden
+        $stmt = $this->conn->prepare($sql);
+        // waardes verbinden met de named placeholders	
+        $stmt->bindParam(':id_uren', $id_uren);
+        // sql query daadwerkelijk uitvoeren
+        $stmt->execute();
+        //sluit verbinding
+        $this->conn = NULL;
     }
 }

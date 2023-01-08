@@ -79,14 +79,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
       </li>';
       }
       ?>
-     <li>
-        <a href="../Archiveer/klantOverzichtArchiveer.php">
-        <i class='bx bxs-archive-in'></i>
-          <span class="links_name">Gearchiveerde Items</span>
-        </a>
-        <span class="tooltip">Gearchiveerde Items</span>
-        
-      </li>
+     
 
       <li class="profile">
         <div class="profile-details">

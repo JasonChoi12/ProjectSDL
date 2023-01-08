@@ -7,7 +7,7 @@ $id_klant = $_POST['id_klant'];
 if (isset($_POST['submit'])) {
     // check id_klant
     if (empty($id_klant)) {
-        $error[] = "Kies een klant.";
+        $error[] = "Kies een klant om te verwijderen.";
     }
     if (isset($error)) {
 

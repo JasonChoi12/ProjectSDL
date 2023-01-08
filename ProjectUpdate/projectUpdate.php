@@ -31,7 +31,7 @@ if (empty($id_project)) {
   <div id="nav-placeholder"></div>
   <?php
   $project = new projecten;
-  $project_data = $project->Projectzien($id_klant, $id_project);
+  $project_data = $project->Projectzien($id_project);
   $klant = new projecten;
   $klant_data = $klant->KlantZien($id_klant);?>
   <script>
