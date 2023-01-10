@@ -116,6 +116,8 @@ $buren = strtotime($buren);
 
         $UrenBewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
         $laatst_gewerkt = $UrenBewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
+        $accountaangemaakt[] = 'Urenreigstratie is succesvol bijgewerkt.';
+        $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     }
 }

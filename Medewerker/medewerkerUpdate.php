@@ -78,8 +78,9 @@ require_once("../src/sessie.php");
           name="email"
           placeholder="<?php echo $gebruikers_data[0]["email"]?>"
           disabled
-        />
-        <div>
+        /><br>
+        <label>Doe dit alleen als er is aangegeven dat de medewerker zijn wachtwoord is vergeten.</label>
+        <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Nieuw Wachtwoord" />
         <div class="usertype">
           <select
             required
@@ -95,11 +96,13 @@ require_once("../src/sessie.php");
             <option value="non-actief">Non-actief</option>
           </select>
         </div>
+        
       
         <br>
         <div class="btn-group">
           <button type="submit" name="submit" class="submit">Aanpassen</button>
         </div>
+        <br>
         <div class="text-center center input">
         <?php
         // laat error code Zien

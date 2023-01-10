@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
                 // print_r($uren_data);
                 if ($uren_data[0]['archiveer'] === 'ja') {
                     $delete = $uren->VerwijderUren($id_uren);
-                  
+                    $accountaangemaakt[] = 'Urenregistratie is succesvol verwijderd.';
+                    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         header('Location:../Archiveer/urenOverzichtArchiveer.php');
                     
              
@@ -37,7 +38,8 @@ if (isset($_POST['submit'])) {
             $uren_data = $uren->uurZien($id_uur);
             if ($uren_data[0]['archiveer'] === 'ja') {
             $delete = $uren->VerwijderUren($id_uur);
-                
+            $accountaangemaakt[] = 'Urenregistratie is succesvol verwijderd.';
+            $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         // terug naar begin pagina
                         header('Location:../Archiveer/urenOverzichtArchiveer.php');
 

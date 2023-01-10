@@ -42,10 +42,18 @@ require_once("../src/sessie.php");
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
+
+        // laat error code Zien
+        if (isset($_SESSION['ERRORS'])) {
+          echo $_SESSION['ERRORS'];
+          unset($_SESSION['ERRORS']);
+        }
+        // laat qr code Zien
+
+        elseif (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']);
+        } 
     // print_r($_COOKIE);
     ?>
     <table>

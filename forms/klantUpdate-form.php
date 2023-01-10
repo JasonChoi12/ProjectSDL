@@ -79,6 +79,8 @@ if (isset($_POST['submit'])) {
         
     } else {
         $klant->KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
+        $accountaangemaakt[] = 'Klant is succesvol bijgewerkt.';
+             $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         header('Location:../KlantOverzicht/klantOverzicht.php');
     }
 }

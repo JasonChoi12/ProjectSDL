@@ -33,7 +33,8 @@ if($uren_data[0]["declarabel"] === "ja"){
     $declarabel = "ja";
     $uren->urendeclarabel($id_uren, $declarabel);
 }
-
+$accountaangemaakt[] = 'Urenregistratie is succesvol gedeclareerd';
+$_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../UrenOverzicht/UrenOverzicht.php');
 
     }
@@ -52,6 +53,8 @@ if($uren_data[0]["declarabel"] === "ja"){
         $declarabel = "ja";
         $uren->urendeclarabel($id_uur, $declarabel);
     }
+    $accountaangemaakt[] = 'Urenregistratie is succesvol gedeclareerd.';
+$_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../UrenOverzicht/UrenOverzicht.php');
 
 }

@@ -80,11 +80,18 @@ if (!empty($_GET["id_project"])) {
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
 
+        // laat error code Zien
+        if (isset($_SESSION['errors'])) {
+          echo $_SESSION['errors'];
+          unset($_SESSION['errors']);
+        }
+        // laat qr code Zien
+
+        elseif (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']);
+        } 
     // print_r($_COOKIE);
     ?>
     <table id="urenoverzicht">

@@ -96,14 +96,14 @@ if (empty($wachtwoord)) {
 
             if (isset($wachtwoord) || isset($email)) {
                  // succes messasge
-                 $accountaangemaakt[] = 'Account is succesvol aangemaakt';
+                 $accountaangemaakt[] = 'Account is succesvol bijgewerkt.';
                 // Update voor nieuw wachtwoord
                 $updateUser = $user->update($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $wachtwoordcheck);
                 header('Location:../AccountSettings/AccountSettings.php');
 
             }
              // succes messasge
-             $accountaangemaakt[] = 'Account is succesvol bijgewerk';
+             $accountaangemaakt[] = 'Account is succesvol bijgewerkt.';
              $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
             //Voer ook uit als geen nieuw wachtwoord of email zijn ingevoerd
             //Volgende locatie

@@ -75,8 +75,6 @@ $_SESSION['QR'] = implode('<br> ', $qr);
             <option value="non-actief">Non-actief</option>
           </select>
         </div> -->
-      <label>Profielfoto</label><br />
-      <input class="profielfoto" type="file" id="myfile" name="myfile" accept="image/png, image/jpeg" />
       <div class="btn-group">
         <button name="submit" class="submit">Aanpassen</button>
       </div>

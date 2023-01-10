@@ -209,15 +209,18 @@ class Gebruikers extends DB
             return $e;
         }
     }
-    public function UserTypeUpdate($usertype, $id_gebruiker)
-    {
+    public function UserTypeUpdate($usertype, $id_gebruiker, $wachtwoord)
+    { 
+        // $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
             $sql = "UPDATE `gebruikers` 
                     SET 	
-                    usertype=COALESCE(NULLIF(:usertype, ''),usertype)
+                    usertype=COALESCE(NULLIF(:usertype, ''),usertype),
+                    wachtwoord=COALESCE(NULLIF(:wachtwoord, ''),wachtwoord)
+
 					
                     WHERE id_gebruiker = :userid";
             // sql voorbereiden
@@ -225,6 +228,8 @@ class Gebruikers extends DB
             // waardes verbinden met de named placeholders	
             $stmt->bindParam(':userid', $id_gebruiker);
             $stmt->bindParam(':usertype', $usertype);
+            $stmt->bindParam(':wachtwoord', $wachtwoord);
+
 
             $stmt->execute();
             return true;

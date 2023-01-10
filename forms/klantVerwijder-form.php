@@ -20,7 +20,8 @@ if (isset($_POST['submit'])) {
                 $klanten_data = $klanten->KlantZien($id_klanten);
                 if ($klanten_data[0]['archiveer'] === 'ja') {
                     $delete = $klanten->VerwijderKlant($id_klanten);
-                  
+                    $accountaangemaakt[] = 'Klant is succesvol verwijderd.';
+                    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         header('Location:../Archiveer/klantOverzichtArchiveer.php');
                     
              
@@ -37,6 +38,8 @@ if (isset($_POST['submit'])) {
             $delete = $klanten->VerwijderKlant($id_klant);
                 
                         // terug naar begin pagina
+                        $accountaangemaakt[] = 'Klant is succesvol verwijderd.';
+             $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         header('Location:../Archiveer/klantOverzichtArchiveer.php');
 
                     

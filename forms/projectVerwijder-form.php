@@ -20,7 +20,8 @@ if (isset($_POST['submit'])) {
                 $projecten_data = $projecten->projectZien($id_projecten);
                 if ($projecten_data[0]['archiveer'] === 'ja') {
                     $delete = $projecten->Verwijderproject($id_projecten);
-                  
+                    $accountaangemaakt[] = 'Project is succesvol verwijderd.';
+                    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         header('Location:../Archiveer/projectOverzichtArchiveer.php');
                     
              
@@ -35,7 +36,8 @@ if (isset($_POST['submit'])) {
             $projecten_data = $projecten->projectZien($id_project);
             if ($projecten_data[0]['archiveer'] === 'ja') {
             $delete = $projecten->Verwijderproject($id_project);
-                
+            $accountaangemaakt[] = 'Project is succesvol verwijderd.';
+            $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
                         // terug naar begin pagina
                         header('Location:../Archiveer/projectOverzichtArchiveer.php');
 

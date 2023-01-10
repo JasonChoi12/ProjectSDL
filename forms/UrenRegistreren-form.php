@@ -121,6 +121,8 @@ if (isset($_POST['submit'])) {
         $buren = $buren - $s;
         $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
         $laatst_gewerkt = $UrenRegistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
+        $accountaangemaakt[] = 'Urenregistratie is succesvol aangemaakt.';
+$_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         header('Location:../ProjectOverzicht/ProjectOverzicht.php');
     }
 }

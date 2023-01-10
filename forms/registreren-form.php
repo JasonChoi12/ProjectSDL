@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
         $qr[] = '<img class="qrcode" src="' . $image_url . '" />';
         $qr[] = 'Kan je de qr niet scannen hier is jouw instelsleutel: ' . $secret_key;
 
-        $accountaangemaakt[] = 'Account is succesvol aangemaakt';
+        $accountaangemaakt[] = 'Account is succesvol aangemaakt.';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['QR'] = implode('<br> ', $qr);
         $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer);
