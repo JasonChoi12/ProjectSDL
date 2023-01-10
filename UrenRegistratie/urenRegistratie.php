@@ -69,7 +69,7 @@ if (isset($error)) {
               $('#input').change(function() {
                 let abc = $("#klanten option[value='" + $('#input').val() + "']").attr('data-id');
                 $('#id_klant').val(abc)
-                console.log(abc);
+                console.log(abc); 
                 document.cookie = "id_klant=  " + abc;
                 console.log(document.cookie);
 
