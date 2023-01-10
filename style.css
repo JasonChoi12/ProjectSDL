@@ -301,7 +301,7 @@ button:hover {
     width: 15%;
   }
   .sidebar li a .links_name {
-    font-size: 14px;
+    font-size: 0.9vw;
   }
   .sidebar .logo-details #btn {
     font-size: 1.6vw;
