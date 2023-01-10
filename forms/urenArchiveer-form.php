@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
             
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../UrenOverzicht/UrenOverzicht.php');
+        header('Location:../urenoverzicht/urenoverzicht.php');
     } else {
 
 if (!is_string($id_uur)) {
@@ -23,7 +23,7 @@ foreach($id_uur as $id_uren){
    echo "<br>";
    echo "archiveer: " .$archiveer;
    $uren->urenArchiveer($id_uren, $archiveer);
-   header('Location:../UrenOverzicht/UrenOverzicht.php');
+   header('Location:../urenoverzicht/urenoverzicht.php');
 
     }
 }else{
@@ -32,7 +32,7 @@ foreach($id_uur as $id_uren){
     echo "<br>";
     echo "archiveer: " .$archiveer;
     $uren->urenArchiveer($id_uur, $archiveer);
-   header('Location:../UrenOverzicht/UrenOverzicht.php');
+   header('Location:../urenoverzicht/urenoverzicht.php');
 
 }
     }

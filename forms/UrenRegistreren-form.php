@@ -5,7 +5,7 @@ require_once('../src/class.php');
 session_start();
 
 // maak nieuwe klant aan
-$UrenRegistratie = new Uren();
+$urenregistratie = new Uren();
 // Pakt post van de form en zet ze in variable
 $id_gebruiker = $_POST['id_gebruiker'];
 $id_klant = $_POST['id_klant'];
@@ -112,15 +112,15 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../UrenRegistratie/UrenRegistratie.php');
+        header('Location:../urenregistratie/urenregistratie.php');
     } else {
         
         $uren = strtotime($uren);
         $buren = strtotime($buren);
         $uren = $uren - $s;
         $buren = $buren - $s;
-        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
-        $laatst_gewerkt = $UrenRegistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
-        header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+        $urenregistratie->Urenregistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
+        $laatst_gewerkt = $urenregistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
+        header('Location:../projectoverzicht/projectoverzicht.php');
     }
 }

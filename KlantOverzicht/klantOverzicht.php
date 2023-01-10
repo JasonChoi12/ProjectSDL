@@ -10,7 +10,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="klantOverzicht.css" />
+  <link rel="stylesheet" href="klantoverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,7 +53,7 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
-    <form method="get" action="../Archiveer/klantOverzichtArchiveer.php">
+    <form method="get" action="../archiveer/klantoverzichtarchiveer.php">
                 <button class="archiveerlijst">Bekijk Archiveerde</button>
               </form>
     
@@ -104,7 +104,7 @@ setcookie("id_klant", "", time() - 3600);
             <td><?php $projecten_data = $projecten->Projectenzien($id_klant);
                 echo count($projecten_data); ?></td>
             <td>
-              <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+              <form method="get" action="../projectoverzicht/projectoverzicht.php">
                 <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
                 <button class="table-bewerk">Bekijken</button>
               </form>
@@ -113,13 +113,13 @@ setcookie("id_klant", "", time() - 3600);
       <?php }
       } ?>
     </table>
-    <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
+    <form id="update" method="get" action="../klantupdate/klantupdate.php">
       <input value="" type="hidden" id="update-input" name="id_klant" />
     </form>
-    <form id="export" method="post" action="../forms/ProjectExport-form.php">
+    <form id="export" method="post" action="../forms/projectexport-form.php">
       <input value="" type="hidden" id="export-input" name="id_klant" />
     </form>
-    <form id="archiveer" method="post" action="../forms/klantArchiveer-form.php">
+    <form id="archiveer" method="post" action="../forms/klantarchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_klant" />
     <input type="hidden" id="archiveer" name="archiveer" value="ja" />
     <p id="archiveer"></p>

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
 
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../Archiveer/projectOverzichtArchiveer.php');
+        header('Location:../Archiveer/projectoverzichtarchiveer.php');
     } else {
 
         if (!is_string($id_project)) {
@@ -21,13 +21,13 @@ if (isset($_POST['submit'])) {
                 if ($projecten_data[0]['archiveer'] === 'ja') {
                     $delete = $projecten->Verwijderproject($id_projecten);
                   
-                        header('Location:../Archiveer/projectOverzichtArchiveer.php');
+                        header('Location:../Archiveer/projectoverzichtarchiveer.php');
                     
              
                        
                     
                 }else{
-                    header('Location:../projectOverzicht/projectOverzicht.php');
+                    header('Location:../projectoverzicht/projectoverzicht.php');
                 }
             }
         } else {
@@ -37,11 +37,11 @@ if (isset($_POST['submit'])) {
             $delete = $projecten->Verwijderproject($id_project);
                 
                         // terug naar begin pagina
-                        header('Location:../Archiveer/projectOverzichtArchiveer.php');
+                        header('Location:../Archiveer/projectoverzichtarchiveer.php');
 
                     
                 }else{
-                    header('Location:../projectOverzicht/projectOverzicht.php');
+                    header('Location:../projectoverzicht/projectoverzicht.php');
                 }
 
         }

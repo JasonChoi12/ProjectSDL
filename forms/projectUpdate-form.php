@@ -35,9 +35,9 @@ if(isset($_POST['submit'])){
     } 
     if(isset($error)){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../ProjectUpdate/ProjectUpdate.php');
+        header('Location:../projectupdate/projectupdate.php');
     }else{
-    $project->ProjectUpdate($id_klant, $projectnaam, $begindatum, $id_project);
-    header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+    $project->projectupdate($id_klant, $projectnaam, $begindatum, $id_project);
+    header('Location:../projectoverzicht/projectoverzicht.php');
 } 
 }

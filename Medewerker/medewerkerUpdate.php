@@ -12,7 +12,7 @@ require_once("../src/sessie.php");
     $error[] = "Kies eerst een medewerker.";
     if(isset($error)){
       $_SESSION['errors'] = implode('<br> ', $error);
-      header('Location: ../Medewerker/Medewerker.php');
+      header('Location: ../medewerker/medewerker.php');
     }
     }
   }
@@ -42,7 +42,7 @@ require_once("../src/sessie.php");
     </script>
     <div class="registreren">
       <h1>Account aanpassen</h1>
-      <form method="post" action="../forms/medewerkerType-form.php">
+      <form method="post" action="../forms/medewerkertype-form.php">
         <div>
             <input type="hidden" name="id_gebruiker" value="<?php echo $gebruikers_data[0]["id_gebruiker"]?>" >
           <input
@@ -91,7 +91,7 @@ require_once("../src/sessie.php");
             <?php echo $gebruikers_data[0]["usertype"]?>
             </option>
             <option value="admin">Admin</option>
-            <option value="medewerker">Medewerker</option>
+            <option value="medewerker">medewerker</option>
             <option value="non-actief">Non-actief</option>
           </select>
         </div>

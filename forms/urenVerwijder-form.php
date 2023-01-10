@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
 
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../Archiveer/urenOverzichtArchiveer.php');
+        header('Location:../Archiveer/urenoverzichtarchiveer.php');
     } else {
 
         if (!is_string($id_uur)) {
@@ -23,13 +23,13 @@ if (isset($_POST['submit'])) {
                 if ($uren_data[0]['archiveer'] === 'ja') {
                     $delete = $uren->VerwijderUren($id_uren);
                   
-                        header('Location:../Archiveer/urenOverzichtArchiveer.php');
+                        header('Location:../Archiveer/urenoverzichtarchiveer.php');
                     
              
                        
                     
                 }else{
-                    header('Location:../urenOverzicht/urenOverzicht.php');
+                    header('Location:../urenoverzicht/urenoverzicht.php');
                 }
             }
         } else {
@@ -39,11 +39,11 @@ if (isset($_POST['submit'])) {
             $delete = $uren->VerwijderUren($id_uur);
                 
                         // terug naar begin pagina
-                        header('Location:../Archiveer/urenOverzichtArchiveer.php');
+                        header('Location:../Archiveer/urenoverzichtarchiveer.php');
 
                     
                 }else{
-                    header('Location:../urenOverzicht/urenOverzicht.php');
+                    header('Location:../urenoverzicht/urenoverzicht.php');
                 }
 
         }

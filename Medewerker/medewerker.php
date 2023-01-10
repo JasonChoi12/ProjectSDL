@@ -26,7 +26,7 @@ require_once("../src/sessie.php");
   </script>
   
   <div class="title">
-    <h1>Medewerker Overzicht</h1>
+    <h1>medewerker Overzicht</h1>
     <form id="form">
       <div class="searchbar">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,7 +36,7 @@ require_once("../src/sessie.php");
     </form>
     
     <div class="btn-group">
-      <a href="../Registreren/registreren.php"><button class="toevoegen">Toevoegen</button></a>
+      <a href="../registreren/registreren.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button  type="submit" form="delete" class="verwijderen">Verwijderen</button>
     </div>
@@ -51,9 +51,9 @@ require_once("../src/sessie.php");
     <table>
       <tr>
       <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
-        <th>Medewerker</th>
+        <th>medewerker</th>
         <th>Email</th>
-        <th>Type Medewerker</th>
+        <th>Type medewerker</th>
         <th id="table-right-border"></th>
       </tr>
       <?php
@@ -77,10 +77,10 @@ require_once("../src/sessie.php");
     </table>
     <p id="sh"></p>
     <p id="sh1"></p>
-    <form id="update" method="get" action="../Medewerker/medewerkerUpdate.php">
+    <form id="update" method="get" action="../medewerker/medewerkerUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_gebruiker" />
     </form>
-    <form id="delete" method="get" action="../Medewerker/medewerkerDelete.php">
+    <form id="delete" method="get" action="../medewerker/medewerkerDelete.php">
       <input value="" type="hidden" id="delete-input" name="id_gebruiker" />
     </form>
   </div>

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
 
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+        header('Location:../Archiveer/klantoverzichtarchiveer.php');
     } else {
 
         if (!is_string($id_klant)) {
@@ -21,13 +21,13 @@ if (isset($_POST['submit'])) {
                 if ($klanten_data[0]['archiveer'] === 'ja') {
                     $delete = $klanten->VerwijderKlant($id_klanten);
                   
-                        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+                        header('Location:../archiveer/klantoverzichtarchiveer.php');
                     
              
                        
                     
                 }else{
-                    header('Location:../KlantOverzicht/KlantOverzicht.php');
+                    header('Location:../klantoverzicht/klantoverzicht.php');
                 }
             }
         } else {
@@ -37,11 +37,11 @@ if (isset($_POST['submit'])) {
             $delete = $klanten->VerwijderKlant($id_klant);
                 
                         // terug naar begin pagina
-                        header('Location:../Archiveer/klantOverzichtArchiveer.php');
+                        header('Location:../archiveer/klantoverzichtarchiveer.php');
 
                     
                 }else{
-                    header('Location:../KlantOverzicht/KlantOverzicht.php');
+                    header('Location:../klantoverzicht/klantoverzicht.php');
                 }
 
         }

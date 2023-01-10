@@ -12,7 +12,7 @@ setcookie("id_klant", "", time() - 3600);
   $error[] = "Kies eerst een klant.";
   if(isset($error)){
     $_SESSION['errors'] = implode('<br> ', $error);
-//   header('Location: ../KlantOverzicht/klantOverzicht.php');
+//   header('Location: ../klantoverzicht/klantoverzicht.php');
   }
 }
 
@@ -22,7 +22,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="../ProjectOverzicht/ProjectOverzicht.css" />
+  <link rel="stylesheet" href="../projectoverzicht/projectoverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +47,7 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
     </div>
-    <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+    <form method="get" action="../projectoverzicht/projectoverzicht.php">
     
               <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
               <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
@@ -108,7 +108,7 @@ setcookie("id_klant", "", time() - 3600);
           <td><?php echo $project_data['laatst_gewerkt']; ?></td>
           <td><?php echo $project_data['begindatum']; ?></td>
           <td>
-            <form method="get" action="../UrenOverzicht/UrenOverzicht.php">
+            <form method="get" action="../urenoverzicht/urenoverzicht.php">
               <input type="hidden" name="id_project" value="<?php echo $project_data['id_project']; ?>">
               <input type="hidden" name="id_klant" value="<?php echo $id_klant; ?>">
               <button class="table-bewerk">Bekijken</button>
@@ -117,20 +117,20 @@ setcookie("id_klant", "", time() - 3600);
         </tr>
       <?php }} ?>
     </table>
-    <form id="update" method="get" action="../projectUpdate/projectUpdate.php">
+    <form id="update" method="get" action="../projectupdate/projectupdate.php">
       <input value="" type="hidden" id="update-input" name="id_project" />
       <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
     </form>
-    <form id="export" method="post" action="../forms/UrenExport-form.php">
+    <form id="export" method="post" action="../forms/urenexport-form.php">
     <input value="" type="hidden" id="export-input" name="id_project" />
       <input value="<?php echo $id_klant; ?>" type="hidden" name="id_klant" />
     </form>
-    <form id="archiveer" method="post" action="../forms/ProjectArchiveer-form.php">
+    <form id="archiveer" method="post" action="../forms/projectarchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_project" />
     <input type="hidden" id="archiveer" name="archiveer" value="nee" />
     <p id="archiveer"></p>
     </form>
-    <form id="verwijder" method="post" action="../forms/projectVerwijder-form.php">
+    <form id="verwijder" method="post" action="../forms/projectverwijder-form.php">
     <input value="" type="hidden" id="verwijder-input" name="id_project" />
     <p id="verwijder"></p>
     </form>

@@ -5,7 +5,7 @@ $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
-  header('Location:../UrenRegistratie/urenRegistratie.php');
+  header('Location:../urenregistratie/urenregistratie.php');
 }
 // test
 ?>
@@ -14,7 +14,7 @@ if (isset($error)) {
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="urenRegistratie.css" />
+  <link rel="stylesheet" href="urenregistratie.css" />
   <link rel="stylesheet" href="../style.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -171,20 +171,20 @@ if (isset($error)) {
     </form>
     
     <div>
-      <form action="../forms/UrenRegistreren-form.php" method="post">
+      <form action="../forms/urenregistreren-form.php" method="post">
         <?php //echo $id_klant. " " . $id_project;
         ?>
         <input name="id_klant" value="<?php echo $id_klant; ?>" type="hidden" id="id_klant" />
         <input name="id_project" value="<?php echo $id_project; ?>" type="hidden" id="id_project" />
         <input name="id_gebruiker" value="<?php echo $id_gebruiker; ?>" type="hidden" id="id_gebruiker" />
-        <label>Bonus Medewerker</label><br />
+        <label>Bonus medewerker</label><br />
         <?php
       // foreach klant om door alle rijen een loop te doen
       $gebruikers = new Gebruikers();
       $gebruikers_data = $gebruikers->GebruikersZien();
       // foreach ($gebruikers_data as $gebruiker_data) {
       ?>
-      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="Medewerkers" />
+      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="medewerkers" />
         <datalist id="medewerkers">
           <?php
           

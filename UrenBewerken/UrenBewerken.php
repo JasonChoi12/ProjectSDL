@@ -9,7 +9,7 @@ if (empty($id_uren)) {
   $error[] = "Kies eerst een project.";
   if (isset($error)) {
     $_SESSION['errors'] = "Er is niks gekozen om te bewerken.";
-    header('Location:../UrenOverzicht/UrenOverzicht.php');
+    header('Location:../urenoverzicht/urenoverzicht.php');
   }
 }
 
@@ -32,7 +32,7 @@ $medewerker_data = $medewerker->GebruikerZien($uren_data[0]["id_bonusmedewerker"
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="UrenBewerken.css" />
+  <link rel="stylesheet" href="urenbewerken.css" />
   <link rel="stylesheet" href="../style.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +52,7 @@ $medewerker_data = $medewerker->GebruikerZien($uren_data[0]["id_bonusmedewerker"
   <div class="title">
     <h1>Uren Bewerken: </h1>
     <h2><?php echo $uren_data[0]["voornaam"] . " " . $uren_data[0]["tussenvoegsel"] . " " . $uren_data[0]["achternaam"] ?></h2>
-    <form action="../forms/UrenBewerken-form.php" method="post">
+    <form action="../forms/urenbewerken-form.php" method="post">
       <p class="righter"><?php echo "Begonnen om: " . gmdate("H:i", $uren_data[0]["begonnen"]); ?></p>
       <p class="righter"><?php echo "Beeindigd om: " . gmdate("H:i", $uren_data[0]["beeindigd"]); ?></p>
       <p class="righter"><?php echo "Totale tijd: " . gmdate("H:i", $uren_data[0]["uren"]); ?></p>
@@ -80,14 +80,14 @@ $medewerker_data = $medewerker->GebruikerZien($uren_data[0]["id_bonusmedewerker"
           </div>
         </div>
         <div class="">
-        <label>Bonus Medewerker</label><br />
+        <label>Bonus medewerker</label><br />
         <?php
       // foreach klant om door alle rijen een loop te doen
       $gebruikers = new Gebruikers();
       $gebruikers_data = $gebruikers->GebruikersZien();
       // foreach ($gebruikers_data as $gebruiker_data) {
       ?>
-      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="<?php  if(!empty($uren_data[0]['id_bonusmedewerker'])){ echo $medewerker_data[0]["voornaam"];} else{ echo 'Medewerkers';}?>" />
+      <input class="klant-input" list="medewerkers" id="input-medewerker" name="medewerker" placeholder="<?php  if(!empty($uren_data[0]['id_bonusmedewerker'])){ echo $medewerker_data[0]["voornaam"];} else{ echo 'medewerkers';}?>" />
         <datalist id="medewerkers">
           <option data-id="" value=" "></option>
           <?php

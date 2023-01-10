@@ -14,7 +14,7 @@ if (!empty($_GET["id_project"])) {
   $error[] = "Kies eerst een project.";
   if (isset($error)) {
     $_SESSION['errors'] = implode('<br> ', $error);
-    header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
+    header('Location: ../projectoverzicht/projectoverzicht.php');
   }
 }
 ?>
@@ -23,7 +23,7 @@ if (!empty($_GET["id_project"])) {
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="urenOverzicht.css" />
+  <link rel="stylesheet" href="urenoverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -66,7 +66,7 @@ if (!empty($_GET["id_project"])) {
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
-    <form method="get" action="../Archiveer/urenOverzichtArchiveer.php">
+    <form method="get" action="../Archiveer/urenoverzichtarchiveer.php">
     
               <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
               <button class="archiveerlijst">Bekijk Archiveerde</button>
@@ -74,7 +74,7 @@ if (!empty($_GET["id_project"])) {
 
     <div class="btn-group">
       <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
-      <a href="../UrenRegistratie/urenRegistratie.php"><button class="toevoegen">Toevoegen</button></a>
+      <a href="../urenregistratie/urenregistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
     </div>
@@ -92,7 +92,7 @@ if (!empty($_GET["id_project"])) {
         <th id="table-left-border">
           <input id="selectAll" class="checkbox" type="checkbox" />
         </th>
-        <th>Medewerker</th>
+        <th>medewerker</th>
         <th>Activiteit</th>
         <th>Decl.</th>
         <th>Bonus mdw</th>
@@ -136,11 +136,11 @@ if (!empty($_GET["id_project"])) {
         </tr>
       <?php } }?>
     </table>
-    <form id="update" method="get" action="../UrenBewerken/UrenBewerken.php">
+    <form id="update" method="get" action="../urenbewerken/urenbewerken.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />
       <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
     </form>
-    <form id="archiveer" method="post" action="../forms/urenArchiveer-form.php">
+    <form id="archiveer" method="post" action="../forms/urenarchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_uren" />
     <input type="hidden" id="archiveer" name="archiveer" value="ja" />
     <p id="archiveer"></p>

@@ -10,7 +10,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="../KlantOverzicht/klantOverzicht.css" />
+  <link rel="stylesheet" href="../klantoverzicht/klantoverzicht.css" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -53,7 +53,7 @@ setcookie("id_klant", "", time() - 3600);
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
-    <form method="get" action="../KlantOverzicht/klantOverzicht.php">
+    <form method="get" action="../klantoverzicht/klantoverzicht.php">
                 <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
               </form>
    
@@ -101,10 +101,10 @@ setcookie("id_klant", "", time() - 3600);
             <td><?php echo $klant_data['straatnaam'] . " " . $klant_data['huisnummer']; ?></td>
             <td><?php echo $klant_data['postcode']; ?></td>
             <td><?php echo $klant_data['telefoonnummer']; ?></td>
-            <td><?php $projecten_data = $projecten->Projectenzien($id_klant);
+            <td><?php $projecten_data = $projecten->projectenzien($id_klant);
                 echo count($projecten_data); ?></td>
             <td>
-              <form method="get" action="../ProjectOverzicht/ProjectOverzicht.php">
+              <form method="get" action="../projectoverzicht/projectoverzicht.php">
                 <input type="hidden" name="id_klant" value="<?php echo $klant_data['id_klant'] ?>">
                 <button class="table-bewerk">Bekijken</button>
               </form>
@@ -113,18 +113,18 @@ setcookie("id_klant", "", time() - 3600);
       <?php }
       } ?>
     </table>
-    <form id="update" method="get" action="../klantUpdate/klantUpdate.php">
+    <form id="update" method="get" action="../klantupdate/klantupdate.php">
       <input value="" type="hidden" id="update-input" name="id_klant" />
     </form>
-    <form id="export" method="post" action="../forms/ProjectExport-form.php">
+    <form id="export" method="post" action="../forms/projectexport-form.php">
       <input value="" type="hidden" id="export-input" name="id_klant" />
     </form>
-    <form id="archiveer" method="post" action="../forms/klantArchiveer-form.php">
+    <form id="archiveer" method="post" action="../forms/klantarchiveer-form.php">
     <input value="" type="hidden" id="archiveer-input" name="id_klant" />
     <input type="hidden" id="archiveer" name="archiveer" value="nee" />
     <p id="archiveer"></p>
     </form>
-    <form id="verwijder" method="post" action="../forms/klantVerwijder-form.php">
+    <form id="verwijder" method="post" action="../forms/klantverwijder-form.php">
     <input value="" type="hidden" id="verwijder-input" name="id_klant" />
     <p id="verwijder"></p>
     </form>
