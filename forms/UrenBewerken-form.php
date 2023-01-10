@@ -36,16 +36,16 @@ echo "id_bonusmdw: " . $bonusmdw . "<br>";
 
 
 $s = (strtotime("00:00"));
-$begonnen = strtotime($begonnen);
-$beëindigd = strtotime($beëindigd);
-$uren = strtotime($uren);
-$buren = strtotime($buren);
+// $begonnen = strtotime($begonnen);
+// $beëindigd = strtotime($beëindigd);
+// $uren = strtotime($uren);
+// $buren = strtotime($buren);
 echo "begonnen: " . $begonnen . "<br>";
 echo "beëindigd: " . $beëindigd . "<br>";
 echo "uren: " . $uren . "<br>";
 echo "buren: " . $buren . "<br>";
 echo "s: " . $s . "<br>";
-
+echo "<br>";
 // $begonnen = $begonnen - $s;
 // $beëindigd = $beëindigd - $s;
 // $uren = $uren - $s;
@@ -67,16 +67,7 @@ echo "s: " . $s . "<br>";
 
 
 
-$s = (strtotime("00:00"));
 if (isset($_POST['submit'])) {
-    if (!empty($uren)){
-        
-        $uren = strtotime($uren);
-        $buren = strtotime($buren);
-        $begonnen = $begonnen - $s;
-        $beëindigd = $beëindigd - $s;
-        $uren = $uren - $s;
-    }
     if (empty($declarabel)) {
         $declarabel = NULL;
     }
@@ -85,32 +76,42 @@ if (isset($_POST['submit'])) {
         $error[] = "Vul de datum van invullen in.";
     }
     if ($bonusmdw === "id_bonusmdw") {
-        $bonusmdw = null;
+        $bonusmdw = NULL;
     }
     if(!empty($begonnen)){
         $begonnen = strtotime($begonnen);
         $begonnen = $begonnen - $s;
     }else{
-        $begonnen = 0;
+        $begonnen = NULL;
     }
     if(!empty($beëindigd)){
         $beëindigd = strtotime($beëindigd);
         $beëindigd = $beëindigd - $s;
     }else{
-        $beëindigd = 0;
+        $beëindigd = NULL;
     }
     //check uren
     if (!empty($uren)) {
+        echo"regex:". $uren;
         $uren_subject = $uren;
         $uren_pattern = '/^([01]?[0-9]|2[0-3])\:+[0-5][0-9]$/';
         $uren_match = preg_match($uren_pattern, $uren_subject);
         if ($uren_match !== 1) {
             $error[] = "Totaal gewerkte tijd moet er zo uitzien 02:59.";
+        }else{
+$uren = strtotime($uren);
+            
+$buren = strtotime($buren);
+                $uren = $uren - $s;
+                
+            }
         }
-    }
+    
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../UrenBewerken/UrenBewerken.php');
+
+
     } else {
 
         $UrenBewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
