@@ -3,11 +3,11 @@ require_once("../src/sessie.php");
 $user = unserialize($_SESSION['gebruiker_data']);
 $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
-setcookie("id_klant", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../UrenRegistratie/urenRegistratie.php');
 }
+
 // test
 ?>
 <!DOCTYPE html>
@@ -53,8 +53,8 @@ if (isset($error)) {
 
 
 
-echo $id_klant;
         if (empty($id_klant)) {
+         
           $klanten_data = $klanten->KlantenZien();
           echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="klantnaam" />
         <datalist id="klanten">';
@@ -82,11 +82,10 @@ echo $id_klant;
         } else {
         $klanten = new Klanten;
           $klanten_data = $klanten->KlantenZien();
-          $id_klant = $id_klant -1;
-          // print_r($klanten_data[$id_klant]);
+          $id = array_search($id_klant, array_column($klanten_data, 'id_klant'));
+  
           
-          
-          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder='. $klanten_data[$id_klant]["klantnaam"].'>
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder='. $klanten_data[$id]["klantnaam"].'>
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
