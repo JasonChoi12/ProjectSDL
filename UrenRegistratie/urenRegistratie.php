@@ -3,6 +3,7 @@ require_once("../src/sessie.php");
 $user = unserialize($_SESSION['gebruiker_data']);
 $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
+setcookie("id_klant", "", time() - 3600);
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../UrenRegistratie/urenRegistratie.php');
@@ -52,10 +53,10 @@ if (isset($error)) {
 
 
 
-
+echo $id_klant;
         if (empty($id_klant)) {
           $klanten_data = $klanten->KlantenZien();
-          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="klantnaam" />
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="klantnaam" />
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
@@ -85,7 +86,7 @@ if (isset($error)) {
           // print_r($klanten_data[$id_klant]);
           
           
-          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder='. $klanten_data[$id_klant]["klantnaam"].'>
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder='. $klanten_data[$id_klant]["klantnaam"].'>
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
@@ -121,7 +122,7 @@ if (isset($error)) {
         }
         if (empty($id_project)) {
 
-          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder="Projectnaam"/>
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder="Projectnaam"/>
 <datalist id="projecten">';
           foreach ($projecten_data as $project_data) {
             echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
@@ -147,7 +148,7 @@ if (isset($error)) {
         } else {
           
           $projecten_data = $projecten->Projectzien($id_project);
-          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $projecten_data[0]["projectnaam"] . ' />
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $projecten_data[0]["projectnaam"] . ' />
 <datalist id="projecten">';
           foreach ($projecten_data as $project_data) {
             echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
@@ -264,6 +265,7 @@ if (isset($error)) {
   </div>
 </body>
 <script>
+
   let start = document.getElementById("start").value;
   let end = document.getElementById("end").value;
 
