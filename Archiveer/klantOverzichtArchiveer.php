@@ -61,7 +61,7 @@ setcookie("id_klant", "", time() - 3600);
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
-      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
+      <button onclick="return confirm('Weet je het zeker dat je deze klant(en) wilt verwijderen')"name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <?php
     // laat error code Zien

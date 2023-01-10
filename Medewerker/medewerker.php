@@ -38,15 +38,16 @@ require_once("../src/sessie.php");
     <div class="btn-group">
       <a href="../Registreren/registreren.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button  type="submit" form="delete" class="verwijderen">Verwijderen</button>
+      <button onclick="return confirm('Weet je het zeker dat je deze medewerker(s) wilt verwijderen')" name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
+
     </div>
     <?php
     // laat error code Zien
 
         // laat error code Zien
-        if (isset($_SESSION['ERRORS'])) {
-          echo $_SESSION['ERRORS'];
-          unset($_SESSION['ERRORS']);
+        if (isset($_SESSION['errors'])) {
+          echo $_SESSION['errors'];
+          unset($_SESSION['errors']);
         }
         // laat qr code Zien
 
@@ -69,7 +70,7 @@ require_once("../src/sessie.php");
       $gebruikers = new Gebruikers();
       $gebruikers_data = $gebruikers->GebruikersZien();
       foreach ($gebruikers_data as $gebruiker_data) {
-        if($gebruiker_data['archiveer'] === "nee"){
+    
       ?>
         <tr>
           <td class="test">
@@ -81,16 +82,16 @@ require_once("../src/sessie.php");
           <td><?php echo $gebruiker_data['usertype'] ?></td>
          
         </tr>
-      <?php }} ?>
+      <?php } ?>
     </table>
-    <p id="sh"></p>
-    <p id="sh1"></p>
+    <form id="verwijder" method="post" action="../forms/medewerkerVerwijder-form.php">
+    <input value="" type="hidden" id="verwijder-input" name="id_gebruiker" />
+    <p id="verwijder"></p>
+    </form>
     <form id="update" method="get" action="../Medewerker/medewerkerUpdate.php">
       <input value="" type="hidden" id="update-input" name="id_gebruiker" />
     </form>
-    <form id="delete" method="get" action="../Medewerker/medewerkerDelete.php">
-      <input value="" type="hidden" id="delete-input" name="id_gebruiker" />
-    </form>
+    
   </div>
 </body>
 <script type="text/javascript">
@@ -122,14 +123,29 @@ require_once("../src/sessie.php");
     }
     // console.log(d);
     if (d && d.length > 1) {
-      $('delete-input').val(d);
-      document.getElementById("delete-input").value = d;
+      console.log(d.length)
+      $('#archiveer-input').val(d);
+      $('#delete-input').val(d);
+
+      console.log(d)
+      
+      let text = "";
+  
+      
+      d.forEach(verwijder);
+
+      document.getElementById("verwijder").innerHTML = text;
+
+      function verwijder(item, index) {
+        text += "<input form='verwijder' id='verwijder' value= "+ item +" type='hidden' id='verwijder-input'name='id_gebruiker[]'/>";
+      }
+      
     } else {
       console.log(d)
       a = d[0];
-      $('update-input').val(a);
+      $('#update-input').val(a);;
+      $('#verwijder-input').val(a);
 
-      document.getElementById("update-input").value = a;
 
     }
 

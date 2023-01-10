@@ -338,6 +338,21 @@ class Gebruikers extends DB
         }
         $this->conn = NULL;
     }
+    public function VerwijderGebruiker($id_gebruiker)
+    {
+        // maak een connectie met de database
+        $this->conn();
+        // sql query defineren
+        $sql = "DELETE FROM `gebruikers` WHERE id_gebruiker = :id_gebruiker";
+        // sql voorbereiden
+        $stmt = $this->conn->prepare($sql);
+        // waardes verbinden met de named placeholders	
+        $stmt->bindParam(':id_gebruiker', $id_gebruiker);
+        // sql query daadwerkelijk uitvoeren
+        $stmt->execute();
+        //sluit verbinding
+        $this->conn = NULL;
+    }
 }
 class Klanten extends DB
 {
