@@ -73,18 +73,25 @@ if (!empty($_GET["id_project"])) {
             </form>
 
     <div class="btn-group">
-      <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
+    <button name="submit" type="submit" form="declareren" class="declareren">Declareren</button>
       <a href="../urenregistratie/urenregistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
 
+        // laat error code Zien
+        if (isset($_SESSION['errors'])) {
+          echo $_SESSION['errors'];
+          unset($_SESSION['errors']);
+        }
+        // laat qr code Zien
+
+        elseif (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']);
+        } 
     // print_r($_COOKIE);
     ?>
     <table id="urenoverzicht">
@@ -145,6 +152,11 @@ if (!empty($_GET["id_project"])) {
     <input type="hidden" id="archiveer" name="archiveer" value="ja" />
     <p id="archiveer"></p>
     </form>
+    <form id="declareren" method="post" action="../forms/urendeclareren-form.php">
+    <input value="" type="hidden" id="declareren-input" name="id_uren" />
+    <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
+    <p id="declareren"></p>
+    </form>
     <p id="sh" hidden></p>
     <p id="sh1" hidden></p>
   </div>
@@ -180,20 +192,40 @@ if (!empty($_GET["id_project"])) {
     if (d && d.length > 1) {
       console.log(d.length)
       $('#archiveer-input').val(d);
+      $('#declareren-input').val(d);
+
       console.log(d)
+      // console.log(typeof d)
+      //  document.getElementById("sh").innerHTML = d;
       let text = "";
       d.forEach(archiveer);
+
       document.getElementById("archiveer").innerHTML = text;
+
       function archiveer(item, index) {
+        // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>");
         text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
       }
+      d.forEach(declareren);
+
+      document.getElementById("declareren").innerHTML = text;
+
+      function declareren(item, index) {
+        text += "<input form='declareren' id='declareren' value= "+ item +" type='hidden' id='declareren-input'name='id_uren[]'/>";
+        // text += '<input type="hidden" id="declareren" name="declarabel" value="verander" />';
+        text += '<input type="hidden" id="declareren" name="id_project" value="<?php echo $id_project;?>" />';
+
+      }
+      
     } else {
       console.log(d)
       a = d[0];
       $('#update-input').val(a);
       $('#archiveer-input').val(a);
+      $('#declareren-input').val(a);
       $('#export-input').val(a);
+
     }
 
   }

@@ -61,16 +61,23 @@ setcookie("id_klant", "", time() - 3600);
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
-      <button name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
+      <button onclick="return confirm('Weet je het zeker dat je deze klant(en) wilt verwijderen')"name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
 
+        // laat error code Zien
+        if (isset($_SESSION['errors'])) {
+          echo $_SESSION['errors'];
+          unset($_SESSION['errors']);
+        }
+        // laat qr code Zien
 
+        elseif (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']);
+        } 
+    // print_r($_COOKIE);
     ?>
     <table id="klantoverzicht">
       <tr>

@@ -3,10 +3,13 @@ require_once("../src/sessie.php");
 $user = unserialize($_SESSION['gebruiker_data']);
 $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
+// setcookie("id_klant", "", time() - 3600);
+
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../urenregistratie/urenregistratie.php');
 }
+// print_r($_COOKIE);
 // test
 ?>
 <!DOCTYPE html>
@@ -42,6 +45,9 @@ if (isset($error)) {
         $klanten_data = $klanten->KlantenZien();
         $projecten = new projecten;
         if (!empty($_COOKIE["id_klant"])) {
+          if($_COOKIE["id_klant"] === "undefined"){
+            $error = '<br>'. "Klik op een klant i.p.v. typen.";
+          }
           $id_klant = $_COOKIE["id_klant"];
 
 
@@ -52,10 +58,10 @@ if (isset($error)) {
 
 
 
-
-        if (empty($id_klant)) {
-
-          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="Klantnaam" />
+        if (empty($id_klant) || $id_klant === "undefined") {
+         
+          $klanten_data = $klanten->KlantenZien();
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder="klantnaam" />
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
@@ -69,7 +75,7 @@ if (isset($error)) {
               $('#input').change(function() {
                 let abc = $("#klanten option[value='" + $('#input').val() + "']").attr('data-id');
                 $('#id_klant').val(abc)
-                console.log(abc);
+                console.log(abc); 
                 document.cookie = "id_klant=  " + abc;
                 console.log(document.cookie);
 
@@ -79,8 +85,12 @@ if (isset($error)) {
 
         <?php
         } else {
-          $klanten_data = $klanten->KlantZien($id_klant);
-          echo '<input onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder=' . $klanten_data[0]["klantnaam"] . '>
+        $klanten = new Klanten;
+          $klanten_data = $klanten->KlantenZien();
+          $id = array_search($id_klant, array_column($klanten_data, 'id_klant'));
+  
+          
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="klanten" id="input" name="klant" placeholder='. $klanten_data[$id]["klantnaam"].'>
         <datalist id="klanten">';
           foreach ($klanten_data as $klant_data) {
             echo '<option data-id="' . "$klant_data[id_klant]" . '" value=' . "$klant_data[klantnaam]" . '></option>
@@ -110,13 +120,17 @@ if (isset($error)) {
         <label>Project *</label><br />
         <?php
         if (!empty($_COOKIE["id_project"])) {
+          if($_COOKIE["id_project"] === "undefined"){
+            $error = '<br>'. "Klik op een project i.p.v. typen.";
+          }
           $id_project = $_COOKIE["id_project"];
+
         } else {
           $id_project = "";
         }
-        if (empty($id_project)) {
-
-          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder="Projectnaam"/>
+        if (empty($id_project) || $id_project === "undefined") {
+          
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder="Projectnaam"/>
 <datalist id="projecten">';
           foreach ($projecten_data as $project_data) {
             echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
@@ -142,7 +156,9 @@ if (isset($error)) {
         } else {
           
           $projecten_data = $projecten->Projectzien($id_project);
-          echo '<input onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $projecten_data[0]["projectnaam"] . ' />
+          $id = array_search($id_project, array_column($projecten_data, 'id_project'));
+          
+          echo '<input onkeydown="return /[a-z]/i.test(event.key)" onchange="this.form.submit()" class="klant-input" list="projecten" id="project" name="project" placeholder=' . $projecten_data[$id]["projectnaam"] . ' />
 <datalist id="projecten">';
           foreach ($projecten_data as $project_data) {
             echo '<option data-id="' . "$project_data[id_project]" . '" value=' . "$project_data[projectnaam]" . '></option>
@@ -242,23 +258,29 @@ if (isset($error)) {
     </form><br>
     <div class="error">
       <?php
+// print_r($_COOKIE);
+
       // print_r($klanten_data);
       // laat error code Zien
       if (isset($_SESSION['ERRORS'])) {
         echo $_SESSION['ERRORS'];
         unset($_SESSION['ERRORS']);
       }
-      if (empty($projecten_data)) {
-        echo  "Er moeten nog projecten worden aangemaakt";
+      if (empty($projecten_data) && $id_klant !== "undefined") {
+        echo  "Er moeten nog projecten worden aangemaakt voor deze klant.";
       }
       if (empty($klanten_data)) {
-        $error[] = "er moeten nog klanten worden gemaakt";
+        echo  "Er moeten nog klanten worden aangemaakt.";
+      }if(!empty($error)){
+        echo $error;
+        unset($error);
       }
       ?>
     </div>
   </div>
 </body>
 <script>
+
   let start = document.getElementById("start").value;
   let end = document.getElementById("end").value;
 

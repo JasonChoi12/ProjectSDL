@@ -62,11 +62,18 @@ setcookie("id_klant", "", time() - 3600);
     </div>
     <?php
     // laat error code Zien
-    if (isset($_SESSION['errors'])) {
-      echo $_SESSION['errors'];
-      unset($_SESSION['errors']);
-    }
 
+        // laat error code Zien
+        if (isset($_SESSION['errors'])) {
+          echo $_SESSION['errors'];
+          unset($_SESSION['errors']);
+        }
+        // laat qr code Zien
+
+        elseif (isset($_SESSION['succes'])) {
+          echo $_SESSION['succes'];
+          unset($_SESSION['succes']);
+        } 
     // print_r($_COOKIE);
     ?>
     <table>
@@ -75,7 +82,6 @@ setcookie("id_klant", "", time() - 3600);
         <th>Projectnaam</th>
         <th>Totale uren</th>
         <th>Declarabele uren</th>
-        <th>Actief?</th>
         <th>Laatst geupdate </th>
         <th>Begindatum</th>
         <th id="table-right-border"></th>
@@ -103,8 +109,7 @@ setcookie("id_klant", "", time() - 3600);
           </td>
           <td><?php echo $project_data['projectnaam']; ?></td>
           <td><?php echo number_format($totaleUren / 3600, 1); ?></td>
-          <td><?php echo number_format($declarabel / 3600, 1); ?></td>
-          <td></td>
+          <td><?php echo number_format($declarabel / 3600, 1); ?></td>  
           <td><?php echo $project_data['laatst_gewerkt']; ?></td>
           <td><?php echo $project_data['begindatum']; ?></td>
           <td>

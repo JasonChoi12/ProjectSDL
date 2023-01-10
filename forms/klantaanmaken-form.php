@@ -82,6 +82,8 @@ if(isset($_POST['submit'])){
         header('Location:../klant/klant.php');
     }else{
     $klant->KlantCreate($klantnaam, $straatnaam, $telefoon, $woonplaats, $huisnummer, $postcode, $archiveer);
+    $accountaangemaakt[] = 'Klant is succesvol aangemaakt.';
+    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
     header('Location:../klantoverzicht/klantoverzicht.php');
     
 } 

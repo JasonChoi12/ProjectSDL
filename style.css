@@ -253,6 +253,9 @@ button:hover {
 .exporteer:hover {
   background-color: #0dd639;
 }
+.declareren:hover {
+  background-color: #28bd75;
+}
 
 @media screen and (max-width: 600px) {
   .sidebar li i {

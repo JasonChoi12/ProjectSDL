@@ -37,7 +37,9 @@ if(isset($_POST['submit'])){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../projectupdate/projectupdate.php');
     }else{
-    $project->projectupdate($id_klant, $projectnaam, $begindatum, $id_project);
+    $project->ProjectUpdate($id_klant, $projectnaam, $begindatum, $id_project);
+    $accountaangemaakt[] = 'Project is succesvol bijgewerkt.';
+             $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
     header('Location:../projectoverzicht/projectoverzicht.php');
 } 
 }

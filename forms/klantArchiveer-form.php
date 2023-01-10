@@ -24,6 +24,8 @@ foreach($id_klant as $id_klanten){
 //    echo "<br>";
 //    echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klanten, $archiveer);
+   $accountaangemaakt[] = 'Klant is succesvol gearchiveerd.';
+   $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../klantoverzicht/klantoverzicht.php');
     }
 }else{
@@ -32,6 +34,8 @@ foreach($id_klant as $id_klanten){
     // echo "<br>";
     // echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klant, $archiveer);
+   $accountaangemaakt[] = 'Klant is succesvol gearchiveerd.';
+   $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../klantoverzicht/klantoverzicht.php');
 }
     }

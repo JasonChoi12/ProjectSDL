@@ -209,15 +209,18 @@ class Gebruikers extends DB
             return $e;
         }
     }
-    public function UserTypeUpdate($usertype, $id_gebruiker)
-    {
+    public function UserTypeUpdate($usertype, $id_gebruiker, $wachtwoord)
+    { 
+        // $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         try {
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
             $sql = "UPDATE `gebruikers` 
                     SET 	
-                    usertype=COALESCE(NULLIF(:usertype, ''),usertype)
+                    usertype=COALESCE(NULLIF(:usertype, ''),usertype),
+                    wachtwoord=COALESCE(NULLIF(:wachtwoord, ''),wachtwoord)
+
 					
                     WHERE id_gebruiker = :userid";
             // sql voorbereiden
@@ -225,6 +228,8 @@ class Gebruikers extends DB
             // waardes verbinden met de named placeholders	
             $stmt->bindParam(':userid', $id_gebruiker);
             $stmt->bindParam(':usertype', $usertype);
+            $stmt->bindParam(':wachtwoord', $wachtwoord);
+
 
             $stmt->execute();
             return true;
@@ -331,6 +336,21 @@ class Gebruikers extends DB
             // status terugsturen
             return "Het ingevoerde email en/of wachtwoord is onjuist.";
         }
+        $this->conn = NULL;
+    }
+    public function VerwijderGebruiker($id_gebruiker)
+    {
+        // maak een connectie met de database
+        $this->conn();
+        // sql query defineren
+        $sql = "DELETE FROM `gebruikers` WHERE id_gebruiker = :id_gebruiker";
+        // sql voorbereiden
+        $stmt = $this->conn->prepare($sql);
+        // waardes verbinden met de named placeholders	
+        $stmt->bindParam(':id_gebruiker', $id_gebruiker);
+        // sql query daadwerkelijk uitvoeren
+        $stmt->execute();
+        //sluit verbinding
         $this->conn = NULL;
     }
 }
@@ -970,6 +990,33 @@ class uren extends projecten
             // waardes verbinden met de named placeholders	
             $stmt->bindParam(':id_uren', $id_uren);
             $stmt->bindParam(':archiveer', $archiveer);
+
+            
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
+    public function urenDeclarabel($id_uren, $declarabel)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `uren` 
+                    SET 
+                    declarabel=COALESCE(NULLIF(:declarabel, ''),declarabel)		
+                    WHERE id_uren = :id_uren";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_uren', $id_uren);
+            $stmt->bindParam(':declarabel', $declarabel);
 
             
 

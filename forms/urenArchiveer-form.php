@@ -32,6 +32,8 @@ foreach($id_uur as $id_uren){
     echo "<br>";
     echo "archiveer: " .$archiveer;
     $uren->urenArchiveer($id_uur, $archiveer);
+    $accountaangemaakt[] = 'Urenregistratie is succesvol gearchiveerd.';
+                    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../urenoverzicht/urenoverzicht.php');
 
 }

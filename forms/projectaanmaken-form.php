@@ -55,7 +55,9 @@ if(isset($_POST['submit'])){
         $_SESSION['ERRORS'] = implode('<br> ', $error);
         header('Location:../projectaanmaak/projectaanmaak.php');
     }else{
-    $project->ProjectAanmaken($id_klant, $projectnaam, $begindatum);
+    $project->ProjectAanmaken($id_klant, $projectnaam, $begindatum, $archiveer);
+    $accountaangemaakt[] = 'Project is succesvol aangemaakt.';
+    $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
     header('Location:../klantoverzicht/klantoverzicht.php');
 } 
 }

@@ -123,7 +123,20 @@ h1 {
   font-style: normal;
   color: #fff;
 }
+.declareren {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
 
+  background-color: #35BC7A;
+  border-radius: 5px;
+  border: none;
+  font-family: "verdana";
+  font-style: normal;
+  color: #fff;
+}
 .btn-group {
   display: block;
   margin-left: 60%;
@@ -203,6 +216,11 @@ td {
     height: 15px;
     font-size: 8px;
   }
+  .declareren {
+    width: 70px;
+    height: 15px;
+    font-size: 8px;
+  }
   table {
     font-size: 8px;
     width: 94%;
@@ -258,6 +276,11 @@ td {
     font-size: 0.95vw;
   }
   .verwijderen {
+    width: 24%;
+    height: 2.55vw;
+    font-size: 0.95vw;
+  }
+  .declareren {
     width: 24%;
     height: 2.55vw;
     font-size: 0.95vw;
