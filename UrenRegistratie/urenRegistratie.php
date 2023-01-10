@@ -3,6 +3,8 @@ require_once("../src/sessie.php");
 $user = unserialize($_SESSION['gebruiker_data']);
 $id_gebruiker = $user->id;
 setcookie("id_project", "", time() - 3600);
+// setcookie("id_klant", "", time() - 3600);
+
 if (isset($error)) {
   $_SESSION['ERRORS'] = implode('<br> ', $error);
   header('Location:../UrenRegistratie/urenRegistratie.php');
@@ -256,6 +258,8 @@ if (isset($error)) {
     </form><br>
     <div class="error">
       <?php
+// print_r($_COOKIE);
+
       // print_r($klanten_data);
       // laat error code Zien
       if (isset($_SESSION['ERRORS'])) {
@@ -269,6 +273,7 @@ if (isset($error)) {
         echo  "Er moeten nog klanten worden aangemaakt.";
       }if(!empty($error)){
         echo $error;
+        unset($error);
       }
       ?>
     </div>
