@@ -981,6 +981,33 @@ class uren extends projecten
             return $e;
         }
     }
+    public function urenDeclarabel($id_uren, $declarabel)
+    {
+
+        try {
+            // maak een connectie met de database
+            $this->conn();
+            // sql query defineren
+            $sql = "UPDATE `uren` 
+                    SET 
+                    declarabel=COALESCE(NULLIF(:declarabel, ''),declarabel)		
+                    WHERE id_uren = :id_uren";
+            // sql voorbereiden
+            $stmt = $this->conn->prepare($sql);
+            // waardes verbinden met de named placeholders	
+            $stmt->bindParam(':id_uren', $id_uren);
+            $stmt->bindParam(':declarabel', $declarabel);
+
+            
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            $this->conn = NULL;
+            // status terugsturen
+            return $e;
+        }
+    }
     public function VerwijderUren($id_uren)
     {
         // maak een connectie met de database
