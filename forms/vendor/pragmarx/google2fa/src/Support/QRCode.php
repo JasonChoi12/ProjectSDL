@@ -2,10 +2,10 @@
 
 namespace PragmaRX\Google2FA\Support;
 
-trait QRCode
+trait qrCode
 {
     /**
-     * Creates a QR code url.
+     * Creates a qr code url.
      *
      * @param string $company
      * @param string $holder
@@ -13,7 +13,7 @@ trait QRCode
      *
      * @return string
      */
-    public function getQRCodeUrl($company, $holder, $secret)
+    public function getqrCodeUrl($company, $holder, $secret)
     {
         return 'otpauth://totp/'.
             rawurlencode($company).

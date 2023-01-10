@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
             
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../KlantOverzicht/KlantOverzicht.php');
+        header('Location:../klantoverzicht/klantoverzicht.php');
     } else {
 
 if (!is_string($id_klant)) {
@@ -24,7 +24,7 @@ foreach($id_klant as $id_klanten){
 //    echo "<br>";
 //    echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klanten, $archiveer);
-   header('Location:../KlantOverzicht/klantOverzicht.php');
+   header('Location:../klantoverzicht/klantoverzicht.php');
     }
 }else{
     echo "<br>";
@@ -32,7 +32,7 @@ foreach($id_klant as $id_klanten){
     // echo "<br>";
     // echo "archiveer: " .$archiveer;
    $klanten->klantArchiveer($id_klant, $archiveer);
-   header('Location:../KlantOverzicht/klantOverzicht.php');
+   header('Location:../klantoverzicht/klantoverzicht.php');
 }
     }
 }

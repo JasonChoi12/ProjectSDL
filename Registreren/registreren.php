@@ -9,7 +9,7 @@ require_once("../src/sessie.php");
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="registreren.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registreren</title>
+  <title>registreren</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@ require_once("../src/sessie.php");
     <img class="logo" alt="logo" src="../Logo-DEVP.png" />
   </div>
   <div class="registreren">
-    <h1>Registreren</h1>
+    <h1>registreren</h1>
     <form method="post" action="../forms/registreren-form.php">
       <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam *" />
       <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
@@ -27,7 +27,7 @@ require_once("../src/sessie.php");
       <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email *" />
       <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord *" />
       <div class="btn-group">
-        <button name="submit" class="submit">Registreren</button>
+        <button name="submit" class="submit">registreren</button>
         <button name="cancel" class="cancel">Annuleren</button>
       </div>
       <div class="error">
@@ -39,7 +39,7 @@ require_once("../src/sessie.php");
         }
         // laat qr code Zien
 
-        elseif (isset($_SESSION['succes']) && isset($_SESSION['QR'])) {
+        elseif (isset($_SESSION['succes']) && isset($_SESSION['qr'])) {
           echo $_SESSION['succes'];
           unset($_SESSION['succes']);
         } ?><br>

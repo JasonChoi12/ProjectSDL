@@ -89,7 +89,7 @@ if (empty($wachtwoord)) {
 
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../AccountSettings/accountSettings.php');
+        header('Location:../AccountSettings/accountsettings.php');
     } else {
         $update = $user->update($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $wachtwoordcheck);
         if (is_bool($update)) {
@@ -99,7 +99,7 @@ if (empty($wachtwoord)) {
                  $accountaangemaakt[] = 'Account is succesvol aangemaakt';
                 // Update voor nieuw wachtwoord
                 $updateUser = $user->update($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $wachtwoordcheck);
-                header('Location:../AccountSettings/AccountSettings.php');
+                header('Location:../AccountSettings/Accountsettings.php');
 
             }
              // succes messasge
@@ -107,10 +107,10 @@ if (empty($wachtwoord)) {
              $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
             //Voer ook uit als geen nieuw wachtwoord of email zijn ingevoerd
             //Volgende locatie
-            header('Location:../AccountSettings/AccountSettings.php');
+            header('Location:../AccountSettings/Accountsettings.php');
         } elseif (is_string($update)) {
             $_SESSION['ERRORS'] = $update;
-            header('Location:../AccountSettings/AccountSettings.php');
+            header('Location:../AccountSettings/Accountsettings.php');
         }
     }
 }

@@ -365,7 +365,7 @@ class Klanten extends DB
             return $e;
         }
     }
-    public function KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant)
+    public function klantupdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant)
     {
 
         try {
@@ -613,7 +613,7 @@ class projecten extends Klanten
             }
         }
     }
-    public function ProjectUpdate($id_klant, $projectnaam, $begindatum, $id_project)
+    public function projectupdate($id_klant, $projectnaam, $begindatum, $id_project)
     {
 
         try {
@@ -689,7 +689,7 @@ class projecten extends Klanten
 class uren extends projecten
 {
 
-    public function UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer)
+    public function Urenregistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer)
     {
         try {
             // maak een connectie met de database
@@ -907,7 +907,7 @@ class uren extends projecten
             return $e;
         }
     }
-    public function UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
+    public function urenbewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum)
     {
         try {
             // maak een connectie met de database

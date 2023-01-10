@@ -27,7 +27,7 @@ $email = strtolower($email);
 // echo $voornaam. " ". $tussenvoegsel. " ". $achternaam. " ". $email. " ". $wachtwoord;
 
 if (isset($_POST['cancel'])) {
-    header('Location:../Urenregistratie/urenRegistratie.php');
+    header('Location:../urenregistratie/urenregistratie.php');
 }
 
 if (isset($_POST['submit'])) {
@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
     } else {
 
         $secret_key = $google2fa->generateSecretKey();
-        $text = $google2fa->getQRCodeUrl(
+        $text = $google2fa->getqrCodeUrl(
             $email,
             $voornaam,
             $secret_key
@@ -103,8 +103,8 @@ if (isset($_POST['submit'])) {
 
         $accountaangemaakt[] = 'Account is succesvol aangemaakt';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
-        $_SESSION['QR'] = implode('<br> ', $qr);
+        $_SESSION['qr'] = implode('<br> ', $qr);
         $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer);
-        header('Location:../registreren/Qr.php');
+        header('Location:../registreren/qr.php');
     }
 }

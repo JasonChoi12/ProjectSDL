@@ -11,5 +11,5 @@ if ($user_logout->is_loggedin() != "") {
 }
 if (isset($_GET['logout']) && $_GET['logout'] == "true") {
 	$user_logout->doLogout();
-	header('Location: ../Login/login.php');
+	header('Location: ../login/login.php');
 }

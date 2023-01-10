@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
   if (isset($error)) {
           
       $_SESSION['errors'] = implode('<br> ', $error);
-      header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+      header('Location:../projectoverzicht/projectoverzicht.php');
   } else {
 $uren_data = $uren->Exportuurzien($id_project);
 
@@ -46,7 +46,7 @@ function filterData(&$str){
     if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"'; 
 }
 // excel file name for download
-$fileName = "UrenOverzicht_van_".$projectnaam."_export_data-" . date('Ymd') . ".xls";
+$fileName = "urenoverzicht_van_".$projectnaam."_export_data-" . date('Ymd') . ".xls";
 
 // column names
 $titel = array('Klantnaam: '.$klantnaam, 'Projectnaam: '.$projectnaam, 'Laatst Bijgewerkt: '.$laatst_gewerkt, 'Totale Uren: '.$totaleUren, 'Waarvan Declarabel: '.$declarabel);

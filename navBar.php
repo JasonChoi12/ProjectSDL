@@ -32,28 +32,28 @@ $user = unserialize($_SESSION['gebruiker_data']);
         <span class="tooltip">Klant aanmaken</span>
       </li>
       <li>
-        <a href="../ProjectAanmaak/Projectaanmaak.php">
+        <a href="../projectaanmaak/projectaanmaak.php">
           <i class='bx bxs-folder-plus'></i>
           <span class="links_name">Project aanmaken</span>
         </a>
         <span class="tooltip">Project aanmaken</span>
       </li>
       <li>
-        <a href="../KlantOverzicht/klantOverzicht.php">
+        <a href="../klantoverzicht/klantoverzicht.php">
           <i class='bx bx-spreadsheet'></i>
           <span class="links_name">Klant overzicht</span>
         </a>
         <span class="tooltip">Klant overzicht</span>
       </li>
       <li>
-        <a href="../UrenRegistratie/urenRegistratie.php">
+        <a href="../urenregistratie/urenregistratie.php">
           <i class='bx bx-time'></i>
           <span class="links_name">Uren registratie</span>
         </a>
         <span class="tooltip">Uren registratie</span>
       </li>
       <li>
-        <a href="../AccountSettings/accountSettings.php">
+        <a href="../AccountSettings/accountsettings.php">
           <i class='bx bx-cog'></i>
           <span class="links_name">Setting</span>
         </a>
@@ -61,7 +61,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
       </li>
       <?php if ($user->usertype === "admin") {
         echo '<li>
-        <a href="../Registreren/registreren.php">
+        <a href="../registreren/registreren.php">
           <i class="bx bx-user-plus"></i>
           <span class="links_name">Nieuwe medewerker</span>
         </a>
@@ -73,9 +73,9 @@ $user = unserialize($_SESSION['gebruiker_data']);
         echo '<li>
         <a href="../medewerker/medewerker.php">
         <i class="bx bxs-user-account"></i>
-          <span class="links_name">Medewerker Overzicht</span>
+          <span class="links_name">medewerker Overzicht</span>
         </a>
-        <span class="tooltip">Medewerker Overzicht</span>
+        <span class="tooltip">medewerker Overzicht</span>
       </li>';
       }
       ?>

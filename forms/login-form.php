@@ -52,21 +52,21 @@ if (isset($_POST['submit'])) {
 
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location: ../Login/login.php');
+        header('Location: ../login/login.php');
     } else {
         $usertype = "medewerker";
         $loggedin = $user->login($email, $wachtwoord, $code, $usertype);
         if (is_bool($loggedin)) {
             //Zet user values in sessie
             $_SESSION['gebruiker_data'] = serialize($user);
-            header('Location: ../UrenRegistratie/urenregistratie.php');
+            header('Location: ../urenregistratie/urenregistratie.php');
         } elseif (is_string($loggedin)) {
             $usertype = "admin";
             $adminloggedin = $user->login($email, $wachtwoord, $code, $usertype);
             if (is_bool($adminloggedin)) {
                 //Zet user values in sessie
                 $_SESSION['gebruiker_data'] = serialize($user);
-                header('Location: ../UrenRegistratie/urenregistratie.php');
+                header('Location: ../urenregistratie/urenregistratie.php');
             } elseif (is_string($adminloggedin)) {
                 $usertype = "non-actief";
                 $nonlogin = $user->login($email, $wachtwoord, $code, $usertype);
@@ -74,12 +74,12 @@ if (isset($_POST['submit'])) {
                     //Zet user values in sessie
                     $nietActief = "Jouw account is gedactiveerd neem contact op met de beheerder.";
                     $_SESSION['ERRORS'] = $nietActief;
-                    header('Location: ../Login/login.php');
+                    header('Location: ../login/login.php');
                 } elseif (is_string($nonlogin)) {
                     $_SESSION['ERRORS'] = $nonlogin;
                     $_SESSION['ERRORS'] = $loggedin;
                     $_SESSION['ERRORS'] = $adminloggedin;
-                    header('Location: ../Login/login.php');
+                    header('Location: ../login/login.php');
                 }
             }
         }

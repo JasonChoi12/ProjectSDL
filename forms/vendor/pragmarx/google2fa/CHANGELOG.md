@@ -40,7 +40,7 @@
 
 ## [4.0.0] - 2018-10-06
 ### Changed
-- Bacon QRCode package removed
+- Bacon qrCode package removed
 
 ## [3.0.1] - 2018-03-15
 ### Changed
@@ -99,7 +99,7 @@
 
 ## [0.7.0] - 2015-11-07
 ### Changed
-- Fixed URL generation for QRCodes
+- Fixed URL generation for qrCodes
 - Avoid time attacks
 
 ## [0.2.0] - 2015-02-19

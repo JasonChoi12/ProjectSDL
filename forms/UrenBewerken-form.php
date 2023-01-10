@@ -5,7 +5,7 @@ require_once('../src/class.php');
 session_start();
 
 // maak nieuwe klant aan
-$UrenBewerken = new Uren();
+$urenbewerken = new Uren();
 // Pakt post van de form en zet ze in variable
 $id_gebruiker = $_POST['id_gebruiker'];
 $id_uren = $_POST['id_uren'];
@@ -110,11 +110,11 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../UrenBewerken/UrenBewerken.php');
+        header('Location:../urenbewerken/urenbewerken.php');
     } else {
 
-        $UrenBewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
-        $laatst_gewerkt = $UrenBewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
-        header('Location:../ProjectOverzicht/ProjectOverzicht.php');
+        $urenbewerken->urenbewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
+        $laatst_gewerkt = $urenbewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
+        header('Location:../projectoverzicht/projectoverzicht.php');
     }
 }

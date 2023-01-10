@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
             
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../KlantOverzicht/KlantOverzicht.php');
+        header('Location:../klantoverzicht/klantoverzicht.php');
     } else {
         $klant_data = $klant->KlantZien($id_klant);
         $klantnaam = $klant_data[0]["klantnaam"];
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
             if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
         }
         // excel file name for download
-        $fileName = "ProjectOverzicht_van_" . $klantnaam . "_export_data-" . date('Ymd') . ".xls";
+        $fileName = "projectoverzicht_van_" . $klantnaam . "_export_data-" . date('Ymd') . ".xls";
 
         // column names
         $fields = array('Prj.N.', 'Projectnaam', 'Totale uren', 'Declarabele uren', 'Laatst geupdate', 'Begindatum');

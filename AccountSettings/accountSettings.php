@@ -11,7 +11,7 @@ $user = unserialize($_SESSION['gebruiker_data']);
 $email = $user->email;
 $voornaam = $user->voornaam;
 $secret_key = $user->secret_key;
-$text = $google2fa->getQRCodeUrl(
+$text = $google2fa->getqrCodeUrl(
   $email,
   $voornaam,
   $secret_key
@@ -20,13 +20,13 @@ $image_url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=' . $tex
 $qr[] = '<img class="qrcode" src="' . $image_url . '" />';
 $qr[] = 'Kan je de qr niet scannen hier is jouw instelsleutel: ' . $secret_key;
 
-$_SESSION['QR'] = implode('<br> ', $qr);
+$_SESSION['qr'] = implode('<br> ', $qr);
 
-// if (isset($_SESSION['QR'])) {
+// if (isset($_SESSION['qr'])) {
 
-//   echo $_SESSION['QR'];
+//   echo $_SESSION['qr'];
 
-//   unset($_SESSION['QR']);
+//   unset($_SESSION['qr']);
 // }
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ $_SESSION['QR'] = implode('<br> ', $qr);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="accountSettings.css" />
+  <link rel="stylesheet" href="accountsettings.css" />
   <link rel="stylesheet" href="../style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -52,7 +52,7 @@ $_SESSION['QR'] = implode('<br> ', $qr);
   </script>
   <div class="registreren">
     <h1>Account aanpassen</h1>
-    <form method="post" action="../forms/accountSettings-forms.php">
+    <form method="post" action="../forms/accountsettings-forms.php">
 
       <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam" />
       <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
@@ -71,7 +71,7 @@ $_SESSION['QR'] = implode('<br> ', $qr);
               Type Gebruiker
             </option>
             <option value="admin">Admin</option>
-            <option value="medewerker">Medewerker</option>
+            <option value="medewerker">medewerker</option>
             <option value="non-actief">Non-actief</option>
           </select>
         </div> -->
@@ -92,11 +92,11 @@ $_SESSION['QR'] = implode('<br> ', $qr);
           unset($_SESSION['succes']);
         }
 
-        if (isset($_SESSION['QR'])) {
+        if (isset($_SESSION['qr'])) {
 
-          echo $_SESSION['QR'];
+          echo $_SESSION['qr'];
 
-          unset($_SESSION['QR']);
+          unset($_SESSION['qr']);
         } ?></div>
     </form>
   </div>

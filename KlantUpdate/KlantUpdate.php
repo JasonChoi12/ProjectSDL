@@ -6,7 +6,7 @@ require_once("../src/sessie.php");
 // if (empty($id_klant)) {
 //   $error[] = "Kies eerst een klant.";
 //   $_SESSION['errors'] = implode('<br> ', $error);
-//   header('Location: ../KlantOverzicht/klantOverzicht.php');
+//   header('Location: ../klantoverzicht/klantoverzicht.php');
 // }
 // print_r($_COOKIE);
 if (!empty($_GET["id_klant"])) {
@@ -20,7 +20,7 @@ setcookie("id_klant", "", time() - 3600);
   $error[] = "Kies eerst een klant.";
   if(isset($error)){
     $_SESSION['errors'] = implode('<br> ', $error);
-  header('Location: ../KlantOverzicht/klantOverzicht.php');
+  header('Location: ../klantoverzicht/klantoverzicht.php');
   }
   }
 }
@@ -30,7 +30,7 @@ setcookie("id_klant", "", time() - 3600);
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="KlantUpdate.css" />
+  <link rel="stylesheet" href="klantupdate.css" />
   <link rel="stylesheet" href="../style.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -55,7 +55,7 @@ setcookie("id_klant", "", time() - 3600);
   <div class="title">
     <h1>Klant bewerken</h1>
 
-    <form class="klant" method="post" action="../forms/klantUpdate-form.php">
+    <form class="klant" method="post" action="../forms/klantupdate-form.php">
       <input type="hidden" name="id_klant" value="<?php echo $id_klant ?>">
       <div>
         <label>Klant *</label><br />

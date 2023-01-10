@@ -30,8 +30,8 @@ Google2FA is a PHP implementation of the Google Two-Factor Authentication Module
   - [Installing](#installing)
   - [Usage](#usage)
   - [How To Generate And Use Two Factor Authentication](#how-to-generate-and-use-two-factor-authentication)
-  - [Generating QRCodes](#generating-qrcodes)
-  - [QR Code Packages](#qr-code-packages)
+  - [Generating qrCodes](#generating-qrcodes)
+  - [qr Code Packages](#qr-code-packages)
   - [Examples of Usage](#examples-of-usage)
   - [HMAC Algorithms](#hmac-algorithms)
   - [Server Time](#server-time)
@@ -62,11 +62,11 @@ Google2FA is a PHP implementation of the Google Two-Factor Authentication Module
 
 This package is agnostic, but there's a [Laravel bridge](https://github.com/antonioribeiro/google2fa-laravel).
   
-## About QRCode generation
+## About qrCode generation
 
-This package does not generate QRCodes for 2FA.
+This package does not generate qrCodes for 2FA.
 
-If you are looking for Google Two-Factor Authentication, but also need to generate QRCode for it, you can use the [Google2FA QRCode package](https://github.com/antonioribeiro/google2fa-qrcode), which integrates this package and also generates QRCodes using the BaconQRCode library, or check options on how to do it yourself [here in the docs](#qr-code-packages). 
+If you are looking for Google Two-Factor Authentication, but also need to generate qrCode for it, you can use the [Google2FA qrCode package](https://github.com/antonioribeiro/google2fa-qrcode), which integrates this package and also generates qrCodes using the BaconqrCode library, or check options on how to do it yourself [here in the docs](#qr-code-packages). 
 
 ## Demos, Example & Playground
 
@@ -76,7 +76,7 @@ Please check the [Google2FA Package Playground](http://pragmarx.com/playground/g
 
 Here's an demo app showing how to use Google2FA: [google2fa-example](https://github.com/antonioribeiro/google2fa-example).
 
-You can scan the QR code on [this (old) demo page](https://antoniocarlosribeiro.com/technology/google2fa) with a Google Authenticator app and view the code changing (almost) in real time.
+You can scan the qr code on [this (old) demo page](https://antoniocarlosribeiro.com/technology/google2fa) with a Google Authenticator app and view the code changing (almost) in real time.
 
 ## Requirements
 
@@ -88,7 +88,7 @@ Use Composer to install it:
 
     composer require pragmarx/google2fa
 
-To generate inline QRCodes, you'll need to install a QR code generator, e.g. [BaconQrCode](https://github.com/Bacon/BaconQrCode):
+To generate inline qrCodes, you'll need to install a qr code generator, e.g. [BaconqrCode](https://github.com/Bacon/BaconqrCode):
   
     composer require bacon/bacon-qr-code
 
@@ -112,22 +112,22 @@ Generate a secret key for your user and save it:
 $user->google2fa_secret = $google2fa->generateSecretKey();
 ```
 
-## Generating QRCodes
+## Generating qrCodes
 
-The securer way of creating QRCode is to do it yourself or using a library. First you have to install a QR code generator e.g. BaconQrCode, as stated above, then you just have to generate the QR code url using:
+The securer way of creating qrCode is to do it yourself or using a library. First you have to install a qr code generator e.g. BaconqrCode, as stated above, then you just have to generate the qr code url using:
  
 ```php
-$qrCodeUrl = $google2fa->getQRCodeUrl(
+$qrCodeUrl = $google2fa->getqrCodeUrl(
     $companyName,
     $companyEmail,
     $secretKey
 );
 ```
 
-Once you have the QR code url, you can feed it to your preferred QR code generator.
+Once you have the qr code url, you can feed it to your preferred qr code generator.
 
 ```php
-// Use your own QR Code generator to generate a data URL:
+// Use your own qr Code generator to generate a data URL:
 $google2fa_url = custom_generate_qrcode_url($qrCodeUrl);
 
 /// and in your view:
@@ -143,31 +143,31 @@ $secret = $request->input('secret');
 $valid = $google2fa->verifyKey($user->google2fa_secret, $secret);
 ```
 
-## QR Code Packages  
+## qr Code Packages  
 
-This package suggests the use of [Bacon/QRCode](https://github.com/Bacon/BaconQrCode) because 
-it is known as a good QR Code package, but you can use it with any other package, for 
-instance [Google2FA QRCode](https://github.com/antonioribeiro/google2fa-qrcode), 
-[Simple QrCode](https://www.simplesoftware.io/docs/simple-qrcode) 
-or [Endroid QR Code](https://github.com/endroid/qr-code), all of them use 
-[Bacon/QRCode](https://github.com/Bacon/BaconQrCode) to produce QR Codes.
+This package suggests the use of [Bacon/qrCode](https://github.com/Bacon/BaconqrCode) because 
+it is known as a good qr Code package, but you can use it with any other package, for 
+instance [Google2FA qrCode](https://github.com/antonioribeiro/google2fa-qrcode), 
+[Simple qrCode](https://www.simplesoftware.io/docs/simple-qrcode) 
+or [Endroid qr Code](https://github.com/endroid/qr-code), all of them use 
+[Bacon/qrCode](https://github.com/Bacon/BaconqrCode) to produce qr Codes.
 
 Usually you'll need a 2FA URL, so you just have to use the URL generator:
 
 ```php
-$google2fa->getQRCodeUrl($companyName, $companyEmail, $secretKey)
+$google2fa->getqrCodeUrl($companyName, $companyEmail, $secretKey)
 ```
 
 ## Examples of Usage
 
-### [Google2FA QRCode](https://github.com/antonioribeiro/google2fa-qrcode)
+### [Google2FA qrCode](https://github.com/antonioribeiro/google2fa-qrcode)
 
-Get a QRCode to be used inline:
+Get a qrCode to be used inline:
  
 ```php
-$google2fa = (new \PragmaRX\Google2FAQRCode\Google2FA());
+$google2fa = (new \PragmaRX\Google2FAqrCode\Google2FA());
 
-$inlineUrl = $google2fa->getQRCodeInline(
+$inlineUrl = $google2fa->getqrCodeInline(
     'Company Name',
     'company@email.com',
     $google2fa->generateSecretKey()
@@ -180,22 +180,22 @@ And use in your template:
 <img src="{{ $inlineUrl }}">
 ```
 
-### [Simple QrCode](https://www.simplesoftware.io/docs/simple-qrcode)
+### [Simple qrCode](https://www.simplesoftware.io/docs/simple-qrcode)
 
 ```php
 <div class="visible-print text-center">
-    {!! QrCode::size(100)->generate($google2fa->getQRCodeUrl($companyName, $companyEmail, $secretKey)); !!}
+    {!! qrCode::size(100)->generate($google2fa->getqrCodeUrl($companyName, $companyEmail, $secretKey)); !!}
     <p>Scan me to return to the original page.</p>
 </div>
 ```
 
-### [Endroid QR Code Generator](https://github.com/endroid/qr-code)
+### [Endroid qr Code Generator](https://github.com/endroid/qr-code)
 
 Generate the data URL
 
 ```php
 
-$qrCode = new \Endroid\QrCode\QrCode($value);
+$qrCode = new \Endroid\qrCode\qrCode($value);
 $qrCode->setSize(100);
 $google2fa_url = $qrCode->writeDataUri();
 ```
@@ -209,20 +209,20 @@ And in your view
 </div>
 ```
 
-### [Bacon/QRCode](https://github.com/Bacon/BaconQrCode)
+### [Bacon/qrCode](https://github.com/Bacon/BaconqrCode)
 
 ```php
 <?php
 
 use PragmaRX\Google2FA\Google2FA;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Writer;
+use BaconqrCode\Renderer\ImageRenderer;
+use BaconqrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconqrCode\Renderer\RendererStyle\RendererStyle;
+use BaconqrCode\Writer;
 
 $google2fa = app(Google2FA::class);
 
-$g2faUrl = $google2fa->getQRCodeUrl(
+$g2faUrl = $google2fa->getqrCodeUrl(
     'pragmarx',
     'google2fa@pragmarx.com',
     $google2fa->generateSecretKey()
@@ -382,7 +382,7 @@ To use the two factor authentication, your user will have to install a Google Au
 
 ## Deprecation Warning
 
-Google API for QR generator is turned off. All version of that package prior to 5.0.0 are deprecated. Please upgrade and check documentation regarding [QRCode generation](https://github.com/antonioribeiro/google2fa#generating-qrcodes).
+Google API for qr generator is turned off. All version of that package prior to 5.0.0 are deprecated. Please upgrade and check documentation regarding [qrCode generation](https://github.com/antonioribeiro/google2fa#generating-qrcodes).
 
 ## Testing
 

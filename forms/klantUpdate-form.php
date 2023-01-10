@@ -75,10 +75,10 @@ if (isset($_POST['submit'])) {
         setcookie("id_klant", $id_klant);
         print_r($_COOKIE);
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../KlantUpdate/KlantUpdate.php');
+        header('Location:../klantupdate/klantupdate.php');
         
     } else {
-        $klant->KlantUpdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
-        header('Location:../KlantOverzicht/klantOverzicht.php');
+        $klant->klantupdate($klantnaam, $straatnaam, $telefoonnummer, $woonplaats, $huisnummer, $postcode, $id_klant);
+        header('Location:../klantoverzicht/klantoverzicht.php');
     }
 }

@@ -7,7 +7,7 @@ if (empty($id_project)) {
   $error[] = "Kies eerst een project.";
   if(isset($error)){
   $_SESSION['errors'] = implode('<br> ', $error);
-  header('Location: ../ProjectOverzicht/ProjectOverzicht.php');
+  header('Location: ../projectoverzicht/projectoverzicht.php');
   }
 }
 
@@ -17,7 +17,7 @@ if (empty($id_project)) {
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="projectUpdate.css" />
+  <link rel="stylesheet" href="projectupdate.css" />
   <link rel="stylesheet" href="../style.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,7 +42,7 @@ if (empty($id_project)) {
   <div class="title">
     <h1>Project Bewerken</h1>
 
-    <form class="project" method="post" action="../forms/projectUpdate-form.php">
+    <form class="project" method="post" action="../forms/projectupdate-form.php">
       <div class="klant">
         <label>Klant *</label><br />
         <input type="hidden" value="<?php echo $project_data[0]["id_project"]; ?>" name="id_project">
