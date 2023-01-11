@@ -5,7 +5,7 @@ $uren = new uren();
 //filter the excel data
 $id_project = $_POST['id_project'];
 $id_uur = $_POST['id_uren'];
-print_r($_POST);
+// print_r($_POST);
 
 if (isset($_POST['submit'])) {
     // check id_klant

@@ -4,7 +4,7 @@ require_once('../src/class.php');
 $uren = new uren();
 //filter the excel data
 $id_uur = $_POST['id_uren'];
-print_r($id_uur);
+// print_r($id_uur);
 if (isset($_POST['submit'])) {
     // check id_uur
     if (empty($id_uur)) {

@@ -13,7 +13,7 @@ $projectnaam = $_POST['projectnaam'];
 $begindatum = $_POST['begindatum'];
 
 
-echo $projectnaam. " ". $begindatum. " ". $id_klant. " ". $id_project ;
+// echo $projectnaam. " ". $begindatum. " ". $id_klant. " ". $id_project ;
 if(isset($_POST['submit'])){
     //check projectnaam
     if (!empty($projectnaam)) {
