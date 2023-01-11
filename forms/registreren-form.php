@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
 
         $accountaangemaakt[] = 'Account is succesvol aangemaakt.';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
-        $_SESSION['qr'] = implode('<br> ', $qr);
+        $_SESSION['QR'] = implode('<br> ', $qr);
         // echo $voornaam . " " . $tussenvoegsel . " " . $achternaam . " " . $email . " " . $wachtwoord  . " " . $usertype  . " " . $secret_key;
 
         $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key);
