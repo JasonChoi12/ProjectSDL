@@ -210,7 +210,7 @@ class Gebruikers extends DB
     }
     public function UserTypeUpdate($usertype, $id_gebruiker, $wachtwoord)
     { 
-        // $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
+        $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
         try {
             // maak een connectie met de database
             $this->conn();
@@ -227,7 +227,7 @@ class Gebruikers extends DB
             // waardes verbinden met de named placeholders	
             $stmt->bindParam(':userid', $id_gebruiker);
             $stmt->bindParam(':usertype', $usertype);
-            $stmt->bindParam(':wachtwoord', $wachtwoord);
+            $stmt->bindParam(':wachtwoord', $hash);
 
 
             $stmt->execute();

@@ -17,7 +17,19 @@ print_r($_POST);
 //check invoervelden of hij goed is ingevuld
 
 if (isset($_POST['submit'])) {
-
+// wachtwoord validatie
+if (!empty($wachtwoord)) {
+    $uppercase = preg_match('@[A-Z]@', $wachtwoord);
+    $lowercase = preg_match('@[a-z]@', $wachtwoord);
+    $number    = preg_match('@[0-9]@', $wachtwoord);
+    $specialChars = preg_match('@[^\w]@', $wachtwoord);
+    if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($wachtwoord) < 8) {
+        $error[] = 'Wachtwoord moet ten minste 8 tekens lang zijn en moet ten minste één hoofdletter, één cijfer en één speciaal teken bevatten.';
+    }}
+    if (isset($error)) {
+        $_SESSION['ERRORS'] = implode('<br> ', $error);
+        header('Location: ../login/login.php');
+    } else {
  
         $update = $user->UserTypeUpdate($usertype, $id_gebruiker, $wachtwoord);
         if (is_bool($update)) {
@@ -32,5 +44,5 @@ if (isset($_POST['submit'])) {
             $_SESSION['ERRORS'] = $update;
             header('Location: ../medewerker/medewerkerupdate.php');
         }
-    
+    }
 }
