@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        // header('Location:../registreren/registreren.php');
+        header('Location:../registreren/registreren.php');
     } else {
 
         $secret_key = $google2fa->generateSecretKey();
@@ -102,10 +102,9 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt.';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['qr'] = implode('<br> ', $qr);
-        echo $voornaam . " " . $tussenvoegsel . " " . $achternaam . " " . $email . " " . $wachtwoord  . " " . $usertype  . " " . $secret_key;
+        // echo $voornaam . " " . $tussenvoegsel . " " . $achternaam . " " . $email . " " . $wachtwoord  . " " . $usertype  . " " . $secret_key;
 
         $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key);
-        // header('Location:../registreren/qr.php');
-        print_r($_SESSION);
+        header('Location:../registreren/qr.php');
     }
 }
