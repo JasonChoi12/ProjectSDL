@@ -24,8 +24,6 @@
                 <button name="submit" class="submit">login</button>
             </div>
             <br>
-            <a class="password-forgot" href="../WachtwoordVergeten/wachtwoordVergeten.html">Wachtwoord vergeten</a>
-            <br>
             <div class="error">
                 <?php
                 session_start();

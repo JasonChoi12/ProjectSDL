@@ -106,5 +106,6 @@ if (isset($_POST['submit'])) {
 
         $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key);
         // header('Location:../registreren/qr.php');
+        print_r($_SESSION);
     }
 }

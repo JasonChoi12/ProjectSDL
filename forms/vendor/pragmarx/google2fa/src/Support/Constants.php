@@ -7,7 +7,7 @@ class Constants
     /**
      * Characters valid for Base 32.
      */
-    const VALID_FOR_B32 = 'ABCDEFGHIJKLMNOPqrSTUVWXYZ234567';
+    const VALID_FOR_B32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
 
     /**
      * Characters valid for Base 32, scrambled.

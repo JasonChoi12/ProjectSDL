@@ -6,11 +6,11 @@ use PragmaRX\Google2FA\Exceptions\InvalidAlgorithmException;
 use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
 use PragmaRX\Google2FA\Support\Base32;
 use PragmaRX\Google2FA\Support\Constants;
-use PragmaRX\Google2FA\Support\qrCode;
+use PragmaRX\Google2FA\Support\QRCode;
 
 class Google2FA
 {
-    use qrCode;
+    use QRCode;
     use Base32;
 
     /**
