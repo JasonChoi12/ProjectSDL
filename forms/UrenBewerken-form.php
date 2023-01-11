@@ -21,18 +21,18 @@ $buren = $_POST['Buren'];
 $bonusmdw = $_POST['id_bonusmdw'];
 
 
-echo "declarabel: " . $declarabel . "<br>";
-echo "id_uren: " . $id_uren . "<br>";
-echo "id_gebruiker: " . $id_gebruiker . "<br>";
-echo "id_klant: " . $id_klant . "<br>";
-echo "id_project: " . $id_project . "<br>";
-echo "activiteit: " . $activiteiten . "<br>";
-echo "datum: " . $datum . "<br>";
-echo "begonnen: " . $begonnen . "<br>";
-echo "beëindigd: " . $beëindigd . "<br>";
-echo "uren: " . $uren . "<br>";
-echo "buren: " . $buren . "<br>";
-echo "id_bonusmdw: " . $bonusmdw . "<br>";
+// echo "declarabel: " . $declarabel . "<br>";
+// echo "id_uren: " . $id_uren . "<br>";
+// echo "id_gebruiker: " . $id_gebruiker . "<br>";
+// echo "id_klant: " . $id_klant . "<br>";
+// echo "id_project: " . $id_project . "<br>";
+// echo "activiteit: " . $activiteiten . "<br>";
+// echo "datum: " . $datum . "<br>";
+// echo "begonnen: " . $begonnen . "<br>";
+// echo "beëindigd: " . $beëindigd . "<br>";
+// echo "uren: " . $uren . "<br>";
+// echo "buren: " . $buren . "<br>";
+// echo "id_bonusmdw: " . $bonusmdw . "<br>";
 
 
 $s = (strtotime("00:00"));
@@ -40,12 +40,12 @@ $s = (strtotime("00:00"));
 // $beëindigd = strtotime($beëindigd);
 // $uren = strtotime($uren);
 // $buren = strtotime($buren);
-echo "begonnen: " . $begonnen . "<br>";
-echo "beëindigd: " . $beëindigd . "<br>";
-echo "uren: " . $uren . "<br>";
-echo "buren: " . $buren . "<br>";
-echo "s: " . $s . "<br>";
-echo "<br>";
+// echo "begonnen: " . $begonnen . "<br>";
+// echo "beëindigd: " . $beëindigd . "<br>";
+// echo "uren: " . $uren . "<br>";
+// echo "buren: " . $buren . "<br>";
+// echo "s: " . $s . "<br>";
+// echo "<br>";
 // $begonnen = $begonnen - $s;
 // $beëindigd = $beëindigd - $s;
 // $uren = $uren - $s;
@@ -114,8 +114,8 @@ $buren = strtotime($buren);
 
     } else {
 
-        $UrenBewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
-        $laatst_gewerkt = $UrenBewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
+        $urenbewerken->UrenBewerken($id_uren, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum);
+        $laatst_gewerkt = $urenbewerken->Laatst_gewerkt($id_klant, $id_project, $datum);
         $accountaangemaakt[] = 'Urenreigstratie is succesvol bijgewerkt.';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         header('Location:../projectoverzicht/projectoverzicht.php');
