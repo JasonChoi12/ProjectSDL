@@ -46,7 +46,7 @@ if (isset($error)) {
         $projecten = new projecten;
         if (!empty($_COOKIE["id_klant"])) {
           if($_COOKIE["id_klant"] === "undefined"){
-            $error = '<br>'. "Klik op een klant i.p.v. typen.";
+            $error = "Klik op een klant i.p.v. typen.";
           }
           $id_klant = $_COOKIE["id_klant"];
 
@@ -267,10 +267,10 @@ if (isset($error)) {
         unset($_SESSION['ERRORS']);
       }
       if (empty($projecten_data) && $id_klant !== "undefined") {
-        echo  "Er moeten nog projecten worden aangemaakt voor deze klant.";
+        echo  "Er moeten nog projecten worden aangemaakt voor deze klant. <br>";
       }
       if (empty($klanten_data)) {
-        echo  "Er moeten nog klanten worden aangemaakt.";
+        echo  "Er moeten nog klanten worden aangemaakt.<br>";
       }if(!empty($error)){
         echo $error;
         unset($error);
