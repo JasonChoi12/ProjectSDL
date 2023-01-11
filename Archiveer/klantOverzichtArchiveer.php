@@ -54,13 +54,13 @@ setcookie("id_klant", "", time() - 3600);
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
     <form method="get" action="../klantoverzicht/klantoverzicht.php">
-                <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
+                <button class="archiveerlijst">Bekijk Non-archiveerde</button>
               </form>
    
     <div class="btn-group">
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-archiveer</button>
       <button onclick="return confirm('Weet je het zeker dat je deze klant(en) wilt verwijderen')"name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <?php

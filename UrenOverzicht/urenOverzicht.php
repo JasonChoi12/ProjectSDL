@@ -66,17 +66,17 @@ if (!empty($_GET["id_project"])) {
       <i class="fa-solid fa-magnifying-glass"></i>
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
-    <form method="get" action="../Archiveer/urenoverzichtarchiveer.php">
+    <form method="get" action="../archiveer/urenoverzichtarchiveer.php">
     
               <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
-              <button class="archiveerlijst">Bekijk Archiveerde</button>
+              <button class="archiveerlijst">Bekijk archiveerde</button>
             </form>
 
     <div class="btn-group">
     <button name="submit" type="submit" form="declareren" class="declareren">Declareren</button>
       <a href="../urenregistratie/urenregistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="verwijderen">archiveer</button>
     </div>
     <?php
     // laat error code Zien

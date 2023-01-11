@@ -22,7 +22,7 @@ foreach($id_uur as $id_uren){
    echo "id_projecten: " .$id_uren;
    echo "<br>";
    echo "archiveer: " .$archiveer;
-   $uren->urenArchiveer($id_uren, $archiveer);
+   $uren->urenarchiveer($id_uren, $archiveer);
    header('Location:../urenoverzicht/urenoverzicht.php');
 
     }
@@ -31,7 +31,7 @@ foreach($id_uur as $id_uren){
     echo "id_projecten: " .$id_uur;
     echo "<br>";
     echo "archiveer: " .$archiveer;
-    $uren->urenArchiveer($id_uur, $archiveer);
+    $uren->urenarchiveer($id_uur, $archiveer);
     $accountaangemaakt[] = 'Urenregistratie is succesvol gearchiveerd.';
                     $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../urenoverzicht/urenoverzicht.php');

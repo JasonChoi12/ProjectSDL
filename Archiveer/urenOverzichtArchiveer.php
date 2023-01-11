@@ -68,14 +68,14 @@ if (!empty($_GET["id_project"])) {
     <form method="get" action="../urenoverzicht/urenoverzicht.php">
     
     <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
-    <button class="archiveerlijst">Bekijk Non-Archiveerde</button>
+    <button class="archiveerlijst">Bekijk Non-archiveerde</button>
   </form>
     
  
     <div class="btn-group">
       <!-- <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button> -->
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="toevoegen">De-archiveer</button>
       <button onclick="return confirm('Weet je het zeker dat je deze urenregistratie(s) wilt verwijderen')" name="submit" type="submit" form="verwijder" class="verwijderen">Verwijder</button>
     </div>
     <?php

@@ -54,14 +54,14 @@ setcookie("id_klant", "", time() - 3600);
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
     <form method="get" action="../archiveer/klantoverzichtarchiveer.php">
-                <button class="archiveerlijst">Bekijk Archiveerde</button>
+                <button class="archiveerlijst">Bekijk archiveerde</button>
               </form>
     
     <div class="btn-group">
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="verwijderen">archiveer</button>
     </div>
     <?php
     // laat error code Zien
