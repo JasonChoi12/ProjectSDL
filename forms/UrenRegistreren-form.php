@@ -119,9 +119,9 @@ if (isset($_POST['submit'])) {
         $buren = strtotime($buren);
         $uren = $uren - $s;
         $buren = $buren - $s;
-        $UrenRegistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
-        $laatst_gewerkt = $UrenRegistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
-        $accountaangemaakt[] = 'Urenregistratie is succesvol aangemaakt.';
+        $urenregistratie->UrenRegistreren($id_gebruiker, $id_project, $bonusmdw, $activiteiten, $declarabel, $uren, $begonnen, $beëindigd, $datum, $archiveer);
+        $laatst_gewerkt = $urenregistratie->Laatst_gewerkt($id_klant, $id_project, $datum);
+        $accountaangemaakt[] = 'urenregistratie is succesvol aangemaakt.';
 $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         header('Location:../projectoverzicht/projectoverzicht.php');
     }

@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
             
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../UrenOverzicht/UrenOverzicht.php');
+        header('Location:../urenoverzicht/urenoverzicht.php');
     } else {
 
 if (!is_string($id_uur)) {
@@ -33,9 +33,9 @@ if($uren_data[0]["declarabel"] === "ja"){
     $declarabel = "ja";
     $uren->urendeclarabel($id_uren, $declarabel);
 }
-$accountaangemaakt[] = 'Urenregistratie is succesvol gedeclareerd';
+$accountaangemaakt[] = 'urenregistratie is succesvol gedeclareerd';
 $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
-   header('Location:../UrenOverzicht/UrenOverzicht.php');
+   header('Location:../urenoverzicht/urenoverzicht.php');
 
     }
 }else{
@@ -53,9 +53,9 @@ $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $declarabel = "ja";
         $uren->urendeclarabel($id_uur, $declarabel);
     }
-    $accountaangemaakt[] = 'Urenregistratie is succesvol gedeclareerd.';
+    $accountaangemaakt[] = 'urenregistratie is succesvol gedeclareerd.';
 $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
-   header('Location:../UrenOverzicht/UrenOverzicht.php');
+   header('Location:../urenoverzicht/urenoverzicht.php');
 
 }
     }

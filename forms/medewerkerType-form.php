@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
             header('Location: ../medewerker/Medewerker.php');
         } elseif (is_string($update)) {
             $_SESSION['ERRORS'] = $update;
-            header('Location: ../medewerker/medewerkerUpdate.php');
+            header('Location: ../medewerker/medewerkerupdate.php');
         }
     
 }
