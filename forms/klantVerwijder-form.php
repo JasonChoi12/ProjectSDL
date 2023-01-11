@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     if (isset($error)) {
 
         $_SESSION['errors'] = implode('<br> ', $error);
-        header('Location:../Archiveer/klantoverzichtarchiveer.php');
+        header('Location:../archiveer/klantoverzichtarchiveer.php');
     } else {
 
         if (!is_string($id_klant)) {

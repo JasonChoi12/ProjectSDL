@@ -421,7 +421,7 @@ class Klanten extends DB
             return $e;
         }
     }
-    public function klantArchiveer($id_klant, $archiveer)
+    public function klantarchiveer($id_klant, $archiveer)
     {
 
         try {
@@ -662,7 +662,7 @@ class projecten extends Klanten
             return $e;
         }
     }
-    public function projectArchiveer($id_project, $archiveer)
+    public function projectarchiveer($id_project, $archiveer)
     {
 
         try {
@@ -974,7 +974,7 @@ class uren extends projecten
             return $e;
         }
     }
-    public function urenArchiveer($id_uren, $archiveer)
+    public function urenarchiveer($id_uren, $archiveer)
     {
 
         try {

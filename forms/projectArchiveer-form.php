@@ -22,7 +22,7 @@ foreach($id_project as $id_projecten){
    echo "id_projecten: " .$id_projecten;
    echo "<br>";
    echo "archiveer: " .$archiveer;
-   $projecten->projectArchiveer($id_projecten, $archiveer);
+   $projecten->projectarchiveer($id_projecten, $archiveer);
    $accountaangemaakt[] = 'Project is succesvol gearchiveerd.';
              $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../projectoverzicht/projectoverzicht.php');
@@ -33,7 +33,7 @@ foreach($id_project as $id_projecten){
     echo "id_projecten: " .$id_project;
     echo "<br>";
     echo "archiveer: " .$archiveer;
-    $projecten->projectArchiveer($id_project, $archiveer);
+    $projecten->projectarchiveer($id_project, $archiveer);
     $accountaangemaakt[] = 'Project is succesvol gearchiveerd.';
              $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
    header('Location:../projectoverzicht/projectoverzicht.php');
