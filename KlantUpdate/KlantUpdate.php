@@ -91,17 +91,16 @@ setcookie("id_klant", "", time() - 3600);
         </div>
       </div>
       <button name="submit" class="submit">Bewerken</button>
-
-  </div><br><br>
-      <div>
-        <?php
+      <br>
+      <?php
         
         // laat error code Zien
         if (isset($_SESSION['ERRORS'])) {
           echo $_SESSION['ERRORS'];
           unset($_SESSION['ERRORS']);
         }
-        ?></div>
+        ?>
+  </div><br><br>
     </form>
   </div>
 
