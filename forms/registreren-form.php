@@ -6,8 +6,7 @@ require_once('../src/class.php');
 require_once(__DIR__ . '/vendor/autoload.php');
 # Create the 2FA class
 $google2fa = new PragmaRX\Google2FA\Google2FA();
-//start sessie
-session_start();
+
 // maak nieuwe gebruiker
 $user = new Gebruikers();
 // pak de post die in de registreren form is doorgestuurd en bind het aan een variable
@@ -17,14 +16,13 @@ $tussenvoegsel = $_POST['tussenvoegsel'];
 $achternaam = $_POST['achternaam'];
 $email = $_POST['email'];
 $wachtwoord = $_POST['wachtwoord'];
-$archiveer = "nee";
 $usertype = "medewerker";
 
 
 //filter emails naar lowerstring
 $email = strtolower($email);
 //check invoervelden of hij goed is ingevuld
-// echo $voornaam. " ". $tussenvoegsel. " ". $achternaam. " ". $email. " ". $wachtwoord;
+// echo $voornaam . " " . $tussenvoegsel . " " . $achternaam . " " . $email . " " . $wachtwoord;
 
 if (isset($_POST['cancel'])) {
     header('Location:../urenregistratie/urenregistratie.php');
@@ -87,7 +85,7 @@ if (isset($_POST['submit'])) {
     }
     if (isset($error)) {
         $_SESSION['ERRORS'] = implode('<br> ', $error);
-        header('Location:../registreren/registreren.php');
+        // header('Location:../registreren/registreren.php');
     } else {
 
         $secret_key = $google2fa->generateSecretKey();
@@ -104,7 +102,9 @@ if (isset($_POST['submit'])) {
         $accountaangemaakt[] = 'Account is succesvol aangemaakt.';
         $_SESSION['succes'] = implode('<br> ', $accountaangemaakt);
         $_SESSION['qr'] = implode('<br> ', $qr);
-        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer);
-        header('Location:../registreren/qr.php');
+        echo $voornaam . " " . $tussenvoegsel . " " . $achternaam . " " . $email . " " . $wachtwoord  . " " . $usertype  . " " . $secret_key;
+
+        $user->create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key);
+        // header('Location:../registreren/qr.php');
     }
 }

@@ -53,7 +53,7 @@ class Gebruikers extends DB
     public $secret_key;
 
 
-    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key, $archiveer)
+    public function create($voornaam, $tussenvoegsel, $achternaam, $email, $wachtwoord, $usertype, $secret_key)
     {
         //Hash wachtwoord
         $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
@@ -62,7 +62,7 @@ class Gebruikers extends DB
             // maak een connectie met de database
             $this->conn();
             // sql query defineren
-            $sql = "INSERT INTO gebruikers (voornaam, tussenvoegsel, achternaam, email, wachtwoord, usertype, secretkey, archiveer) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :wachtwoord, :usertype, :secretkey, :archiveer)";
+            $sql = "INSERT INTO gebruikers (voornaam, tussenvoegsel, achternaam, email, wachtwoord, usertype, secretkey) VALUES (:voornaam, :tussenvoegsel, :achternaam, :email, :wachtwoord, :usertype, :secretkey)";
             // sql voorbereiden
             $stmt = $this->conn->prepare($sql);
             // waardes verbinden met de named placeholders
@@ -73,7 +73,6 @@ class Gebruikers extends DB
             $stmt->bindParam(":wachtwoord", $hash);
             $stmt->bindParam(":usertype", $usertype);
             $stmt->bindParam(":secretkey", $secret_key);
-            $stmt->bindParam(":archiveer", $archiveer);
 
             //SQL query daadwerkelijk uitvoeren
             $stmt->execute();
