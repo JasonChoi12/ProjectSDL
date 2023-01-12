@@ -18,16 +18,16 @@ require_once("../src/sessie.php");
     <img class="logo" alt="logo" src="../Logo-DEVP.png" />
   </div>
   <div class="registreren">
-    <h1>registreren</h1>
+    <h1>Registreren</h1>
     <form method="post" action="../forms/registreren-form.php">
       <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam *" />
-      <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
+      <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel" />
       <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam *" />
 
       <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email *" />
       <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoord" placeholder="Wachtwoord *" />
       <div class="btn-group">
-        <button name="submit" class="submit">registreren</button>
+        <button name="submit" class="submit">Registreren</button>
         <button name="cancel" class="cancel">Annuleren</button>
       </div>
       <div class="error">

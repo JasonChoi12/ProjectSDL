@@ -22,19 +22,18 @@ require_once("../src/sessie.php");
     $(function() {
       $("#nav-placeholder").load("../navBar.php");
     });
-  
   </script>
-  
+
   <div class="title">
-    <h1>medewerker Overzicht</h1>
+    <h1>Medewerker Overzicht</h1>
     <form id="form">
       <div class="searchbar">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input class="searchbar-input" type="search" id="query" name="q" placeholder="Zoeken..." />
       </div>
-      
+
     </form>
-    
+
     <div class="btn-group">
       <a href="../registreren/registreren.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
@@ -44,23 +43,23 @@ require_once("../src/sessie.php");
     <?php
     // laat error code Zien
 
-        // laat error code Zien
-        if (isset($_SESSION['errors'])) {
-          echo $_SESSION['errors'];
-          unset($_SESSION['errors']);
-        }
-        // laat qr code Zien
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+    // laat qr code Zien
 
-        elseif (isset($_SESSION['succes'])) {
-          echo $_SESSION['succes'];
-          unset($_SESSION['succes']);
-        } 
+    elseif (isset($_SESSION['succes'])) {
+      echo $_SESSION['succes'];
+      unset($_SESSION['succes']);
+    }
     // print_r($_COOKIE);
     ?>
     <table>
       <tr>
-      <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
-        <th>medewerker</th>
+        <th id="table-left-border"><input id="selectAll" class="checkbox" type="checkbox"></th>
+        <th>Medewerker</th>
         <th>Email</th>
         <th>Type medewerker</th>
         <th id="table-right-border"></th>
@@ -70,7 +69,7 @@ require_once("../src/sessie.php");
       $gebruikers = new Gebruikers();
       $gebruikers_data = $gebruikers->GebruikersZien();
       foreach ($gebruikers_data as $gebruiker_data) {
-    
+
       ?>
         <tr>
           <td class="test">
@@ -80,18 +79,18 @@ require_once("../src/sessie.php");
           <td><?php echo $gebruiker_data['voornaam'] . " " . $gebruiker_data['tussenvoegsel'] . " " . $gebruiker_data['achternaam']; ?></td>
           <td><?php echo $gebruiker_data['email'] ?></td>
           <td><?php echo $gebruiker_data['usertype'] ?></td>
-         
+
         </tr>
       <?php } ?>
     </table>
     <form id="verwijder" method="post" action="../forms/medewerkerverwijder-form.php">
-    <input value="" type="hidden" id="verwijder-input" name="id_gebruiker" />
-    <p id="verwijder"></p>
+      <input value="" type="hidden" id="verwijder-input" name="id_gebruiker" />
+      <p id="verwijder"></p>
     </form>
     <form id="update" method="get" action="../medewerker/medewerkerupdate.php">
       <input value="" type="hidden" id="update-input" name="id_gebruiker" />
     </form>
-    
+
   </div>
 </body>
 <script type="text/javascript">
@@ -128,18 +127,18 @@ require_once("../src/sessie.php");
       $('#delete-input').val(d);
 
       console.log(d)
-      
+
       let text = "";
-  
-      
+
+
       d.forEach(verwijder);
 
       document.getElementById("verwijder").innerHTML = text;
 
       function verwijder(item, index) {
-        text += "<input form='verwijder' id='verwijder' value= "+ item +" type='hidden' id='verwijder-input'name='id_gebruiker[]'/>";
+        text += "<input form='verwijder' id='verwijder' value= " + item + " type='hidden' id='verwijder-input'name='id_gebruiker[]'/>";
       }
-      
+
     } else {
       console.log(d)
       a = d[0];

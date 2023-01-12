@@ -55,7 +55,7 @@ $_SESSION['qr'] = implode('<br> ', $qr);
     <form method="post" action="../forms/accountsettings-forms.php">
 
       <input class="inputnaam" type="text" id="voornaam" name="voornaam" placeholder="Voornaam" />
-      <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="tussenvoegsel" />
+      <input class="inputnaam" type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel" />
       <input class="inputnaam" type="text" id="achternaam" name="achternaam" placeholder="Achternaam" />
       <input class="inputgegevens" type="text" id="email" name="email" placeholder="Email" />
       <input class="inputgegevens" type="password" id="wachtwoord" name="wachtwoordcheck" placeholder="Wachtwoord *" />
