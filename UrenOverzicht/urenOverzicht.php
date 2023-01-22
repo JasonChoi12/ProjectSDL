@@ -1,7 +1,10 @@
 <?php
 require_once('../src/class.php');
 
+
 require_once("../src/sessie.php");
+$user = unserialize($_SESSION['gebruiker_data']);
+
 if (!empty($_GET["id_project"])) {
   $id_project = $_GET["id_project"];
   // $id_klant = $_GET["id_klant"];
@@ -73,7 +76,9 @@ if (!empty($_GET["id_project"])) {
             </form>
 
     <div class="btn-group">
+      <?php if($user->usertype === "admin"){?>
     <button name="submit" type="submit" form="declareren" class="declareren">Declareren</button>
+<?php }?>
       <a href="../urenregistratie/urenregistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
       <button name="submit" type="submit" form="archiveer" class="verwijderen">archiveer</button>
