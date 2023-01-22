@@ -73,13 +73,13 @@ $user = unserialize($_SESSION['gebruiker_data']);
         echo '<li>
         <a href="../medewerker/medewerker.php">
         <i class="bx bxs-user-account"></i>
-          <span class="links_name">medewerker Overzicht</span>
+          <span class="links_name">Medewerker Overzicht</span>
         </a>
-        <span class="tooltip">medewerker Overzicht</span>
+        <span class="tooltip">Medewerker Overzicht</span>
       </li>';
       }
       ?>
-     
+
 
       <li class="profile">
         <div class="profile-details">

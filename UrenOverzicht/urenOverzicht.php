@@ -70,10 +70,10 @@ if (!empty($_GET["id_project"])) {
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken" />
     </div>
     <form method="get" action="../archiveer/urenoverzichtarchiveer.php">
-    
-              <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
-              <button class="archiveerlijst">Bekijk archiveerde</button>
-            </form>
+
+      <input type="hidden" name="id_project" value="<?php echo $id_project; ?>">
+      <button class="archiveerlijst">Bekijk archiveerde</button>
+    </form>
 
     <div class="btn-group">
       <?php if($user->usertype === "admin"){?>
@@ -81,22 +81,22 @@ if (!empty($_GET["id_project"])) {
 <?php }?>
       <a href="../urenregistratie/urenregistratie.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
     </div>
     <?php
     // laat error code Zien
 
-        // laat error code Zien
-        if (isset($_SESSION['errors'])) {
-          echo $_SESSION['errors'];
-          unset($_SESSION['errors']);
-        }
-        // laat qr code Zien
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+    // laat qr code Zien
 
-        elseif (isset($_SESSION['succes'])) {
-          echo $_SESSION['succes'];
-          unset($_SESSION['succes']);
-        } 
+    elseif (isset($_SESSION['succes'])) {
+      echo $_SESSION['succes'];
+      unset($_SESSION['succes']);
+    }
     // print_r($_COOKIE);
     ?>
     <table id="urenoverzicht">
@@ -104,7 +104,7 @@ if (!empty($_GET["id_project"])) {
         <th id="table-left-border">
           <input id="selectAll" class="checkbox" type="checkbox" />
         </th>
-        <th>medewerker</th>
+        <th>Medewerker</th>
         <th>Activiteit</th>
         <th>Decl.</th>
         <th>Bonus mdw</th>
@@ -118,49 +118,50 @@ if (!empty($_GET["id_project"])) {
       // foreach klant om door alle rijen een loop te doen
       $uren = new uren();
       $uren_data = $uren->UrenZien($id_project);
-    $medewerker = new Gebruikers;
+      $medewerker = new Gebruikers;
       // print_r($uren_data);
       foreach ($uren_data as $uur_data) {
-        if($uur_data['archiveer'] === "nee"){
+        if ($uur_data['archiveer'] === "nee") {
 
 
       ?>
-        <tr>
-          <td class="checkbox">
-            <input name="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $uur_data['id_uren']; ?>">
-          </td>
-          <td><?php echo $uur_data['voornaam'] . " " . $uur_data['tussenvoegsel'] . " " . $uur_data['achternaam']; ?></td>
-          <td>
-            <?php echo $uur_data['activiteit'] ?>
-          </td>
-          <td><?php echo $uur_data['declarabel'] ?></td>
-          <td> <?php
-            if(!empty($uur_data['id_bonusmedewerker'])){
-                $medewerker_data = $medewerker->GebruikerZien($uur_data['id_bonusmedewerker']);
-               echo $medewerker_data[0]["voornaam"] . " " . $medewerker_data[0]["tussenvoegsel"]. " " . $medewerker_data[0]["achternaam"];
-                  }?>
+          <tr>
+            <td class="checkbox">
+              <input name="checkbox" type="checkbox" onchange="chkbox(this)" value="<?php echo $uur_data['id_uren']; ?>">
+            </td>
+            <td><?php echo $uur_data['voornaam'] . " " . $uur_data['tussenvoegsel'] . " " . $uur_data['achternaam']; ?></td>
+            <td>
+              <?php echo $uur_data['activiteit'] ?>
+            </td>
+            <td><?php echo $uur_data['declarabel'] ?></td>
+            <td> <?php
+                  if (!empty($uur_data['id_bonusmedewerker'])) {
+                    $medewerker_data = $medewerker->GebruikerZien($uur_data['id_bonusmedewerker']);
+                    echo $medewerker_data[0]["voornaam"] . " " . $medewerker_data[0]["tussenvoegsel"] . " " . $medewerker_data[0]["achternaam"];
+                  } ?>
 
-          </td>
-          <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
-          <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
-          <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
-          <td><?php echo $uur_data['datum'] ?></td>
-        </tr>
-      <?php } }?>
+            </td>
+            <td><?php echo gmdate("H:i", $uur_data['uren']) ?></td>
+            <td><?php echo gmdate("H:i", $uur_data['begonnen']) ?></td>
+            <td><?php echo gmdate("H:i", $uur_data['beeindigd']) ?></td>
+            <td><?php echo $uur_data['datum'] ?></td>
+          </tr>
+      <?php }
+      } ?>
     </table>
     <form id="update" method="get" action="../urenbewerken/urenbewerken.php">
       <input value="" type="hidden" id="update-input" name="id_uren" />
       <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
     </form>
     <form id="archiveer" method="post" action="../forms/urenarchiveer-form.php">
-    <input value="" type="hidden" id="archiveer-input" name="id_uren" />
-    <input type="hidden" id="archiveer" name="archiveer" value="ja" />
-    <p id="archiveer"></p>
+      <input value="" type="hidden" id="archiveer-input" name="id_uren" />
+      <input type="hidden" id="archiveer" name="archiveer" value="ja" />
+      <p id="archiveer"></p>
     </form>
     <form id="declareren" method="post" action="../forms/urendeclareren-form.php">
-    <input value="" type="hidden" id="declareren-input" name="id_uren" />
-    <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
-    <p id="declareren"></p>
+      <input value="" type="hidden" id="declareren-input" name="id_uren" />
+      <input value="<?php echo $id_project; ?>" type="hidden" name="id_project" />
+      <p id="declareren"></p>
     </form>
     <p id="sh" hidden></p>
     <p id="sh1" hidden></p>
@@ -209,7 +210,7 @@ if (!empty($_GET["id_project"])) {
 
       function archiveer(item, index) {
         // document.write("<input id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>");
-        text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_uren[]'/>";
+        text += "<input form='archiveer' id='archiveer' value= " + item + " type='hidden' id='archiveer-input'name='id_uren[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
       }
       d.forEach(declareren);
@@ -217,12 +218,12 @@ if (!empty($_GET["id_project"])) {
       document.getElementById("declareren").innerHTML = text;
 
       function declareren(item, index) {
-        text += "<input form='declareren' id='declareren' value= "+ item +" type='hidden' id='declareren-input'name='id_uren[]'/>";
+        text += "<input form='declareren' id='declareren' value= " + item + " type='hidden' id='declareren-input'name='id_uren[]'/>";
         // text += '<input type="hidden" id="declareren" name="declarabel" value="verander" />';
-        text += '<input type="hidden" id="declareren" name="id_project" value="<?php echo $id_project;?>" />';
+        text += '<input type="hidden" id="declareren" name="id_project" value="<?php echo $id_project; ?>" />';
 
       }
-      
+
     } else {
       console.log(d)
       a = d[0];

@@ -54,29 +54,29 @@ setcookie("id_klant", "", time() - 3600);
       <input type="text" class="searchbar-input" id="query" onkeyup="searchBar()" placeholder="Zoeken">
     </div>
     <form method="get" action="../archiveer/klantoverzichtarchiveer.php">
-                <button class="archiveerlijst">Bekijk archiveerde</button>
-              </form>
-    
+      <button class="archiveerlijst">Bekijk archiveerde</button>
+    </form>
+
     <div class="btn-group">
       <button name="submit" type="submit" form="export" class="exporteer">Exporteren</button>
       <a href="../Klant/klant.php"><button class="toevoegen">Toevoegen</button></a>
       <button type="submit" form="update" class="bewerk">Bewerken</button>
-      <button name="submit" type="submit" form="archiveer" class="verwijderen">archiveer</button>
+      <button name="submit" type="submit" form="archiveer" class="verwijderen">Archiveer</button>
     </div>
     <?php
     // laat error code Zien
 
-        // laat error code Zien
-        if (isset($_SESSION['errors'])) {
-          echo $_SESSION['errors'];
-          unset($_SESSION['errors']);
-        }
-        // laat qr code Zien
+    // laat error code Zien
+    if (isset($_SESSION['errors'])) {
+      echo $_SESSION['errors'];
+      unset($_SESSION['errors']);
+    }
+    // laat qr code Zien
 
-        elseif (isset($_SESSION['succes'])) {
-          echo $_SESSION['succes'];
-          unset($_SESSION['succes']);
-        } 
+    elseif (isset($_SESSION['succes'])) {
+      echo $_SESSION['succes'];
+      unset($_SESSION['succes']);
+    }
     // print_r($_COOKIE);
     ?>
     <table id="klantoverzicht">
@@ -127,9 +127,9 @@ setcookie("id_klant", "", time() - 3600);
       <input value="" type="hidden" id="export-input" name="id_klant" />
     </form>
     <form id="archiveer" method="post" action="../forms/klantarchiveer-form.php">
-    <input value="" type="hidden" id="archiveer-input" name="id_klant" />
-    <input type="hidden" id="archiveer" name="archiveer" value="ja" />
-    <p id="archiveer"></p>
+      <input value="" type="hidden" id="archiveer-input" name="id_klant" />
+      <input type="hidden" id="archiveer" name="archiveer" value="ja" />
+      <p id="archiveer"></p>
     </form>
 
     <p id="sh"></p>
@@ -173,8 +173,9 @@ setcookie("id_klant", "", time() - 3600);
       let text = "";
       d.forEach(archiveer);
       document.getElementById("archiveer").innerHTML = text;
+
       function archiveer(item, index) {
-        text += "<input form='archiveer' id='archiveer' value= "+ item +" type='hidden' id='archiveer-input'name='id_klant[]'/>";
+        text += "<input form='archiveer' id='archiveer' value= " + item + " type='hidden' id='archiveer-input'name='id_klant[]'/>";
         text += '<input type="hidden" id="archiveer" name="archiveer" value="ja" />';
       }
     } else {
